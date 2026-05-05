@@ -58,12 +58,7 @@ const navItems: Array<{ page: PageId; label: string }> = [
               <a
                 href={getPath(locale, item.page)}
                 aria-current={page === item.page ? 'page' : undefined}
-                class:list={[
-                  'focus-ring rounded-full px-4 py-2 text-sm font-medium transition',
-                  page === item.page
-                    ? 'bg-[#f7f0e7] text-[#15110f]'
-                    : 'text-[#efe3d5]/82 hover:bg-white/10 hover:text-white',
-                ]}
+                class="site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition"
               >
                 {item.label}
               </a>
@@ -77,12 +72,7 @@ const navItems: Array<{ page: PageId; label: string }> = [
               <a
                 href={getPath(targetLocale, page)}
                 aria-current={targetLocale === locale ? 'true' : undefined}
-                class:list={[
-                  'focus-ring rounded-full border px-3 py-1.5 text-xs font-semibold transition',
-                  targetLocale === locale
-                    ? 'border-[#c7a062] bg-[#c7a062] text-[#15110f]'
-                    : 'border-white/14 text-[#efe3d5]/78 hover:border-[#c7a062] hover:text-white',
-                ]}
+                class="site-locale-link focus-ring rounded-full border px-3 py-1.5 text-xs font-semibold transition"
               >
                 {localeNames[targetLocale]}
               </a>
@@ -101,10 +91,7 @@ const navItems: Array<{ page: PageId; label: string }> = [
                   <a
                     href={getPath(locale, item.page)}
                     aria-current={page === item.page ? 'page' : undefined}
-                    class:list={[
-                      'focus-ring rounded-md px-3 py-2 text-sm font-medium',
-                      page === item.page ? 'bg-[#f7f0e7] text-[#15110f]' : 'text-[#efe3d5] hover:bg-white/10',
-                    ]}
+                    class="site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium"
                   >
                     {item.label}
                   </a>
@@ -116,12 +103,8 @@ const navItems: Array<{ page: PageId; label: string }> = [
                 locales.map((targetLocale) => (
                   <a
                     href={getPath(targetLocale, page)}
-                    class:list={[
-                      'focus-ring rounded-md border px-3 py-2 text-center text-xs font-semibold',
-                      targetLocale === locale
-                        ? 'border-[#c7a062] bg-[#c7a062] text-[#15110f]'
-                        : 'border-white/12 text-[#efe3d5]',
-                    ]}
+                    aria-current={targetLocale === locale ? 'true' : undefined}
+                    class="site-locale-link focus-ring rounded-md border px-3 py-2 text-center text-xs font-semibold"
                   >
                     {localeNames[targetLocale]}
                   </a>

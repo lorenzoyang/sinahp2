@@ -67,3 +67,35 @@ textarea {
 .focus-ring:focus-visible {
   outline-color: var(--gold);
 }
+
+.site-nav-link {
+  background: transparent;
+  color: rgba(239, 227, 213, 0.84);
+}
+
+.site-nav-link:hover {
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.site-nav-link[aria-current="page"] {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.site-locale-link {
+  border-color: rgba(247, 240, 231, 0.16);
+  color: rgba(239, 227, 213, 0.78);
+}
+
+.site-locale-link:hover {
+  border-color: var(--gold);
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.site-locale-link[aria-current="true"] {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+}
