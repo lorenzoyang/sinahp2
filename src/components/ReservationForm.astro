@@ -99,22 +99,14 @@ const locationOptions = locations.map((location) => ({
         required
       />
     </label>
-
   </div>
 
   <label class={labelClass}>
     {t.reservation.labels.location}
-    <select
-      class={inputClass}
-      name="location"
-      required
-    >
+    <select class={inputClass} name="location" required>
       {
         locationOptions.map((location) => (
-          <option
-            value={location.label}
-            selected={location.id === "prato"}
-          >
+          <option value={location.label} selected={location.id === "firenze"}>
             {location.label}
           </option>
         ))
@@ -208,7 +200,9 @@ const locationOptions = locations.map((location) => ({
       : (form.dataset.submit ?? submit.textContent);
   }
 
-  async function submitReservation(payload: Record<string, FormDataEntryValue>) {
+  async function submitReservation(
+    payload: Record<string, FormDataEntryValue>,
+  ) {
     const response = await fetch(WEB3FORMS_ENDPOINT, {
       method: "POST",
       headers: {
