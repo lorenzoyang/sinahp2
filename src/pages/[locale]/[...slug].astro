@@ -1,34 +1,75 @@
 ---
-import CulturePage from '../../components/pages/CulturePage.astro';
-import HomePage from '../../components/pages/HomePage.astro';
-import LocationsPage from '../../components/pages/LocationsPage.astro';
-import PrivacyPage from '../../components/pages/PrivacyPage.astro';
-import ReservationPage from '../../components/pages/ReservationPage.astro';
-import SuccessPage from '../../components/pages/SuccessPage.astro';
-import { nonDefaultLocales, pageSlugs, type Locale, type PageId } from '../../data/site';
+import CulturePage from "../../components/pages/CulturePage.astro";
+import CultureTopicPage from "../../components/pages/CultureTopicPage.astro";
+import HomePage from "../../components/pages/HomePage.astro";
+import LocationsPage from "../../components/pages/LocationsPage.astro";
+import PrivacyPage from "../../components/pages/PrivacyPage.astro";
+import ReservationPage from "../../components/pages/ReservationPage.astro";
+import SuccessPage from "../../components/pages/SuccessPage.astro";
+import {
+  cultureTopicSlugs,
+  nonDefaultLocales,
+  pageSlugs,
+  type CultureTopicId,
+  type Locale,
+  type PageId,
+} from "../../data/site";
 
 type LocalizedPageProps = {
   locale: Locale;
-  page: PageId;
+  page: PageId | "cultureTopic";
+  topicId?: CultureTopicId;
 };
 
 export function getStaticPaths() {
-  return nonDefaultLocales.flatMap((locale) => [
-    { params: { locale, slug: undefined }, props: { locale, page: 'home' } },
-    { params: { locale, slug: pageSlugs.culture }, props: { locale, page: 'culture' } },
-    { params: { locale, slug: pageSlugs.locations }, props: { locale, page: 'locations' } },
-    { params: { locale, slug: pageSlugs.reservation }, props: { locale, page: 'reservation' } },
-    { params: { locale, slug: pageSlugs.success }, props: { locale, page: 'success' } },
-    { params: { locale, slug: pageSlugs.privacy }, props: { locale, page: 'privacy' } },
-  ]);
+  return nonDefaultLocales.flatMap((locale) => {
+    const pages = [
+      { params: { locale, slug: undefined }, props: { locale, page: "home" } },
+      {
+        params: { locale, slug: pageSlugs.culture },
+        props: { locale, page: "culture" },
+      },
+      {
+        params: { locale, slug: pageSlugs.locations },
+        props: { locale, page: "locations" },
+      },
+      {
+        params: { locale, slug: pageSlugs.reservation },
+        props: { locale, page: "reservation" },
+      },
+      {
+        params: { locale, slug: pageSlugs.success },
+        props: { locale, page: "success" },
+      },
+      {
+        params: { locale, slug: pageSlugs.privacy },
+        props: { locale, page: "privacy" },
+      },
+    ];
+    const topics = Object.entries(cultureTopicSlugs).map(([topicId, slug]) => ({
+      params: { locale, slug: `${pageSlugs.culture}/${slug}` },
+      props: {
+        locale,
+        page: "cultureTopic",
+        topicId: topicId as CultureTopicId,
+      },
+    }));
+
+    return [...pages, ...topics];
+  });
 }
 
-const { locale, page } = Astro.props as LocalizedPageProps;
+const { locale, page, topicId } = Astro.props as LocalizedPageProps;
 ---
 
-{page === 'home' && <HomePage locale={locale} />}
-{page === 'culture' && <CulturePage locale={locale} />}
-{page === 'locations' && <LocationsPage locale={locale} />}
-{page === 'reservation' && <ReservationPage locale={locale} />}
-{page === 'success' && <SuccessPage locale={locale} />}
-{page === 'privacy' && <PrivacyPage locale={locale} />}
+{page === "home" && <HomePage locale={locale} />}
+{page === "culture" && <CulturePage locale={locale} />}
+{page === "locations" && <LocationsPage locale={locale} />}
+{page === "reservation" && <ReservationPage locale={locale} />}
+{page === "success" && <SuccessPage locale={locale} />}
+{page === "privacy" && <PrivacyPage locale={locale} />}
+{
+  page === "cultureTopic" && topicId && (
+    <CultureTopicPage locale={locale} topicId={topicId} />
+  )
+}

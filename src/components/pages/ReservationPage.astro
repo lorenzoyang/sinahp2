@@ -1,8 +1,8 @@
 ---
-import ReservationForm from '../ReservationForm.astro';
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import { brand, images, type Locale } from '../../data/site';
-import { copy } from '../../data/copy';
+import ReservationForm from "../ReservationForm.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { brand, images, type Locale } from "../../data/site";
+import { copy } from "../../data/copy";
 
 interface Props {
   locale: Locale;
@@ -12,28 +12,51 @@ const { locale } = Astro.props;
 const t = copy[locale];
 ---
 
-<SiteLayout locale={locale} page="reservation" title={`${t.reservation.title} | Sina Hotpot`} description={t.reservation.intro}>
+<SiteLayout
+  locale={locale}
+  page="reservation"
+  title={`${t.reservation.title} | Sina Hotpot`}
+  description={t.reservation.intro}
+>
   <section class="bg-[#15110f] px-4 py-12 sm:px-6 lg:px-8">
-    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start">
+    <div
+      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
+    >
       <div class="lg:sticky lg:top-24">
-        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]">{t.reservation.eyebrow}</p>
-        <h1 class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl">{t.reservation.title}</h1>
-        <p class="mt-5 text-lg leading-8 text-[#efe3d5]/82">{t.reservation.intro}</p>
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
+        >
+          {t.reservation.eyebrow}
+        </p>
+        <h1
+          class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl"
+        >
+          {t.reservation.title}
+        </h1>
+        <p class="mt-5 text-lg leading-8 text-[#efe3d5]/82">
+          {t.reservation.intro}
+        </p>
         <div class="mt-7 overflow-hidden rounded-lg">
           <img
             src={images.hero}
             alt=""
-            class="aspect-[4/3] w-full object-cover"
+            class="aspect-4/3 w-full object-cover"
             width="900"
             height="675"
             loading="lazy"
           />
         </div>
         <div class="mt-6 grid gap-3 text-sm text-[#efe3d5]/78">
-          <a class="focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10" href={brand.whatsappHref}>
+          <a
+            class="focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10"
+            href={brand.whatsappHref}
+          >
             {t.cta.whatsapp}: {brand.whatsapp}
           </a>
-          <a class="focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10" href={`mailto:${brand.email}`}>
+          <a
+            class="focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10"
+            href={`mailto:${brand.email}`}
+          >
             {brand.email}
           </a>
         </div>

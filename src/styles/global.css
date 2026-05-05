@@ -25,11 +25,20 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at top left, rgba(143, 36, 29, 0.22), transparent 34rem),
+    radial-gradient(
+      circle at top left,
+      rgba(143, 36, 29, 0.22),
+      transparent 34rem
+    ),
     linear-gradient(180deg, #1b1512 0%, #15110f 38%, #241814 100%);
   color: var(--paper);
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   text-rendering: optimizeLegibility;
 }

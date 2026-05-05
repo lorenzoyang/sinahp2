@@ -1,0 +1,15 @@
+---
+import CultureTopicPage from "../../components/pages/CultureTopicPage.astro";
+import { cultureTopicSlugs, type CultureTopicId } from "../../data/site";
+
+export function getStaticPaths() {
+  return Object.entries(cultureTopicSlugs).map(([topicId, slug]) => ({
+    params: { topic: slug },
+    props: { topicId: topicId as CultureTopicId },
+  }));
+}
+
+const { topicId } = Astro.props as { topicId: CultureTopicId };
+---
+
+<CultureTopicPage locale="it" topicId={topicId} />

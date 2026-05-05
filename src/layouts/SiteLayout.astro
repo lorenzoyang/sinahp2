@@ -1,24 +1,33 @@
 ---
-import '../styles/global.css';
-import { brand, getPath, htmlLang, localeNames, locales, type Locale, type PageId } from '../data/site';
-import { copy } from '../data/copy';
+import "../styles/global.css";
+import {
+  brand,
+  getPath,
+  htmlLang,
+  localeNames,
+  locales,
+  type Locale,
+  type PageId,
+} from "../data/site";
+import { copy } from "../data/copy";
 
 interface Props {
   locale: Locale;
   page: PageId;
   title?: string;
   description?: string;
+  alternatePaths?: Partial<Record<Locale, string>>;
 }
 
-const { locale, page, title, description } = Astro.props;
+const { locale, page, title, description, alternatePaths } = Astro.props;
 const t = copy[locale];
 const pageTitle = title ?? t.meta.homeTitle;
 const pageDescription = description ?? t.meta.description;
 const navItems: Array<{ page: PageId; label: string }> = [
-  { page: 'home', label: t.nav.home },
-  { page: 'culture', label: t.nav.culture },
-  { page: 'locations', label: t.nav.locations },
-  { page: 'reservation', label: t.nav.reservation },
+  { page: "home", label: t.nav.home },
+  { page: "culture", label: t.nav.culture },
+  { page: "locations", label: t.nav.locations },
+  { page: "reservation", label: t.nav.reservation },
 ];
 ---
 
@@ -34,7 +43,10 @@ const navItems: Array<{ page: PageId; label: string }> = [
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/generated/premium-hotpot-hero.png" />
+    <meta
+      property="og:image"
+      content="/images/generated/premium-hotpot-hero.png"
+    />
     <title>{pageTitle}</title>
   </head>
   <body>
@@ -45,11 +57,25 @@ const navItems: Array<{ page: PageId; label: string }> = [
       Skip to content
     </a>
 
-    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#15110f]/88 backdrop-blur-xl">
-      <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a href={getPath(locale)} class="focus-ring min-w-0 rounded-md" aria-label={brand.publicName}>
-          <span class="block text-[0.68rem] uppercase tracking-[0.24em] text-[#c7a062]">{brand.publicName}</span>
-          <span class="mt-0.5 block truncate text-lg font-semibold text-[#f7f0e7]">{brand.chineseName}</span>
+    <header
+      class="sticky top-0 z-40 border-b border-white/10 bg-[#15110f]/88 backdrop-blur-xl"
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
+      >
+        <a
+          href={getPath(locale)}
+          class="focus-ring min-w-0 rounded-md"
+          aria-label={brand.publicName}
+        >
+          <span
+            class="block text-[0.68rem] uppercase tracking-[0.24em] text-[#c7a062]"
+            >{brand.publicName}</span
+          >
+          <span
+            class="mt-0.5 block truncate text-lg font-semibold text-[#f7f0e7]"
+            >{brand.chineseName}</span
+          >
         </a>
 
         <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -57,7 +83,7 @@ const navItems: Array<{ page: PageId; label: string }> = [
             navItems.map((item) => (
               <a
                 href={getPath(locale, item.page)}
-                aria-current={page === item.page ? 'page' : undefined}
+                aria-current={page === item.page ? "page" : undefined}
                 class="site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition"
               >
                 {item.label}
@@ -70,8 +96,10 @@ const navItems: Array<{ page: PageId; label: string }> = [
           {
             locales.map((targetLocale) => (
               <a
-                href={getPath(targetLocale, page)}
-                aria-current={targetLocale === locale ? 'true' : undefined}
+                href={
+                  alternatePaths?.[targetLocale] ?? getPath(targetLocale, page)
+                }
+                aria-current={targetLocale === locale ? "true" : undefined}
                 class="site-locale-link focus-ring rounded-full border px-3 py-1.5 text-xs font-semibold transition"
               >
                 {localeNames[targetLocale]}
@@ -81,16 +109,20 @@ const navItems: Array<{ page: PageId; label: string }> = [
         </div>
 
         <details class="group relative md:hidden">
-          <summary class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-[#f7f0e7] marker:hidden">
+          <summary
+            class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-[#f7f0e7] marker:hidden"
+          >
             {t.nav.menu}
           </summary>
-          <div class="absolute right-0 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl">
+          <div
+            class="absolute right-0 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl"
+          >
             <nav class="grid gap-1" aria-label="Mobile primary">
               {
                 navItems.map((item) => (
                   <a
                     href={getPath(locale, item.page)}
-                    aria-current={page === item.page ? 'page' : undefined}
+                    aria-current={page === item.page ? "page" : undefined}
                     class="site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium"
                   >
                     {item.label}
@@ -98,12 +130,17 @@ const navItems: Array<{ page: PageId; label: string }> = [
                 ))
               }
             </nav>
-            <div class="mt-3 grid grid-cols-2 gap-2 border-t border-white/10 pt-3">
+            <div
+              class="mt-3 grid grid-cols-2 gap-2 border-t border-white/10 pt-3"
+            >
               {
                 locales.map((targetLocale) => (
                   <a
-                    href={getPath(targetLocale, page)}
-                    aria-current={targetLocale === locale ? 'true' : undefined}
+                    href={
+                      alternatePaths?.[targetLocale] ??
+                      getPath(targetLocale, page)
+                    }
+                    aria-current={targetLocale === locale ? "true" : undefined}
                     class="site-locale-link focus-ring rounded-md border px-3 py-2 text-center text-xs font-semibold"
                   >
                     {localeNames[targetLocale]}
@@ -121,23 +158,50 @@ const navItems: Array<{ page: PageId; label: string }> = [
     </main>
 
     <footer class="page-band bg-[#120f0d]">
-      <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8">
+      <div
+        class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8"
+      >
         <div>
-          <p class="text-[0.72rem] uppercase tracking-[0.24em] text-[#c7a062]">{brand.publicName}</p>
-          <p class="mt-2 text-2xl font-semibold text-white">{brand.chineseName}</p>
-          <p class="mt-4 max-w-xl text-sm leading-6 text-[#efe3d5]/72">{t.meta.description}</p>
+          <p class="text-[0.72rem] uppercase tracking-[0.24em] text-[#c7a062]">
+            {brand.publicName}
+          </p>
+          <p class="mt-2 text-2xl font-semibold text-white">
+            {brand.chineseName}
+          </p>
+          <p class="mt-4 max-w-xl text-sm leading-6 text-[#efe3d5]/72">
+            {t.meta.description}
+          </p>
         </div>
         <div class="grid gap-4 text-sm text-[#efe3d5]/80 sm:grid-cols-2">
           <div>
             <p class="font-semibold text-white">Contact</p>
-            <a class="focus-ring mt-2 block rounded-sm hover:text-white" href={`mailto:${brand.email}`}>{brand.email}</a>
-            <a class="focus-ring mt-1 block rounded-sm hover:text-white" href={brand.whatsappHref}>{brand.whatsapp}</a>
+            <a
+              class="focus-ring mt-2 block rounded-sm hover:text-white"
+              href={`mailto:${brand.email}`}>{brand.email}</a
+            >
+            <a
+              class="focus-ring mt-1 block rounded-sm hover:text-white"
+              href={brand.whatsappHref}>{brand.whatsapp}</a
+            >
           </div>
           <div>
             <p class="font-semibold text-white">Social</p>
-            <a class="focus-ring mt-2 block rounded-sm hover:text-white" href={brand.instagram} target="_blank" rel="noreferrer">Instagram</a>
-            <a class="focus-ring mt-1 block rounded-sm hover:text-white" href={brand.facebook} target="_blank" rel="noreferrer">Facebook</a>
-            <a class="focus-ring mt-1 block rounded-sm hover:text-white" href={getPath(locale, 'privacy')}>{t.nav.privacy}</a>
+            <a
+              class="focus-ring mt-2 block rounded-sm hover:text-white"
+              href={brand.instagram}
+              target="_blank"
+              rel="noreferrer">Instagram</a
+            >
+            <a
+              class="focus-ring mt-1 block rounded-sm hover:text-white"
+              href={brand.facebook}
+              target="_blank"
+              rel="noreferrer">Facebook</a
+            >
+            <a
+              class="focus-ring mt-1 block rounded-sm hover:text-white"
+              href={getPath(locale, "privacy")}>{t.nav.privacy}</a
+            >
           </div>
         </div>
       </div>

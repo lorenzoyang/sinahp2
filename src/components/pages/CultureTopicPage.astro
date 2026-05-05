@@ -1,0 +1,181 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import {
+  cultureTopicIds,
+  getCultureTopicPath,
+  getPath,
+  locales,
+  type CultureTopicId,
+  type Locale,
+} from "../../data/site";
+import { copy } from "../../data/copy";
+import { cultureTopics } from "../../data/cultureTopics";
+
+interface Props {
+  locale: Locale;
+  topicId: CultureTopicId;
+}
+
+const { locale, topicId } = Astro.props;
+const t = copy[locale];
+const topic = cultureTopics[topicId];
+const content = topic.content[locale];
+const relatedTopics = cultureTopicIds
+  .filter((id) => id !== topicId)
+  .slice(0, 3);
+const alternatePaths = Object.fromEntries(
+  locales.map((targetLocale) => [
+    targetLocale,
+    getCultureTopicPath(targetLocale, topicId),
+  ]),
+) as Record<Locale, string>;
+---
+
+<SiteLayout
+  locale={locale}
+  page="culture"
+  title={`${content.title} | Sina Hotpot`}
+  description={content.summary}
+  alternatePaths={alternatePaths}
+>
+  <section class="relative overflow-hidden bg-[#15110f]">
+    <div class="absolute inset-0">
+      <img
+        src={topic.image}
+        alt=""
+        class="h-full w-full object-cover opacity-40"
+        width="1800"
+        height="1200"
+        loading="eager"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-b from-[#15110f]/50 via-[#15110f]/82 to-[#15110f]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-linear-to-r from-[#15110f]/92 via-[#15110f]/62 to-transparent"
+      >
+      </div>
+    </div>
+    <div class="relative mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+      <a
+        class="focus-ring inline-flex rounded-md text-sm font-semibold text-[#c7a062] hover:text-white"
+        href={getPath(locale, "culture")}
+      >
+        {t.nav.culture}
+      </a>
+      <p
+        class="mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
+      >
+        {content.kicker}
+      </p>
+      <h1
+        class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl"
+      >
+        {content.title}
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-[#efe3d5]/86">
+        {content.detailIntro}
+      </p>
+      <div class="mt-8 grid gap-3 sm:grid-cols-3">
+        {
+          content.highlights.map((item) => (
+            <p class="rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-semibold text-[#efe3d5] backdrop-blur">
+              {item}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="page-band bg-[#f7f0e7] px-4 py-14 text-[#15110f] sm:px-6 lg:px-8"
+  >
+    <div class="mx-auto grid max-w-5xl gap-5">
+      {
+        content.sections.map((section, index) => (
+          <article class="rounded-lg border border-[#d8c8b5] bg-white/72 p-5 sm:p-6">
+            <p class="text-sm font-semibold text-[#8f241d]">
+              {String(index + 1).padStart(2, "0")}
+            </p>
+            <h2 class="mt-3 text-2xl font-semibold leading-tight">
+              {section.title}
+            </h2>
+            <p class="mt-4 text-base leading-8 text-[#4e4339]">
+              {section.body}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="page-band bg-[#211612] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p
+          class="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
+        >
+          Sina Hotpot
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold leading-tight text-white">
+          {content.tipsTitle}
+        </h2>
+      </div>
+      <div class="grid gap-3">
+        {
+          content.tips.map((tip) => (
+            <p class="rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-[#efe3d5]/82">
+              {tip}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band bg-[#15110f] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a
+          class="focus-ring inline-flex min-h-12 items-center justify-center rounded-md bg-[#c7a062] px-5 py-3 font-semibold text-[#15110f]"
+          href={getPath(locale, "reservation")}
+        >
+          {t.cta.reserve}
+        </a>
+        <a
+          class="focus-ring inline-flex min-h-12 items-center justify-center rounded-md border border-white/18 px-5 py-3 font-semibold text-white hover:bg-white/10"
+          href={getPath(locale, "culture")}
+        >
+          {t.nav.culture}
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-3">
+        {
+          relatedTopics.map((id) => {
+            const related = cultureTopics[id].content[locale];
+
+            return (
+              <a
+                class="focus-ring rounded-lg border border-white/12 bg-white/5.5 p-5 transition hover:border-[#c7a062] hover:bg-white/8"
+                href={getCultureTopicPath(locale, id)}
+              >
+                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c7a062]">
+                  {related.kicker}
+                </p>
+                <h3 class="mt-3 text-xl font-semibold leading-tight text-white">
+                  {related.title}
+                </h3>
+                <p class="mt-3 text-sm leading-6 text-[#efe3d5]/72">
+                  {related.summary}
+                </p>
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+</SiteLayout>

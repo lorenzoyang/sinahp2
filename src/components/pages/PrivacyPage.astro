@@ -1,7 +1,7 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import { brand, type Locale } from '../../data/site';
-import { copy } from '../../data/copy';
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { brand, type Locale } from "../../data/site";
+import { copy } from "../../data/copy";
 
 interface Props {
   locale: Locale;
@@ -11,16 +11,31 @@ const { locale } = Astro.props;
 const t = copy[locale];
 ---
 
-<SiteLayout locale={locale} page="privacy" title={`${t.privacy.title} | Sina Hotpot`} description={t.privacy.intro}>
+<SiteLayout
+  locale={locale}
+  page="privacy"
+  title={`${t.privacy.title} | Sina Hotpot`}
+  description={t.privacy.intro}
+>
   <section class="bg-[#15110f] px-4 py-12 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-4xl">
-      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]">{brand.publicName}</p>
-      <h1 class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl">{t.privacy.title}</h1>
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
+      >
+        {brand.publicName}
+      </p>
+      <h1
+        class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl"
+      >
+        {t.privacy.title}
+      </h1>
       <p class="mt-5 text-lg leading-8 text-[#efe3d5]/82">{t.privacy.intro}</p>
     </div>
   </section>
 
-  <section class="page-band bg-[#f7f0e7] px-4 py-12 text-[#15110f] sm:px-6 lg:px-8">
+  <section
+    class="page-band bg-[#f7f0e7] px-4 py-12 text-[#15110f] sm:px-6 lg:px-8"
+  >
     <div class="mx-auto grid max-w-4xl gap-4">
       {
         t.privacy.sections.map(([title, text]) => (
