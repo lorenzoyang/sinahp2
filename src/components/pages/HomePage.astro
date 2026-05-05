@@ -12,6 +12,10 @@ import {
 } from "../../data/site";
 import { copy } from "../../data/copy";
 import { getHomeSections } from "../../data/homeSections";
+import {
+  formatSequenceNumber,
+  getStaggerStyle,
+} from "../../utils/presentation";
 
 interface Props {
   locale: Locale;
@@ -20,6 +24,27 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const homeSections = getHomeSections(locale);
+const reservationPath = getPath(locale, "reservation");
+const culturePath = getPath(locale, "culture");
+const darkSectionEyebrowClass =
+  "text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]";
+const darkSectionTitleClass =
+  "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl";
+const darkSectionIntroClass = "mt-4 text-base leading-7 text-[#efe3d5]/76";
+const lightSectionEyebrowClass =
+  "text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]";
+const lightSectionTitleClass =
+  "mt-3 text-3xl font-semibold leading-tight sm:text-4xl";
+const lightSectionIntroClass = "mt-4 text-base leading-7 text-[#3c3028]";
+const darkCardClass = "homepage-card rounded-lg border border-white/12 bg-white/5.5";
+const lightCardClass =
+  "homepage-card rounded-lg border border-[#d8c8b5] bg-white/70";
+const lightCardSoftClass =
+  "homepage-card rounded-lg border border-[#d8c8b5] bg-white/72";
+const darkStatPillClass =
+  "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-medium text-[#efe3d5]";
+const heroProofClass =
+  "rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-[#efe3d5] backdrop-blur";
 ---
 
 <SiteLayout locale={locale} page="home">
@@ -56,10 +81,10 @@ const homeSections = getHomeSections(locale);
           introClass="mt-5 max-w-2xl text-lg leading-8 text-[#f7f0e7]/88 sm:text-xl"
         >
           <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-            <CtaLink href={getPath(locale, "reservation")} variant="goldHero">
+            <CtaLink href={reservationPath} variant="goldHero">
               {t.cta.reserve}
             </CtaLink>
-            <CtaLink href={getPath(locale, "culture")} variant="whiteOutlineHero">
+            <CtaLink href={culturePath} variant="whiteOutlineHero">
               {t.cta.culture}
             </CtaLink>
           </div>
@@ -67,9 +92,9 @@ const homeSections = getHomeSections(locale);
             {
               t.home.proof.map((item, index) => (
                 <p
-                  class="rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-[#efe3d5] backdrop-blur"
+                  class={heroProofClass}
                   data-reveal
-                  style={`--reveal-delay:${120 + index * 90}ms`}
+                  style={getStaggerStyle(index, 120, 90)}
                 >
                   {item}
                 </p>
@@ -91,8 +116,8 @@ const homeSections = getHomeSections(locale);
           title={t.home.sections.ritualTitle}
           intro={t.home.sections.ritualIntro}
           headingTag="h2"
-          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
-          titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
+          eyebrowClass={darkSectionEyebrowClass}
+          titleClass={darkSectionTitleClass}
           introClass="mt-4 text-base leading-7 text-[#efe3d5]/78"
         />
       </div>
@@ -100,12 +125,12 @@ const homeSections = getHomeSections(locale);
         {
           t.home.steps.map(([title, text], index) => (
             <article
-              class="homepage-card rounded-lg border border-white/12 bg-white/5.5 p-5"
+              class:list={[darkCardClass, "p-5"]}
               data-reveal
-              style={`--reveal-delay:${index * 90}ms`}
+              style={getStaggerStyle(index, 0, 90)}
             >
               <span class="text-sm font-semibold text-[#c7a062]">
-                {String(index + 1).padStart(2, "0")}
+                {formatSequenceNumber(index)}
               </span>
               <h3 class="mt-4 text-xl font-semibold text-white">{title}</h3>
               <p class="mt-3 text-sm leading-6 text-[#efe3d5]/74">{text}</p>
@@ -138,20 +163,20 @@ const homeSections = getHomeSections(locale);
           title={t.home.sections.premiumTitle}
           intro={homeSections.signatures.intro}
           headingTag="h2"
-          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]"
-          titleClass="mt-3 text-3xl font-semibold leading-tight sm:text-4xl"
-          introClass="mt-4 text-base leading-7 text-[#3c3028]"
+          eyebrowClass={lightSectionEyebrowClass}
+          titleClass={lightSectionTitleClass}
+          introClass={lightSectionIntroClass}
         />
         <div class="mt-6 grid gap-3">
           {
             homeSections.signatures.items.map(([title, text], index) => (
               <article
-                class="homepage-card rounded-lg border border-[#d8c8b5] bg-white/70 p-4"
+                class:list={[lightCardClass, "p-4"]}
                 data-reveal
-                style={`--reveal-delay:${140 + index * 80}ms`}
+                style={getStaggerStyle(index, 140, 80)}
               >
                 <span class="text-sm font-semibold text-[#8f241d]">
-                  {String(index + 1).padStart(2, "0")}
+                  {formatSequenceNumber(index)}
                 </span>
                 <h3 class="mt-3 text-lg font-semibold">{title}</h3>
                 <p class="mt-2 text-sm leading-6 text-[#5f5145]">{text}</p>
@@ -165,7 +190,7 @@ const homeSections = getHomeSections(locale);
               <p
                 class="rounded-full border border-[#d8c8b5] bg-white/72 px-4 py-2 text-sm font-medium text-[#3c3028]"
                 data-reveal
-                style={`--reveal-delay:${340 + index * 70}ms`}
+                style={getStaggerStyle(index, 340, 70)}
               >
                 {item}
               </p>
@@ -185,21 +210,21 @@ const homeSections = getHomeSections(locale);
           intro={homeSections.occasions.intro}
           headingTag="h2"
           containerClass="max-w-3xl"
-          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
-          titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-          introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
+          eyebrowClass={darkSectionEyebrowClass}
+          titleClass={darkSectionTitleClass}
+          introClass={darkSectionIntroClass}
         />
       </div>
       <div class="mt-8 grid gap-4 md:grid-cols-2">
         {
           homeSections.occasions.items.map(([title, text], index) => (
             <article
-              class="homepage-card rounded-lg border border-white/12 bg-white/5.5 p-5"
+              class:list={[darkCardClass, "p-5"]}
               data-reveal
-              style={`--reveal-delay:${index * 90}ms`}
+              style={getStaggerStyle(index, 0, 90)}
             >
               <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#c7a062]">
-                {String(index + 1).padStart(2, "0")}
+                {formatSequenceNumber(index)}
               </p>
               <h3 class="mt-3 text-2xl font-semibold text-white">{title}</h3>
               <p class="mt-3 text-sm leading-6 text-[#efe3d5]/74">{text}</p>
@@ -232,20 +257,20 @@ const homeSections = getHomeSections(locale);
           title={homeSections.visit.title}
           intro={homeSections.visit.intro}
           headingTag="h2"
-          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]"
-          titleClass="mt-3 text-3xl font-semibold leading-tight sm:text-4xl"
-          introClass="mt-4 text-base leading-7 text-[#3c3028]"
+          eyebrowClass={lightSectionEyebrowClass}
+          titleClass={lightSectionTitleClass}
+          introClass={lightSectionIntroClass}
         />
         <div class="mt-6 grid gap-3">
           {
             homeSections.visit.items.map((item, index) => (
               <p
-                class="homepage-card rounded-lg border border-[#d8c8b5] bg-white/72 px-4 py-4 text-base leading-7 text-[#3c3028]"
+                class:list={[lightCardSoftClass, "px-4 py-4 text-base leading-7 text-[#3c3028]"]}
                 data-reveal
-                style={`--reveal-delay:${140 + index * 80}ms`}
+                style={getStaggerStyle(index, 140, 80)}
               >
                 <span class="mr-3 font-semibold text-[#8f241d]">
-                  {String(index + 1).padStart(2, "0")}
+                  {formatSequenceNumber(index)}
                 </span>
                 {item}
               </p>
@@ -253,10 +278,10 @@ const homeSections = getHomeSections(locale);
           }
         </div>
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <CtaLink href={getPath(locale, "culture")} variant="lightOutlineSmall">
+          <CtaLink href={culturePath} variant="lightOutlineSmall">
             {t.cta.culture}
           </CtaLink>
-          <CtaLink href={getPath(locale, "reservation")} variant="redSmall">
+          <CtaLink href={reservationPath} variant="redSmall">
             {t.cta.reserve}
           </CtaLink>
         </div>
@@ -311,17 +336,17 @@ const homeSections = getHomeSections(locale);
           title={homeSections.atmosphere.title}
           intro={homeSections.atmosphere.intro}
           headingTag="h2"
-          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
-          titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-          introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
+          eyebrowClass={darkSectionEyebrowClass}
+          titleClass={darkSectionTitleClass}
+          introClass={darkSectionIntroClass}
         />
         <div class="mt-6 grid gap-3">
           {
             homeSections.atmosphere.items.map((item, index) => (
               <p
-                class="homepage-card rounded-lg border border-white/12 bg-white/5.5 px-4 py-4 text-base leading-7 text-[#efe3d5]/82"
+                class:list={[darkCardClass, "px-4 py-4 text-base leading-7 text-[#efe3d5]/82"]}
                 data-reveal
-                style={`--reveal-delay:${160 + index * 80}ms`}
+                style={getStaggerStyle(index, 160, 80)}
               >
                 {item}
               </p>
@@ -332,9 +357,9 @@ const homeSections = getHomeSections(locale);
           {
             homeSections.atmosphere.stats.map((item, index) => (
               <p
-                class="rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-medium text-[#efe3d5]"
+                class={darkStatPillClass}
                 data-reveal
-                style={`--reveal-delay:${340 + index * 70}ms`}
+                style={getStaggerStyle(index, 340, 70)}
               >
                 {item}
               </p>
@@ -354,7 +379,7 @@ const homeSections = getHomeSections(locale);
           headingTag="h2"
           containerClass="max-w-2xl"
           titleClass="text-3xl font-semibold leading-tight text-white sm:text-4xl"
-          introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
+          introClass={darkSectionIntroClass}
         />
       </div>
       <div class="mt-8 grid gap-4 md:grid-cols-2">
@@ -363,7 +388,7 @@ const homeSections = getHomeSections(locale);
             <article
               class="homepage-card rounded-lg border border-white/12 bg-[#f7f0e7] p-5 text-[#15110f]"
               data-reveal
-              style={`--reveal-delay:${index * 100}ms`}
+              style={getStaggerStyle(index, 0, 100)}
             >
               <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8f241d]">
                 {location.city}
@@ -401,7 +426,7 @@ const homeSections = getHomeSections(locale);
             introClass="mt-4 text-base leading-7 text-[#f7e9da]/82"
           >
             <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-              <CtaLink href={getPath(locale, "reservation")} variant="goldHero">
+              <CtaLink href={reservationPath} variant="goldHero">
                 {t.cta.reserve}
               </CtaLink>
               <CtaLink
@@ -420,10 +445,10 @@ const homeSections = getHomeSections(locale);
                 <p
                   class="rounded-lg border border-white/12 bg-black/16 px-4 py-4 text-base leading-7 text-[#f7e9da]"
                   data-reveal
-                  style={`--reveal-delay:${120 + index * 90}ms`}
+                  style={getStaggerStyle(index, 120, 90)}
                 >
                   <span class="mr-3 font-semibold text-[#f2d09a]">
-                    {String(index + 1).padStart(2, "0")}
+                    {formatSequenceNumber(index)}
                   </span>
                   {item}
                 </p>

@@ -15,6 +15,7 @@ import {
   getCultureTopicContent,
   getRelatedCultureTopics,
 } from "../../data/cultureTopics";
+import { formatSequenceNumber } from "../../utils/presentation";
 
 interface Props {
   locale: Locale;
@@ -89,7 +90,7 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
         content.sections.map((section, index) => (
           <article class="rounded-lg border border-[#d8c8b5] bg-white/72 p-5 sm:p-6">
             <p class="text-sm font-semibold text-[#8f241d]">
-              {String(index + 1).padStart(2, "0")}
+              {formatSequenceNumber(index)}
             </p>
             <h2 class="mt-3 text-2xl font-semibold leading-tight">
               {section.title}

@@ -8,16 +8,8 @@ import ReservationPage from "../../components/pages/ReservationPage.astro";
 import SuccessPage from "../../components/pages/SuccessPage.astro";
 import {
   getLocalizedStaticPaths,
-  type CultureTopicId,
-  type Locale,
-  type LocalizedRoutePage,
+  type LocalizedRouteProps,
 } from "../../data/site";
-
-type LocalizedPageProps = {
-  locale: Locale;
-  page: LocalizedRoutePage;
-  topicId?: CultureTopicId;
-};
 
 const pageComponents = {
   home: HomePage,
@@ -32,7 +24,7 @@ export function getStaticPaths() {
   return getLocalizedStaticPaths();
 }
 
-const { locale, page, topicId } = Astro.props as LocalizedPageProps;
+const { locale, page, topicId } = Astro.props as LocalizedRouteProps;
 const PageComponent = page === "cultureTopic" ? undefined : pageComponents[page];
 ---
 

@@ -2,7 +2,7 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LocationActions from "../LocationActions.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
-import { images, locations, type Locale } from "../../data/site";
+import { locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
 interface Props {
@@ -33,10 +33,10 @@ const t = copy[locale];
   <section class="page-band bg-[#211612] px-4 py-12 sm:px-6 lg:px-8">
     <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
       {
-        locations.map((location, index) => (
+        locations.map((location) => (
           <article class="overflow-hidden rounded-lg border border-white/12 bg-[#f7f0e7] text-[#15110f]">
             <img
-              src={index === 0 ? images.interior : images.platter}
+              src={location.image}
               alt=""
               class="aspect-16/10 w-full object-cover"
               width="900"

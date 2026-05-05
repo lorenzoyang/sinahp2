@@ -1,5 +1,11 @@
 ---
-import { brand, getPath, locations, type Locale } from "../data/site";
+import {
+  brand,
+  getLocationLabel,
+  getPath,
+  locations,
+  type Locale,
+} from "../data/site";
 import { copy } from "../data/copy";
 
 interface Props {
@@ -16,6 +22,11 @@ const inputClass =
 const textareaClass =
   "focus-ring min-h-28 rounded-md border border-[#d8c8b5] bg-white px-3 py-3 text-base text-[#15110f]";
 const finePrintClass = "text-xs leading-5 text-[#5f5145]";
+const privacyPath = getPath(locale, "privacy");
+const locationOptions = locations.map((location) => ({
+  ...location,
+  label: getLocationLabel(location),
+}));
 ---
 
 <form
@@ -99,12 +110,12 @@ const finePrintClass = "text-xs leading-5 text-[#5f5145]";
       required
     >
       {
-        locations.map((location) => (
+        locationOptions.map((location) => (
           <option
-            value={`${location.city} - ${location.address}`}
+            value={location.label}
             selected={location.id === "prato"}
           >
-            {location.city} - {location.address}
+            {location.label}
           </option>
         ))
       }
@@ -123,7 +134,7 @@ const finePrintClass = "text-xs leading-5 text-[#5f5145]";
     {t.reservation.consent}
     <a
       class="font-semibold text-[#8f241d] underline decoration-[#c7a062] underline-offset-4"
-      href={getPath(locale, "privacy")}
+      href={privacyPath}
     >
       {t.reservation.privacyLink}
     </a>

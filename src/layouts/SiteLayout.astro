@@ -36,12 +36,8 @@ const localeOptions = locales.map((targetLocale) => ({
   code: targetLocale.toUpperCase(),
   path: alternatePaths?.[targetLocale] ?? getPath(targetLocale, page),
 }));
-const currentLocaleOption = {
-  locale,
-  label: localeNames[locale],
-  flag: localeFlags[locale],
-  code: locale.toUpperCase(),
-};
+const currentLocaleOption =
+  localeOptions.find((option) => option.locale === locale) ?? localeOptions[0];
 ---
 
 <!doctype html>
@@ -227,21 +223,23 @@ const currentLocaleOption = {
       </div>
     </footer>
     <script>
-      document
-        .querySelectorAll<HTMLDetailsElement>("[data-header-details]")
-        .forEach((details, _index, allDetails) => {
-          details.addEventListener("toggle", () => {
-            if (!details.open) {
-              return;
-            }
+      const headerDetails = document.querySelectorAll<HTMLDetailsElement>(
+        "[data-header-details]",
+      );
 
-            allDetails.forEach((otherDetails) => {
-              if (otherDetails !== details) {
-                otherDetails.open = false;
-              }
-            });
+      headerDetails.forEach((details) => {
+        details.addEventListener("toggle", () => {
+          if (!details.open) {
+            return;
+          }
+
+          headerDetails.forEach((otherDetails) => {
+            if (otherDetails !== details) {
+              otherDetails.open = false;
+            }
           });
         });
+      });
     </script>
   </body>
 </html>
