@@ -92,17 +92,56 @@ textarea {
   color: var(--ink);
 }
 
-.site-locale-select {
+.site-locale-trigger {
   border-color: rgba(247, 240, 231, 0.16);
   background: #1d1714;
   color: var(--paper);
+  cursor: pointer;
 }
 
-.site-locale-select:hover {
+.site-locale-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.site-locale-trigger::after {
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-left: 0.08rem;
+  border-right: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  content: "";
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+.site-locale-menu[open] .site-locale-trigger::after {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
+
+.site-locale-trigger:hover,
+.site-locale-menu[open] .site-locale-trigger {
   border-color: var(--gold);
 }
 
-.site-locale-select option {
-  background: var(--paper);
+.site-locale-option {
+  color: rgba(239, 227, 213, 0.82);
+}
+
+.site-locale-option:hover {
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.site-locale-option[aria-current="true"] {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.site-locale-code {
+  color: var(--gold);
+}
+
+.site-locale-option:hover .site-locale-code,
+.site-locale-option[aria-current="true"] .site-locale-code {
   color: var(--ink);
 }

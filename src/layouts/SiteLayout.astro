@@ -33,8 +33,15 @@ const localeOptions = locales.map((targetLocale) => ({
   locale: targetLocale,
   label: localeNames[targetLocale],
   flag: localeFlags[targetLocale],
+  code: targetLocale.toUpperCase(),
   path: alternatePaths?.[targetLocale] ?? getPath(targetLocale, page),
 }));
+const currentLocaleOption = {
+  locale,
+  label: localeNames[locale],
+  flag: localeFlags[locale],
+  code: locale.toUpperCase(),
+};
 ---
 
 <!doctype html>
@@ -99,30 +106,50 @@ const localeOptions = locales.map((targetLocale) => ({
         </nav>
 
         <div class="flex shrink-0 items-center gap-2">
-          <label class="sr-only" for="site-locale-select">Language</label>
-          <select
-            id="site-locale-select"
-            data-locale-select
-            aria-label="Language"
-            class="site-locale-select focus-ring h-10 w-27 rounded-full border px-2 text-xs font-semibold transition sm:w-35 sm:px-3 sm:text-sm"
-          >
-            {
-              localeOptions.map((option) => (
-                <option value={option.path} selected={option.locale === locale}>
-                  {option.flag} {option.label}
-                </option>
-              ))
-            }
-          </select>
+          <details class="site-locale-menu group relative" data-header-details>
+            <summary
+              class="site-locale-trigger focus-ring flex h-10 min-w-19 list-none items-center justify-center gap-1.5 rounded-full border px-3 text-sm font-semibold transition marker:hidden"
+              aria-label="Language"
+              title={currentLocaleOption.label}
+            >
+              <span class="text-base leading-none" aria-hidden="true">
+                {currentLocaleOption.flag}
+              </span>
+              <span>{currentLocaleOption.code}</span>
+            </summary>
+            <div
+              class="absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-[#1d1714] p-2 shadow-2xl"
+            >
+              <nav class="grid gap-1" aria-label="Language">
+                {
+                  localeOptions.map((option) => (
+                    <a
+                      href={option.path}
+                      aria-current={option.locale === locale ? "true" : undefined}
+                      class="site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition"
+                    >
+                      <span class="text-base leading-none" aria-hidden="true">
+                        {option.flag}
+                      </span>
+                      <span class="flex-1">{option.label}</span>
+                      <span class="site-locale-code text-xs uppercase">
+                        {option.code}
+                      </span>
+                    </a>
+                  ))
+                }
+              </nav>
+            </div>
+          </details>
 
-          <details class="group relative md:hidden">
+          <details class="group relative md:hidden" data-header-details>
             <summary
               class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-[#f7f0e7] marker:hidden"
             >
               {t.nav.menu}
             </summary>
             <div
-              class="absolute right-0 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl"
+              class="absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl"
             >
               <nav class="grid gap-1" aria-label="Mobile primary">
                 {
@@ -198,12 +225,18 @@ const localeOptions = locales.map((targetLocale) => ({
     </footer>
     <script>
       document
-        .querySelectorAll<HTMLSelectElement>("[data-locale-select]")
-        .forEach((select) => {
-          select.addEventListener("change", () => {
-            if (select.value && select.value !== window.location.pathname) {
-              window.location.href = select.value;
+        .querySelectorAll<HTMLDetailsElement>("[data-header-details]")
+        .forEach((details, _index, allDetails) => {
+          details.addEventListener("toggle", () => {
+            if (!details.open) {
+              return;
             }
+
+            allDetails.forEach((otherDetails) => {
+              if (otherDetails !== details) {
+                otherDetails.open = false;
+              }
+            });
           });
         });
     </script>
