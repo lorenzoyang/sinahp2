@@ -1,0 +1,94 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { getPath, images, type Locale } from '../../data/site';
+import { copy } from '../../data/copy';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = copy[locale];
+---
+
+<SiteLayout locale={locale} page="culture" title={`${t.culture.title} | Sina Hotpot`} description={t.culture.intro}>
+  <section class="bg-[#15110f] px-4 py-12 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+      <div class="py-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]">{t.culture.eyebrow}</p>
+        <h1 class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl">{t.culture.title}</h1>
+        <p class="mt-5 text-lg leading-8 text-[#efe3d5]/82">{t.culture.intro}</p>
+        <a
+          class="focus-ring mt-7 inline-flex min-h-12 items-center rounded-md bg-[#c7a062] px-5 py-3 font-semibold text-[#15110f]"
+          href={getPath(locale, 'reservation')}
+        >
+          {t.cta.reserve}
+        </a>
+      </div>
+      <div class="overflow-hidden rounded-lg">
+        <img
+          src={images.culture}
+          alt=""
+          class="aspect-[5/4] h-full w-full object-cover"
+          width="1800"
+          height="1200"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band bg-[#211612] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
+      {
+        t.culture.blocks.map(([title, text]) => (
+          <article class="rounded-lg border border-white/12 bg-white/[0.055] p-5">
+            <h2 class="text-xl font-semibold text-white">{title}</h2>
+            <p class="mt-3 text-sm leading-6 text-[#efe3d5]/76">{text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="page-band bg-[#f7f0e7] px-4 py-14 text-[#15110f] sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center">
+      <div>
+        <h2 class="text-3xl font-semibold leading-tight sm:text-4xl">{t.culture.whyTitle}</h2>
+        <ul class="mt-6 grid gap-3">
+          {
+            t.culture.whyItems.map((item) => (
+              <li class="rounded-md border border-[#d8c8b5] bg-white/60 px-4 py-3 leading-7">{item}</li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="overflow-hidden rounded-lg">
+        <img
+          src={images.table}
+          alt=""
+          class="aspect-[4/3] h-full w-full object-cover"
+          width="1800"
+          height="1200"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band bg-[#15110f] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <h2 class="text-3xl font-semibold text-white">{t.culture.etiquetteTitle}</h2>
+      <div class="mt-6 grid gap-3">
+        {
+          t.culture.etiquette.map((item, index) => (
+            <p class="rounded-lg border border-white/12 bg-white/[0.055] px-5 py-4 text-base leading-7 text-[#efe3d5]/82">
+              <span class="mr-3 font-semibold text-[#c7a062]">{index + 1}</span>
+              {item}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</SiteLayout>
