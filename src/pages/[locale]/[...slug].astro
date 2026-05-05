@@ -19,21 +19,26 @@ type LocalizedPageProps = {
   topicId?: CultureTopicId;
 };
 
+const pageComponents = {
+  home: HomePage,
+  culture: CulturePage,
+  locations: LocationsPage,
+  reservation: ReservationPage,
+  success: SuccessPage,
+  privacy: PrivacyPage,
+};
+
 export function getStaticPaths() {
   return getLocalizedStaticPaths();
 }
 
 const { locale, page, topicId } = Astro.props as LocalizedPageProps;
+const PageComponent = page === "cultureTopic" ? undefined : pageComponents[page];
 ---
 
-{page === "home" && <HomePage locale={locale} />}
-{page === "culture" && <CulturePage locale={locale} />}
-{page === "locations" && <LocationsPage locale={locale} />}
-{page === "reservation" && <ReservationPage locale={locale} />}
-{page === "success" && <SuccessPage locale={locale} />}
-{page === "privacy" && <PrivacyPage locale={locale} />}
 {
   page === "cultureTopic" && topicId && (
     <CultureTopicPage locale={locale} topicId={topicId} />
   )
 }
+{PageComponent && <PageComponent locale={locale} />}

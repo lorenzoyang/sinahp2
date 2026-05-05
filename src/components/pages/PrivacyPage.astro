@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
@@ -18,19 +19,12 @@ const t = copy[locale];
   description={t.privacy.intro}
 >
   <section class="bg-[#15110f] px-4 py-12 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-4xl">
-      <p
-        class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
-      >
-        {brand.publicName}
-      </p>
-      <h1
-        class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl"
-      >
-        {t.privacy.title}
-      </h1>
-      <p class="mt-5 text-lg leading-8 text-[#efe3d5]/82">{t.privacy.intro}</p>
-    </div>
+    <SectionHeader
+      eyebrow={brand.publicName}
+      title={t.privacy.title}
+      intro={t.privacy.intro}
+      containerClass="mx-auto max-w-4xl"
+    />
   </section>
 
   <section

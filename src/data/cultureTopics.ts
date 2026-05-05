@@ -9,11 +9,11 @@ type TopicContent = {
   kicker: string;
   title: string;
   summary: string;
-  highlights: string[];
+  highlights: readonly string[];
   detailIntro: string;
-  sections: Array<{ title: string; body: string }>;
+  sections: readonly { title: string; body: string }[];
   tipsTitle: string;
-  tips: string[];
+  tips: readonly string[];
 };
 
 export const cultureTopics = {
@@ -855,9 +855,20 @@ export const cultureTopics = {
 export function getCultureTopicCards(locale: Locale) {
   return cultureTopicIds.map((topicId) => ({
     id: topicId,
-    image: cultureTopics[topicId].image,
-    ...cultureTopics[topicId].content[locale],
+    image: getCultureTopic(topicId).image,
+    ...getCultureTopicContent(locale, topicId),
   }));
+}
+
+export function getCultureTopic(topicId: CultureTopicId) {
+  return cultureTopics[topicId];
+}
+
+export function getCultureTopicContent(
+  locale: Locale,
+  topicId: CultureTopicId,
+) {
+  return getCultureTopic(topicId).content[locale];
 }
 
 export function getRelatedCultureTopics(
@@ -870,6 +881,6 @@ export function getRelatedCultureTopics(
     .slice(0, limit)
     .map((topicId) => ({
       id: topicId,
-      ...cultureTopics[topicId].content[locale],
+      ...getCultureTopicContent(locale, topicId),
     }));
 }

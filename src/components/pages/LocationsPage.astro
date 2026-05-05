@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LocationActions from "../LocationActions.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
 import { images, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
@@ -19,21 +20,14 @@ const t = copy[locale];
   description={t.locations.intro}
 >
   <section class="bg-[#15110f] px-4 py-12 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-7xl">
-      <p
-        class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
-      >
-        {t.locations.eyebrow}
-      </p>
-      <h1
-        class="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl"
-      >
-        {t.locations.title}
-      </h1>
-      <p class="mt-5 max-w-3xl text-lg leading-8 text-[#efe3d5]/82">
-        {t.locations.intro}
-      </p>
-    </div>
+    <SectionHeader
+      eyebrow={t.locations.eyebrow}
+      title={t.locations.title}
+      intro={t.locations.intro}
+      containerClass="mx-auto max-w-7xl"
+      titleClass="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl"
+      introClass="mt-5 max-w-3xl text-lg leading-8 text-[#efe3d5]/82"
+    />
   </section>
 
   <section class="page-band bg-[#211612] px-4 py-12 sm:px-6 lg:px-8">

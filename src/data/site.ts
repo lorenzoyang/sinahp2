@@ -63,6 +63,15 @@ export const primaryNavPages = [
   "reservation",
 ] as const satisfies PageId[];
 
+const localizedStaticPages = [
+  "home",
+  "culture",
+  "locations",
+  "reservation",
+  "success",
+  "privacy",
+] as const satisfies PageId[];
+
 export const cultureTopicSlugs: Record<CultureTopicId, string> = {
   basics: "what-is-hotpot",
   broths: "broths-and-flavors",
@@ -151,25 +160,12 @@ export function getPhoneHref(phone: string) {
 
 export function getLocalizedStaticPaths() {
   return nonDefaultLocales.flatMap((locale) => {
-    const pages = [
-      createLocalizedPage(locale, "home", undefined),
-      createLocalizedPage(locale, "culture", pageSlugs.culture),
-      createLocalizedPage(locale, "locations", pageSlugs.locations),
-      createLocalizedPage(locale, "reservation", pageSlugs.reservation),
-      createLocalizedPage(locale, "success", pageSlugs.success),
-      createLocalizedPage(locale, "privacy", pageSlugs.privacy),
-    ];
-    const topics = cultureTopicIds.map((topicId) => ({
-      params: {
-        locale,
-        slug: `${pageSlugs.culture}/${cultureTopicSlugs[topicId]}`,
-      },
-      props: {
-        locale,
-        page: "cultureTopic",
-        topicId,
-      } satisfies LocalizedRouteProps,
-    }));
+    const pages = localizedStaticPages.map((page) =>
+      createLocalizedPage(locale, page, getStaticPageSlug(page)),
+    );
+    const topics = cultureTopicIds.map((topicId) =>
+      createLocalizedTopic(locale, topicId),
+    );
 
     return [...pages, ...topics];
   });
@@ -191,6 +187,24 @@ function createLocalizedPage(
     params: { locale, slug },
     props: { locale, page } satisfies LocalizedRouteProps,
   };
+}
+
+function createLocalizedTopic(locale: Locale, topicId: CultureTopicId) {
+  return {
+    params: {
+      locale,
+      slug: `${pageSlugs.culture}/${cultureTopicSlugs[topicId]}`,
+    },
+    props: {
+      locale,
+      page: "cultureTopic",
+      topicId,
+    } satisfies LocalizedRouteProps,
+  };
+}
+
+function getStaticPageSlug(page: PageId) {
+  return page === "home" ? undefined : pageSlugs[page];
 }
 
 export function asLocale(value: string | undefined): Locale {

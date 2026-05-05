@@ -10,6 +10,12 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const successUrl = getPath(locale, "success");
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+const labelClass = "grid gap-2 text-sm font-semibold";
+const inputClass =
+  "focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]";
+const textareaClass =
+  "focus-ring min-h-28 rounded-md border border-[#d8c8b5] bg-white px-3 py-3 text-base text-[#15110f]";
+const finePrintClass = "text-xs leading-5 text-[#5f5145]";
 ---
 
 <form
@@ -33,10 +39,10 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
   />
 
   <div class="grid gap-4 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold">
+    <label class={labelClass}>
       {t.reservation.labels.name}
       <input
-        class="focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]"
+        class={inputClass}
         name="name"
         autocomplete="name"
         placeholder={t.reservation.placeholders.name}
@@ -44,10 +50,10 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
       />
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold">
+    <label class={labelClass}>
       {t.reservation.labels.phone}
       <input
-        class="focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]"
+        class={inputClass}
         name="phone"
         type="tel"
         autocomplete="tel"
@@ -59,10 +65,10 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
   </div>
 
   <div class="grid gap-4 sm:grid-cols-2">
-    <label class="grid gap-2 text-sm font-semibold">
+    <label class={labelClass}>
       {t.reservation.labels.guests}
       <input
-        class="focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]"
+        class={inputClass}
         name="guests"
         type="number"
         min="1"
@@ -72,11 +78,11 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
       />
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold">
+    <label class={labelClass}>
       {t.reservation.labels.date}
       <input
         id="reservation-date"
-        class="focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]"
+        class={inputClass}
         name="date"
         type="date"
         required
@@ -85,10 +91,10 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 
   </div>
 
-  <label class="grid gap-2 text-sm font-semibold">
+  <label class={labelClass}>
     {t.reservation.labels.location}
     <select
-      class="focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]"
+      class={inputClass}
       name="location"
       required
     >
@@ -105,15 +111,15 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
     </select>
   </label>
 
-  <label class="grid gap-2 text-sm font-semibold">
+  <label class={labelClass}>
     {t.reservation.labels.message}
     <textarea
-      class="focus-ring min-h-28 rounded-md border border-[#d8c8b5] bg-white px-3 py-3 text-base text-[#15110f]"
+      class={textareaClass}
       name="message"
       placeholder={t.reservation.placeholders.message}></textarea>
   </label>
 
-  <p class="text-xs leading-5 text-[#5f5145]">
+  <p class={finePrintClass}>
     {t.reservation.consent}
     <a
       class="font-semibold text-[#8f241d] underline decoration-[#c7a062] underline-offset-4"
@@ -139,7 +145,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
     </button>
   </div>
 
-  <p class="text-xs leading-5 text-[#5f5145]">
+  <p class={finePrintClass}>
     {brand.publicName} - {brand.email} - {brand.whatsapp}
   </p>
 </form>
@@ -162,6 +168,23 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
   const dateInput = document.getElementById(
     "reservation-date",
   ) as HTMLInputElement | null;
+
+  function getTodayDateValue() {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  function getPayload(form: HTMLFormElement) {
+    return Object.fromEntries(new FormData(form).entries()) as Record<
+      string,
+      FormDataEntryValue
+    >;
+  }
+
+  function showStatus(message: string) {
+    if (status) {
+      status.textContent = message;
+    }
+  }
 
   function setSubmitState(isSending: boolean) {
     if (!submit || !form) {
@@ -189,7 +212,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
   }
 
   if (dateInput) {
-    dateInput.min = new Date().toISOString().slice(0, 10);
+    dateInput.min = getTodayDateValue();
   }
 
   form?.addEventListener("submit", async (event) => {
@@ -199,20 +222,16 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
       return;
     }
 
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries()) as Record<
-      string,
-      FormDataEntryValue
-    >;
+    const payload = getPayload(form);
     const labels = form.dataset;
 
     if (!payload.access_key) {
-      status.textContent = labels.missingKey ?? "";
+      showStatus(labels.missingKey ?? "");
       return;
     }
 
     setSubmitState(true);
-    status.textContent = "";
+    showStatus("");
 
     try {
       const { response, result } = await submitReservation(payload);
@@ -222,9 +241,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
         return;
       }
 
-      status.textContent = result.message || labels.error || "";
+      showStatus(result.message || labels.error || "");
     } catch {
-      status.textContent = labels.error ?? "";
+      showStatus(labels.error ?? "");
     } finally {
       setSubmitState(false);
     }

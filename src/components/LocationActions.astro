@@ -1,4 +1,5 @@
 ---
+import CtaLink from "./ui/CtaLink.astro";
 import {
   getPhoneHref,
   type RestaurantLocation,
@@ -15,18 +16,10 @@ const { location, callLabel, mapLabel, spacingClass = "mt-5" } = Astro.props;
 ---
 
 <div class:list={[spacingClass, "flex flex-wrap gap-3"]}>
-  <a
-    class="focus-ring rounded-md bg-[#8f241d] px-4 py-2 text-sm font-semibold text-white"
-    href={getPhoneHref(location.phone)}
-  >
+  <CtaLink href={getPhoneHref(location.phone)} variant="redSmall">
     {callLabel}
-  </a>
-  <a
-    class="focus-ring rounded-md border border-[#c7a062] px-4 py-2 text-sm font-semibold text-[#15110f]"
-    href={location.mapHref}
-    target="_blank"
-    rel="noreferrer"
-  >
+  </CtaLink>
+  <CtaLink href={location.mapHref} variant="lightOutlineSmall" external>
     {mapLabel}
-  </a>
+  </CtaLink>
 </div>

@@ -1,5 +1,7 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import CtaLink from "../ui/CtaLink.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, getPath, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
@@ -18,34 +20,23 @@ const t = copy[locale];
   description={t.success.intro}
 >
   <section class="bg-[#15110f] px-4 py-16 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-3xl">
-      <p
-        class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
-      >
-        {brand.publicName}
-      </p>
-      <h1
-        class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl"
-      >
-        {t.success.title}
-      </h1>
-      <p class="mt-5 text-lg leading-8 text-[#efe3d5]/84">{t.success.intro}</p>
+    <SectionHeader
+      eyebrow={brand.publicName}
+      title={t.success.title}
+      intro={t.success.intro}
+      containerClass="mx-auto max-w-3xl"
+      introClass="mt-5 text-lg leading-8 text-[#efe3d5]/84"
+    >
       <p class="mt-4 text-base leading-7 text-[#efe3d5]/72">{t.success.next}</p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a
-          class="focus-ring inline-flex min-h-12 items-center justify-center rounded-md bg-[#c7a062] px-5 py-3 font-semibold text-[#15110f]"
-          href={getPath(locale, "locations")}
-        >
+        <CtaLink href={getPath(locale, "locations")} variant="gold">
           {t.nav.locations}
-        </a>
-        <a
-          class="focus-ring inline-flex min-h-12 items-center justify-center rounded-md border border-white/18 px-5 py-3 font-semibold text-white"
-          href={brand.whatsappHref}
-        >
+        </CtaLink>
+        <CtaLink href={brand.whatsappHref} variant="whiteOutlineStatic">
           {t.cta.whatsapp}
-        </a>
+        </CtaLink>
       </div>
-    </div>
+    </SectionHeader>
   </section>
 
   <section
@@ -58,14 +49,14 @@ const t = copy[locale];
             <h2 class="text-2xl font-semibold">{location.city}</h2>
             <p class="mt-2 text-sm leading-6">{location.address}</p>
             <p class="mt-1 text-sm leading-6">{location.hours}</p>
-            <a
-              class="focus-ring mt-5 inline-flex rounded-md bg-[#8f241d] px-4 py-2 text-sm font-semibold text-white"
+            <CtaLink
               href={location.mapHref}
-              target="_blank"
-              rel="noreferrer"
+              variant="redSmall"
+              class="mt-5"
+              external
             >
               {t.cta.map}
-            </a>
+            </CtaLink>
           </article>
         ))
       }

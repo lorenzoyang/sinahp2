@@ -1,6 +1,7 @@
 ---
 import ReservationForm from "../ReservationForm.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, images, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
@@ -23,19 +24,11 @@ const t = copy[locale];
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
     >
       <div class="lg:sticky lg:top-24">
-        <p
-          class="text-xs font-semibold uppercase tracking-[0.28em] text-[#c7a062]"
-        >
-          {t.reservation.eyebrow}
-        </p>
-        <h1
-          class="mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl"
-        >
-          {t.reservation.title}
-        </h1>
-        <p class="mt-5 text-lg leading-8 text-[#efe3d5]/82">
-          {t.reservation.intro}
-        </p>
+        <SectionHeader
+          eyebrow={t.reservation.eyebrow}
+          title={t.reservation.title}
+          intro={t.reservation.intro}
+        />
         <div class="mt-7 overflow-hidden rounded-lg">
           <img
             src={images.hero}
