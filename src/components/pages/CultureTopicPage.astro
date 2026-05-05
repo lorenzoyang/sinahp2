@@ -1,15 +1,17 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import {
-  cultureTopicIds,
+  getCultureTopicAlternatePaths,
   getCultureTopicPath,
   getPath,
-  locales,
   type CultureTopicId,
   type Locale,
 } from "../../data/site";
 import { copy } from "../../data/copy";
-import { cultureTopics } from "../../data/cultureTopics";
+import {
+  cultureTopics,
+  getRelatedCultureTopics,
+} from "../../data/cultureTopics";
 
 interface Props {
   locale: Locale;
@@ -20,15 +22,8 @@ const { locale, topicId } = Astro.props;
 const t = copy[locale];
 const topic = cultureTopics[topicId];
 const content = topic.content[locale];
-const relatedTopics = cultureTopicIds
-  .filter((id) => id !== topicId)
-  .slice(0, 3);
-const alternatePaths = Object.fromEntries(
-  locales.map((targetLocale) => [
-    targetLocale,
-    getCultureTopicPath(targetLocale, topicId),
-  ]),
-) as Record<Locale, string>;
+const relatedTopics = getRelatedCultureTopics(locale, topicId);
+const alternatePaths = getCultureTopicAlternatePaths(topicId);
 ---
 
 <SiteLayout
@@ -154,26 +149,22 @@ const alternatePaths = Object.fromEntries(
 
       <div class="mt-10 grid gap-4 md:grid-cols-3">
         {
-          relatedTopics.map((id) => {
-            const related = cultureTopics[id].content[locale];
-
-            return (
-              <a
-                class="focus-ring rounded-lg border border-white/12 bg-white/5.5 p-5 transition hover:border-[#c7a062] hover:bg-white/8"
-                href={getCultureTopicPath(locale, id)}
-              >
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c7a062]">
-                  {related.kicker}
-                </p>
-                <h3 class="mt-3 text-xl font-semibold leading-tight text-white">
-                  {related.title}
-                </h3>
-                <p class="mt-3 text-sm leading-6 text-[#efe3d5]/72">
-                  {related.summary}
-                </p>
-              </a>
-            );
-          })
+          relatedTopics.map((related) => (
+            <a
+              class="focus-ring rounded-lg border border-white/12 bg-white/5.5 p-5 transition hover:border-[#c7a062] hover:bg-white/8"
+              href={getCultureTopicPath(locale, related.id)}
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[#c7a062]">
+                {related.kicker}
+              </p>
+              <h3 class="mt-3 text-xl font-semibold leading-tight text-white">
+                {related.title}
+              </h3>
+              <p class="mt-3 text-sm leading-6 text-[#efe3d5]/72">
+                {related.summary}
+              </p>
+            </a>
+          ))
         }
       </div>
     </div>

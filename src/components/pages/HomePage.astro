@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import LocationActions from "../LocationActions.astro";
 import {
   brand,
   getPath,
@@ -178,22 +179,11 @@ const t = copy[locale];
               <p class="mt-3 text-sm font-medium text-[#5f5145]">
                 {location.hours}
               </p>
-              <div class="mt-5 flex flex-wrap gap-3">
-                <a
-                  class="focus-ring rounded-md bg-[#8f241d] px-4 py-2 text-sm font-semibold text-white"
-                  href={`tel:${location.phone.replaceAll(" ", "")}`}
-                >
-                  {t.cta.call}
-                </a>
-                <a
-                  class="focus-ring rounded-md border border-[#c7a062] px-4 py-2 text-sm font-semibold text-[#15110f]"
-                  href={location.mapHref}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t.cta.map}
-                </a>
-              </div>
+              <LocationActions
+                location={location}
+                callLabel={t.cta.call}
+                mapLabel={t.cta.map}
+              />
             </article>
           ))
         }

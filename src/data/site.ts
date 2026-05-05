@@ -11,12 +11,18 @@ export type PageId =
   | "reservation"
   | "success"
   | "privacy";
+export type LocalizedRoutePage = PageId | "cultureTopic";
 export type CultureTopicId =
   | "basics"
   | "broths"
   | "ingredients"
   | "ritual"
   | "etiquette";
+export type LocalizedRouteProps = {
+  locale: Locale;
+  page: LocalizedRoutePage;
+  topicId?: CultureTopicId;
+};
 
 export const localeNames: Record<Locale, string> = {
   it: "Italiano",
@@ -41,6 +47,13 @@ export const pageSlugs: Record<Exclude<PageId, "home">, string> = {
   success: "reservation-success",
   privacy: "privacy-policy",
 };
+
+export const primaryNavPages = [
+  "home",
+  "culture",
+  "locations",
+  "reservation",
+] as const satisfies PageId[];
 
 export const cultureTopicSlugs: Record<CultureTopicId, string> = {
   basics: "what-is-hotpot",
@@ -85,6 +98,8 @@ export const locations = [
   },
 ] as const;
 
+export type RestaurantLocation = (typeof locations)[number];
+
 export const images = {
   hero: "/images/generated/premium-hotpot-hero.png",
   interior: "/images/restaurant/sina-prato-interior-reference.jpg",
@@ -95,9 +110,13 @@ export const images = {
   table: "/images/culture/hotpot-table-unsplash.jpg",
 };
 
+function getLocalePrefix(locale: Locale) {
+  return locale === defaultLocale ? "" : `/${locale}`;
+}
+
 export function getPath(locale: Locale, page: PageId = "home") {
   const pagePath = page === "home" ? "" : pageSlugs[page];
-  const prefix = locale === defaultLocale ? "" : `/${locale}`;
+  const prefix = getLocalePrefix(locale);
 
   if (!pagePath) {
     return `${prefix || "/"}`;
@@ -107,9 +126,63 @@ export function getPath(locale: Locale, page: PageId = "home") {
 }
 
 export function getCultureTopicPath(locale: Locale, topic: CultureTopicId) {
-  const prefix = locale === defaultLocale ? "" : `/${locale}`;
+  const prefix = getLocalePrefix(locale);
 
   return `${prefix}/${pageSlugs.culture}/${cultureTopicSlugs[topic]}/`;
+}
+
+export function getCultureTopicAlternatePaths(topic: CultureTopicId) {
+  return Object.fromEntries(
+    locales.map((locale) => [locale, getCultureTopicPath(locale, topic)]),
+  ) as Record<Locale, string>;
+}
+
+export function getPhoneHref(phone: string) {
+  return `tel:${phone.replaceAll(" ", "")}`;
+}
+
+export function getLocalizedStaticPaths() {
+  return nonDefaultLocales.flatMap((locale) => {
+    const pages = [
+      createLocalizedPage(locale, "home", undefined),
+      createLocalizedPage(locale, "culture", pageSlugs.culture),
+      createLocalizedPage(locale, "locations", pageSlugs.locations),
+      createLocalizedPage(locale, "reservation", pageSlugs.reservation),
+      createLocalizedPage(locale, "success", pageSlugs.success),
+      createLocalizedPage(locale, "privacy", pageSlugs.privacy),
+    ];
+    const topics = cultureTopicIds.map((topicId) => ({
+      params: {
+        locale,
+        slug: `${pageSlugs.culture}/${cultureTopicSlugs[topicId]}`,
+      },
+      props: {
+        locale,
+        page: "cultureTopic",
+        topicId,
+      } satisfies LocalizedRouteProps,
+    }));
+
+    return [...pages, ...topics];
+  });
+}
+
+export function getDefaultCultureTopicStaticPaths() {
+  return cultureTopicIds.map((topicId) => ({
+    params: { topic: cultureTopicSlugs[topicId] },
+    props: { topicId },
+  }));
+}
+
+function createLocalizedPage(
+  locale: Locale,
+  page: PageId,
+  slug: string | undefined,
+) {
+  return {
+    params: { locale, slug },
+    props: { locale, page } satisfies LocalizedRouteProps,
+  };
 }
 
 export function asLocale(value: string | undefined): Locale {

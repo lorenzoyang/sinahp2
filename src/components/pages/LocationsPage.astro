@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import LocationActions from "../LocationActions.astro";
 import { images, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
@@ -73,22 +74,12 @@ const t = copy[locale];
                   <dd class="mt-1 leading-6">{location.hours}</dd>
                 </div>
               </dl>
-              <div class="mt-6 flex flex-wrap gap-3">
-                <a
-                  class="focus-ring rounded-md bg-[#8f241d] px-4 py-2 text-sm font-semibold text-white"
-                  href={`tel:${location.phone.replaceAll(" ", "")}`}
-                >
-                  {t.cta.call}
-                </a>
-                <a
-                  class="focus-ring rounded-md border border-[#c7a062] px-4 py-2 text-sm font-semibold"
-                  href={location.mapHref}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t.cta.map}
-                </a>
-              </div>
+              <LocationActions
+                location={location}
+                callLabel={t.cta.call}
+                mapLabel={t.cta.map}
+                spacingClass="mt-6"
+              />
             </div>
           </article>
         ))

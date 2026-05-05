@@ -1,3 +1,86 @@
+import type { Locale, PageId } from "./site";
+
+type TextPair = readonly [string, string];
+
+type LocaleCopy = {
+  meta: {
+    homeTitle: string;
+    description: string;
+  };
+  nav: Record<Exclude<PageId, "success"> | "menu", string>;
+  cta: Record<
+    | "reserve"
+    | "culture"
+    | "call"
+    | "map"
+    | "whatsapp"
+    | "backHome"
+    | "learnMore",
+    string
+  >;
+  home: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    proof: readonly string[];
+    sections: {
+      ritualTitle: string;
+      ritualIntro: string;
+      locationsTitle: string;
+      locationsIntro: string;
+      premiumTitle: string;
+    };
+    steps: readonly TextPair[];
+    premium: readonly string[];
+  };
+  culture: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    blocks: readonly TextPair[];
+    whyTitle: string;
+    whyItems: readonly string[];
+    etiquetteTitle: string;
+    etiquette: readonly string[];
+  };
+  locations: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    daily: string;
+    phone: string;
+    address: string;
+    hours: string;
+  };
+  reservation: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    labels: Record<
+      "name" | "phone" | "guests" | "date" | "time" | "location" | "message",
+      string
+    >;
+    placeholders: Record<"name" | "phone" | "message", string>;
+    consent: string;
+    privacyLink: string;
+    submit: string;
+    sending: string;
+    success: string;
+    error: string;
+    missingKey: string;
+  };
+  success: {
+    title: string;
+    intro: string;
+    next: string;
+  };
+  privacy: {
+    title: string;
+    intro: string;
+    sections: readonly TextPair[];
+  };
+};
+
 export const copy = {
   it: {
     meta: {
@@ -825,4 +908,4 @@ export const copy = {
       ],
     },
   },
-} as const;
+} as const satisfies Record<Locale, LocaleCopy>;

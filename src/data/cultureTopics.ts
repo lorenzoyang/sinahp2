@@ -1,4 +1,9 @@
-import { images, type CultureTopicId, type Locale } from "./site";
+import {
+  cultureTopicIds,
+  images,
+  type CultureTopicId,
+  type Locale,
+} from "./site";
 
 type TopicContent = {
   kicker: string;
@@ -846,3 +851,25 @@ export const cultureTopics = {
   CultureTopicId,
   { image: string; content: Record<Locale, TopicContent> }
 >;
+
+export function getCultureTopicCards(locale: Locale) {
+  return cultureTopicIds.map((topicId) => ({
+    id: topicId,
+    image: cultureTopics[topicId].image,
+    ...cultureTopics[topicId].content[locale],
+  }));
+}
+
+export function getRelatedCultureTopics(
+  locale: Locale,
+  currentTopicId: CultureTopicId,
+  limit = 3,
+) {
+  return cultureTopicIds
+    .filter((topicId) => topicId !== currentTopicId)
+    .slice(0, limit)
+    .map((topicId) => ({
+      id: topicId,
+      ...cultureTopics[topicId].content[locale],
+    }));
+}

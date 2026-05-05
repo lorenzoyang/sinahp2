@@ -1,14 +1,13 @@
 ---
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import {
-  cultureTopicIds,
   getCultureTopicPath,
   getPath,
   images,
   type Locale,
 } from "../../data/site";
 import { copy } from "../../data/copy";
-import { cultureTopics } from "../../data/cultureTopics";
+import { getCultureTopicCards } from "../../data/cultureTopics";
 
 interface Props {
   locale: Locale;
@@ -16,11 +15,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
-const topicCards = cultureTopicIds.map((topicId) => ({
-  id: topicId,
-  image: cultureTopics[topicId].image,
-  ...cultureTopics[topicId].content[locale],
-}));
+const topicCards = getCultureTopicCards(locale);
 const blockTopicIds = ["ritual", "ingredients", "basics"] as const;
 ---
 

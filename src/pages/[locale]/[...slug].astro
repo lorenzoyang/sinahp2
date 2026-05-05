@@ -7,56 +7,20 @@ import PrivacyPage from "../../components/pages/PrivacyPage.astro";
 import ReservationPage from "../../components/pages/ReservationPage.astro";
 import SuccessPage from "../../components/pages/SuccessPage.astro";
 import {
-  cultureTopicSlugs,
-  nonDefaultLocales,
-  pageSlugs,
+  getLocalizedStaticPaths,
   type CultureTopicId,
   type Locale,
-  type PageId,
+  type LocalizedRoutePage,
 } from "../../data/site";
 
 type LocalizedPageProps = {
   locale: Locale;
-  page: PageId | "cultureTopic";
+  page: LocalizedRoutePage;
   topicId?: CultureTopicId;
 };
 
 export function getStaticPaths() {
-  return nonDefaultLocales.flatMap((locale) => {
-    const pages = [
-      { params: { locale, slug: undefined }, props: { locale, page: "home" } },
-      {
-        params: { locale, slug: pageSlugs.culture },
-        props: { locale, page: "culture" },
-      },
-      {
-        params: { locale, slug: pageSlugs.locations },
-        props: { locale, page: "locations" },
-      },
-      {
-        params: { locale, slug: pageSlugs.reservation },
-        props: { locale, page: "reservation" },
-      },
-      {
-        params: { locale, slug: pageSlugs.success },
-        props: { locale, page: "success" },
-      },
-      {
-        params: { locale, slug: pageSlugs.privacy },
-        props: { locale, page: "privacy" },
-      },
-    ];
-    const topics = Object.entries(cultureTopicSlugs).map(([topicId, slug]) => ({
-      params: { locale, slug: `${pageSlugs.culture}/${slug}` },
-      props: {
-        locale,
-        page: "cultureTopic",
-        topicId: topicId as CultureTopicId,
-      },
-    }));
-
-    return [...pages, ...topics];
-  });
+  return getLocalizedStaticPaths();
 }
 
 const { locale, page, topicId } = Astro.props as LocalizedPageProps;

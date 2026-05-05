@@ -6,6 +6,7 @@ import {
   htmlLang,
   localeNames,
   locales,
+  primaryNavPages,
   type Locale,
   type PageId,
 } from "../data/site";
@@ -23,12 +24,10 @@ const { locale, page, title, description, alternatePaths } = Astro.props;
 const t = copy[locale];
 const pageTitle = title ?? t.meta.homeTitle;
 const pageDescription = description ?? t.meta.description;
-const navItems: Array<{ page: PageId; label: string }> = [
-  { page: "home", label: t.nav.home },
-  { page: "culture", label: t.nav.culture },
-  { page: "locations", label: t.nav.locations },
-  { page: "reservation", label: t.nav.reservation },
-];
+const navItems = primaryNavPages.map((navPage) => ({
+  page: navPage,
+  label: t.nav[navPage],
+}));
 ---
 
 <!doctype html>
