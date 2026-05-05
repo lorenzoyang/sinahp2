@@ -32,6 +32,14 @@ export const localeNames: Record<Locale, string> = {
   fr: "Français",
 };
 
+export const localeFlags: Record<Locale, string> = {
+  it: "🇮🇹",
+  zh: "🇨🇳",
+  en: "🇬🇧",
+  es: "🇪🇸",
+  fr: "🇫🇷",
+};
+
 export const htmlLang: Record<Locale, string> = {
   it: "it",
   zh: "zh-CN",

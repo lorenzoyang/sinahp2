@@ -58,7 +58,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
     </label>
   </div>
 
-  <div class="grid gap-4 sm:grid-cols-3">
+  <div class="grid gap-4 sm:grid-cols-2">
     <label class="grid gap-2 text-sm font-semibold">
       {t.reservation.labels.guests}
       <input
@@ -83,15 +83,6 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
       />
     </label>
 
-    <label class="grid gap-2 text-sm font-semibold">
-      {t.reservation.labels.time}
-      <input
-        class="focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]"
-        name="time"
-        type="time"
-        required
-      />
-    </label>
   </div>
 
   <label class="grid gap-2 text-sm font-semibold">

@@ -92,19 +92,17 @@ textarea {
   color: var(--ink);
 }
 
-.site-locale-link {
+.site-locale-select {
   border-color: rgba(247, 240, 231, 0.16);
-  color: rgba(239, 227, 213, 0.78);
+  background: #1d1714;
+  color: var(--paper);
 }
 
-.site-locale-link:hover {
+.site-locale-select:hover {
   border-color: var(--gold);
-  background: var(--paper-soft);
-  color: var(--ink);
 }
 
-.site-locale-link[aria-current="true"] {
-  border-color: var(--gold);
-  background: var(--gold);
+.site-locale-select option {
+  background: var(--paper);
   color: var(--ink);
 }

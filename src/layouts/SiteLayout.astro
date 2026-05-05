@@ -4,6 +4,7 @@ import {
   brand,
   getPath,
   htmlLang,
+  localeFlags,
   localeNames,
   locales,
   primaryNavPages,
@@ -27,6 +28,12 @@ const pageDescription = description ?? t.meta.description;
 const navItems = primaryNavPages.map((navPage) => ({
   page: navPage,
   label: t.nav[navPage],
+}));
+const localeOptions = locales.map((targetLocale) => ({
+  locale: targetLocale,
+  label: localeNames[targetLocale],
+  flag: localeFlags[targetLocale],
+  path: alternatePaths?.[targetLocale] ?? getPath(targetLocale, page),
 }));
 ---
 
@@ -91,64 +98,48 @@ const navItems = primaryNavPages.map((navPage) => ({
           }
         </nav>
 
-        <div class="hidden items-center gap-2 lg:flex">
-          {
-            locales.map((targetLocale) => (
-              <a
-                href={
-                  alternatePaths?.[targetLocale] ?? getPath(targetLocale, page)
-                }
-                aria-current={targetLocale === locale ? "true" : undefined}
-                class="site-locale-link focus-ring rounded-full border px-3 py-1.5 text-xs font-semibold transition"
-              >
-                {localeNames[targetLocale]}
-              </a>
-            ))
-          }
-        </div>
+        <div class="flex shrink-0 items-center gap-2">
+          <label class="sr-only" for="site-locale-select">Language</label>
+          <select
+            id="site-locale-select"
+            data-locale-select
+            aria-label="Language"
+            class="site-locale-select focus-ring h-10 w-27 rounded-full border px-2 text-xs font-semibold transition sm:w-35 sm:px-3 sm:text-sm"
+          >
+            {
+              localeOptions.map((option) => (
+                <option value={option.path} selected={option.locale === locale}>
+                  {option.flag} {option.label}
+                </option>
+              ))
+            }
+          </select>
 
-        <details class="group relative md:hidden">
-          <summary
-            class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-[#f7f0e7] marker:hidden"
-          >
-            {t.nav.menu}
-          </summary>
-          <div
-            class="absolute right-0 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl"
-          >
-            <nav class="grid gap-1" aria-label="Mobile primary">
-              {
-                navItems.map((item) => (
-                  <a
-                    href={getPath(locale, item.page)}
-                    aria-current={page === item.page ? "page" : undefined}
-                    class="site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium"
-                  >
-                    {item.label}
-                  </a>
-                ))
-              }
-            </nav>
-            <div
-              class="mt-3 grid grid-cols-2 gap-2 border-t border-white/10 pt-3"
+          <details class="group relative md:hidden">
+            <summary
+              class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-[#f7f0e7] marker:hidden"
             >
-              {
-                locales.map((targetLocale) => (
-                  <a
-                    href={
-                      alternatePaths?.[targetLocale] ??
-                      getPath(targetLocale, page)
-                    }
-                    aria-current={targetLocale === locale ? "true" : undefined}
-                    class="site-locale-link focus-ring rounded-md border px-3 py-2 text-center text-xs font-semibold"
-                  >
-                    {localeNames[targetLocale]}
-                  </a>
-                ))
-              }
+              {t.nav.menu}
+            </summary>
+            <div
+              class="absolute right-0 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl"
+            >
+              <nav class="grid gap-1" aria-label="Mobile primary">
+                {
+                  navItems.map((item) => (
+                    <a
+                      href={getPath(locale, item.page)}
+                      aria-current={page === item.page ? "page" : undefined}
+                      class="site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium"
+                    >
+                      {item.label}
+                    </a>
+                  ))
+                }
+              </nav>
             </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </div>
     </header>
 
@@ -205,5 +196,16 @@ const navItems = primaryNavPages.map((navPage) => ({
         </div>
       </div>
     </footer>
+    <script>
+      document
+        .querySelectorAll<HTMLSelectElement>("[data-locale-select]")
+        .forEach((select) => {
+          select.addEventListener("change", () => {
+            if (select.value && select.value !== window.location.pathname) {
+              window.location.href = select.value;
+            }
+          });
+        });
+    </script>
   </body>
 </html>
