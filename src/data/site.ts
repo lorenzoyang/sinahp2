@@ -123,6 +123,8 @@ export const images = {
   exterior: "/images/restaurant/sina-prato-exterior-reference.jpg",
   ingredients: "/images/food/hotpot-meat-vegetables-pexels.jpg",
   platter: "/images/food/ingredients-arrangement-pexels.jpg",
+  steamingSetup: "/images/food/steaming-hotpot-setup-pexels.jpg",
+  mealSpread: "/images/food/hotpot-meal-spread-pexels.jpg",
   culture: "/images/culture/steaming-hotpot-table-pexels.jpg",
   table: "/images/culture/hotpot-table-unsplash.jpg",
 };

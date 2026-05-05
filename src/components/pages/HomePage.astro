@@ -11,6 +11,7 @@ import {
   type Locale,
 } from "../../data/site";
 import { copy } from "../../data/copy";
+import { getHomeSections } from "../../data/homeSections";
 
 interface Props {
   locale: Locale;
@@ -18,58 +19,65 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const homeSections = getHomeSections(locale);
 ---
 
 <SiteLayout locale={locale} page="home">
-  <section class="relative overflow-hidden">
+  <section class="homepage-hero relative overflow-hidden">
     <div class="absolute inset-0">
       <img
         src={images.hero}
         alt=""
-        class="h-full w-full object-cover"
+        class="hero-image-drift h-full w-full object-cover"
         width="1792"
         height="1024"
         loading="eager"
       />
       <div
-        class="absolute inset-0 bg-linear-to-b from-[#15110f]/45 via-[#15110f]/64 to-[#15110f]"
+        class="absolute inset-0 bg-linear-to-b from-[#15110f]/46 via-[#15110f]/64 to-[#15110f]"
       >
       </div>
       <div
-        class="absolute inset-0 bg-linear-to-r from-[#15110f]/88 via-[#15110f]/44 to-transparent"
+        class="absolute inset-0 bg-linear-to-r from-[#15110f]/92 via-[#15110f]/56 to-transparent"
       >
       </div>
     </div>
 
     <div
-      class="relative mx-auto flex min-h-[78svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:px-6 lg:px-8"
+      class="relative mx-auto flex min-h-[82svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:px-6 lg:px-8"
     >
-      <SectionHeader
-        eyebrow={t.home.eyebrow}
-        title={t.home.title}
-        intro={t.home.intro}
-        containerClass="max-w-3xl"
-        titleClass="mt-5 text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl"
-        introClass="mt-5 max-w-2xl text-lg leading-8 text-[#f7f0e7]/88 sm:text-xl"
-      >
-        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-          <CtaLink href={getPath(locale, "reservation")} variant="goldHero">
-            {t.cta.reserve}
-          </CtaLink>
-          <CtaLink href={getPath(locale, "culture")} variant="whiteOutlineHero">
-            {t.cta.culture}
-          </CtaLink>
-        </div>
-        <div class="mt-8 grid gap-2 sm:grid-cols-3">
-          {
-            t.home.proof.map((item) => (
-              <p class="rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-[#efe3d5] backdrop-blur">
-                {item}
-              </p>
-            ))
-          }
-        </div>
-      </SectionHeader>
+      <div class="max-w-3xl" data-reveal>
+        <SectionHeader
+          eyebrow={t.home.eyebrow}
+          title={t.home.title}
+          intro={t.home.intro}
+          containerClass="max-w-3xl"
+          titleClass="mt-5 text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl"
+          introClass="mt-5 max-w-2xl text-lg leading-8 text-[#f7f0e7]/88 sm:text-xl"
+        >
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <CtaLink href={getPath(locale, "reservation")} variant="goldHero">
+              {t.cta.reserve}
+            </CtaLink>
+            <CtaLink href={getPath(locale, "culture")} variant="whiteOutlineHero">
+              {t.cta.culture}
+            </CtaLink>
+          </div>
+          <div class="mt-8 grid gap-2 sm:grid-cols-3">
+            {
+              t.home.proof.map((item, index) => (
+                <p
+                  class="rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-[#efe3d5] backdrop-blur"
+                  data-reveal
+                  style={`--reveal-delay:${120 + index * 90}ms`}
+                >
+                  {item}
+                </p>
+              ))
+            }
+          </div>
+        </SectionHeader>
+      </div>
     </div>
   </section>
 
@@ -77,19 +85,25 @@ const t = copy[locale];
     <div
       class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
     >
-      <SectionHeader
-        eyebrow={brand.publicName}
-        title={t.home.sections.ritualTitle}
-        intro={t.home.sections.ritualIntro}
-        headingTag="h2"
-        eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
-        titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-        introClass="mt-4 text-base leading-7 text-[#efe3d5]/78"
-      />
+      <div data-reveal>
+        <SectionHeader
+          eyebrow={brand.publicName}
+          title={t.home.sections.ritualTitle}
+          intro={t.home.sections.ritualIntro}
+          headingTag="h2"
+          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
+          titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
+          introClass="mt-4 text-base leading-7 text-[#efe3d5]/78"
+        />
+      </div>
       <div class="grid gap-3 sm:grid-cols-2">
         {
           t.home.steps.map(([title, text], index) => (
-            <article class="rounded-lg border border-white/12 bg-white/5.5 p-5">
+            <article
+              class="homepage-card rounded-lg border border-white/12 bg-white/5.5 p-5"
+              data-reveal
+              style={`--reveal-delay:${index * 90}ms`}
+            >
               <span class="text-sm font-semibold text-[#c7a062]">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -106,52 +120,251 @@ const t = copy[locale];
     class="page-band bg-[#f7f0e7] px-4 py-14 text-[#15110f] sm:px-6 lg:px-8"
   >
     <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.82fr] lg:items-center"
+      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
     >
-      <div class="overflow-hidden rounded-lg">
+      <div class="overflow-hidden rounded-lg" data-reveal>
         <img
-          src={images.ingredients}
+          src={images.mealSpread}
           alt=""
-          class="aspect-4/3 h-full w-full object-cover"
+          class="homepage-photo aspect-4/5 h-full w-full object-cover"
           width="1800"
-          height="1200"
+          height="2250"
           loading="lazy"
         />
       </div>
-      <SectionHeader
-        eyebrow={t.home.sections.premiumTitle}
-        title={t.home.title}
-        headingTag="h2"
-        eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]"
-        titleClass="mt-3 text-3xl font-semibold leading-tight sm:text-4xl"
-      >
-        <ul class="mt-6 grid gap-3">
+      <div data-reveal style="--reveal-delay:80ms">
+        <SectionHeader
+          eyebrow={brand.publicName}
+          title={t.home.sections.premiumTitle}
+          intro={homeSections.signatures.intro}
+          headingTag="h2"
+          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]"
+          titleClass="mt-3 text-3xl font-semibold leading-tight sm:text-4xl"
+          introClass="mt-4 text-base leading-7 text-[#3c3028]"
+        />
+        <div class="mt-6 grid gap-3">
           {
-            t.home.premium.map((item) => (
-              <li class="rounded-md border border-[#d8c8b5] bg-white/58 px-4 py-3 text-base leading-7">
-                {item}
-              </li>
+            homeSections.signatures.items.map(([title, text], index) => (
+              <article
+                class="homepage-card rounded-lg border border-[#d8c8b5] bg-white/70 p-4"
+                data-reveal
+                style={`--reveal-delay:${140 + index * 80}ms`}
+              >
+                <span class="text-sm font-semibold text-[#8f241d]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 class="mt-3 text-lg font-semibold">{title}</h3>
+                <p class="mt-2 text-sm leading-6 text-[#5f5145]">{text}</p>
+              </article>
             ))
           }
-        </ul>
-      </SectionHeader>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {
+            t.home.premium.map((item, index) => (
+              <p
+                class="rounded-full border border-[#d8c8b5] bg-white/72 px-4 py-2 text-sm font-medium text-[#3c3028]"
+                data-reveal
+                style={`--reveal-delay:${340 + index * 70}ms`}
+              >
+                {item}
+              </p>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="page-band bg-[#211612] px-4 py-14 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
-      <SectionHeader
-        title={t.home.sections.locationsTitle}
-        intro={t.home.sections.locationsIntro}
-        headingTag="h2"
-        containerClass="max-w-2xl"
-        titleClass="text-3xl font-semibold leading-tight text-white sm:text-4xl"
-        introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
-      />
+      <div data-reveal>
+        <SectionHeader
+          eyebrow={homeSections.occasions.eyebrow}
+          title={homeSections.occasions.title}
+          intro={homeSections.occasions.intro}
+          headingTag="h2"
+          containerClass="max-w-3xl"
+          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
+          titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
+          introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
+        />
+      </div>
       <div class="mt-8 grid gap-4 md:grid-cols-2">
         {
-          locations.map((location) => (
-            <article class="rounded-lg border border-white/12 bg-[#f7f0e7] p-5 text-[#15110f]">
+          homeSections.occasions.items.map(([title, text], index) => (
+            <article
+              class="homepage-card rounded-lg border border-white/12 bg-white/5.5 p-5"
+              data-reveal
+              style={`--reveal-delay:${index * 90}ms`}
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#c7a062]">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <h3 class="mt-3 text-2xl font-semibold text-white">{title}</h3>
+              <p class="mt-3 text-sm leading-6 text-[#efe3d5]/74">{text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="page-band bg-[#efe3d5] px-4 py-14 text-[#15110f] sm:px-6 lg:px-8"
+  >
+    <div
+      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-center"
+    >
+      <div class="overflow-hidden rounded-lg" data-reveal>
+        <img
+          src={images.steamingSetup}
+          alt=""
+          class="homepage-photo aspect-4/5 h-full w-full object-cover"
+          width="1800"
+          height="2250"
+          loading="lazy"
+        />
+      </div>
+      <div data-reveal style="--reveal-delay:80ms">
+        <SectionHeader
+          eyebrow={homeSections.visit.eyebrow}
+          title={homeSections.visit.title}
+          intro={homeSections.visit.intro}
+          headingTag="h2"
+          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]"
+          titleClass="mt-3 text-3xl font-semibold leading-tight sm:text-4xl"
+          introClass="mt-4 text-base leading-7 text-[#3c3028]"
+        />
+        <div class="mt-6 grid gap-3">
+          {
+            homeSections.visit.items.map((item, index) => (
+              <p
+                class="homepage-card rounded-lg border border-[#d8c8b5] bg-white/72 px-4 py-4 text-base leading-7 text-[#3c3028]"
+                data-reveal
+                style={`--reveal-delay:${140 + index * 80}ms`}
+              >
+                <span class="mr-3 font-semibold text-[#8f241d]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                {item}
+              </p>
+            ))
+          }
+        </div>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <CtaLink href={getPath(locale, "culture")} variant="lightOutlineSmall">
+            {t.cta.culture}
+          </CtaLink>
+          <CtaLink href={getPath(locale, "reservation")} variant="redSmall">
+            {t.cta.reserve}
+          </CtaLink>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band bg-[#15110f] px-4 py-14 sm:px-6 lg:px-8">
+    <div
+      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
+    >
+      <div
+        class="grid gap-4 sm:grid-cols-[1.1fr_0.9fr] lg:items-stretch"
+        data-reveal
+      >
+        <div class="overflow-hidden rounded-lg">
+          <img
+            src={images.table}
+            alt=""
+            class="homepage-photo aspect-4/5 h-full w-full object-cover"
+            width="1800"
+            height="2250"
+            loading="lazy"
+          />
+        </div>
+        <div class="grid gap-4">
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src={images.culture}
+              alt=""
+              class="homepage-photo aspect-square h-full w-full object-cover"
+              width="1800"
+              height="1800"
+              loading="lazy"
+            />
+          </div>
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src={images.ingredients}
+              alt=""
+              class="homepage-photo aspect-square h-full w-full object-cover"
+              width="1800"
+              height="1800"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+      <div data-reveal style="--reveal-delay:100ms">
+        <SectionHeader
+          eyebrow={homeSections.atmosphere.eyebrow}
+          title={homeSections.atmosphere.title}
+          intro={homeSections.atmosphere.intro}
+          headingTag="h2"
+          eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]"
+          titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
+          introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
+        />
+        <div class="mt-6 grid gap-3">
+          {
+            homeSections.atmosphere.items.map((item, index) => (
+              <p
+                class="homepage-card rounded-lg border border-white/12 bg-white/5.5 px-4 py-4 text-base leading-7 text-[#efe3d5]/82"
+                data-reveal
+                style={`--reveal-delay:${160 + index * 80}ms`}
+              >
+                {item}
+              </p>
+            ))
+          }
+        </div>
+        <div class="mt-6 grid gap-2 sm:grid-cols-2">
+          {
+            homeSections.atmosphere.stats.map((item, index) => (
+              <p
+                class="rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-medium text-[#efe3d5]"
+                data-reveal
+                style={`--reveal-delay:${340 + index * 70}ms`}
+              >
+                {item}
+              </p>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-band bg-[#211612] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div data-reveal>
+        <SectionHeader
+          title={t.home.sections.locationsTitle}
+          intro={t.home.sections.locationsIntro}
+          headingTag="h2"
+          containerClass="max-w-2xl"
+          titleClass="text-3xl font-semibold leading-tight text-white sm:text-4xl"
+          introClass="mt-4 text-base leading-7 text-[#efe3d5]/76"
+        />
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {
+          locations.map((location, index) => (
+            <article
+              class="homepage-card rounded-lg border border-white/12 bg-[#f7f0e7] p-5 text-[#15110f]"
+              data-reveal
+              style={`--reveal-delay:${index * 100}ms`}
+            >
               <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8f241d]">
                 {location.city}
               </p>
@@ -170,4 +383,83 @@ const t = copy[locale];
       </div>
     </div>
   </section>
+
+  <section class="page-band bg-[#120f0d] px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+      <div
+        class="overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-[#8f241d] via-[#6c1d18] to-[#31130f] p-6 sm:p-8 lg:p-10"
+        data-reveal
+      >
+        <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
+          <SectionHeader
+            eyebrow={homeSections.reservation.eyebrow}
+            title={homeSections.reservation.title}
+            intro={homeSections.reservation.intro}
+            headingTag="h2"
+            eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#f2d09a]"
+            titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
+            introClass="mt-4 text-base leading-7 text-[#f7e9da]/82"
+          >
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+              <CtaLink href={getPath(locale, "reservation")} variant="goldHero">
+                {t.cta.reserve}
+              </CtaLink>
+              <CtaLink
+                href={brand.whatsappHref}
+                variant="whiteOutlineHero"
+                external={true}
+              >
+                {t.cta.whatsapp}
+              </CtaLink>
+            </div>
+          </SectionHeader>
+
+          <div class="grid gap-3">
+            {
+              homeSections.reservation.items.map((item, index) => (
+                <p
+                  class="rounded-lg border border-white/12 bg-black/16 px-4 py-4 text-base leading-7 text-[#f7e9da]"
+                  data-reveal
+                  style={`--reveal-delay:${120 + index * 90}ms`}
+                >
+                  <span class="mr-3 font-semibold text-[#f2d09a]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {item}
+                </p>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+
+    if (mediaQuery.matches) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.18,
+          rootMargin: "0px 0px -8% 0px",
+        },
+      );
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+  </script>
 </SiteLayout>

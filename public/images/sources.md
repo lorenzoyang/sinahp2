@@ -25,6 +25,12 @@ These assets are temporary placeholders for the Sina Hotpot website. Replace the
 - `food/ingredients-arrangement-pexels.jpg`
   - Downloaded from Pexels image CDN.
   - Source URL: `https://images.pexels.com/photos/28439716/pexels-photo-28439716.jpeg?auto=compress&cs=tinysrgb&w=1800`
+- `food/steaming-hotpot-setup-pexels.jpg`
+  - Downloaded from Pexels image CDN.
+  - Source URL: `https://images.pexels.com/photos/5949002/pexels-photo-5949002.jpeg?auto=compress&cs=tinysrgb&w=1800`
+- `food/hotpot-meal-spread-pexels.jpg`
+  - Downloaded from Pexels image CDN.
+  - Source URL: `https://images.pexels.com/photos/30882913/pexels-photo-30882913.jpeg?auto=compress&cs=tinysrgb&w=1800`
 - `culture/steaming-hotpot-table-pexels.jpg`
   - Downloaded from Pexels image CDN.
   - Source URL: `https://images.pexels.com/photos/29479440/pexels-photo-29479440.jpeg?auto=compress&cs=tinysrgb&w=1800`

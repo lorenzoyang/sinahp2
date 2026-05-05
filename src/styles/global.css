@@ -145,3 +145,78 @@ textarea {
 .site-locale-option[aria-current="true"] .site-locale-code {
   color: var(--ink);
 }
+
+.homepage-card {
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.homepage-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(199, 160, 98, 0.34);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16);
+}
+
+.homepage-photo {
+  transition:
+    transform 0.8s ease,
+    filter 0.8s ease;
+}
+
+.homepage-photo:hover {
+  transform: scale(1.04);
+  filter: saturate(1.04);
+}
+
+.hero-image-drift {
+  animation: hero-drift 18s ease-in-out infinite alternate;
+  transform-origin: center;
+  will-change: transform;
+}
+
+html.js body[data-page="home"] [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-offset, 24px), 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.js body[data-page="home"] [data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes hero-drift {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.09) translate3d(0, -1.5%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .homepage-card,
+  .homepage-photo,
+  .hero-image-drift,
+  html.js body[data-page="home"] [data-reveal] {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+
+  html.js body[data-page="home"] [data-reveal] {
+    opacity: 1;
+  }
+}
