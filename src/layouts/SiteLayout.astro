@@ -125,6 +125,7 @@ const currentLocaleOption =
                     <a
                       href={option.path}
                       aria-current={option.locale === locale ? "true" : undefined}
+                      aria-label={option.label}
                       class="site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition"
                     >
                       <span class="text-base leading-none" aria-hidden="true">
@@ -156,6 +157,7 @@ const currentLocaleOption =
                     <a
                       href={getPath(locale, item.page)}
                       aria-current={page === item.page ? "page" : undefined}
+                      aria-label={item.label}
                       class="site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium"
                     >
                       {item.label}
