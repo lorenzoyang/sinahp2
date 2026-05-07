@@ -1,4 +1,5 @@
 ---
+import { PUBLIC_WEB3FORMS_ACCESS_KEY } from "astro:env/client";
 import {
   brand,
   getLocationLabel,
@@ -15,7 +16,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const successUrl = getPath(locale, "success");
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 const labelClass = "grid gap-2 text-sm font-semibold";
 const inputClass =
   "focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]";
@@ -75,7 +76,7 @@ const locationOptions = locations.map((location) => ({
     </label>
   </div>
 
-  <div class="grid gap-4 sm:grid-cols-2">
+  <div class="grid gap-4 sm:grid-cols-3">
     <label class={labelClass}>
       {t.reservation.labels.guests}
       <input
@@ -96,6 +97,16 @@ const locationOptions = locations.map((location) => ({
         class={inputClass}
         name="date"
         type="date"
+        required
+      />
+    </label>
+
+    <label class={labelClass}>
+      {t.reservation.labels.time}
+      <input
+        class={inputClass}
+        name="time"
+        type="time"
         required
       />
     </label>

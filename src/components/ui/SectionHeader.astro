@@ -25,13 +25,7 @@ const HeadingTag = headingTag;
 ---
 
 <div class={containerClass}>
-  {
-    eyebrow && (
-      <p class={eyebrowClass}>
-        {eyebrow}
-      </p>
-    )
-  }
+  {eyebrow && <p class={eyebrowClass}>{eyebrow}</p>}
   <HeadingTag class={titleClass}>{title}</HeadingTag>
   {intro && <p class={introClass}>{intro}</p>}
   <slot />

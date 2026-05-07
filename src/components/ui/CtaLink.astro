@@ -1,4 +1,6 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
 type LinkVariant =
   | "gold"
   | "goldHero"
@@ -10,10 +12,9 @@ type LinkVariant =
   | "lightOutlineSmall"
   | "redSmall";
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<"a">, "href"> {
   href: string;
   variant?: LinkVariant;
-  class?: string;
   external?: boolean;
 }
 
@@ -22,9 +23,13 @@ const {
   variant = "gold",
   class: className,
   external = false,
+  target,
+  rel,
+  ...attrs
 } = Astro.props;
 
-const baseClass = "focus-ring inline-flex items-center rounded-md font-semibold";
+const baseClass =
+  "focus-ring inline-flex items-center rounded-md font-semibold";
 const variantClass: Record<LinkVariant, string> = {
   gold: "min-h-12 justify-center bg-[#c7a062] px-5 py-3 text-[#15110f]",
   goldHero:
@@ -39,18 +44,20 @@ const variantClass: Record<LinkVariant, string> = {
     "min-h-12 justify-center border border-white/28 px-5 py-3 text-base text-white transition hover:bg-white/10",
   cultureOutline:
     "min-h-10 border border-[#c7a062] px-4 py-2 text-sm text-[#f7f0e7] transition hover:bg-[#c7a062] hover:text-[#15110f]",
-  lightOutlineSmall:
-    "border border-[#c7a062] px-4 py-2 text-sm text-[#15110f]",
+  lightOutlineSmall: "border border-[#c7a062] px-4 py-2 text-sm text-[#15110f]",
   redSmall:
     "bg-[#8f241d] px-4 py-2 text-sm !text-[#f7f0e7] transition hover:bg-[#701b16]",
 };
+const targetValue = external ? "_blank" : target;
+const relValue = external ? "noreferrer" : rel;
 ---
 
 <a
   href={href}
   class:list={[baseClass, variantClass[variant], className]}
-  target={external ? "_blank" : undefined}
-  rel={external ? "noreferrer" : undefined}
+  target={targetValue}
+  rel={relValue}
+  {...attrs}
 >
   <slot />
 </a>

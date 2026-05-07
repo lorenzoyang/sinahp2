@@ -25,7 +25,8 @@ export function getStaticPaths() {
 }
 
 const { locale, page, topicId } = Astro.props as LocalizedRouteProps;
-const PageComponent = page === "cultureTopic" ? undefined : pageComponents[page];
+const PageComponent =
+  page === "cultureTopic" ? undefined : pageComponents[page];
 ---
 
 {

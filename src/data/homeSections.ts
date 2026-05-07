@@ -1,6 +1,5 @@
 import type { Locale } from "./site";
-
-type TextPair = readonly [string, string];
+import type { TextPair } from "./types";
 
 type HomeSectionContent = {
   signatures: {

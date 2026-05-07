@@ -36,7 +36,8 @@ const lightSectionEyebrowClass =
 const lightSectionTitleClass =
   "mt-3 text-3xl font-semibold leading-tight sm:text-4xl";
 const lightSectionIntroClass = "mt-4 text-base leading-7 text-[#3c3028]";
-const darkCardClass = "homepage-card rounded-lg border border-white/12 bg-white/5.5";
+const darkCardClass =
+  "homepage-card rounded-lg border border-white/12 bg-white/5.5";
 const lightCardClass =
   "homepage-card rounded-lg border border-[#d8c8b5] bg-white/70";
 const lightCardSoftClass =
@@ -265,7 +266,10 @@ const heroProofClass =
           {
             homeSections.visit.items.map((item, index) => (
               <p
-                class:list={[lightCardSoftClass, "px-4 py-4 text-base leading-7 text-[#3c3028]"]}
+                class:list={[
+                  lightCardSoftClass,
+                  "px-4 py-4 text-base leading-7 text-[#3c3028]",
+                ]}
                 data-reveal
                 style={getStaggerStyle(index, 140, 80)}
               >
@@ -344,7 +348,10 @@ const heroProofClass =
           {
             homeSections.atmosphere.items.map((item, index) => (
               <p
-                class:list={[darkCardClass, "px-4 py-4 text-base leading-7 text-[#efe3d5]/82"]}
+                class:list={[
+                  darkCardClass,
+                  "px-4 py-4 text-base leading-7 text-[#efe3d5]/82",
+                ]}
                 data-reveal
                 style={getStaggerStyle(index, 160, 80)}
               >
