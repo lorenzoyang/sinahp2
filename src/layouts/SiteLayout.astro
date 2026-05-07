@@ -23,6 +23,7 @@ interface Props {
 
 const { locale, page, title, description, alternatePaths } = Astro.props;
 const t = copy[locale];
+const layoutLabels = t.layout;
 const pageTitle = title ?? t.meta.homeTitle;
 const pageDescription = description ?? t.meta.description;
 const navItems = primaryNavPages.map((navPage) => ({
@@ -64,13 +65,13 @@ const currentLocaleOption =
   <body data-page={page}>
     <a
       href="#main"
-      class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[#f7f0e7] focus:px-4 focus:py-2 focus:text-[#15110f]"
+      class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink"
     >
-      Skip to content
+      {layoutLabels.skipToContent}
     </a>
 
     <header
-      class="sticky top-0 z-40 border-b border-white/10 bg-[#15110f]/88 backdrop-blur-xl"
+      class="sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl"
     >
       <div
         class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
@@ -81,11 +82,11 @@ const currentLocaleOption =
           aria-label={brand.publicName}
         >
           <span
-            class="block text-[0.68rem] uppercase tracking-[0.24em] text-[#c7a062]"
+            class="block text-[0.68rem] uppercase tracking-[0.24em] text-gold"
             >{brand.publicName}</span
           >
           <span
-            class="mt-0.5 block truncate text-lg font-semibold text-[#f7f0e7]"
+            class="mt-0.5 block truncate text-lg font-semibold text-paper"
             >{brand.chineseName}</span
           >
         </a>
@@ -117,7 +118,7 @@ const currentLocaleOption =
               <span>{currentLocaleOption.code}</span>
             </summary>
             <div
-              class="absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-[#1d1714] p-2 shadow-2xl"
+              class="absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-ink-panel p-2 shadow-2xl"
             >
               <nav class="grid gap-1" aria-label="Language">
                 {
@@ -144,12 +145,12 @@ const currentLocaleOption =
 
           <details class="group relative md:hidden" data-header-details>
             <summary
-              class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-[#f7f0e7] marker:hidden"
+              class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-paper marker:hidden"
             >
               {t.nav.menu}
             </summary>
             <div
-              class="absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-[#1d1714] p-3 shadow-2xl"
+              class="absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-ink-panel p-3 shadow-2xl"
             >
               <nav class="grid gap-1" aria-label="Mobile primary">
                 {
@@ -175,24 +176,24 @@ const currentLocaleOption =
       <slot />
     </main>
 
-    <footer class="page-band bg-[#120f0d]">
+    <footer class="page-band bg-ink-footer">
       <div
         class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8"
       >
         <div>
-          <p class="text-[0.72rem] uppercase tracking-[0.24em] text-[#c7a062]">
+          <p class="text-[0.72rem] uppercase tracking-[0.24em] text-gold">
             {brand.publicName}
           </p>
           <p class="mt-2 text-2xl font-semibold text-white">
             {brand.chineseName}
           </p>
-          <p class="mt-4 max-w-xl text-sm leading-6 text-[#efe3d5]/72">
+          <p class="mt-4 max-w-xl text-sm leading-6 text-paper-soft/72">
             {t.meta.description}
           </p>
         </div>
-        <div class="grid gap-4 text-sm text-[#efe3d5]/80 sm:grid-cols-2">
+        <div class="grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2">
           <div>
-            <p class="font-semibold text-white">Contact</p>
+            <p class="font-semibold text-white">{layoutLabels.contact}</p>
             <a
               class="focus-ring mt-2 block rounded-sm hover:text-white"
               href={`mailto:${brand.email}`}>{brand.email}</a
@@ -203,7 +204,7 @@ const currentLocaleOption =
             >
           </div>
           <div>
-            <p class="font-semibold text-white">Social</p>
+            <p class="font-semibold text-white">{layoutLabels.social}</p>
             <a
               class="focus-ring mt-2 block rounded-sm hover:text-white"
               href={brand.instagram}
@@ -225,23 +226,7 @@ const currentLocaleOption =
       </div>
     </footer>
     <script>
-      const headerDetails = document.querySelectorAll<HTMLDetailsElement>(
-        "[data-header-details]",
-      );
-
-      headerDetails.forEach((details) => {
-        details.addEventListener("toggle", () => {
-          if (!details.open) {
-            return;
-          }
-
-          headerDetails.forEach((otherDetails) => {
-            if (otherDetails !== details) {
-              otherDetails.open = false;
-            }
-          });
-        });
-      });
+      import "../scripts/headerMenus";
     </script>
   </body>
 </html>

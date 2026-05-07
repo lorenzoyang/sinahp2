@@ -19,22 +19,22 @@ const t = copy[locale];
   title={`${t.locations.title} | Sina Hotpot`}
   description={t.locations.intro}
 >
-  <section class="bg-[#15110f] px-4 py-12 sm:px-6 lg:px-8">
+  <section class="bg-ink px-4 py-12 sm:px-6 lg:px-8">
     <SectionHeader
       eyebrow={t.locations.eyebrow}
       title={t.locations.title}
       intro={t.locations.intro}
       containerClass="mx-auto max-w-7xl"
       titleClass="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl"
-      introClass="mt-5 max-w-3xl text-lg leading-8 text-[#efe3d5]/82"
+      introClass="mt-5 max-w-3xl text-lg leading-8 text-paper-soft/82"
     />
   </section>
 
-  <section class="page-band bg-[#211612] px-4 py-12 sm:px-6 lg:px-8">
+  <section class="page-band bg-ink-band px-4 py-12 sm:px-6 lg:px-8">
     <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
       {
         locations.map((location) => (
-          <article class="overflow-hidden rounded-lg border border-white/12 bg-[#f7f0e7] text-[#15110f]">
+          <article class="overflow-hidden rounded-lg border border-white/12 bg-paper text-ink">
             <img
               src={location.image}
               alt=""
@@ -44,25 +44,25 @@ const t = copy[locale];
               loading="lazy"
             />
             <div class="p-5 sm:p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8f241d]">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-lacquer">
                 {t.locations.daily}
               </p>
               <h2 class="mt-3 text-3xl font-semibold">{location.city}</h2>
               <dl class="mt-5 grid gap-4 text-sm sm:grid-cols-3">
                 <div>
-                  <dt class="font-semibold text-[#8f241d]">
+                  <dt class="font-semibold text-lacquer">
                     {t.locations.address}
                   </dt>
                   <dd class="mt-1 leading-6">{location.address}</dd>
                 </div>
                 <div>
-                  <dt class="font-semibold text-[#8f241d]">
+                  <dt class="font-semibold text-lacquer">
                     {t.locations.phone}
                   </dt>
                   <dd class="mt-1 leading-6">{location.phone}</dd>
                 </div>
                 <div>
-                  <dt class="font-semibold text-[#8f241d]">
+                  <dt class="font-semibold text-lacquer">
                     {t.locations.hours}
                   </dt>
                   <dd class="mt-1 leading-6">{location.hours}</dd>

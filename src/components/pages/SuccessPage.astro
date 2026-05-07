@@ -19,15 +19,15 @@ const t = copy[locale];
   title={`${t.success.title} | Sina Hotpot`}
   description={t.success.intro}
 >
-  <section class="bg-[#15110f] px-4 py-16 sm:px-6 lg:px-8">
+  <section class="bg-ink px-4 py-16 sm:px-6 lg:px-8">
     <SectionHeader
       eyebrow={brand.publicName}
       title={t.success.title}
       intro={t.success.intro}
       containerClass="mx-auto max-w-3xl"
-      introClass="mt-5 text-lg leading-8 text-[#efe3d5]/84"
+      introClass="mt-5 text-lg leading-8 text-paper-soft/84"
     >
-      <p class="mt-4 text-base leading-7 text-[#efe3d5]/72">{t.success.next}</p>
+      <p class="mt-4 text-base leading-7 text-paper-soft/72">{t.success.next}</p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <CtaLink href={getPath(locale, "locations")} variant="gold">
           {t.nav.locations}
@@ -40,12 +40,12 @@ const t = copy[locale];
   </section>
 
   <section
-    class="page-band bg-[#f7f0e7] px-4 py-12 text-[#15110f] sm:px-6 lg:px-8"
+    class="page-band bg-paper px-4 py-12 text-ink sm:px-6 lg:px-8"
   >
     <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-2">
       {
         locations.map((location) => (
-          <article class="rounded-lg border border-[#d8c8b5] bg-white/62 p-5">
+          <article class="rounded-lg border border-warm-line bg-white/62 p-5">
             <h2 class="text-2xl font-semibold">{location.city}</h2>
             <p class="mt-2 text-sm leading-6">{location.address}</p>
             <p class="mt-1 text-sm leading-6">{location.hours}</p>

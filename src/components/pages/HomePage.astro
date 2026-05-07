@@ -27,25 +27,25 @@ const homeSections = getHomeSections(locale);
 const reservationPath = getPath(locale, "reservation");
 const culturePath = getPath(locale, "culture");
 const darkSectionEyebrowClass =
-  "text-xs font-semibold uppercase tracking-[0.24em] text-[#c7a062]";
+  "text-xs font-semibold uppercase tracking-[0.24em] text-gold";
 const darkSectionTitleClass =
   "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl";
-const darkSectionIntroClass = "mt-4 text-base leading-7 text-[#efe3d5]/76";
+const darkSectionIntroClass = "mt-4 text-base leading-7 text-paper-soft/76";
 const lightSectionEyebrowClass =
-  "text-xs font-semibold uppercase tracking-[0.24em] text-[#8f241d]";
+  "text-xs font-semibold uppercase tracking-[0.24em] text-lacquer";
 const lightSectionTitleClass =
   "mt-3 text-3xl font-semibold leading-tight sm:text-4xl";
-const lightSectionIntroClass = "mt-4 text-base leading-7 text-[#3c3028]";
+const lightSectionIntroClass = "mt-4 text-base leading-7 text-brown-text";
 const darkCardClass =
   "homepage-card rounded-lg border border-white/12 bg-white/5.5";
 const lightCardClass =
-  "homepage-card rounded-lg border border-[#d8c8b5] bg-white/70";
+  "homepage-card rounded-lg border border-warm-line bg-white/70";
 const lightCardSoftClass =
-  "homepage-card rounded-lg border border-[#d8c8b5] bg-white/72";
+  "homepage-card rounded-lg border border-warm-line bg-white/72";
 const darkStatPillClass =
-  "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-medium text-[#efe3d5]";
+  "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-medium text-paper-soft";
 const heroProofClass =
-  "rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-[#efe3d5] backdrop-blur";
+  "rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-paper-soft backdrop-blur";
 ---
 
 <SiteLayout locale={locale} page="home">
@@ -60,11 +60,11 @@ const heroProofClass =
         loading="eager"
       />
       <div
-        class="absolute inset-0 bg-linear-to-b from-[#15110f]/46 via-[#15110f]/64 to-[#15110f]"
+        class="absolute inset-0 bg-linear-to-b from-ink/46 via-ink/64 to-ink"
       >
       </div>
       <div
-        class="absolute inset-0 bg-linear-to-r from-[#15110f]/92 via-[#15110f]/56 to-transparent"
+        class="absolute inset-0 bg-linear-to-r from-ink/92 via-ink/56 to-transparent"
       >
       </div>
     </div>
@@ -79,7 +79,7 @@ const heroProofClass =
           intro={t.home.intro}
           containerClass="max-w-3xl"
           titleClass="mt-5 text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl"
-          introClass="mt-5 max-w-2xl text-lg leading-8 text-[#f7f0e7]/88 sm:text-xl"
+          introClass="mt-5 max-w-2xl text-lg leading-8 text-paper/88 sm:text-xl"
         >
           <div class="mt-7 flex flex-col gap-3 sm:flex-row">
             <CtaLink href={reservationPath} variant="goldHero">
@@ -107,7 +107,7 @@ const heroProofClass =
     </div>
   </section>
 
-  <section class="page-band bg-[#15110f] px-4 py-14 sm:px-6 lg:px-8">
+  <section class="page-band bg-ink px-4 py-14 sm:px-6 lg:px-8">
     <div
       class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
     >
@@ -119,7 +119,7 @@ const heroProofClass =
           headingTag="h2"
           eyebrowClass={darkSectionEyebrowClass}
           titleClass={darkSectionTitleClass}
-          introClass="mt-4 text-base leading-7 text-[#efe3d5]/78"
+          introClass="mt-4 text-base leading-7 text-paper-soft/78"
         />
       </div>
       <div class="grid gap-3 sm:grid-cols-2">
@@ -130,11 +130,11 @@ const heroProofClass =
               data-reveal
               style={getStaggerStyle(index, 0, 90)}
             >
-              <span class="text-sm font-semibold text-[#c7a062]">
+              <span class="text-sm font-semibold text-gold">
                 {formatSequenceNumber(index)}
               </span>
               <h3 class="mt-4 text-xl font-semibold text-white">{title}</h3>
-              <p class="mt-3 text-sm leading-6 text-[#efe3d5]/74">{text}</p>
+              <p class="mt-3 text-sm leading-6 text-paper-soft/74">{text}</p>
             </article>
           ))
         }
@@ -143,7 +143,7 @@ const heroProofClass =
   </section>
 
   <section
-    class="page-band bg-[#f7f0e7] px-4 py-14 text-[#15110f] sm:px-6 lg:px-8"
+    class="page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8"
   >
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
@@ -176,11 +176,11 @@ const heroProofClass =
                 data-reveal
                 style={getStaggerStyle(index, 140, 80)}
               >
-                <span class="text-sm font-semibold text-[#8f241d]">
+                <span class="text-sm font-semibold text-lacquer">
                   {formatSequenceNumber(index)}
                 </span>
                 <h3 class="mt-3 text-lg font-semibold">{title}</h3>
-                <p class="mt-2 text-sm leading-6 text-[#5f5145]">{text}</p>
+                <p class="mt-2 text-sm leading-6 text-brown-muted">{text}</p>
               </article>
             ))
           }
@@ -189,7 +189,7 @@ const heroProofClass =
           {
             t.home.premium.map((item, index) => (
               <p
-                class="rounded-full border border-[#d8c8b5] bg-white/72 px-4 py-2 text-sm font-medium text-[#3c3028]"
+                class="rounded-full border border-warm-line bg-white/72 px-4 py-2 text-sm font-medium text-brown-text"
                 data-reveal
                 style={getStaggerStyle(index, 340, 70)}
               >
@@ -202,7 +202,7 @@ const heroProofClass =
     </div>
   </section>
 
-  <section class="page-band bg-[#211612] px-4 py-14 sm:px-6 lg:px-8">
+  <section class="page-band bg-ink-band px-4 py-14 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
       <div data-reveal>
         <SectionHeader
@@ -224,11 +224,11 @@ const heroProofClass =
               data-reveal
               style={getStaggerStyle(index, 0, 90)}
             >
-              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#c7a062]">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
                 {formatSequenceNumber(index)}
               </p>
               <h3 class="mt-3 text-2xl font-semibold text-white">{title}</h3>
-              <p class="mt-3 text-sm leading-6 text-[#efe3d5]/74">{text}</p>
+              <p class="mt-3 text-sm leading-6 text-paper-soft/74">{text}</p>
             </article>
           ))
         }
@@ -237,7 +237,7 @@ const heroProofClass =
   </section>
 
   <section
-    class="page-band bg-[#efe3d5] px-4 py-14 text-[#15110f] sm:px-6 lg:px-8"
+    class="page-band bg-paper-soft px-4 py-14 text-ink sm:px-6 lg:px-8"
   >
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-center"
@@ -268,12 +268,12 @@ const heroProofClass =
               <p
                 class:list={[
                   lightCardSoftClass,
-                  "px-4 py-4 text-base leading-7 text-[#3c3028]",
+                  "px-4 py-4 text-base leading-7 text-brown-text",
                 ]}
                 data-reveal
                 style={getStaggerStyle(index, 140, 80)}
               >
-                <span class="mr-3 font-semibold text-[#8f241d]">
+                <span class="mr-3 font-semibold text-lacquer">
                   {formatSequenceNumber(index)}
                 </span>
                 {item}
@@ -293,7 +293,7 @@ const heroProofClass =
     </div>
   </section>
 
-  <section class="page-band bg-[#15110f] px-4 py-14 sm:px-6 lg:px-8">
+  <section class="page-band bg-ink px-4 py-14 sm:px-6 lg:px-8">
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
     >
@@ -350,7 +350,7 @@ const heroProofClass =
               <p
                 class:list={[
                   darkCardClass,
-                  "px-4 py-4 text-base leading-7 text-[#efe3d5]/82",
+                  "px-4 py-4 text-base leading-7 text-paper-soft/82",
                 ]}
                 data-reveal
                 style={getStaggerStyle(index, 160, 80)}
@@ -377,7 +377,7 @@ const heroProofClass =
     </div>
   </section>
 
-  <section class="page-band bg-[#211612] px-4 py-14 sm:px-6 lg:px-8">
+  <section class="page-band bg-ink-band px-4 py-14 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
       <div data-reveal>
         <SectionHeader
@@ -393,15 +393,15 @@ const heroProofClass =
         {
           locations.map((location, index) => (
             <article
-              class="homepage-card rounded-lg border border-white/12 bg-[#f7f0e7] p-5 text-[#15110f]"
+              class="homepage-card rounded-lg border border-white/12 bg-paper p-5 text-ink"
               data-reveal
               style={getStaggerStyle(index, 0, 100)}
             >
-              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-[#8f241d]">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-lacquer">
                 {location.city}
               </p>
               <h3 class="mt-3 text-2xl font-semibold">{location.address}</h3>
-              <p class="mt-3 text-sm font-medium text-[#5f5145]">
+              <p class="mt-3 text-sm font-medium text-brown-muted">
                 {location.hours}
               </p>
               <LocationActions
@@ -416,10 +416,10 @@ const heroProofClass =
     </div>
   </section>
 
-  <section class="page-band bg-[#120f0d] px-4 py-14 sm:px-6 lg:px-8">
+  <section class="page-band bg-ink-footer px-4 py-14 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
       <div
-        class="overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-[#8f241d] via-[#6c1d18] to-[#31130f] p-6 sm:p-8 lg:p-10"
+        class="overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10"
         data-reveal
       >
         <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
@@ -428,9 +428,9 @@ const heroProofClass =
             title={homeSections.reservation.title}
             intro={homeSections.reservation.intro}
             headingTag="h2"
-            eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-[#f2d09a]"
+            eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-gold-soft"
             titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-            introClass="mt-4 text-base leading-7 text-[#f7e9da]/82"
+            introClass="mt-4 text-base leading-7 text-cream-soft/82"
           >
             <div class="mt-6 flex flex-col gap-3 sm:flex-row">
               <CtaLink href={reservationPath} variant="goldHero">
@@ -450,11 +450,11 @@ const heroProofClass =
             {
               homeSections.reservation.items.map((item, index) => (
                 <p
-                  class="rounded-lg border border-white/12 bg-black/16 px-4 py-4 text-base leading-7 text-[#f7e9da]"
+                  class="rounded-lg border border-white/12 bg-black/16 px-4 py-4 text-base leading-7 text-cream-soft"
                   data-reveal
                   style={getStaggerStyle(index, 120, 90)}
                 >
-                  <span class="mr-3 font-semibold text-[#f2d09a]">
+                  <span class="mr-3 font-semibold text-gold-soft">
                     {formatSequenceNumber(index)}
                   </span>
                   {item}
@@ -467,31 +467,7 @@ const heroProofClass =
     </div>
   </section>
 
-  <script is:inline>
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
-
-    if (mediaQuery.matches) {
-      revealItems.forEach((item) => item.classList.add("is-visible"));
-    } else {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          });
-        },
-        {
-          threshold: 0.18,
-          rootMargin: "0px 0px -8% 0px",
-        },
-      );
-
-      revealItems.forEach((item) => observer.observe(item));
-    }
+  <script>
+    import "../../scripts/homeReveal";
   </script>
 </SiteLayout>

@@ -19,10 +19,10 @@ const successUrl = getPath(locale, "success");
 const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 const labelClass = "grid gap-2 text-sm font-semibold";
 const inputClass =
-  "focus-ring min-h-12 rounded-md border border-[#d8c8b5] bg-white px-3 text-base text-[#15110f]";
+  "focus-ring min-h-12 rounded-md border border-warm-line bg-white px-3 text-base text-ink";
 const textareaClass =
-  "focus-ring min-h-28 rounded-md border border-[#d8c8b5] bg-white px-3 py-3 text-base text-[#15110f]";
-const finePrintClass = "text-xs leading-5 text-[#5f5145]";
+  "focus-ring min-h-28 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink";
+const finePrintClass = "text-xs leading-5 text-brown-muted";
 const privacyPath = getPath(locale, "privacy");
 const locationOptions = locations.map((location) => ({
   ...location,
@@ -32,7 +32,7 @@ const locationOptions = locations.map((location) => ({
 
 <form
   id="reservation-form"
-  class="grid gap-4 rounded-lg border border-white/12 bg-[#f7f0e7] p-4 text-[#15110f] shadow-2xl shadow-black/20 sm:p-6"
+  class="grid gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6"
   data-success-url={successUrl}
   data-sending={t.reservation.sending}
   data-submit={t.reservation.submit}
@@ -136,7 +136,7 @@ const locationOptions = locations.map((location) => ({
   <p class={finePrintClass}>
     {t.reservation.consent}
     <a
-      class="font-semibold text-[#8f241d] underline decoration-[#c7a062] underline-offset-4"
+      class="font-semibold text-lacquer underline decoration-gold underline-offset-4"
       href={privacyPath}
     >
       {t.reservation.privacyLink}
@@ -146,13 +146,13 @@ const locationOptions = locations.map((location) => ({
   <div class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
     <p
       id="reservation-status"
-      class="min-h-5 text-sm font-semibold text-[#8f241d]"
+      class="min-h-5 text-sm font-semibold text-lacquer"
       aria-live="polite"
     >
     </p>
     <button
       id="reservation-submit"
-      class="focus-ring min-h-12 rounded-md bg-[#8f241d] px-5 py-3 text-base font-semibold text-white transition hover:bg-[#701b16]"
+      class="focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover"
       type="submit"
     >
       {t.reservation.submit}
@@ -165,103 +165,5 @@ const locationOptions = locations.map((location) => ({
 </form>
 
 <script>
-  type Web3FormsResponse = {
-    success?: boolean;
-    message?: string;
-  };
-
-  const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-
-  const form = document.getElementById(
-    "reservation-form",
-  ) as HTMLFormElement | null;
-  const status = document.getElementById("reservation-status");
-  const submit = document.getElementById(
-    "reservation-submit",
-  ) as HTMLButtonElement | null;
-  const dateInput = document.getElementById(
-    "reservation-date",
-  ) as HTMLInputElement | null;
-
-  function getTodayDateValue() {
-    return new Date().toISOString().slice(0, 10);
-  }
-
-  function getPayload(form: HTMLFormElement) {
-    return Object.fromEntries(new FormData(form).entries()) as Record<
-      string,
-      FormDataEntryValue
-    >;
-  }
-
-  function showStatus(message: string) {
-    if (status) {
-      status.textContent = message;
-    }
-  }
-
-  function setSubmitState(isSending: boolean) {
-    if (!submit || !form) {
-      return;
-    }
-
-    submit.disabled = isSending;
-    submit.textContent = isSending
-      ? (form.dataset.sending ?? submit.textContent)
-      : (form.dataset.submit ?? submit.textContent);
-  }
-
-  async function submitReservation(
-    payload: Record<string, FormDataEntryValue>,
-  ) {
-    const response = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-    const result = (await response.json()) as Web3FormsResponse;
-
-    return { response, result };
-  }
-
-  if (dateInput) {
-    dateInput.min = getTodayDateValue();
-  }
-
-  form?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    if (!form.reportValidity() || !submit || !status) {
-      return;
-    }
-
-    const payload = getPayload(form);
-    const labels = form.dataset;
-
-    if (!payload.access_key) {
-      showStatus(labels.missingKey ?? "");
-      return;
-    }
-
-    setSubmitState(true);
-    showStatus("");
-
-    try {
-      const { response, result } = await submitReservation(payload);
-
-      if (response.ok && result.success) {
-        window.location.href = labels.successUrl ?? "/reservation-success/";
-        return;
-      }
-
-      showStatus(result.message || labels.error || "");
-    } catch {
-      showStatus(labels.error ?? "");
-    } finally {
-      setSubmitState(false);
-    }
-  });
+  import "../scripts/reservationForm";
 </script>
