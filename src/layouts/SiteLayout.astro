@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import logoUrl from "../assets/images/brand/sina-hotpot-logo-horizontal.svg?url";
 import {
   brand,
   getPath,
@@ -45,9 +46,9 @@ const layoutClasses = {
   header: "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
   headerInner:
     "mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8",
-  brandLink: "focus-ring min-w-0 rounded-md",
-  brandEyebrow: "block text-[0.68rem] uppercase tracking-[0.24em] text-gold",
-  brandName: "mt-0.5 block truncate text-lg font-semibold text-paper",
+  brandLink:
+    "focus-ring flex min-w-0 shrink items-center rounded-md bg-paper px-2 py-1",
+  brandLogo: "h-9 w-auto max-w-[10rem] object-contain sm:h-10 sm:max-w-[13rem]",
   desktopNav: "hidden items-center gap-1 md:flex",
   navLink:
     "site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition",
@@ -72,8 +73,8 @@ const layoutClasses = {
   footer: "page-band bg-ink-footer",
   footerInner:
     "mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8",
-  footerEyebrow: "text-[0.72rem] uppercase tracking-[0.24em] text-gold",
-  footerBrand: "mt-2 text-2xl font-semibold text-white",
+  footerLogoFrame: "inline-flex rounded-md bg-paper px-3 py-2",
+  footerLogo: "h-12 w-auto max-w-[14rem] object-contain sm:max-w-[18rem]",
   footerDescription: "mt-4 max-w-xl text-sm leading-6 text-paper-soft/72",
   footerLinksGrid: "grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2",
   footerHeading: "font-semibold text-white",
@@ -115,8 +116,13 @@ const layoutClasses = {
           class={layoutClasses.brandLink}
           aria-label={brand.publicName}
         >
-          <span class={layoutClasses.brandEyebrow}>{brand.publicName}</span>
-          <span class={layoutClasses.brandName}>{brand.chineseName}</span>
+          <img
+            src={logoUrl}
+            alt=""
+            class={layoutClasses.brandLogo}
+            width="1378"
+            height="372"
+          />
         </a>
 
         <nav class={layoutClasses.desktopNav} aria-label="Primary">
@@ -201,12 +207,15 @@ const layoutClasses = {
     <footer class={layoutClasses.footer}>
       <div class={layoutClasses.footerInner}>
         <div>
-          <p class={layoutClasses.footerEyebrow}>
-            {brand.publicName}
-          </p>
-          <p class={layoutClasses.footerBrand}>
-            {brand.chineseName}
-          </p>
+          <div class={layoutClasses.footerLogoFrame}>
+            <img
+              src={logoUrl}
+              alt={brand.publicName}
+              class={layoutClasses.footerLogo}
+              width="1378"
+              height="372"
+            />
+          </div>
           <p class={layoutClasses.footerDescription}>
             {t.meta.description}
           </p>
