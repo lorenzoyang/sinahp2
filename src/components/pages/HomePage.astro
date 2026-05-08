@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LocationActions from "../LocationActions.astro";
 import CtaLink from "../ui/CtaLink.astro";
@@ -66,7 +67,7 @@ const pillClasses = {
 <SiteLayout locale={locale} page="home">
   <section class="homepage-hero relative overflow-hidden">
     <div class="absolute inset-0">
-      <img
+      <Image
         src={images.hero}
         alt=""
         class="hero-image-drift h-full w-full object-cover"
@@ -162,7 +163,7 @@ const pillClasses = {
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
     >
       <div class={mediaClasses.frame} data-reveal>
-        <img
+        <Image
           src={images.mealSpread}
           alt=""
           class={mediaClasses.portraitPhoto}
@@ -256,7 +257,7 @@ const pillClasses = {
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-center"
     >
       <div class={mediaClasses.frame} data-reveal>
-        <img
+        <Image
           src={images.steamingSetup}
           alt=""
           class={mediaClasses.portraitPhoto}
@@ -315,7 +316,7 @@ const pillClasses = {
         data-reveal
       >
         <div class={mediaClasses.frame}>
-          <img
+          <Image
             src={images.table}
             alt=""
             class={mediaClasses.portraitPhoto}
@@ -326,7 +327,7 @@ const pillClasses = {
         </div>
         <div class="grid gap-4">
           <div class={mediaClasses.frame}>
-            <img
+            <Image
               src={images.culture}
               alt=""
               class={mediaClasses.squarePhoto}
@@ -336,7 +337,7 @@ const pillClasses = {
             />
           </div>
           <div class={mediaClasses.frame}>
-            <img
+            <Image
               src={images.ingredients}
               alt=""
               class={mediaClasses.squarePhoto}

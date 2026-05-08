@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
@@ -70,7 +71,7 @@ const mediaClasses = {
         </CtaLink>
       </SectionHeader>
       <div class={mediaClasses.frame}>
-        <img
+        <Image
           src={images.culture}
           alt=""
           class={mediaClasses.heroImage}
@@ -98,7 +99,7 @@ const mediaClasses = {
         {
           topicCards.map((topic) => (
             <article class={cardClasses.topic}>
-              <img
+              <Image
                 src={topic.image}
                 alt=""
                 class="aspect-4/3 w-full object-cover"
@@ -173,7 +174,7 @@ const mediaClasses = {
         </ul>
       </SectionHeader>
       <div class={mediaClasses.frame}>
-        <img
+        <Image
           src={images.table}
           alt=""
           class={mediaClasses.tableImage}

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import ReservationForm from "../ReservationForm.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
@@ -38,7 +39,7 @@ const pageClasses = {
           intro={t.reservation.intro}
         />
         <div class={pageClasses.heroImageFrame}>
-          <img
+          <Image
             src={images.hero}
             alt=""
             class={pageClasses.heroImage}

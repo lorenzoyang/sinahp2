@@ -1,3 +1,13 @@
+import cultureImage from "../assets/images/culture/steaming-hotpot-table-pexels.jpg";
+import tableImage from "../assets/images/culture/hotpot-table-unsplash.jpg";
+import ingredientsImage from "../assets/images/food/hotpot-meat-vegetables-pexels.jpg";
+import platterImage from "../assets/images/food/ingredients-arrangement-pexels.jpg";
+import mealSpreadImage from "../assets/images/food/hotpot-meal-spread-pexels.jpg";
+import steamingSetupImage from "../assets/images/food/steaming-hotpot-setup-pexels.jpg";
+import heroImage from "../assets/images/generated/premium-hotpot-hero.png";
+import exteriorImage from "../assets/images/restaurant/sina-prato-exterior-reference.jpg";
+import interiorImage from "../assets/images/restaurant/sina-prato-interior-reference.jpg";
+
 export const brand = {
   chineseName: "鲜入围煮",
   publicName: "Sina Hotpot",
@@ -9,15 +19,15 @@ export const brand = {
 };
 
 export const images = {
-  hero: "/images/generated/premium-hotpot-hero.png",
-  interior: "/images/restaurant/sina-prato-interior-reference.jpg",
-  exterior: "/images/restaurant/sina-prato-exterior-reference.jpg",
-  ingredients: "/images/food/hotpot-meat-vegetables-pexels.jpg",
-  platter: "/images/food/ingredients-arrangement-pexels.jpg",
-  steamingSetup: "/images/food/steaming-hotpot-setup-pexels.jpg",
-  mealSpread: "/images/food/hotpot-meal-spread-pexels.jpg",
-  culture: "/images/culture/steaming-hotpot-table-pexels.jpg",
-  table: "/images/culture/hotpot-table-unsplash.jpg",
+  hero: heroImage,
+  interior: interiorImage,
+  exterior: exteriorImage,
+  ingredients: ingredientsImage,
+  platter: platterImage,
+  steamingSetup: steamingSetupImage,
+  mealSpread: mealSpreadImage,
+  culture: cultureImage,
+  table: tableImage,
 } as const;
 
 export const locations = [

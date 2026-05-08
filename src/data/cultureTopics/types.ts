@@ -1,3 +1,4 @@
+import type { ImageMetadata } from "astro";
 import type { Locale } from "../routing";
 import type { LocalizedContent, TextSection } from "../types";
 
@@ -13,6 +14,6 @@ export type TopicContent = {
 };
 
 export type CultureTopic = {
-  image: string;
+  image: ImageMetadata;
   content: LocalizedContent<Locale, TopicContent>;
 };
