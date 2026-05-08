@@ -13,9 +13,10 @@ interface Props {
 }
 
 const { location, callLabel, mapLabel, spacingClass = "mt-5" } = Astro.props;
+const actionGroupClass = "flex flex-wrap gap-3";
 ---
 
-<div class:list={[spacingClass, "flex flex-wrap gap-3"]}>
+<div class:list={[spacingClass, actionGroupClass]}>
   <CtaLink href={getPhoneHref(location.phone)} variant="redSmall">
     {callLabel}
   </CtaLink>

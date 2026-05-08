@@ -18,6 +18,31 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const topicCards = getCultureTopicCards(locale);
+const sectionClasses = {
+  hero: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
+  shell: "page-band px-4 py-14 sm:px-6 lg:px-8",
+  shellLight: "page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8",
+};
+const headingClasses = {
+  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
+  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
+  darkIntro: "mt-4 text-base leading-7 text-paper-soft/76",
+  lightTitle: "text-3xl font-semibold leading-tight sm:text-4xl",
+};
+const cardClasses = {
+  dark: "rounded-lg border border-white/12 bg-white/5.5",
+  topic:
+    "flex min-h-100 flex-col overflow-hidden rounded-lg border border-white/12 bg-white/5.5",
+  lightListItem:
+    "rounded-md border border-warm-line bg-white/60 px-4 py-3 leading-7",
+  etiquette:
+    "rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82",
+};
+const mediaClasses = {
+  frame: "overflow-hidden rounded-lg",
+  heroImage: "aspect-5/4 h-full w-full object-cover",
+  tableImage: "aspect-4/3 h-full w-full object-cover",
+};
 ---
 
 <SiteLayout
@@ -26,7 +51,7 @@ const topicCards = getCultureTopicCards(locale);
   title={`${t.culture.title} | Sina Hotpot`}
   description={t.culture.intro}
 >
-  <section class="bg-ink px-4 py-12 sm:px-6 lg:px-8">
+  <section class={sectionClasses.hero}>
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"
     >
@@ -44,11 +69,11 @@ const topicCards = getCultureTopicCards(locale);
           {t.cta.reserve}
         </CtaLink>
       </SectionHeader>
-      <div class="overflow-hidden rounded-lg">
+      <div class={mediaClasses.frame}>
         <img
           src={images.culture}
           alt=""
-          class="aspect-5/4 h-full w-full object-cover"
+          class={mediaClasses.heroImage}
           width="1800"
           height="1200"
           loading="eager"
@@ -57,7 +82,7 @@ const topicCards = getCultureTopicCards(locale);
     </div>
   </section>
 
-  <section class="page-band bg-ink-band px-4 py-14 sm:px-6 lg:px-8">
+  <section class:list={[sectionClasses.shell, "bg-ink-band"]}>
     <div class="mx-auto max-w-7xl">
       <SectionHeader
         eyebrow={t.culture.whyTitle}
@@ -65,14 +90,14 @@ const topicCards = getCultureTopicCards(locale);
         intro={t.culture.intro}
         headingTag="h2"
         containerClass="max-w-3xl"
-        eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-gold"
-        titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-        introClass="mt-4 text-base leading-7 text-paper-soft/76"
+        eyebrowClass={headingClasses.darkEyebrow}
+        titleClass={headingClasses.darkTitle}
+        introClass={headingClasses.darkIntro}
       />
       <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         {
           topicCards.map((topic) => (
-            <article class="flex min-h-100 flex-col overflow-hidden rounded-lg border border-white/12 bg-white/5.5">
+            <article class={cardClasses.topic}>
               <img
                 src={topic.image}
                 alt=""
@@ -106,11 +131,11 @@ const topicCards = getCultureTopicCards(locale);
     </div>
   </section>
 
-  <section class="page-band bg-ink px-4 py-14 sm:px-6 lg:px-8">
+  <section class:list={[sectionClasses.shell, "bg-ink"]}>
     <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
       {
         t.culture.blocks.map(([topicId, title, text]) => (
-          <article class="rounded-lg border border-white/12 bg-white/5.5 p-5">
+          <article class:list={[cardClasses.dark, "p-5"]}>
             <h2 class="text-xl font-semibold text-white">{title}</h2>
             <p class="mt-3 text-sm leading-6 text-paper-soft/76">{text}</p>
             <CtaLink
@@ -127,7 +152,7 @@ const topicCards = getCultureTopicCards(locale);
   </section>
 
   <section
-    class="page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8"
+    class={sectionClasses.shellLight}
   >
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center"
@@ -135,23 +160,23 @@ const topicCards = getCultureTopicCards(locale);
       <SectionHeader
         title={t.culture.whyTitle}
         headingTag="h2"
-        titleClass="text-3xl font-semibold leading-tight sm:text-4xl"
+        titleClass={headingClasses.lightTitle}
       >
         <ul class="mt-6 grid gap-3">
           {
             t.culture.whyItems.map((item) => (
-              <li class="rounded-md border border-warm-line bg-white/60 px-4 py-3 leading-7">
+              <li class={cardClasses.lightListItem}>
                 {item}
               </li>
             ))
           }
         </ul>
       </SectionHeader>
-      <div class="overflow-hidden rounded-lg">
+      <div class={mediaClasses.frame}>
         <img
           src={images.table}
           alt=""
-          class="aspect-4/3 h-full w-full object-cover"
+          class={mediaClasses.tableImage}
           width="1800"
           height="1200"
           loading="lazy"
@@ -160,7 +185,7 @@ const topicCards = getCultureTopicCards(locale);
     </div>
   </section>
 
-  <section class="page-band bg-ink px-4 py-14 sm:px-6 lg:px-8">
+  <section class:list={[sectionClasses.shell, "bg-ink"]}>
     <div class="mx-auto max-w-4xl">
       <h2 class="text-3xl font-semibold text-white">
         {t.culture.etiquetteTitle}
@@ -168,7 +193,7 @@ const topicCards = getCultureTopicCards(locale);
       <div class="mt-6 grid gap-3">
         {
           t.culture.etiquette.map((item, index) => (
-            <p class="rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82">
+            <p class={cardClasses.etiquette}>
               <span class="mr-3 font-semibold text-gold">{index + 1}</span>
               {item}
             </p>

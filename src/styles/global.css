@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Tailwind design tokens */
 @theme {
   --color-ink: #15110f;
   --color-ink-footer: #120f0d;
@@ -22,17 +23,19 @@
   --color-jade: #3f6d5b;
 }
 
+/* Site-level aliases used by handwritten CSS */
 :root {
   color-scheme: dark;
-  --ink: #15110f;
-  --paper: #f7f0e7;
-  --paper-soft: #efe3d5;
-  --lacquer: #8f241d;
+  --ink: var(--color-ink);
+  --paper: var(--color-paper);
+  --paper-soft: var(--color-paper-soft);
+  --lacquer: var(--color-lacquer);
   --lacquer-dark: #4f1411;
-  --gold: #c7a062;
-  --jade: #3f6d5b;
+  --gold: var(--color-gold);
+  --jade: var(--color-jade);
 }
 
+/* Base */
 * {
   box-sizing: border-box;
 }
@@ -86,6 +89,7 @@ textarea {
   background: rgba(199, 160, 98, 0.35);
 }
 
+/* Shared layout and interaction utilities */
 .page-band {
   border-top: 1px solid rgba(247, 240, 231, 0.09);
 }
@@ -99,6 +103,7 @@ textarea {
   outline-color: var(--gold);
 }
 
+/* Header navigation */
 .site-nav-link {
   background: transparent;
   color: rgba(239, 227, 213, 0.84);
@@ -114,6 +119,7 @@ textarea {
   color: var(--ink);
 }
 
+/* Locale selector */
 .site-locale-trigger {
   border-color: rgba(247, 240, 231, 0.16);
   background: #1d1714;
@@ -168,6 +174,7 @@ textarea {
   color: var(--ink);
 }
 
+/* Homepage motion and hover states */
 .homepage-card {
   transition:
     transform 0.35s ease,

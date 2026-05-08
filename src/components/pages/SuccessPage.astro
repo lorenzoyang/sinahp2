@@ -11,6 +11,17 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const sectionClasses = {
+  hero: "bg-ink px-4 py-16 sm:px-6 lg:px-8",
+  locations: "page-band bg-paper px-4 py-12 text-ink sm:px-6 lg:px-8",
+};
+const textClasses = {
+  intro: "mt-5 text-lg leading-8 text-paper-soft/84",
+  next: "mt-4 text-base leading-7 text-paper-soft/72",
+};
+const cardClasses = {
+  location: "rounded-lg border border-warm-line bg-white/62 p-5",
+};
 ---
 
 <SiteLayout
@@ -19,15 +30,15 @@ const t = copy[locale];
   title={`${t.success.title} | Sina Hotpot`}
   description={t.success.intro}
 >
-  <section class="bg-ink px-4 py-16 sm:px-6 lg:px-8">
+  <section class={sectionClasses.hero}>
     <SectionHeader
       eyebrow={brand.publicName}
       title={t.success.title}
       intro={t.success.intro}
       containerClass="mx-auto max-w-3xl"
-      introClass="mt-5 text-lg leading-8 text-paper-soft/84"
+      introClass={textClasses.intro}
     >
-      <p class="mt-4 text-base leading-7 text-paper-soft/72">{t.success.next}</p>
+      <p class={textClasses.next}>{t.success.next}</p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <CtaLink href={getPath(locale, "locations")} variant="gold">
           {t.nav.locations}
@@ -40,12 +51,12 @@ const t = copy[locale];
   </section>
 
   <section
-    class="page-band bg-paper px-4 py-12 text-ink sm:px-6 lg:px-8"
+    class={sectionClasses.locations}
   >
     <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-2">
       {
         locations.map((location) => (
-          <article class="rounded-lg border border-warm-line bg-white/62 p-5">
+          <article class={cardClasses.location}>
             <h2 class="text-2xl font-semibold">{location.city}</h2>
             <p class="mt-2 text-sm leading-6">{location.address}</p>
             <p class="mt-1 text-sm leading-6">{location.hours}</p>

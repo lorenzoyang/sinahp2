@@ -28,6 +28,26 @@ const topic = getCultureTopic(topicId);
 const content = getCultureTopicContent(locale, topicId);
 const relatedTopics = getRelatedCultureTopics(locale, topicId);
 const alternatePaths = getCultureTopicAlternatePaths(topicId);
+const sectionClasses = {
+  topicHero: "relative overflow-hidden bg-ink",
+  shell: "page-band px-4 py-14 sm:px-6 lg:px-8",
+  shellLight: "page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8",
+};
+const headingClasses = {
+  heroEyebrow: "mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-gold",
+  heroIntro: "mt-5 max-w-3xl text-lg leading-8 text-paper-soft/86",
+  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
+  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white",
+};
+const cardClasses = {
+  highlight:
+    "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-semibold text-paper-soft backdrop-blur",
+  content: "rounded-lg border border-warm-line bg-white/72 p-5 sm:p-6",
+  tip:
+    "rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82",
+  related:
+    "focus-ring rounded-lg border border-white/12 bg-white/5.5 p-5 transition hover:border-gold hover:bg-white/8",
+};
 ---
 
 <SiteLayout
@@ -37,7 +57,7 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
   description={content.summary}
   alternatePaths={alternatePaths}
 >
-  <section class="relative overflow-hidden bg-ink">
+  <section class={sectionClasses.topicHero}>
     <div class="absolute inset-0">
       <img
         src={topic.image}
@@ -67,13 +87,13 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
         eyebrow={content.kicker}
         title={content.title}
         intro={content.detailIntro}
-        eyebrowClass="mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-gold"
-        introClass="mt-5 max-w-3xl text-lg leading-8 text-paper-soft/86"
+        eyebrowClass={headingClasses.heroEyebrow}
+        introClass={headingClasses.heroIntro}
       />
       <div class="mt-8 grid gap-3 sm:grid-cols-3">
         {
           content.highlights.map((item) => (
-            <p class="rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-semibold text-paper-soft backdrop-blur">
+            <p class={cardClasses.highlight}>
               {item}
             </p>
           ))
@@ -83,12 +103,12 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
   </section>
 
   <section
-    class="page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8"
+    class={sectionClasses.shellLight}
   >
     <div class="mx-auto grid max-w-5xl gap-5">
       {
         content.sections.map((section, index) => (
-          <article class="rounded-lg border border-warm-line bg-white/72 p-5 sm:p-6">
+          <article class={cardClasses.content}>
             <p class="text-sm font-semibold text-lacquer">
               {formatSequenceNumber(index)}
             </p>
@@ -104,19 +124,19 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
     </div>
   </section>
 
-  <section class="page-band bg-ink-band px-4 py-14 sm:px-6 lg:px-8">
+  <section class:list={[sectionClasses.shell, "bg-ink-band"]}>
     <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
       <SectionHeader
         eyebrow="Sina Hotpot"
         title={content.tipsTitle}
         headingTag="h2"
-        eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-gold"
-        titleClass="mt-3 text-3xl font-semibold leading-tight text-white"
+        eyebrowClass={headingClasses.darkEyebrow}
+        titleClass={headingClasses.darkTitle}
       />
       <div class="grid gap-3">
         {
           content.tips.map((tip) => (
-            <p class="rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82">
+            <p class={cardClasses.tip}>
               {tip}
             </p>
           ))
@@ -125,7 +145,7 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
     </div>
   </section>
 
-  <section class="page-band bg-ink px-4 py-14 sm:px-6 lg:px-8">
+  <section class:list={[sectionClasses.shell, "bg-ink"]}>
     <div class="mx-auto max-w-5xl">
       <div class="flex flex-col gap-3 sm:flex-row">
         <CtaLink href={getPath(locale, "reservation")} variant="gold">
@@ -140,7 +160,7 @@ const alternatePaths = getCultureTopicAlternatePaths(topicId);
         {
           relatedTopics.map((related) => (
             <a
-              class="focus-ring rounded-lg border border-white/12 bg-white/5.5 p-5 transition hover:border-gold hover:bg-white/8"
+              class={cardClasses.related}
               href={getCultureTopicPath(locale, related.id)}
             >
               <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">

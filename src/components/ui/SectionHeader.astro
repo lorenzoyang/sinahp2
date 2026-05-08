@@ -10,14 +10,20 @@ interface Props {
   headingTag?: "h1" | "h2";
 }
 
+const defaultClasses = {
+  eyebrow: "text-xs font-semibold uppercase tracking-[0.28em] text-gold",
+  title: "mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl",
+  intro: "mt-5 text-lg leading-8 text-paper-soft/82",
+};
+
 const {
   eyebrow,
   title,
   intro,
   containerClass,
-  eyebrowClass = "text-xs font-semibold uppercase tracking-[0.28em] text-gold",
-  titleClass = "mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl",
-  introClass = "mt-5 text-lg leading-8 text-paper-soft/82",
+  eyebrowClass = defaultClasses.eyebrow,
+  titleClass = defaultClasses.title,
+  introClass = defaultClasses.intro,
   headingTag = "h1",
 } = Astro.props;
 

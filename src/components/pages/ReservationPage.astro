@@ -11,6 +11,14 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const pageClasses = {
+  section: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
+  heroImageFrame: "mt-7 overflow-hidden rounded-lg",
+  heroImage: "aspect-4/3 w-full object-cover",
+  contactGrid: "mt-6 grid gap-3 text-sm text-paper-soft/78",
+  contactLink:
+    "focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10",
+};
 ---
 
 <SiteLayout
@@ -19,7 +27,7 @@ const t = copy[locale];
   title={`${t.reservation.title} | Sina Hotpot`}
   description={t.reservation.intro}
 >
-  <section class="bg-ink px-4 py-12 sm:px-6 lg:px-8">
+  <section class={pageClasses.section}>
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
     >
@@ -29,25 +37,25 @@ const t = copy[locale];
           title={t.reservation.title}
           intro={t.reservation.intro}
         />
-        <div class="mt-7 overflow-hidden rounded-lg">
+        <div class={pageClasses.heroImageFrame}>
           <img
             src={images.hero}
             alt=""
-            class="aspect-4/3 w-full object-cover"
+            class={pageClasses.heroImage}
             width="900"
             height="675"
             loading="lazy"
           />
         </div>
-        <div class="mt-6 grid gap-3 text-sm text-paper-soft/78">
+        <div class={pageClasses.contactGrid}>
           <a
-            class="focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10"
+            class={pageClasses.contactLink}
             href={brand.whatsappHref}
           >
             {t.cta.whatsapp}: {brand.whatsapp}
           </a>
           <a
-            class="focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10"
+            class={pageClasses.contactLink}
             href={`mailto:${brand.email}`}
           >
             {brand.email}

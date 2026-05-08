@@ -39,6 +39,47 @@ const localeOptions = locales.map((targetLocale) => ({
 }));
 const currentLocaleOption =
   localeOptions.find((option) => option.locale === locale) ?? localeOptions[0];
+const layoutClasses = {
+  skipLink:
+    "focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink",
+  header: "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
+  headerInner:
+    "mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8",
+  brandLink: "focus-ring min-w-0 rounded-md",
+  brandEyebrow: "block text-[0.68rem] uppercase tracking-[0.24em] text-gold",
+  brandName: "mt-0.5 block truncate text-lg font-semibold text-paper",
+  desktopNav: "hidden items-center gap-1 md:flex",
+  navLink:
+    "site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition",
+  headerActions: "flex shrink-0 items-center gap-2",
+  localeMenu: "site-locale-menu group relative",
+  localeTrigger:
+    "site-locale-trigger focus-ring flex h-10 min-w-19 list-none items-center justify-center gap-1.5 rounded-full border px-3 text-sm font-semibold transition marker:hidden",
+  localeFlag: "text-base leading-none",
+  localePanel:
+    "absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-ink-panel p-2 shadow-2xl",
+  localeNav: "grid gap-1",
+  localeOption:
+    "site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition",
+  localeLabel: "flex-1",
+  localeCode: "site-locale-code text-xs uppercase",
+  mobileMenu: "group relative md:hidden",
+  mobileMenuTrigger:
+    "focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-paper marker:hidden",
+  mobilePanel:
+    "absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-ink-panel p-3 shadow-2xl",
+  mobileNavLink: "site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium",
+  footer: "page-band bg-ink-footer",
+  footerInner:
+    "mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8",
+  footerEyebrow: "text-[0.72rem] uppercase tracking-[0.24em] text-gold",
+  footerBrand: "mt-2 text-2xl font-semibold text-white",
+  footerDescription: "mt-4 max-w-xl text-sm leading-6 text-paper-soft/72",
+  footerLinksGrid: "grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2",
+  footerHeading: "font-semibold text-white",
+  footerLink: "focus-ring mt-2 block rounded-sm hover:text-white",
+  footerLinkTight: "focus-ring mt-1 block rounded-sm hover:text-white",
+};
 ---
 
 <!doctype html>
@@ -63,41 +104,28 @@ const currentLocaleOption =
     </script>
   </head>
   <body data-page={page}>
-    <a
-      href="#main"
-      class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink"
-    >
+    <a href="#main" class={layoutClasses.skipLink}>
       {layoutLabels.skipToContent}
     </a>
 
-    <header
-      class="sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl"
-    >
-      <div
-        class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
-      >
+    <header class={layoutClasses.header}>
+      <div class={layoutClasses.headerInner}>
         <a
           href={getPath(locale)}
-          class="focus-ring min-w-0 rounded-md"
+          class={layoutClasses.brandLink}
           aria-label={brand.publicName}
         >
-          <span
-            class="block text-[0.68rem] uppercase tracking-[0.24em] text-gold"
-            >{brand.publicName}</span
-          >
-          <span
-            class="mt-0.5 block truncate text-lg font-semibold text-paper"
-            >{brand.chineseName}</span
-          >
+          <span class={layoutClasses.brandEyebrow}>{brand.publicName}</span>
+          <span class={layoutClasses.brandName}>{brand.chineseName}</span>
         </a>
 
-        <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+        <nav class={layoutClasses.desktopNav} aria-label="Primary">
           {
             navItems.map((item) => (
               <a
                 href={getPath(locale, item.page)}
                 aria-current={page === item.page ? "page" : undefined}
-                class="site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition"
+                class={layoutClasses.navLink}
               >
                 {item.label}
               </a>
@@ -105,35 +133,33 @@ const currentLocaleOption =
           }
         </nav>
 
-        <div class="flex shrink-0 items-center gap-2">
-          <details class="site-locale-menu group relative" data-header-details>
+        <div class={layoutClasses.headerActions}>
+          <details class={layoutClasses.localeMenu} data-header-details>
             <summary
-              class="site-locale-trigger focus-ring flex h-10 min-w-19 list-none items-center justify-center gap-1.5 rounded-full border px-3 text-sm font-semibold transition marker:hidden"
+              class={layoutClasses.localeTrigger}
               aria-label="Language"
               title={currentLocaleOption.label}
             >
-              <span class="text-base leading-none" aria-hidden="true">
+              <span class={layoutClasses.localeFlag} aria-hidden="true">
                 {currentLocaleOption.flag}
               </span>
               <span>{currentLocaleOption.code}</span>
             </summary>
-            <div
-              class="absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-ink-panel p-2 shadow-2xl"
-            >
-              <nav class="grid gap-1" aria-label="Language">
+            <div class={layoutClasses.localePanel}>
+              <nav class={layoutClasses.localeNav} aria-label="Language">
                 {
                   localeOptions.map((option) => (
                     <a
                       href={option.path}
                       aria-current={option.locale === locale ? "true" : undefined}
                       aria-label={option.label}
-                      class="site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition"
+                      class={layoutClasses.localeOption}
                     >
-                      <span class="text-base leading-none" aria-hidden="true">
+                      <span class={layoutClasses.localeFlag} aria-hidden="true">
                         {option.flag}
                       </span>
-                      <span class="flex-1">{option.label}</span>
-                      <span class="site-locale-code text-xs uppercase">
+                      <span class={layoutClasses.localeLabel}>{option.label}</span>
+                      <span class={layoutClasses.localeCode}>
                         {option.code}
                       </span>
                     </a>
@@ -143,23 +169,19 @@ const currentLocaleOption =
             </div>
           </details>
 
-          <details class="group relative md:hidden" data-header-details>
-            <summary
-              class="focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-paper marker:hidden"
-            >
+          <details class={layoutClasses.mobileMenu} data-header-details>
+            <summary class={layoutClasses.mobileMenuTrigger}>
               {t.nav.menu}
             </summary>
-            <div
-              class="absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-ink-panel p-3 shadow-2xl"
-            >
-              <nav class="grid gap-1" aria-label="Mobile primary">
+            <div class={layoutClasses.mobilePanel}>
+              <nav class={layoutClasses.localeNav} aria-label="Mobile primary">
                 {
                   navItems.map((item) => (
                     <a
                       href={getPath(locale, item.page)}
                       aria-current={page === item.page ? "page" : undefined}
                       aria-label={item.label}
-                      class="site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium"
+                      class={layoutClasses.mobileNavLink}
                     >
                       {item.label}
                     </a>
@@ -176,49 +198,47 @@ const currentLocaleOption =
       <slot />
     </main>
 
-    <footer class="page-band bg-ink-footer">
-      <div
-        class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8"
-      >
+    <footer class={layoutClasses.footer}>
+      <div class={layoutClasses.footerInner}>
         <div>
-          <p class="text-[0.72rem] uppercase tracking-[0.24em] text-gold">
+          <p class={layoutClasses.footerEyebrow}>
             {brand.publicName}
           </p>
-          <p class="mt-2 text-2xl font-semibold text-white">
+          <p class={layoutClasses.footerBrand}>
             {brand.chineseName}
           </p>
-          <p class="mt-4 max-w-xl text-sm leading-6 text-paper-soft/72">
+          <p class={layoutClasses.footerDescription}>
             {t.meta.description}
           </p>
         </div>
-        <div class="grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2">
+        <div class={layoutClasses.footerLinksGrid}>
           <div>
-            <p class="font-semibold text-white">{layoutLabels.contact}</p>
+            <p class={layoutClasses.footerHeading}>{layoutLabels.contact}</p>
             <a
-              class="focus-ring mt-2 block rounded-sm hover:text-white"
+              class={layoutClasses.footerLink}
               href={`mailto:${brand.email}`}>{brand.email}</a
             >
             <a
-              class="focus-ring mt-1 block rounded-sm hover:text-white"
+              class={layoutClasses.footerLinkTight}
               href={brand.whatsappHref}>{brand.whatsapp}</a
             >
           </div>
           <div>
-            <p class="font-semibold text-white">{layoutLabels.social}</p>
+            <p class={layoutClasses.footerHeading}>{layoutLabels.social}</p>
             <a
-              class="focus-ring mt-2 block rounded-sm hover:text-white"
+              class={layoutClasses.footerLink}
               href={brand.instagram}
               target="_blank"
               rel="noreferrer">Instagram</a
             >
             <a
-              class="focus-ring mt-1 block rounded-sm hover:text-white"
+              class={layoutClasses.footerLinkTight}
               href={brand.facebook}
               target="_blank"
               rel="noreferrer">Facebook</a
             >
             <a
-              class="focus-ring mt-1 block rounded-sm hover:text-white"
+              class={layoutClasses.footerLinkTight}
               href={getPath(locale, "privacy")}>{t.nav.privacy}</a
             >
           </div>

@@ -17,22 +17,33 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const successUrl = getPath(locale, "success");
 const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
-const labelClass = "grid gap-2 text-sm font-semibold";
-const inputClass =
-  "focus-ring min-h-12 rounded-md border border-warm-line bg-white px-3 text-base text-ink";
-const textareaClass =
-  "focus-ring min-h-28 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink";
-const finePrintClass = "text-xs leading-5 text-brown-muted";
 const privacyPath = getPath(locale, "privacy");
 const locationOptions = locations.map((location) => ({
   ...location,
   label: getLocationLabel(location),
 }));
+const formClasses = {
+  root: "grid gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6",
+  rowTwo: "grid gap-4 sm:grid-cols-2",
+  rowThree: "grid gap-4 sm:grid-cols-3",
+  submitRow: "grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center",
+  label: "grid gap-2 text-sm font-semibold",
+  input:
+    "focus-ring min-h-12 rounded-md border border-warm-line bg-white px-3 text-base text-ink",
+  textarea:
+    "focus-ring min-h-28 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink",
+  finePrint: "text-xs leading-5 text-brown-muted",
+  privacyLink:
+    "font-semibold text-lacquer underline decoration-gold underline-offset-4",
+  status: "min-h-5 text-sm font-semibold text-lacquer",
+  submitButton:
+    "focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover",
+};
 ---
 
 <form
   id="reservation-form"
-  class="grid gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6"
+  class={formClasses.root}
   data-success-url={successUrl}
   data-sending={t.reservation.sending}
   data-submit={t.reservation.submit}
@@ -50,11 +61,11 @@ const locationOptions = locations.map((location) => ({
     autocomplete="off"
   />
 
-  <div class="grid gap-4 sm:grid-cols-2">
-    <label class={labelClass}>
+  <div class={formClasses.rowTwo}>
+    <label class={formClasses.label}>
       {t.reservation.labels.name}
       <input
-        class={inputClass}
+        class={formClasses.input}
         name="name"
         autocomplete="name"
         placeholder={t.reservation.placeholders.name}
@@ -62,10 +73,10 @@ const locationOptions = locations.map((location) => ({
       />
     </label>
 
-    <label class={labelClass}>
+    <label class={formClasses.label}>
       {t.reservation.labels.phone}
       <input
-        class={inputClass}
+        class={formClasses.input}
         name="phone"
         type="tel"
         autocomplete="tel"
@@ -76,11 +87,11 @@ const locationOptions = locations.map((location) => ({
     </label>
   </div>
 
-  <div class="grid gap-4 sm:grid-cols-3">
-    <label class={labelClass}>
+  <div class={formClasses.rowThree}>
+    <label class={formClasses.label}>
       {t.reservation.labels.guests}
       <input
-        class={inputClass}
+        class={formClasses.input}
         name="guests"
         type="number"
         min="1"
@@ -90,21 +101,21 @@ const locationOptions = locations.map((location) => ({
       />
     </label>
 
-    <label class={labelClass}>
+    <label class={formClasses.label}>
       {t.reservation.labels.date}
       <input
         id="reservation-date"
-        class={inputClass}
+        class={formClasses.input}
         name="date"
         type="date"
         required
       />
     </label>
 
-    <label class={labelClass}>
+    <label class={formClasses.label}>
       {t.reservation.labels.time}
       <input
-        class={inputClass}
+        class={formClasses.input}
         name="time"
         type="time"
         required
@@ -112,9 +123,9 @@ const locationOptions = locations.map((location) => ({
     </label>
   </div>
 
-  <label class={labelClass}>
+  <label class={formClasses.label}>
     {t.reservation.labels.location}
-    <select class={inputClass} name="location" required>
+    <select class={formClasses.input} name="location" required>
       {
         locationOptions.map((location) => (
           <option value={location.label} selected={location.id === "firenze"}>
@@ -125,41 +136,41 @@ const locationOptions = locations.map((location) => ({
     </select>
   </label>
 
-  <label class={labelClass}>
+  <label class={formClasses.label}>
     {t.reservation.labels.message}
     <textarea
-      class={textareaClass}
+      class={formClasses.textarea}
       name="message"
       placeholder={t.reservation.placeholders.message}></textarea>
   </label>
 
-  <p class={finePrintClass}>
+  <p class={formClasses.finePrint}>
     {t.reservation.consent}
     <a
-      class="font-semibold text-lacquer underline decoration-gold underline-offset-4"
+      class={formClasses.privacyLink}
       href={privacyPath}
     >
       {t.reservation.privacyLink}
     </a>
   </p>
 
-  <div class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+  <div class={formClasses.submitRow}>
     <p
       id="reservation-status"
-      class="min-h-5 text-sm font-semibold text-lacquer"
+      class={formClasses.status}
       aria-live="polite"
     >
     </p>
     <button
       id="reservation-submit"
-      class="focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover"
+      class={formClasses.submitButton}
       type="submit"
     >
       {t.reservation.submit}
     </button>
   </div>
 
-  <p class={finePrintClass}>
+  <p class={formClasses.finePrint}>
     {brand.publicName} - {brand.email} - {brand.whatsapp}
   </p>
 </form>
