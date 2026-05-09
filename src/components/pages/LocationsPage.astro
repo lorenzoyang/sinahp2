@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LocationActions from "../LocationActions.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
-import { locations, type Locale } from "../../data/site";
+import { brand, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 
 interface Props {
@@ -22,9 +22,30 @@ const headingClasses = {
 };
 const cardClasses = {
   location: "overflow-hidden rounded-lg border border-white/12 bg-paper text-ink",
-  image: "aspect-16/10 w-full object-cover",
+  carousel: "relative overflow-hidden bg-ink",
+  track:
+    "location-carousel-track focus-ring flex snap-x snap-mandatory overflow-x-auto scroll-smooth",
+  slide: "aspect-16/10 w-full shrink-0 snap-center overflow-hidden",
+  image: "block h-full w-full object-cover",
+  dots:
+    "absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-ink/72 px-2.5 py-2 shadow-lg shadow-black/20 backdrop-blur",
+  dot: "focus-ring block h-2.5 w-2.5 rounded-full bg-paper/72 ring-1 ring-white/20 transition hover:bg-gold focus-visible:bg-gold",
   label: "text-xs font-semibold uppercase tracking-[0.22em] text-lacquer",
 };
+
+const locationCards = locations.map((location) => ({
+  ...location,
+  slides: location.gallery.map((photo, index) => {
+    const number = index + 1;
+
+    return {
+      id: `location-${location.id}-photo-${number}`,
+      photo,
+      alt: `${brand.publicName} ${location.city} restaurant photo ${number}`,
+      label: `${location.city} photo ${number}`,
+    };
+  }),
+}));
 ---
 
 <SiteLayout
@@ -47,16 +68,56 @@ const cardClasses = {
   <section class={sectionClasses.listing}>
     <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
       {
-        locations.map((location) => (
+        locationCards.map((location) => (
           <article class={cardClasses.location}>
-            <Image
-              src={location.image}
-              alt=""
-              class={cardClasses.image}
-              width="900"
-              height="560"
-              loading="lazy"
-            />
+            <div
+              class={cardClasses.carousel}
+              role="region"
+              aria-label={`${location.city} restaurant photos`}
+              aria-roledescription="carousel"
+            >
+              <div
+                class={cardClasses.track}
+                tabindex="0"
+                aria-label={`${location.city} photo slides`}
+              >
+                {
+                  location.slides.map((slide) => (
+                    <div id={slide.id} class={cardClasses.slide}>
+                      <Image
+                        src={slide.photo}
+                        alt={slide.alt}
+                        class={cardClasses.image}
+                        width={1200}
+                        height={750}
+                        widths={[360, 640, 900, 1200]}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        fit="cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+              {
+                location.slides.length > 1 && (
+                  <nav
+                    class={cardClasses.dots}
+                    aria-label={`${location.city} photo navigation`}
+                  >
+                    {
+                      location.slides.map((slide) => (
+                        <a
+                          href={`#${slide.id}`}
+                          class={cardClasses.dot}
+                          aria-label={slide.label}
+                        />
+                      ))
+                    }
+                  </nav>
+                )
+              }
+            </div>
             <div class="p-5 sm:p-6">
               <p class={cardClasses.label}>
                 {t.locations.daily}
@@ -95,3 +156,13 @@ const cardClasses = {
     </div>
   </section>
 </SiteLayout>
+
+<style>
+  .location-carousel-track {
+    scrollbar-width: none;
+  }
+
+  .location-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+</style>

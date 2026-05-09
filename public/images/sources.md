@@ -15,14 +15,13 @@ Canonical page imagery is stored in `src/assets/images` so Astro can optimize im
 - `public/images/generated/premium-hotpot-hero.png`
   - Public copy used by the Open Graph image metadata URL.
 
-## User-Provided Reference Photos
+## Restaurant Photos
 
-- `src/assets/images/restaurant/sina-prato-interior-reference.jpg`
-  - Copied from `sinahp-image1.jpg`.
-  - Low-resolution reference image with visible third-party watermark; replace before production if usage rights are not confirmed.
-- `src/assets/images/restaurant/sina-prato-exterior-reference.jpg`
-  - Copied from `sinahp-image2.jpg`.
-  - Low-resolution reference image with visible third-party watermark; replace before production if usage rights are not confirmed.
+- `src/assets/images/restaurant/firenze/*`
+  - Provided by the restaurant owner.
+- `src/assets/images/restaurant/prato/*`
+  - Provided by the restaurant owner.
+
 
 ## Web Placeholders
 
