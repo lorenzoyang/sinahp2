@@ -29,7 +29,7 @@ const cardClasses = {
   image: "block h-full w-full object-cover",
   dots:
     "absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-ink/72 px-2.5 py-2 shadow-lg shadow-black/20 backdrop-blur",
-  dot: "focus-ring block h-2.5 w-2.5 rounded-full bg-paper/72 ring-1 ring-white/20 transition hover:bg-gold focus-visible:bg-gold",
+  dot: "focus-ring block h-2.5 w-2.5 cursor-pointer appearance-none rounded-full border-0 bg-paper/72 p-0 ring-1 ring-white/20 transition hover:bg-gold focus-visible:bg-gold",
   label: "text-xs font-semibold uppercase tracking-[0.22em] text-lacquer",
 };
 
@@ -107,10 +107,13 @@ const locationCards = locations.map((location) => ({
                   >
                     {
                       location.slides.map((slide) => (
-                        <a
-                          href={`#${slide.id}`}
+                        <button
+                          type="button"
                           class={cardClasses.dot}
                           aria-label={slide.label}
+                          aria-controls={slide.id}
+                          data-location-carousel-dot
+                          data-slide-id={slide.id}
                         />
                       ))
                     }
@@ -166,3 +169,24 @@ const locationCards = locations.map((location) => ({
     display: none;
   }
 </style>
+
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-location-carousel-dot]")
+    .forEach((dot) => {
+      dot.addEventListener("click", () => {
+        const slideId = dot.dataset.slideId;
+        const slide = slideId ? document.getElementById(slideId) : null;
+        const track = slide?.closest<HTMLElement>(".location-carousel-track");
+
+        if (!slide || !track) {
+          return;
+        }
+
+        track.scrollTo({
+          left: slide.offsetLeft - track.offsetLeft,
+          behavior: "smooth",
+        });
+      });
+    });
+</script>
