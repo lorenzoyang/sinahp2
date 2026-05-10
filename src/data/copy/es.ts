@@ -15,6 +15,7 @@ export const esCopy = {
       home: "Inicio",
       culture: "Que es hotpot",
       locations: "Locales",
+      gallery: "Galeria",
       reservation: "Reservar",
       privacy: "Privacidad",
       menu: "Menu",
@@ -109,6 +110,18 @@ export const esCopy = {
       phone: "Telefono",
       address: "Direccion",
       hours: "Horario",
+    },
+    gallery: {
+      eyebrow: "Galeria",
+      title: "Sina Hotpot de cerca",
+      intro:
+        "Explora mesas, ingredientes frescos, momentos de coccion, salsas y bebidas de los restaurantes.",
+      categories: {
+        table: "Momentos en la mesa",
+        ingredients: "Ingredientes",
+        action: "Coccion",
+        drinks: "Bebidas y salsas",
+      },
     },
     reservation: {
       eyebrow: "Solicitud de reserva",

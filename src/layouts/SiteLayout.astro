@@ -44,13 +44,14 @@ const currentLocaleOption =
 const layoutClasses = {
   skipLink:
     "focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink",
-  header: "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
+  header:
+    "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
   headerInner:
     "mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8",
   brandLink:
     "focus-ring flex min-w-0 shrink items-center rounded-md bg-paper px-2 py-1",
   brandLogo: "h-9 w-auto max-w-[10rem] object-contain sm:h-10 sm:max-w-[13rem]",
-  desktopNav: "hidden items-center gap-1 md:flex",
+  desktopNav: "hidden items-center gap-1 lg:flex",
   navLink:
     "site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition",
   headerActions: "flex shrink-0 items-center gap-2",
@@ -65,12 +66,13 @@ const layoutClasses = {
     "site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition",
   localeLabel: "flex-1",
   localeCode: "site-locale-code text-xs uppercase",
-  mobileMenu: "group relative md:hidden",
+  mobileMenu: "group relative lg:hidden",
   mobileMenuTrigger:
     "focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-paper marker:hidden",
   mobilePanel:
     "absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-ink-panel p-3 shadow-2xl",
-  mobileNavLink: "site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium",
+  mobileNavLink:
+    "site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium",
   footer: "page-band bg-ink-footer",
   footerInner:
     "mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8",
@@ -160,14 +162,18 @@ const layoutClasses = {
                   localeOptions.map((option) => (
                     <a
                       href={option.path}
-                      aria-current={option.locale === locale ? "true" : undefined}
+                      aria-current={
+                        option.locale === locale ? "true" : undefined
+                      }
                       aria-label={option.label}
                       class={layoutClasses.localeOption}
                     >
                       <span class={layoutClasses.localeFlag} aria-hidden="true">
                         {option.flag}
                       </span>
-                      <span class={layoutClasses.localeLabel}>{option.label}</span>
+                      <span class={layoutClasses.localeLabel}>
+                        {option.label}
+                      </span>
                       <span class={layoutClasses.localeCode}>
                         {option.code}
                       </span>
@@ -226,13 +232,11 @@ const layoutClasses = {
         <div class={layoutClasses.footerLinksGrid}>
           <div>
             <p class={layoutClasses.footerHeading}>{layoutLabels.contact}</p>
-            <a
-              class={layoutClasses.footerLink}
-              href={`mailto:${brand.email}`}>{brand.email}</a
+            <a class={layoutClasses.footerLink} href={`mailto:${brand.email}`}
+              >{brand.email}</a
             >
-            <a
-              class={layoutClasses.footerLinkTight}
-              href={brand.whatsappHref}>{brand.whatsapp}</a
+            <a class={layoutClasses.footerLinkTight} href={brand.whatsappHref}
+              >{brand.whatsapp}</a
             >
           </div>
           <div>

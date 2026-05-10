@@ -15,6 +15,7 @@ export const frCopy = {
       home: "Accueil",
       culture: "Le hotpot",
       locations: "Adresses",
+      gallery: "Galerie",
       reservation: "Reserver",
       privacy: "Confidentialite",
       menu: "Menu",
@@ -112,6 +113,18 @@ export const frCopy = {
       phone: "Telephone",
       address: "Adresse",
       hours: "Horaires",
+    },
+    gallery: {
+      eyebrow: "Galerie",
+      title: "Sina Hotpot de pres",
+      intro:
+        "Parcourez les tables, ingredients frais, moments de cuisson, sauces et boissons des restaurants.",
+      categories: {
+        table: "Moments a table",
+        ingredients: "Ingredients",
+        action: "Cuisson",
+        drinks: "Boissons et sauces",
+      },
     },
     reservation: {
       eyebrow: "Demande de reservation",

@@ -1,15 +1,17 @@
 import type { ImageMetadata } from "astro";
-import cultureImage from "../assets/images/culture/steaming-hotpot-table-pexels.jpg";
-import tableImage from "../assets/images/culture/hotpot-table-unsplash.jpg";
-import ingredientsImage from "../assets/images/food/hotpot-meat-vegetables-pexels.jpg";
-import platterImage from "../assets/images/food/ingredients-arrangement-pexels.jpg";
-import mealSpreadImage from "../assets/images/food/hotpot-meal-spread-pexels.jpg";
-import steamingSetupImage from "../assets/images/food/steaming-hotpot-setup-pexels.jpg";
+import cultureImage from "../assets/images/culture/sauce-bar-table.jpg";
+import tableImage from "../assets/images/culture/hotpot-table-ritual.jpg";
+import ingredientsImage from "../assets/images/food/rolled-beef-platter.jpg";
+import platterImage from "../assets/images/food/premium-meat-platter.jpg";
+import mealSpreadImage from "../assets/images/food/shared-table-spread.jpg";
+import steamingSetupImage from "../assets/images/food/steaming-beef-bite.jpg";
 import heroImage from "../assets/images/generated/premium-hotpot-hero.png";
 
 type ImageModule = {
   default: ImageMetadata;
 };
+
+export type GalleryCategoryId = "table" | "ingredients" | "action" | "drinks";
 
 function galleryFromGlob(modules: Record<string, ImageModule>) {
   return Object.entries(modules)
@@ -31,6 +33,48 @@ const firenzeGallery = galleryFromGlob(
 );
 const pratoPrimaryImage = pratoGallery[0] ?? platterImage;
 const firenzePrimaryImage = firenzeGallery[0] ?? platterImage;
+
+export const galleryGroups = [
+  {
+    id: "table",
+    photos: galleryFromGlob(
+      import.meta.glob<ImageModule>(
+        "../assets/images/gallery/table/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+        { eager: true },
+      ),
+    ),
+  },
+  {
+    id: "ingredients",
+    photos: galleryFromGlob(
+      import.meta.glob<ImageModule>(
+        "../assets/images/gallery/ingredients/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+        { eager: true },
+      ),
+    ),
+  },
+  {
+    id: "action",
+    photos: galleryFromGlob(
+      import.meta.glob<ImageModule>(
+        "../assets/images/gallery/action/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+        { eager: true },
+      ),
+    ),
+  },
+  {
+    id: "drinks",
+    photos: galleryFromGlob(
+      import.meta.glob<ImageModule>(
+        "../assets/images/gallery/drinks/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+        { eager: true },
+      ),
+    ),
+  },
+] satisfies readonly {
+  id: GalleryCategoryId;
+  photos: ImageMetadata[];
+}[];
 
 export const brand = {
   chineseName: "鲜入围煮",
@@ -75,8 +119,7 @@ export const locations = [
     hours: "12:00-15:00, 18:30-23:00",
     wechatId: "sinafirenze",
     image: firenzePrimaryImage,
-    gallery:
-      firenzeGallery.length > 0 ? firenzeGallery : [firenzePrimaryImage],
+    gallery: firenzeGallery.length > 0 ? firenzeGallery : [firenzePrimaryImage],
     mapHref:
       "https://www.google.com/maps/search/?api=1&query=Via%20Ghibellina%2080R%2C%20Firenze",
   },

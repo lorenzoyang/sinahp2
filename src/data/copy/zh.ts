@@ -15,6 +15,7 @@ export const zhCopy = {
       home: "首页",
       culture: "火锅文化",
       locations: "门店",
+      gallery: "图片",
       reservation: "预约",
       privacy: "隐私政策",
       menu: "菜单",
@@ -94,6 +95,17 @@ export const zhCopy = {
       phone: "电话",
       address: "地址",
       hours: "营业时间",
+    },
+    gallery: {
+      eyebrow: "图片展示",
+      title: "走近鲜入围煮",
+      intro: "浏览门店餐桌、精选食材、现涮瞬间、蘸料与饮品照片。",
+      categories: {
+        table: "餐桌氛围",
+        ingredients: "精选食材",
+        action: "现涮瞬间",
+        drinks: "饮品与蘸料",
+      },
     },
     reservation: {
       eyebrow: "预约请求",

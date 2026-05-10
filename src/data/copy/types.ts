@@ -1,4 +1,5 @@
 import type { CultureTopicId, PageId } from "../routing";
+import type { GalleryCategoryId } from "../restaurant";
 import type { TextPair } from "../types";
 
 export type CultureBlock = readonly [CultureTopicId, string, string];
@@ -57,6 +58,12 @@ export type LocaleCopy = {
     phone: string;
     address: string;
     hours: string;
+  };
+  gallery: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    categories: Record<GalleryCategoryId, string>;
   };
   reservation: {
     eyebrow: string;

@@ -1,0 +1,186 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import CtaLink from "../ui/CtaLink.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import {
+  brand,
+  galleryGroups,
+  getPath,
+  images,
+  type Locale,
+} from "../../data/site";
+import { copy } from "../../data/copy";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = copy[locale];
+const visibleGroups = galleryGroups
+  .filter((group) => group.photos.length > 0)
+  .map((group) => ({
+    ...group,
+    label: t.gallery.categories[group.id],
+  }));
+const heroPhotos = [
+  {
+    photo: images.mealSpread,
+    className: "aspect-4/5 sm:aspect-5/4 lg:aspect-4/5",
+  },
+  {
+    photo: images.ingredients,
+    className: "aspect-square",
+  },
+  {
+    photo: images.steamingSetup,
+    className: "aspect-4/5",
+  },
+] as const;
+const tileAspectClasses = [
+  "aspect-4/5",
+  "aspect-square",
+  "aspect-16/10",
+  "aspect-3/4",
+  "aspect-5/4",
+] as const;
+const sectionClasses = {
+  hero: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
+  band: "page-band px-4 py-12 sm:px-6 lg:px-8",
+};
+const headingClasses = {
+  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
+  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
+  darkIntro: "mt-4 max-w-3xl text-base leading-7 text-paper-soft/76",
+};
+const mediaClasses = {
+  frame:
+    "overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-2xl shadow-black/20",
+  image: "h-full w-full object-cover",
+  strip:
+    "gallery-strip mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 md:block md:columns-2 md:overflow-visible md:pb-0 lg:columns-3 xl:columns-4",
+  tile: "mb-0 w-[78vw] shrink-0 snap-start overflow-hidden rounded-lg border border-white/12 bg-ink md:mb-4 md:w-full md:break-inside-avoid",
+};
+
+function getTileAspectClass(index: number) {
+  return tileAspectClasses[index % tileAspectClasses.length];
+}
+---
+
+<SiteLayout
+  locale={locale}
+  page="gallery"
+  title={`${t.gallery.title} | Sina Hotpot`}
+  description={t.gallery.intro}
+>
+  <section class={sectionClasses.hero}>
+    <div
+      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end"
+    >
+      <SectionHeader
+        eyebrow={t.gallery.eyebrow}
+        title={t.gallery.title}
+        intro={t.gallery.intro}
+        containerClass="py-4"
+      >
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+          <CtaLink href={getPath(locale, "reservation")} variant="gold">
+            {t.cta.reserve}
+          </CtaLink>
+          <CtaLink href={getPath(locale, "locations")} variant="whiteOutline">
+            {t.nav.locations}
+          </CtaLink>
+        </div>
+      </SectionHeader>
+
+      <div class="grid grid-cols-[1.04fr_0.96fr] gap-3 sm:gap-4">
+        <div class:list={[mediaClasses.frame, heroPhotos[0].className]}>
+          <Image
+            src={heroPhotos[0].photo}
+            alt=""
+            class={mediaClasses.image}
+            width={900}
+            widths={[360, 640, 900, 1200]}
+            sizes="(min-width: 1024px) 48vw, 55vw"
+            loading="eager"
+          />
+        </div>
+        <div class="grid gap-3 sm:gap-4">
+          {
+            heroPhotos.slice(1).map((item, index) => (
+              <div class:list={[mediaClasses.frame, item.className]}>
+                <Image
+                  src={item.photo}
+                  alt=""
+                  class={mediaClasses.image}
+                  width={720}
+                  widths={[320, 520, 720, 960]}
+                  sizes="(min-width: 1024px) 26vw, 40vw"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    visibleGroups.map((group, groupIndex) => (
+      <section
+        class:list={[
+          sectionClasses.band,
+          groupIndex % 2 === 0 ? "bg-ink-band" : "bg-ink",
+        ]}
+      >
+        <div class="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow={brand.publicName}
+            title={group.label}
+            headingTag="h2"
+            eyebrowClass={headingClasses.darkEyebrow}
+            titleClass={headingClasses.darkTitle}
+            introClass={headingClasses.darkIntro}
+          />
+
+          <div
+            class={mediaClasses.strip}
+            tabindex="0"
+            aria-label={`${group.label} photos`}
+          >
+            {group.photos.map((photo, index) => (
+              <figure
+                class:list={[
+                  mediaClasses.tile,
+                  getTileAspectClass(index + groupIndex),
+                ]}
+              >
+                <Image
+                  src={photo}
+                  alt={`${brand.publicName} ${group.label} photo ${index + 1}`}
+                  class={mediaClasses.image}
+                  width={960}
+                  widths={[360, 640, 900, 1200]}
+                  sizes="(min-width: 1280px) 24vw, (min-width: 768px) 33vw, 78vw"
+                  loading="lazy"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</SiteLayout>
+
+<style>
+  .gallery-strip {
+    scrollbar-width: none;
+  }
+
+  .gallery-strip::-webkit-scrollbar {
+    display: none;
+  }
+</style>

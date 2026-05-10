@@ -15,6 +15,7 @@ export const enCopy = {
       home: "Home",
       culture: "What is hotpot",
       locations: "Locations",
+      gallery: "Gallery",
       reservation: "Reserve",
       privacy: "Privacy",
       menu: "Menu",
@@ -112,6 +113,18 @@ export const enCopy = {
       phone: "Phone",
       address: "Address",
       hours: "Hours",
+    },
+    gallery: {
+      eyebrow: "Gallery",
+      title: "A closer look at Sina Hotpot",
+      intro:
+        "Browse table moments, fresh ingredients, cooking action, sauces, and drinks from the restaurants.",
+      categories: {
+        table: "Table moments",
+        ingredients: "Ingredients",
+        action: "Cooking action",
+        drinks: "Drinks and sauces",
+      },
     },
     reservation: {
       eyebrow: "Reservation request",

@@ -7,6 +7,7 @@ export type PageId =
   | "home"
   | "culture"
   | "locations"
+  | "gallery"
   | "reservation"
   | "success"
   | "privacy";
@@ -50,6 +51,7 @@ export const htmlLang: Record<Locale, string> = {
 export const pageSlugs: Record<Exclude<PageId, "home">, string> = {
   culture: "hotpot-culture",
   locations: "locations",
+  gallery: "gallery",
   reservation: "reservation",
   success: "reservation-success",
   privacy: "privacy-policy",
@@ -59,6 +61,7 @@ export const primaryNavPages = [
   "home",
   "culture",
   "locations",
+  "gallery",
   "reservation",
 ] as const satisfies PageId[];
 
@@ -66,6 +69,7 @@ const localizedStaticPages = [
   "home",
   "culture",
   "locations",
+  "gallery",
   "reservation",
   "success",
   "privacy",

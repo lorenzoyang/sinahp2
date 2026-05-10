@@ -15,6 +15,7 @@ export const itCopy = {
       home: "Home",
       culture: "Cos’e l’hotpot",
       locations: "Ristoranti",
+      gallery: "Galleria",
       reservation: "Prenota",
       privacy: "Privacy",
       menu: "Menu",
@@ -115,6 +116,18 @@ export const itCopy = {
       phone: "Telefono",
       address: "Indirizzo",
       hours: "Orari",
+    },
+    gallery: {
+      eyebrow: "Galleria",
+      title: "Dentro Sina Hotpot",
+      intro:
+        "Scorri tavoli, ingredienti freschi, momenti di cottura, salse e bevande fotografati nei ristoranti.",
+      categories: {
+        table: "Tavoli e momenti",
+        ingredients: "Ingredienti",
+        action: "In cottura",
+        drinks: "Bevande e salse",
+      },
     },
     reservation: {
       eyebrow: "Richiesta di prenotazione",

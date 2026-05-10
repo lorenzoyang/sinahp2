@@ -3,9 +3,10 @@
 export * from "./routing";
 export {
   brand,
+  galleryGroups,
   getLocationLabel,
   getPhoneHref,
   images,
   locations,
 } from "./restaurant";
-export type { RestaurantLocation } from "./restaurant";
+export type { GalleryCategoryId, RestaurantLocation } from "./restaurant";
