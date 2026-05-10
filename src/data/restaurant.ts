@@ -61,6 +61,7 @@ export const locations = [
     phone: "+39 348 032 8697",
     address: "Via cava 109, Prato",
     hours: "18:00-02:00",
+    wechatId: "Sinahotpot",
     image: pratoPrimaryImage,
     gallery: pratoGallery.length > 0 ? pratoGallery : [pratoPrimaryImage],
     mapHref:
@@ -72,6 +73,7 @@ export const locations = [
     phone: "+39 344 681 3199",
     address: "Via Ghibellina 80R, Firenze",
     hours: "12:00-15:00, 18:30-23:00",
+    wechatId: "sinafirenze",
     image: firenzePrimaryImage,
     gallery:
       firenzeGallery.length > 0 ? firenzeGallery : [firenzePrimaryImage],

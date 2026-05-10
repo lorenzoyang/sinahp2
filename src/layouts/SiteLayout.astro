@@ -5,6 +5,7 @@ import {
   brand,
   getPath,
   htmlLang,
+  locations,
   localeFlags,
   localeNames,
   locales,
@@ -80,6 +81,8 @@ const layoutClasses = {
   footerHeading: "font-semibold text-white",
   footerLink: "focus-ring mt-2 block rounded-sm hover:text-white",
   footerLinkTight: "focus-ring mt-1 block rounded-sm hover:text-white",
+  footerSocialText: "mt-1 text-paper-soft/80",
+  footerSocialId: "font-medium text-paper-soft",
 };
 ---
 
@@ -246,6 +249,18 @@ const layoutClasses = {
               target="_blank"
               rel="noreferrer">Facebook</a
             >
+            <div class="mt-2">
+              {
+                locations.map((location) => (
+                  <p class={layoutClasses.footerSocialText}>
+                    WeChat {location.city}:{" "}
+                    <span class={layoutClasses.footerSocialId}>
+                      {location.wechatId}
+                    </span>
+                  </p>
+                ))
+              }
+            </div>
             <a
               class={layoutClasses.footerLinkTight}
               href={getPath(locale, "privacy")}>{t.nav.privacy}</a
