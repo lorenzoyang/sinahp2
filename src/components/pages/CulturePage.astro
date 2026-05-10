@@ -40,9 +40,10 @@ const cardClasses = {
     "rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82",
 };
 const mediaClasses = {
-  frame: "overflow-hidden rounded-lg",
-  heroImage: "aspect-5/4 h-full w-full object-cover",
-  tableImage: "aspect-4/3 h-full w-full object-cover",
+  heroFrame: "relative aspect-5/4 overflow-hidden rounded-lg",
+  topicFrame: "relative aspect-4/3 w-full overflow-hidden",
+  tableFrame: "relative aspect-4/3 overflow-hidden rounded-lg",
+  image: "absolute inset-0 h-full w-full object-cover",
 };
 ---
 
@@ -70,13 +71,12 @@ const mediaClasses = {
           {t.cta.reserve}
         </CtaLink>
       </SectionHeader>
-      <div class={mediaClasses.frame}>
+      <div class={mediaClasses.heroFrame}>
         <Image
           src={images.culture}
           alt=""
-          class={mediaClasses.heroImage}
+          class={mediaClasses.image}
           width="1800"
-          height="1200"
           loading="eager"
         />
       </div>
@@ -99,14 +99,15 @@ const mediaClasses = {
         {
           topicCards.map((topic) => (
             <article class={cardClasses.topic}>
-              <Image
-                src={topic.image}
-                alt=""
-                class="aspect-4/3 w-full object-cover"
-                width="720"
-                height="540"
-                loading="lazy"
-              />
+              <div class={mediaClasses.topicFrame}>
+                <Image
+                  src={topic.image}
+                  alt=""
+                  class={mediaClasses.image}
+                  width="720"
+                  loading="lazy"
+                />
+              </div>
               <div class="flex flex-1 flex-col p-5">
                 <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                   {topic.kicker}
@@ -173,13 +174,12 @@ const mediaClasses = {
           }
         </ul>
       </SectionHeader>
-      <div class={mediaClasses.frame}>
+      <div class={mediaClasses.tableFrame}>
         <Image
           src={images.table}
           alt=""
-          class={mediaClasses.tableImage}
+          class={mediaClasses.image}
           width="1800"
-          height="1200"
           loading="lazy"
         />
       </div>

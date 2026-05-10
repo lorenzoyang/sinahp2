@@ -14,8 +14,8 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const pageClasses = {
   section: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
-  heroImageFrame: "mt-7 overflow-hidden rounded-lg",
-  heroImage: "aspect-4/3 w-full object-cover",
+  heroImageFrame: "relative mt-7 aspect-4/3 overflow-hidden rounded-lg",
+  heroImage: "absolute inset-0 h-full w-full object-cover",
   contactGrid: "mt-6 grid gap-3 text-sm text-paper-soft/78",
   contactLink:
     "focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10",
@@ -44,7 +44,6 @@ const pageClasses = {
             alt=""
             class={pageClasses.heroImage}
             width="900"
-            height="675"
             loading="lazy"
           />
         </div>
