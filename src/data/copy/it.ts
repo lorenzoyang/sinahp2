@@ -13,12 +13,12 @@ export const itCopy = {
     },
     nav: {
       home: "Home",
-      culture: "Cos’e l’hotpot",
+      culture: "Cos’è l’hotpot",
       locations: "Ristoranti",
       gallery: "Galleria",
       reservation: "Prenota",
       privacy: "Privacy",
-      menu: "Menu",
+      menu: "Menù",
     },
     cta: {
       reserve: "Prenota un tavolo",
@@ -27,7 +27,7 @@ export const itCopy = {
       map: "Apri mappa",
       whatsapp: "WhatsApp",
       backHome: "Torna alla home",
-      learnMore: "Scopri di piu",
+      learnMore: "Scopri di più",
     },
     home: {
       eyebrow: "Hotpot cinese premium in Toscana",
@@ -42,8 +42,8 @@ export const itCopy = {
       sections: {
         ritualTitle: "Come funziona",
         ritualIntro:
-          "L’hotpot non e solo una zuppa: e un modo di cenare insieme, scegliendo tempi, sapori e ingredienti direttamente al tavolo.",
-        locationsTitle: "Scegli la sede piu comoda",
+          "L’hotpot non è solo una zuppa: è un modo di cenare insieme, scegliendo tempi, sapori e ingredienti direttamente al tavolo.",
+        locationsTitle: "Scegli la sede più comoda",
         locationsIntro:
           "Prato apre fino a tardi, Firenze accoglie anche a pranzo nel centro storico.",
         premiumTitle: "Pensato per una cena importante",
@@ -55,7 +55,7 @@ export const itCopy = {
         ],
         [
           "Ordina ingredienti freschi",
-          "Carne, verdure, funghi, tofu e specialita da cuocere pochi secondi.",
+          "Carne, verdure, funghi, tofu e specialità da cuocere pochi secondi.",
         ],
         [
           "Cuoci al tavolo",
@@ -74,14 +74,14 @@ export const itCopy = {
     },
     culture: {
       eyebrow: "Guida per il primo assaggio",
-      title: "Che cos’e l’hotpot?",
+      title: "Che cos’è l’hotpot?",
       intro:
-        "L’hotpot e una tradizione cinese in cui il brodo resta caldo al centro del tavolo. Gli ospiti cuociono ingredienti freschi, combinano salse e costruiscono il proprio percorso di gusto.",
+        "L’hotpot è una tradizione cinese in cui il brodo resta caldo al centro del tavolo. Gli ospiti cuociono ingredienti freschi, combinano salse e costruiscono il proprio percorso di gusto.",
       blocks: [
         [
           "ritual",
           "Una cena partecipata",
-          "Non arriva tutto gia pronto: si cucina insieme, si assaggia e si conversa.",
+          "Non arriva tutto già pronto: si cucina insieme, si assaggia e si conversa.",
         ],
         [
           "ingredients",
@@ -91,18 +91,18 @@ export const itCopy = {
         [
           "basics",
           "Perfetto per scoprire",
-          "E un modo accessibile per entrare nella cultura gastronomica cinese senza formalita.",
+          "È un modo accessibile per entrare nella cultura gastronomica cinese senza formalità.",
         ],
       ],
-      whyTitle: "Perche vale la pena provarlo",
+      whyTitle: "Perché vale la pena provarlo",
       whyItems: [
-        "E conviviale: il tavolo resta vivo per tutta la cena.",
-        "E flessibile: ogni ospite sceglie intensita, tempi e ingredienti.",
-        "E scenografico: profumi, vapore e colori creano un’esperienza da ricordare.",
+        "È conviviale: il tavolo resta vivo per tutta la cena.",
+        "È flessibile: ogni ospite sceglie intensità, tempi e ingredienti.",
+        "È scenografico: profumi, vapore e colori creano un’esperienza da ricordare.",
       ],
       etiquetteTitle: "Piccoli consigli",
       etiquette: [
-        "Inizia dagli ingredienti piu delicati, poi passa ai sapori piu intensi.",
+        "Inizia dagli ingredienti più delicati, poi passa ai sapori più intensi.",
         "Usa le salse per creare il tuo equilibrio tra piccante, fresco e sapido.",
         "Se hai allergie o esigenze particolari, indicarlo nella prenotazione.",
       ],
@@ -133,7 +133,7 @@ export const itCopy = {
       eyebrow: "Richiesta di prenotazione",
       title: "Prenota il tuo tavolo",
       intro:
-        "Compila i dati principali: il responsabile della sede ricevera una notifica via email con la tua richiesta.",
+        "Compila i dati principali: il responsabile della sede riceverà una notifica via email con la tua richiesta.",
       labels: {
         name: "Nome",
         phone: "Telefono",
@@ -155,27 +155,27 @@ export const itCopy = {
       sending: "Invio in corso...",
       success: "Richiesta inviata.",
       error:
-        "Non e stato possibile inviare la richiesta. Riprova o contattaci via WhatsApp.",
+        "Non è stato possibile inviare la richiesta. Riprova o contattaci via WhatsApp.",
       missingKey:
-        "Web3forms non e ancora configurato. Imposta PUBLIC_WEB3FORMS_ACCESS_KEY prima della pubblicazione.",
+        "Web3forms non è ancora configurato. Imposta PUBLIC_WEB3FORMS_ACCESS_KEY prima della pubblicazione.",
     },
     success: {
       title: "Richiesta ricevuta",
       intro:
-        "Grazie. La tua richiesta e stata inviata a Sina Hotpot. Per modifiche urgenti puoi contattarci direttamente su WhatsApp.",
+        "Grazie. La tua richiesta è stata inviata a Sina Hotpot. Per modifiche urgenti puoi contattarci direttamente su WhatsApp.",
       next: "Nel frattempo puoi controllare indirizzo, orari e percorso della sede scelta.",
     },
     privacy: {
       title: "Privacy policy",
       intro:
-        "Questa pagina spiega in modo semplice quali dati vengono raccolti dal sito Sina Hotpot e per quali finalita.",
+        "Questa pagina spiega in modo semplice quali dati vengono raccolti dal sito Sina Hotpot e per quali finalità.",
       sections: [
         [
           "Dati raccolti",
           "Il modulo di prenotazione raccoglie nome, telefono, numero di persone, data, ora, sede scelta e note opzionali. Le note possono includere allergie o richieste particolari solo se le inserisci volontariamente.",
         ],
         [
-          "Finalita del trattamento",
+          "Finalità del trattamento",
           "I dati vengono usati per ricevere e gestire la richiesta di prenotazione, contattarti se necessario e organizzare il servizio in sala.",
         ],
         [
@@ -188,7 +188,7 @@ export const itCopy = {
         ],
         [
           "Diritti e contatti",
-          "Puoi chiedere informazioni, rettifica o cancellazione dei dati scrivendo a sinahotpot@gmail.com. Questa informativa e una base operativa e non sostituisce una revisione legale professionale.",
+          "Puoi chiedere informazioni, rettifica o cancellazione dei dati scrivendo a sinahotpot@gmail.com. Questa informativa è una base operativa e non sostituisce una revisione legale professionale.",
         ],
       ],
     },

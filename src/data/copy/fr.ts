@@ -2,9 +2,9 @@ import type { LocaleCopy } from "./types";
 
 export const frCopy = {
     meta: {
-      homeTitle: "Sina Hotpot | Hotpot premium a Prato et Florence",
+      homeTitle: "Sina Hotpot | Hotpot premium à Prato et à Florence",
       description:
-        "Sina Hotpot propose une experience de hotpot chinois premium en Toscane, avec ingredients selectionnes, bouillons aromatiques et restaurants a Prato et Florence.",
+        "Sina Hotpot propose une expérience de hotpot chinois premium en Toscane, avec ingrédients sélectionnés, bouillons aromatiques et restaurants à Prato et à Florence.",
     },
     layout: {
       skipToContent: "Aller au contenu",
@@ -16,13 +16,13 @@ export const frCopy = {
       culture: "Le hotpot",
       locations: "Adresses",
       gallery: "Galerie",
-      reservation: "Reserver",
-      privacy: "Confidentialite",
+      reservation: "Réserver",
+      privacy: "Confidentialité",
       menu: "Menu",
     },
     cta: {
-      reserve: "Reserver une table",
-      culture: "Decouvrir le hotpot",
+      reserve: "Réserver une table",
+      culture: "Découvrir le hotpot",
       call: "Appeler",
       map: "Ouvrir la carte",
       whatsapp: "WhatsApp",
@@ -33,107 +33,107 @@ export const frCopy = {
       eyebrow: "Hotpot chinois premium en Toscane",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "Une marmite fumante, des bouillons parfumes et des ingredients choisis a cuire a table: une experience raffinee, conviviale et facile a aimer.",
+        "Une marmite fumante, des bouillons parfumés et des ingrédients choisis à cuire à table: une expérience raffinée, conviviale et facile à aimer.",
       proof: [
         "Deux adresses: Prato et Florence",
-        "Ingredients frais a partager",
-        "Demande de reservation rapide",
+        "Ingrédients frais à partager",
+        "Demande de réservation rapide",
       ],
       sections: {
-        ritualTitle: "Comment ca marche",
+        ritualTitle: "Comment ça marche",
         ritualIntro:
-          "Le hotpot n’est pas seulement une soupe: c’est un repas partage ou chacun choisit bouillon, ingredients, rythme et sauces.",
+          "Le hotpot n’est pas seulement une soupe: c’est un repas partagé où chacun choisit bouillon, ingrédients, rythme et sauces.",
         locationsTitle: "Choisir une adresse",
         locationsIntro:
           "Prato ouvre tard le soir; Florence accueille le midi et le soir dans le centre historique.",
-        premiumTitle: "Pour un diner qui compte",
+        premiumTitle: "Pour un dîner qui compte",
       },
       steps: [
         [
           "Choisir le bouillon",
-          "Epice, doux ou double: le bouillon donne le ton.",
+          "Épicé, doux ou double: le bouillon donne le ton.",
         ],
         [
-          "Commander les ingredients",
-          "Boeuf, legumes, champignons, tofu et specialites cuisent en quelques instants.",
+          "Commander les ingrédients",
+          "Bœuf, légumes, champignons, tofu et spécialités cuisent en quelques instants.",
         ],
-        ["Cuire a table", "Chaque invite controle le rythme et la cuisson."],
+        ["Cuire à table", "Chaque invité contrôle le rythme et la cuisson."],
         [
           "Partager le moment",
-          "La marmite transforme la table en centre de la soiree.",
+          "La marmite transforme la table en centre de la soirée.",
         ],
       ],
       premium: [
-        "Atmosphere moderne avec details chinois chaleureux.",
-        "Ideal pour groupes, couples, familles et curieux.",
-        "Une maniere claire et accueillante de decouvrir la culture culinaire chinoise.",
+        "Atmosphère moderne avec détails chinois chaleureux.",
+        "Idéal pour groupes, couples, familles et curieux.",
+        "Une manière claire et accueillante de découvrir la culture culinaire chinoise.",
       ],
     },
     culture: {
-      eyebrow: "Guide premiere experience",
+      eyebrow: "Guide première expérience",
       title: "Qu’est-ce que le hotpot?",
       intro:
-        "Le hotpot est une tradition chinoise ou le bouillon reste chaud au centre de la table. Les invites cuisent des ingredients frais, melangent des sauces et composent leur propre parcours de saveurs.",
+        "Le hotpot est une tradition chinoise où le bouillon reste chaud au centre de la table. Les invités cuisent des ingrédients frais, mélangent des sauces et composent leur propre parcours de saveurs.",
       blocks: [
         [
           "ritual",
-          "Un diner participatif",
-          "Le repas se termine ensemble a table et la conversation vient naturellement.",
+          "Un dîner participatif",
+          "Le repas se termine ensemble à table et la conversation vient naturellement.",
         ],
         [
           "ingredients",
           "Des saveurs personnelles",
-          "Bouillon, niveau d’epices, ingredients et sauce s’adaptent a chacun.",
+          "Bouillon, niveau d’épices, ingrédients et sauce s’adaptent à chacun.",
         ],
         [
           "basics",
-          "Une culture a partager",
-          "C’est une facon accessible de decouvrir la cuisine chinoise au-dela des plats connus.",
+          "Une culture à partager",
+          "C’est une façon accessible de découvrir la cuisine chinoise au-delà des plats connus.",
         ],
       ],
       whyTitle: "Pourquoi essayer",
       whyItems: [
         "C’est convivial: la table reste active pendant tout le repas.",
         "C’est flexible: chacun choisit son rythme et ses saveurs.",
-        "C’est memorable: vapeur, aromes, couleurs et partage creent une vraie occasion.",
+        "C’est mémorable: vapeur, arômes, couleurs et partage créent une vraie occasion.",
       ],
       etiquetteTitle: "Conseils simples",
       etiquette: [
-        "Commence par les ingredients delicats avant les saveurs plus intenses.",
-        "Utilise les sauces pour equilibrer piquant, fraicheur et umami.",
-        "Indique allergies ou besoins particuliers dans la note de reservation.",
+        "Commence par les ingrédients délicats avant les saveurs plus intenses.",
+        "Utilise les sauces pour équilibrer piquant, fraîcheur et umami.",
+        "Indique allergies ou besoins particuliers dans la note de réservation.",
       ],
     },
     locations: {
       eyebrow: "Prato et Florence",
-      title: "Deux adresses pour votre prochaine soiree hotpot",
+      title: "Deux adresses pour votre prochaine soirée hotpot",
       intro:
-        "Choisissez Prato pour un diner tardif ou Florence pour le midi et le soir pres du centre historique.",
+        "Choisissez Prato pour un dîner tardif ou Florence pour le midi et le soir près du centre historique.",
       daily: "Ouvert tous les jours",
-      phone: "Telephone",
+      phone: "Téléphone",
       address: "Adresse",
       hours: "Horaires",
     },
     gallery: {
       eyebrow: "Galerie",
-      title: "Sina Hotpot de pres",
+      title: "Sina Hotpot de près",
       intro:
-        "Parcourez les tables, ingredients frais, moments de cuisson, sauces et boissons des restaurants.",
+        "Parcourez les tables, ingrédients frais, moments de cuisson, sauces et boissons des restaurants.",
       categories: {
-        table: "Moments a table",
-        ingredients: "Ingredients",
+        table: "Moments à table",
+        ingredients: "Ingrédients",
         action: "Cuisson",
         drinks: "Boissons et sauces",
       },
     },
     reservation: {
-      eyebrow: "Demande de reservation",
-      title: "Reservez votre table",
+      eyebrow: "Demande de réservation",
+      title: "Réservez votre table",
       intro:
         "Envoyez les informations principales et le responsable du restaurant recevra votre demande par email.",
       labels: {
         name: "Nom",
-        phone: "Telephone",
+        phone: "Téléphone",
         guests: "Personnes",
         date: "Date",
         time: "Heure",
@@ -143,41 +143,41 @@ export const frCopy = {
       placeholders: {
         name: "Votre nom",
         phone: "+39 ...",
-        message: "Allergies, occasion speciale ou autres demandes",
+        message: "Allergies, occasion spéciale ou autres demandes",
       },
       consent:
-        "En envoyant ce formulaire, vous acceptez que Sina Hotpot utilise ces donnees uniquement pour traiter votre demande de reservation.",
-      privacyLink: "Lire la politique de confidentialite",
+        "En envoyant ce formulaire, vous acceptez que Sina Hotpot utilise ces données uniquement pour traiter votre demande de réservation.",
+      privacyLink: "Lire la politique de confidentialité",
       submit: "Envoyer la demande",
       sending: "Envoi...",
-      success: "Demande envoyee.",
+      success: "Demande envoyée.",
       error:
-        "La demande n’a pas pu etre envoyee. Reessayez ou contactez-nous sur WhatsApp.",
+        "La demande n’a pas pu être envoyée. Réessayez ou contactez-nous sur WhatsApp.",
       missingKey:
-        "Web3forms n’est pas encore configure. Definissez PUBLIC_WEB3FORMS_ACCESS_KEY avant le lancement.",
+        "Web3forms n’est pas encore configuré. Définissez PUBLIC_WEB3FORMS_ACCESS_KEY avant le lancement.",
     },
     success: {
-      title: "Demande recue",
+      title: "Demande reçue",
       intro:
-        "Merci. Votre demande a ete envoyee a Sina Hotpot. Pour toute modification urgente, contactez-nous directement sur WhatsApp.",
-      next: "Vous pouvez aussi verifier l’adresse, les horaires et l’itineraire du restaurant choisi.",
+        "Merci. Votre demande a été envoyée à Sina Hotpot. Pour toute modification urgente, contactez-nous directement sur WhatsApp.",
+      next: "Vous pouvez aussi vérifier l’adresse, les horaires et l’itinéraire du restaurant choisi.",
     },
     privacy: {
-      title: "Politique de confidentialite",
+      title: "Politique de confidentialité",
       intro:
-        "Cette page explique quelles donnees le site Sina Hotpot collecte et comment elles sont utilisees.",
+        "Cette page explique quelles données le site Sina Hotpot collecte et comment elles sont utilisées.",
       sections: [
         [
-          "Donnees collectees",
-          "Le formulaire collecte nom, telephone, nombre de personnes, date, heure, adresse choisie et notes optionnelles. Les notes peuvent contenir allergies ou demandes speciales seulement si vous les indiquez volontairement.",
+          "Données collectées",
+          "Le formulaire collecte nom, téléphone, nombre de personnes, date, heure, adresse choisie et notes optionnelles. Les notes peuvent contenir allergies ou demandes spéciales seulement si vous les indiquez volontairement.",
         ],
         [
-          "Finalite",
-          "Les donnees servent a recevoir et traiter les demandes de reservation, vous contacter si necessaire et organiser le service.",
+          "Finalité",
+          "Les données servent à recevoir et traiter les demandes de réservation, vous contacter si nécessaire et organiser le service.",
         ],
         [
           "Base juridique et conservation",
-          "Le traitement repose sur votre demande. Les donnees sont conservees seulement le temps necessaire a la reservation et aux obligations administratives applicables.",
+          "Le traitement repose sur votre demande. Les données sont conservées seulement le temps nécessaire à la réservation et aux obligations administratives applicables.",
         ],
         [
           "Services tiers",
@@ -185,7 +185,7 @@ export const frCopy = {
         ],
         [
           "Droits et contact",
-          "Vous pouvez demander acces, correction ou suppression en ecrivant a sinahotpot@gmail.com. Ce texte est une base operationnelle et ne remplace pas une revue juridique professionnelle.",
+          "Vous pouvez demander accès, correction ou suppression en écrivant à sinahotpot@gmail.com. Ce texte est une base opérationnelle et ne remplace pas une revue juridique professionnelle.",
         ],
       ],
     },

@@ -8,7 +8,7 @@ export const ingredientsTopic = {
         kicker: "Ingredienti e salse",
         title: "Freschezza, tagli sottili e salsa personale",
         summary:
-          "La qualita dell’hotpot si vede negli ingredienti: tagli sottili, verdure fresche, funghi, tofu e salse che trasformano ogni boccone.",
+          "La qualità dell’hotpot si vede negli ingredienti: tagli sottili, verdure fresche, funghi, tofu e salse che trasformano ogni boccone.",
         highlights: [
           "Carni tagliate sottili",
           "Verdure e funghi per equilibrio",
@@ -19,15 +19,15 @@ export const ingredientsTopic = {
         sections: [
           {
             title: "La carne sottile cuoce velocemente",
-            body: "Fette sottili di manzo o altri tagli premium vanno immerse per poco tempo. Restano morbide e assorbono il profumo del brodo senza perdere succosita.",
+            body: "Fette sottili di manzo o altri tagli premium vanno immerse per poco tempo. Restano morbide e assorbono il profumo del brodo senza perdere succosità.",
           },
           {
             title: "Verdure, funghi e tofu creano equilibrio",
-            body: "Dopo sapori intensi, ingredienti vegetali e tofu riportano freschezza. Funghi e verdure aggiungono dolcezza naturale e rendono il brodo piu rotondo.",
+            body: "Dopo sapori intensi, ingredienti vegetali e tofu riportano freschezza. Funghi e verdure aggiungono dolcezza naturale e rendono il brodo più rotondo.",
           },
           {
-            title: "La salsa e la firma personale",
-            body: "Ogni ospite puo combinare elementi sapidi, freschi, piccanti o aromatici. Questo rende lo stesso tavolo diverso per ogni persona.",
+            title: "La salsa è la firma personale",
+            body: "Ogni ospite può combinare elementi sapidi, freschi, piccanti o aromatici. Questo rende lo stesso tavolo diverso per ogni persona.",
           },
         ],
         tipsTitle: "Ordine consigliato",
@@ -105,7 +105,7 @@ export const ingredientsTopic = {
         summary:
           "La calidad del hotpot se nota en los ingredientes: carnes finas, verduras frescas, setas, tofu y salsas que cambian cada bocado.",
         highlights: [
-          "Cortes finos que cocinan rapido",
+          "Cortes finos que cocinan rápido",
           "Verduras y setas para equilibrio",
           "Salsas personalizadas",
         ],
@@ -118,11 +118,11 @@ export const ingredientsTopic = {
           },
           {
             title: "Verduras, setas y tofu equilibran",
-            body: "Despues de sabores intensos, verduras y tofu aportan frescura. Setas y hojas verdes tambien dan dulzor natural al caldo.",
+            body: "Después de sabores intensos, verduras y tofu aportan frescura. Setas y hojas verdes también dan dulzor natural al caldo.",
           },
           {
             title: "La salsa es tu firma personal",
-            body: "El mismo ingrediente cambia con otra salsa. Cada persona puede equilibrar notas saladas, picantes, frescas y aromaticas.",
+            body: "El mismo ingrediente cambia con otra salsa. Cada persona puede equilibrar notas saladas, picantes, frescas y aromáticas.",
           },
         ],
         tipsTitle: "Orden sugerido",
@@ -133,35 +133,35 @@ export const ingredientsTopic = {
         ],
       },
       fr: {
-        kicker: "Ingredients et sauces",
-        title: "Fraicheur, fines tranches et sauce personnelle",
+        kicker: "Ingrédients et sauces",
+        title: "Fraîcheur, fines tranches et sauce personnelle",
         summary:
-          "La qualite du hotpot se voit dans les ingredients: viandes fines, legumes frais, champignons, tofu et sauces qui transforment chaque bouchee.",
+          "La qualité du hotpot se voit dans les ingrédients: viandes fines, légumes frais, champignons, tofu et sauces qui transforment chaque bouchée.",
         highlights: [
-          "Fines tranches rapides a cuire",
-          "Legumes et champignons pour l’equilibre",
+          "Fines tranches rapides à cuire",
+          "Légumes et champignons pour l’équilibre",
           "Sauces personnalisables",
         ],
         detailIntro:
-          "Les ingredients n’ont pas tous le meme role. Certains cuisent en secondes, d’autres enrichissent le bouillon et d’autres apportent fraicheur ou texture.",
+          "Les ingrédients n’ont pas tous le même rôle. Certains cuisent en secondes, d’autres enrichissent le bouillon et d’autres apportent fraîcheur ou texture.",
         sections: [
           {
             title: "La viande fine cuit vite",
-            body: "Le boeuf premium ou d’autres fines tranches demandent peu de temps. Elles restent tendres et absorbent le parfum du bouillon.",
+            body: "Le bœuf premium ou d’autres fines tranches demandent peu de temps. Elles restent tendres et absorbent le parfum du bouillon.",
           },
           {
-            title: "Legumes, champignons et tofu equilibrent",
-            body: "Apres des saveurs intenses, legumes et tofu apportent de la fraicheur. Champignons et verdures ajoutent aussi une douceur naturelle.",
+            title: "Légumes, champignons et tofu équilibrent",
+            body: "Après des saveurs intenses, légumes et tofu apportent de la fraîcheur. Champignons et verdures ajoutent aussi une douceur naturelle.",
           },
           {
             title: "La sauce est une signature personnelle",
-            body: "Le meme ingredient change avec une sauce differente. Chaque invite peut equilibrer notes salees, epicees, fraiches et aromatiques.",
+            body: "Le même ingrédient change avec une sauce différente. Chaque invité peut équilibrer notes salées, épicées, fraîches et aromatiques.",
           },
         ],
-        tipsTitle: "Ordre conseille",
+        tipsTitle: "Ordre conseillé",
         tips: [
-          "Commencez par legumes et tofu.",
-          "Cuisez la viande juste le temps necessaire.",
+          "Commencez par légumes et tofu.",
+          "Cuisez la viande juste le temps nécessaire.",
           "Ajustez la sauce progressivement.",
         ],
       },

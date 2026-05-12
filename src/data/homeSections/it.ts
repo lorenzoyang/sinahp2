@@ -3,7 +3,7 @@ import type { HomeSectionContent } from "./types";
 export const itHomeSections = {
     signatures: {
       intro:
-        "Brodi ben definiti, carni tagliate sottili, verdure fresche e salse personali: la qualita dell’hotpot si costruisce su equilibrio, velocita di cottura e materia prima leggibile.",
+        "Brodi ben definiti, carni tagliate sottili, verdure fresche e salse personali: la qualità dell’hotpot si costruisce su equilibrio, velocità di cottura e materia prima leggibile.",
       items: [
         [
           "Brodi con carattere",
@@ -15,7 +15,7 @@ export const itHomeSections = {
         ],
         [
           "Salse che completano il morso",
-          "Ogni ospite puo costruire un equilibrio diverso tra note piccanti, sapide, fresche e aromatiche.",
+          "Ogni ospite può costruire un equilibrio diverso tra note piccanti, sapide, fresche e aromatiche.",
         ],
       ],
     },
@@ -23,15 +23,15 @@ export const itHomeSections = {
       eyebrow: "Occasioni da tavola",
       title: "Una cena che funziona in contesti diversi",
       intro:
-        "L’hotpot regge bene ritmi e gruppi diversi. La formula resta conviviale, ma il tono puo essere rilassato, elegante o piu celebrativo.",
+        "L’hotpot regge bene ritmi e gruppi diversi. La formula resta conviviale, ma il tono può essere rilassato, elegante o più celebrativo.",
       items: [
         [
           "Coppie e serate lente",
-          "Il ritmo della cottura rende la cena piu distesa e lascia spazio alla conversazione senza fretta.",
+          "Il ritmo della cottura rende la cena più distesa e lascia spazio alla conversazione senza fretta.",
         ],
         [
           "Gruppi e compleanni",
-          "Il tavolo resta attivo per tutta la serata e aiuta a condividere ingredienti, tempi e curiosita.",
+          "Il tavolo resta attivo per tutta la serata e aiuta a condividere ingredienti, tempi e curiosità.",
         ],
         [
           "Famiglie e ospiti misti",
@@ -47,23 +47,23 @@ export const itHomeSections = {
       eyebrow: "Prima visita",
       title: "Pochi passaggi per sentirsi subito a proprio agio",
       intro:
-        "Per molti clienti europei il primo hotpot e nuovo. Una guida breve aiuta a entrare nell’esperienza senza irrigidirla.",
+        "Per molti clienti europei il primo hotpot è nuovo. Una guida breve aiuta a entrare nell’esperienza senza irrigidirla.",
       items: [
-        "Per una prima visita la pentola doppia e spesso la scelta piu comoda.",
-        "Conviene iniziare con ingredienti delicati e passare ai sapori piu intensi in un secondo momento.",
+        "Per una prima visita la pentola doppia è spesso la scelta più comoda.",
+        "Conviene iniziare con ingredienti delicati e passare ai sapori più intensi in un secondo momento.",
         "Le salse funzionano meglio se regolate poco alla volta, dopo i primi assaggi.",
-        "Allergie, occasioni speciali e preferenze importanti vanno indicate gia nella prenotazione.",
+        "Allergie, occasioni speciali e preferenze importanti vanno indicate già nella prenotazione.",
       ],
     },
     atmosphere: {
       eyebrow: "Esperienza in sala",
       title: "Calore, vapore e servizio dal ritmo naturale",
       intro:
-        "Un buon hotpot non e solo varietà: e un tavolo che resta vivo, ordinato e leggibile mentre la cena si sviluppa.",
+        "Un buon hotpot non è solo varietà: è un tavolo che resta vivo, ordinato e leggibile mentre la cena si sviluppa.",
       items: [
         "Il tavolo resta il centro della serata, con un servizio che accompagna senza interrompere.",
         "Il vapore e il profumo del brodo danno presenza scenica senza trasformare la cena in qualcosa di teatrale.",
-        "La formula e adatta sia a cene lunghe sia a incontri piu diretti, grazie a tempi di servizio chiari.",
+        "La formula è adatta sia a cene lunghe sia a incontri più diretti, grazie a tempi di servizio chiari.",
       ],
       stats: [
         "Prenotazione online rapida",

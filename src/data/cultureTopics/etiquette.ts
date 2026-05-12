@@ -8,7 +8,7 @@ export const etiquetteTopic = {
         kicker: "Consigli pratici",
         title: "Etichetta, allergie e comfort al tavolo",
         summary:
-          "L’hotpot e informale, ma qualche regola semplice rende la cena piu elegante, sicura e piacevole per tutti.",
+          "L’hotpot è informale, ma qualche regola semplice rende la cena più elegante, sicura e piacevole per tutti.",
         highlights: [
           "Condivisione rispettosa",
           "Attenzione ad allergie e preferenze",
@@ -23,11 +23,11 @@ export const etiquetteTopic = {
           },
           {
             title: "Allergie e preferenze vanno comunicate prima",
-            body: "Il modulo di prenotazione include note opzionali proprio per allergie, esigenze alimentari o occasioni speciali. Segnalarle in anticipo rende il servizio piu attento.",
+            body: "Il modulo di prenotazione include note opzionali proprio per allergie, esigenze alimentari o occasioni speciali. Segnalarle in anticipo rende il servizio più attento.",
           },
           {
-            title: "Il personale puo guidare la prima esperienza",
-            body: "Per clienti italiani o turisti, una breve spiegazione su brodo, tempi e salsa trasforma la curiosita in fiducia.",
+            title: "Il personale può guidare la prima esperienza",
+            body: "Per clienti italiani o turisti, una breve spiegazione su brodo, tempi e salsa trasforma la curiosità in fiducia.",
           },
         ],
         tipsTitle: "Prima di arrivare",
@@ -104,20 +104,20 @@ export const etiquetteTopic = {
         ],
       },
       es: {
-        kicker: "Consejos practicos",
+        kicker: "Consejos prácticos",
         title: "Etiqueta, alergias y comodidad",
         summary:
-          "El hotpot es relajado, pero unos habitos simples hacen que la mesa sea mas elegante, segura y comoda.",
+          "El hotpot es relajado, pero unos hábitos simples hacen que la mesa sea más elegante, segura y cómoda.",
         highlights: [
           "Compartir con respeto",
           "Notas de alergias y preferencias",
           "Comodidad para turistas y principiantes",
         ],
         detailIntro:
-          "Una experiencia premium depende de algo mas que la comida: claridad, comodidad y atencion a necesidades individuales.",
+          "Una experiencia premium depende de algo más que la comida: claridad, comodidad y atención a necesidades individuales.",
         sections: [
           {
-            title: "Compartir sin confusion",
+            title: "Compartir sin confusión",
             body: "Usar utensilios separados cuando sea necesario y no dejar ingredientes demasiado tiempo mantiene la mesa ordenada y el caldo agradable.",
           },
           {
@@ -125,46 +125,46 @@ export const etiquetteTopic = {
             body: "El formulario de reserva incluye una nota opcional para alergias, necesidades alimentarias u ocasiones especiales. Avisar antes ayuda al restaurante.",
           },
           {
-            title: "La guia del personal da confianza",
-            body: "Para clientes italianos y turistas, una breve explicacion sobre caldo, tiempos y salsas convierte la curiosidad en confianza.",
+            title: "La guía del personal da confianza",
+            body: "Para clientes italianos y turistas, una breve explicación sobre caldo, tiempos y salsas convierte la curiosidad en confianza.",
           },
         ],
         tipsTitle: "Antes de llegar",
         tips: [
           "Indica alergias en la reserva.",
-          "Elige Prato o Florencia segun horarios.",
+          "Elige Prato o Florencia según horarios.",
           "Usa WhatsApp para dudas urgentes.",
         ],
       },
       fr: {
         kicker: "Conseils pratiques",
-        title: "Etiquette, allergies et confort",
+        title: "Étiquette, allergies et confort",
         summary:
-          "Le hotpot est detendu, mais quelques habitudes simples rendent la table plus elegante, sure et confortable.",
+          "Le hotpot est détendu, mais quelques habitudes simples rendent la table plus élégante, sûre et confortable.",
         highlights: [
           "Partage respectueux",
-          "Notes allergies et preferences",
-          "Confort pour touristes et debutants",
+          "Notes allergies et préférences",
+          "Confort pour touristes et débutants",
         ],
         detailIntro:
-          "Une experience premium depend de plus que la cuisine: clarte, confort et attention aux besoins individuels.",
+          "Une expérience premium dépend de plus que la cuisine: clarté, confort et attention aux besoins individuels.",
         sections: [
           {
             title: "Partager sans confusion",
-            body: "Utiliser des ustensiles separes si necessaire et eviter de laisser les ingredients trop longtemps garde la table ordonnee et le bouillon agreable.",
+            body: "Utiliser des ustensiles séparés si nécessaire et éviter de laisser les ingrédients trop longtemps garde la table ordonnée et le bouillon agréable.",
           },
           {
-            title: "Signaler allergies et preferences tot",
-            body: "Le formulaire de reservation inclut une note optionnelle pour allergies, besoins alimentaires ou occasions speciales. L’indiquer aide le restaurant.",
+            title: "Signaler allergies et préférences tôt",
+            body: "Le formulaire de réservation inclut une note optionnelle pour allergies, besoins alimentaires ou occasions spéciales. L’indiquer aide le restaurant.",
           },
           {
             title: "L’explication du personnel rassure",
-            body: "Pour les clients italiens et touristes, une breve explication du bouillon, des temps et des sauces transforme la curiosite en confiance.",
+            body: "Pour les clients italiens et touristes, une brève explication du bouillon, des temps et des sauces transforme la curiosité en confiance.",
           },
         ],
-        tipsTitle: "Avant votre arrivee",
+        tipsTitle: "Avant votre arrivée",
         tips: [
-          "Indiquez les allergies dans la reservation.",
+          "Indiquez les allergies dans la réservation.",
           "Choisissez Prato ou Florence selon les horaires.",
           "Utilisez WhatsApp pour les questions urgentes.",
         ],

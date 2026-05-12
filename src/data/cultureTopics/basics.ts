@@ -8,33 +8,33 @@ export const basicsTopic = {
         kicker: "Le basi",
         title: "Hotpot: una tavola condivisa",
         summary:
-          "Capire l’hotpot significa capire perche il pasto nasce al centro del tavolo: il brodo resta caldo, gli ingredienti arrivano freschi e ogni ospite costruisce il proprio percorso.",
+          "Capire l’hotpot significa capire perché il pasto nasce al centro del tavolo: il brodo resta caldo, gli ingredienti arrivano freschi e ogni ospite costruisce il proprio percorso.",
         highlights: [
           "Brodo sempre caldo",
           "Ingredienti cotti al momento",
           "Esperienza lenta e conviviale",
         ],
         detailIntro:
-          "L’hotpot e una forma di cucina sociale. Non si ordina un piatto finito: si sceglie una base, si condividono ingredienti e si cucina direttamente al tavolo.",
+          "L’hotpot è una forma di cucina sociale. Non si ordina un piatto finito: si sceglie una base, si condividono ingredienti e si cucina direttamente al tavolo.",
         sections: [
           {
-            title: "Non e una zuppa servita gia pronta",
-            body: "Il brodo e il cuore dell’esperienza, ma non e il piatto finale. Funziona come una base aromatica in cui carne, verdure, tofu, funghi e specialita vengono cotti in tempi diversi.",
+            title: "Non è una zuppa servita già pronta",
+            body: "Il brodo è il cuore dell’esperienza, ma non è il piatto finale. Funziona come una base aromatica in cui carne, verdure, tofu, funghi e specialità vengono cotti in tempi diversi.",
           },
           {
             title: "Il tavolo diventa parte del servizio",
-            body: "La pentola calda crea un ritmo naturale: si sceglie, si cuoce, si assaggia e si torna a parlare. Per questo l’hotpot e molto adatto a gruppi, coppie e prime esperienze culturali.",
+            body: "La pentola calda crea un ritmo naturale: si sceglie, si cuoce, si assaggia e si torna a parlare. Per questo l’hotpot è molto adatto a gruppi, coppie e prime esperienze culturali.",
           },
           {
-            title: "Perche piace a chi lo prova per la prima volta",
-            body: "Il cliente non deve conoscere tutti i piatti cinesi. Puo partire da ingredienti familiari, regolare il piccante e scoprire gradualmente sapori piu intensi.",
+            title: "Perché piace a chi lo prova per la prima volta",
+            body: "Il cliente non deve conoscere tutti i piatti cinesi. Può partire da ingredienti familiari, regolare il piccante e scoprire gradualmente sapori più intensi.",
           },
         ],
         tipsTitle: "Da ricordare",
         tips: [
           "La cena procede a piccoli assaggi.",
           "Il brodo cambia sapore durante il pasto.",
-          "Condividere e parte dell’esperienza.",
+          "Condividere è parte dell’esperienza.",
         ],
       },
       zh: {
@@ -100,7 +100,7 @@ export const basicsTopic = {
         ],
       },
       es: {
-        kicker: "Lo basico",
+        kicker: "Lo básico",
         title: "Hotpot como mesa compartida",
         summary:
           "Para entender el hotpot, empieza por la olla en el centro: el caldo sigue caliente, los ingredientes llegan frescos y cada persona crea su comida.",
@@ -121,46 +121,46 @@ export const basicsTopic = {
             body: "El hotpot crea un ritmo natural: elegir, cocinar, probar, conversar y repetir. Por eso funciona bien para grupos, parejas, familias y primeras experiencias.",
           },
           {
-            title: "Por que funciona para nuevos clientes",
-            body: "Se puede empezar con ingredientes familiares, elegir un caldo suave y ajustar el picante poco a poco. Es facil entrar y dificil olvidar.",
+            title: "Por qué funciona para nuevos clientes",
+            body: "Se puede empezar con ingredientes familiares, elegir un caldo suave y ajustar el picante poco a poco. Es fácil entrar y difícil olvidar.",
           },
         ],
         tipsTitle: "Para recordar",
         tips: [
-          "La comida avanza en pequenos bocados.",
+          "La comida avanza en pequeños bocados.",
           "El caldo gana sabor durante la cena.",
           "Compartir es parte del placer.",
         ],
       },
       fr: {
         kicker: "Les bases",
-        title: "Le hotpot comme table partagee",
+        title: "Le hotpot comme table partagée",
         summary:
-          "Pour comprendre le hotpot, il faut partir de la marmite au centre: le bouillon reste chaud, les ingredients arrivent frais et chacun compose son repas.",
+          "Pour comprendre le hotpot, il faut partir de la marmite au centre: le bouillon reste chaud, les ingrédients arrivent frais et chacun compose son repas.",
         highlights: [
           "Bouillon toujours chaud",
-          "Ingredients cuits a table",
+          "Ingrédients cuits à table",
           "Rythme convivial et flexible",
         ],
         detailIntro:
-          "Le hotpot est un repas participatif. Au lieu de recevoir un plat termine, les invites choisissent un bouillon, partagent les ingredients et cuisent a table.",
+          "Le hotpot est un repas participatif. Au lieu de recevoir un plat terminé, les invités choisissent un bouillon, partagent les ingrédients et cuisent à table.",
         sections: [
           {
-            title: "Ce n’est pas une soupe deja servie",
-            body: "Le bouillon est la base, pas tout le plat. Il apporte chaleur et parfum pendant que viande, legumes, tofu, champignons, fruits de mer et specialites cuisent au moment.",
+            title: "Ce n’est pas une soupe déjà servie",
+            body: "Le bouillon est la base, pas tout le plat. Il apporte chaleur et parfum pendant que viande, légumes, tofu, champignons, fruits de mer et spécialités cuisent au moment.",
           },
           {
             title: "La table fait partie du service",
-            body: "Le hotpot cree un rythme naturel: choisir, cuire, gouter, discuter et recommencer. Il convient aux groupes, couples, familles et premieres decouvertes.",
+            body: "Le hotpot crée un rythme naturel: choisir, cuire, goûter, discuter et recommencer. Il convient aux groupes, couples, familles et premières découvertes.",
           },
           {
             title: "Pourquoi les nouveaux clients l’aiment",
-            body: "On peut commencer avec des ingredients familiers, choisir un bouillon doux et ajuster les epices peu a peu. L’experience est accessible et memorable.",
+            body: "On peut commencer avec des ingrédients familiers, choisir un bouillon doux et ajuster les épices peu à peu. L’expérience est accessible et mémorable.",
           },
         ],
-        tipsTitle: "A retenir",
+        tipsTitle: "À retenir",
         tips: [
-          "Le repas avance par petites bouchees.",
+          "Le repas avance par petites bouchées.",
           "Le bouillon gagne en profondeur.",
           "Partager fait partie du plaisir.",
         ],

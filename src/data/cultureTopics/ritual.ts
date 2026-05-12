@@ -8,7 +8,7 @@ export const ritualTopic = {
         kicker: "Come si mangia",
         title: "Un ritmo semplice per godersi l’hotpot",
         summary:
-          "Per chi non lo conosce, l’hotpot diventa facile quando il percorso e chiaro: scegliere, cuocere, assaggiare e condividere.",
+          "Per chi non lo conosce, l’hotpot diventa facile quando il percorso è chiaro: scegliere, cuocere, assaggiare e condividere.",
         highlights: [
           "Ordine facile da seguire",
           "Tempi di cottura intuitivi",
@@ -26,8 +26,8 @@ export const ritualTopic = {
             body: "Mettere troppi ingredienti insieme rende difficile controllare tempi e sapori. Piccole porzioni mantengono il brodo pulito e il ritmo piacevole.",
           },
           {
-            title: "Assaggiare e correggere e parte del gioco",
-            body: "Dopo i primi bocconi, il cliente puo regolare salsa, piccantezza e ordine degli ingredienti. L’esperienza diventa personale senza perdere eleganza.",
+            title: "Assaggiare e correggere è parte del gioco",
+            body: "Dopo i primi bocconi, il cliente può regolare salsa, piccantezza e ordine degli ingredienti. L’esperienza diventa personale senza perdere eleganza.",
           },
         ],
         tipsTitle: "Percorso consigliato",
@@ -96,13 +96,13 @@ export const ritualTopic = {
         ],
       },
       es: {
-        kicker: "Como se come",
+        kicker: "Cómo se come",
         title: "Un ritmo simple para la primera visita",
         summary:
-          "El hotpot es facil cuando el recorrido esta claro: elegir, cocinar, probar y compartir.",
+          "El hotpot es fácil cuando el recorrido está claro: elegir, cocinar, probar y compartir.",
         highlights: [
-          "Pasos faciles",
-          "Ritmo de coccion claro",
+          "Pasos fáciles",
+          "Ritmo de cocción claro",
           "Perfecto para grupos",
         ],
         detailIntro:
@@ -110,15 +110,15 @@ export const ritualTopic = {
         sections: [
           {
             title: "Elegir juntos crea expectativa",
-            body: "La mesa empieza eligiendo caldo, ingredientes y salsas. Tambien muestra que no hay una unica forma correcta de disfrutar el hotpot.",
+            body: "La mesa empieza eligiendo caldo, ingredientes y salsas. También muestra que no hay una única forma correcta de disfrutar el hotpot.",
           },
           {
             title: "Cocinar poco a poco",
-            body: "Poner demasiados ingredientes a la vez dificulta tiempos y sabores. Las porciones pequenas mantienen el caldo limpio y el ritmo agradable.",
+            body: "Poner demasiados ingredientes a la vez dificulta tiempos y sabores. Las porciones pequeñas mantienen el caldo limpio y el ritmo agradable.",
           },
           {
             title: "Probar y ajustar",
-            body: "Despues de los primeros bocados se puede ajustar salsa, picante y orden de ingredientes. La comida se vuelve personal.",
+            body: "Después de los primeros bocados se puede ajustar salsa, picante y orden de ingredientes. La comida se vuelve personal.",
           },
         ],
         tipsTitle: "Flujo sugerido",
@@ -130,35 +130,35 @@ export const ritualTopic = {
       },
       fr: {
         kicker: "Comment manger",
-        title: "Un rythme simple pour une premiere visite",
+        title: "Un rythme simple pour une première visite",
         summary:
-          "Le hotpot devient facile lorsque le parcours est clair: choisir, cuire, gouter et partager.",
+          "Le hotpot devient facile lorsque le parcours est clair: choisir, cuire, goûter et partager.",
         highlights: [
-          "Etapes simples",
+          "Étapes simples",
           "Rythme de cuisson clair",
-          "Ideal pour les groupes",
+          "Idéal pour les groupes",
         ],
         detailIntro:
-          "Une premiere visite doit etre guidee, pas compliquee. Quelques etapes suffisent pour entrer dans l’experience.",
+          "Une première visite doit être guidée, pas compliquée. Quelques étapes suffisent pour entrer dans l’expérience.",
         sections: [
           {
-            title: "Choisir ensemble cree l’attente",
-            body: "La table commence par choisir bouillon, ingredients et sauces. Cela montre aussi qu’il n’existe pas une seule bonne facon de profiter du hotpot.",
+            title: "Choisir ensemble crée l’attente",
+            body: "La table commence par choisir bouillon, ingrédients et sauces. Cela montre aussi qu’il n’existe pas une seule bonne façon de profiter du hotpot.",
           },
           {
-            title: "Cuire par petites quantites",
-            body: "Mettre trop d’ingredients a la fois complique les temps et les saveurs. Les petites quantites gardent le bouillon clair et le rythme agreable.",
+            title: "Cuire par petites quantités",
+            body: "Mettre trop d’ingrédients à la fois complique les temps et les saveurs. Les petites quantités gardent le bouillon clair et le rythme agréable.",
           },
           {
-            title: "Gouter et ajuster",
-            body: "Apres les premieres bouchees, chacun peut ajuster sauce, epices et ordre des ingredients. Le repas devient personnel.",
+            title: "Goûter et ajuster",
+            body: "Après les premières bouchées, chacun peut ajuster sauce, épices et ordre des ingrédients. Le repas devient personnel.",
           },
         ],
-        tipsTitle: "Parcours conseille",
+        tipsTitle: "Parcours conseillé",
         tips: [
           "Choisissez bouillon et sauce.",
-          "Cuisez quelques ingredients a la fois.",
-          "Alternez saveurs riches et fraiches.",
+          "Cuisez quelques ingrédients à la fois.",
+          "Alternez saveurs riches et fraîches.",
         ],
       },
     },

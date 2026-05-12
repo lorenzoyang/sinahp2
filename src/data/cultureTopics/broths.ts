@@ -8,22 +8,22 @@ export const brothsTopic = {
         kicker: "Brodi e profumi",
         title: "Il brodo decide il carattere della cena",
         summary:
-          "Il brodo e la prima scelta importante: puo essere piccante, delicato, aromatico o doppio. Aiuta ogni tavolo a trovare il proprio equilibrio.",
+          "Il brodo è la prima scelta importante: può essere piccante, delicato, aromatico o doppio. Aiuta ogni tavolo a trovare il proprio equilibrio.",
         highlights: [
           "Piccante o delicato",
           "Doppia scelta nella stessa pentola",
           "Sapori che si sviluppano durante la cena",
         ],
         detailIntro:
-          "Il brodo non serve solo a cuocere. Trasferisce aroma agli ingredienti e assorbe parte del loro sapore, diventando piu profondo con il passare del tempo.",
+          "Il brodo non serve solo a cuocere. Trasferisce aroma agli ingredienti e assorbe parte del loro sapore, diventando più profondo con il passare del tempo.",
         sections: [
           {
             title: "Piccante non significa solo forte",
-            body: "Un buon brodo piccante porta calore, profumo e persistenza. Il livello di intensita puo essere spiegato al cliente per evitare sorprese e rendere l’esperienza piacevole.",
+            body: "Un buon brodo piccante porta calore, profumo e persistenza. Il livello di intensità può essere spiegato al cliente per evitare sorprese e rendere l’esperienza piacevole.",
           },
           {
-            title: "Il brodo delicato e ideale per iniziare",
-            body: "Una base piu leggera permette di apprezzare verdure, tofu, funghi e carni sottili. E una buona scelta per famiglie, turisti e ospiti al primo hotpot.",
+            title: "Il brodo delicato è ideale per iniziare",
+            body: "Una base più leggera permette di apprezzare verdure, tofu, funghi e carni sottili. È una buona scelta per famiglie, turisti e ospiti al primo hotpot.",
           },
           {
             title: "La pentola doppia aiuta a condividere",
@@ -34,7 +34,7 @@ export const brothsTopic = {
         tips: [
           "Per la prima visita scegli una pentola doppia.",
           "Cuoci sapori delicati nel brodo leggero.",
-          "Lascia gli ingredienti intensi al brodo piu deciso.",
+          "Lascia gli ingredienti intensi al brodo più deciso.",
         ],
       },
       zh: {
@@ -103,7 +103,7 @@ export const brothsTopic = {
         kicker: "Caldos y aromas",
         title: "El caldo define la cena",
         summary:
-          "El caldo es la primera gran decision: picante, suave, aromatico o doble. Ayuda a que cada mesa encuentre su equilibrio.",
+          "El caldo es la primera gran decisión: picante, suave, aromático o doble. Ayuda a que cada mesa encuentre su equilibrio.",
         highlights: [
           "Picante o suave",
           "Olla doble para gustos distintos",
@@ -114,7 +114,7 @@ export const brothsTopic = {
         sections: [
           {
             title: "Picante no significa solo fuerte",
-            body: "Un buen caldo picante tiene calor, perfume y persistencia. Explicar niveles de picante ayuda a los nuevos clientes a sentirse comodos.",
+            body: "Un buen caldo picante tiene calor, perfume y persistencia. Explicar niveles de picante ayuda a los nuevos clientes a sentirse cómodos.",
           },
           {
             title: "El caldo suave es ideal para empezar",
@@ -129,39 +129,39 @@ export const brothsTopic = {
         tips: [
           "En la primera visita elige olla doble.",
           "Cocina ingredientes delicados en caldo suave.",
-          "Usa ingredientes intensos con caldos mas profundos.",
+          "Usa ingredientes intensos con caldos más profundos.",
         ],
       },
       fr: {
-        kicker: "Bouillons et aromes",
+        kicker: "Bouillons et arômes",
         title: "Le bouillon donne le ton",
         summary:
-          "Le bouillon est le premier grand choix: epice, doux, aromatique ou double. Il aide chaque table a trouver son equilibre.",
+          "Le bouillon est le premier grand choix: épicé, doux, aromatique ou double. Il aide chaque table à trouver son équilibre.",
         highlights: [
-          "Epice ou doux",
-          "Marmite double pour preferences mixtes",
-          "Saveur qui evolue pendant le repas",
+          "Épicé ou doux",
+          "Marmite double pour préférences mixtes",
+          "Saveur qui évolue pendant le repas",
         ],
         detailIntro:
-          "Le bouillon ne sert pas seulement a cuire. Il parfume chaque bouchee et gagne en profondeur lorsque les ingredients liberent leurs saveurs.",
+          "Le bouillon ne sert pas seulement à cuire. Il parfume chaque bouchée et gagne en profondeur lorsque les ingrédients libèrent leurs saveurs.",
         sections: [
           {
-            title: "Epice ne veut pas seulement dire fort",
-            body: "Un bon bouillon epice apporte chaleur, parfum et longueur. Expliquer l’intensite aide les nouveaux clients a se sentir a l’aise.",
+            title: "Épicé ne veut pas seulement dire fort",
+            body: "Un bon bouillon épicé apporte chaleur, parfum et longueur. Expliquer l’intensité aide les nouveaux clients à se sentir à l’aise.",
           },
           {
-            title: "Le bouillon doux est ideal pour commencer",
-            body: "Une base legere met en valeur legumes, tofu, champignons et viandes fines. Elle convient aux familles, touristes et premieres visites.",
+            title: "Le bouillon doux est idéal pour commencer",
+            body: "Une base légère met en valeur légumes, tofu, champignons et viandes fines. Elle convient aux familles, touristes et premières visites.",
           },
           {
             title: "La marmite double rassemble la table",
-            body: "Deux bouillons dans une meme marmite permettent aux amateurs d’epices et aux clients preferant la douceur de partager le repas.",
+            body: "Deux bouillons dans une même marmite permettent aux amateurs d’épices et aux clients préférant la douceur de partager le repas.",
           },
         ],
         tipsTitle: "Conseil Sina",
         tips: [
-          "Pour une premiere visite, choisissez une marmite double.",
-          "Cuisez les ingredients delicats dans le bouillon doux.",
+          "Pour une première visite, choisissez une marmite double.",
+          "Cuisez les ingrédients délicats dans le bouillon doux.",
           "Gardez les saveurs fortes pour le bouillon plus intense.",
         ],
       },
