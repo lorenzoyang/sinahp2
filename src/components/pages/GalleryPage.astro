@@ -59,7 +59,7 @@ const mediaClasses = {
     "relative overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-2xl shadow-black/20",
   image: "absolute inset-0 h-full w-full object-cover",
   strip:
-    "gallery-strip mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 md:block md:columns-2 md:overflow-visible md:pb-0 lg:columns-3 xl:columns-4",
+    "scrollbar-hidden mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-4 md:block md:columns-2 md:overflow-visible md:pb-0 lg:columns-3 xl:columns-4",
   tile: "relative mb-0 w-[78vw] shrink-0 snap-start overflow-hidden rounded-lg border border-white/12 bg-ink md:mb-4 md:w-full md:break-inside-avoid",
 };
 
@@ -174,13 +174,3 @@ function getTileAspectClass(index: number) {
     ))
   }
 </SiteLayout>
-
-<style>
-  .gallery-strip {
-    scrollbar-width: none;
-  }
-
-  .gallery-strip::-webkit-scrollbar {
-    display: none;
-  }
-</style>

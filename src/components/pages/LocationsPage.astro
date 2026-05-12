@@ -24,7 +24,7 @@ const cardClasses = {
   location: "overflow-hidden rounded-lg border border-white/12 bg-paper text-ink",
   carousel: "relative overflow-hidden bg-ink",
   track:
-    "location-carousel-track focus-ring flex snap-x snap-mandatory overflow-x-auto scroll-smooth",
+    "location-carousel-track scrollbar-hidden focus-ring flex snap-x snap-mandatory overflow-x-auto scroll-smooth",
   slide: "relative aspect-16/10 w-full shrink-0 snap-center overflow-hidden",
   image: "absolute inset-0 h-full w-full object-cover",
   dots:
@@ -157,16 +157,6 @@ const locationCards = locations.map((location) => ({
     </div>
   </section>
 </SiteLayout>
-
-<style>
-  .location-carousel-track {
-    scrollbar-width: none;
-  }
-
-  .location-carousel-track::-webkit-scrollbar {
-    display: none;
-  }
-</style>
 
 <script>
   document

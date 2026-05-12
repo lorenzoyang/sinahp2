@@ -3,9 +3,9 @@ import cultureImage from "../assets/images/culture/sauce-bar-table.jpg";
 import tableImage from "../assets/images/culture/hotpot-table-ritual.jpg";
 import ingredientsImage from "../assets/images/food/rolled-beef-platter.jpg";
 import platterImage from "../assets/images/food/premium-meat-platter.jpg";
-import mealSpreadImage from "../assets/images/food/shared-table-spread.jpg";
+import mealSpreadImage from "../assets/images/homepage/455.jpg";
 import steamingSetupImage from "../assets/images/food/steaming-beef-bite.jpg";
-import heroImage from "../assets/images/generated/premium-hotpot-hero.png";
+import heroImage from "../assets/images/homepage/homepage-hero-hotpotpremium.png";
 
 type ImageModule = {
   default: ImageMetadata;
@@ -17,6 +17,20 @@ function galleryFromGlob(modules: Record<string, ImageModule>) {
   return Object.entries(modules)
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([, module]) => module.default);
+}
+
+function getPrimaryImage(
+  gallery: readonly ImageMetadata[],
+  fallback: ImageMetadata,
+) {
+  return gallery[0] ?? fallback;
+}
+
+function withFallbackGallery(
+  gallery: readonly ImageMetadata[],
+  fallback: ImageMetadata,
+) {
+  return gallery.length > 0 ? gallery : [fallback];
 }
 
 const pratoGallery = galleryFromGlob(
@@ -31,8 +45,8 @@ const firenzeGallery = galleryFromGlob(
     { eager: true },
   ),
 );
-const pratoPrimaryImage = pratoGallery[0] ?? platterImage;
-const firenzePrimaryImage = firenzeGallery[0] ?? platterImage;
+const pratoPrimaryImage = getPrimaryImage(pratoGallery, platterImage);
+const firenzePrimaryImage = getPrimaryImage(firenzeGallery, platterImage);
 
 export const galleryGroups = [
   {
@@ -107,7 +121,7 @@ export const locations = [
     hours: "18:00-02:00",
     wechatId: "Sinahotpot",
     image: pratoPrimaryImage,
-    gallery: pratoGallery.length > 0 ? pratoGallery : [pratoPrimaryImage],
+    gallery: withFallbackGallery(pratoGallery, pratoPrimaryImage),
     mapHref:
       "https://www.google.com/maps/search/?api=1&query=Via%20cava%20109%2C%20Prato",
   },
@@ -119,7 +133,7 @@ export const locations = [
     hours: "12:00-15:00, 18:30-23:00",
     wechatId: "sinafirenze",
     image: firenzePrimaryImage,
-    gallery: firenzeGallery.length > 0 ? firenzeGallery : [firenzePrimaryImage],
+    gallery: withFallbackGallery(firenzeGallery, firenzePrimaryImage),
     mapHref:
       "https://www.google.com/maps/search/?api=1&query=Via%20Ghibellina%2080R%2C%20Firenze",
   },

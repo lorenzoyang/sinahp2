@@ -19,11 +19,15 @@ export const cultureTopics = {
 } as const satisfies Record<CultureTopicId, CultureTopic>;
 
 export function getCultureTopicCards(locale: Locale) {
-  return cultureTopicIds.map((topicId) => ({
-    id: topicId,
-    image: getCultureTopic(topicId).image,
-    ...getCultureTopicContent(locale, topicId),
-  }));
+  return cultureTopicIds.map((topicId) => {
+    const topic = getCultureTopic(topicId);
+
+    return {
+      id: topicId,
+      image: topic.image,
+      ...topic.content[locale],
+    };
+  });
 }
 
 export function getCultureTopic(topicId: CultureTopicId) {
@@ -47,6 +51,6 @@ export function getRelatedCultureTopics(
     .slice(0, limit)
     .map((topicId) => ({
       id: topicId,
-      ...getCultureTopicContent(locale, topicId),
+      ...getCultureTopic(topicId).content[locale],
     }));
 }

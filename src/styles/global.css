@@ -103,6 +103,14 @@ textarea {
   outline-color: var(--gold);
 }
 
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
 /* Header navigation */
 .site-nav-link {
   background: transparent;
