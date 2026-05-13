@@ -2,7 +2,7 @@ import { images } from "../restaurant";
 import type { CultureTopic } from "./types";
 
 export const brothsTopic = {
-    image: images.hero,
+    image: images.broths,
     content: {
       it: {
         kicker: "Brodi e profumi",

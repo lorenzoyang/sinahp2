@@ -28,34 +28,33 @@ const {
   ...attrs
 } = Astro.props;
 
-const ctaClasses = {
-  base: "focus-ring inline-flex items-center rounded-md font-semibold",
-  variants: {
-    gold: "min-h-12 justify-center bg-gold px-5 py-3 text-ink",
-    goldHero:
-      "min-h-12 justify-center bg-gold px-5 py-3 text-base text-ink transition hover:bg-gold-hover",
-    goldSmall:
-      "min-h-11 justify-center bg-gold px-4 py-2 text-sm text-ink transition hover:bg-gold-hover",
-    whiteOutline:
-      "min-h-12 justify-center border border-white/18 px-5 py-3 text-white hover:bg-white/10",
-    whiteOutlineStatic:
-      "min-h-12 justify-center border border-white/18 px-5 py-3 text-white",
-    whiteOutlineHero:
-      "min-h-12 justify-center border border-white/28 px-5 py-3 text-base text-white transition hover:bg-white/10",
-    cultureOutline:
-      "min-h-10 border border-gold px-4 py-2 text-sm text-paper transition hover:bg-gold hover:text-ink",
-    lightOutlineSmall: "border border-gold px-4 py-2 text-sm text-ink",
-    redSmall:
-      "bg-lacquer px-4 py-2 text-sm !text-paper transition hover:bg-lacquer-hover",
-  } satisfies Record<LinkVariant, string>,
-};
+const baseCtaClass =
+  "focus-ring inline-flex items-center rounded-md font-semibold";
+const ctaVariantClasses = {
+  gold: "min-h-12 justify-center bg-gold px-5 py-3 text-ink",
+  goldHero:
+    "min-h-12 justify-center bg-gold px-5 py-3 text-base text-ink transition hover:bg-gold-hover",
+  goldSmall:
+    "min-h-11 justify-center bg-gold px-4 py-2 text-sm text-ink transition hover:bg-gold-hover",
+  whiteOutline:
+    "min-h-12 justify-center border border-white/18 px-5 py-3 text-white hover:bg-white/10",
+  whiteOutlineStatic:
+    "min-h-12 justify-center border border-white/18 px-5 py-3 text-white",
+  whiteOutlineHero:
+    "min-h-12 justify-center border border-white/28 px-5 py-3 text-base text-white transition hover:bg-white/10",
+  cultureOutline:
+    "min-h-10 border border-gold px-4 py-2 text-sm text-paper transition hover:bg-gold hover:text-ink",
+  lightOutlineSmall: "border border-gold px-4 py-2 text-sm text-ink",
+  redSmall:
+    "bg-lacquer px-4 py-2 text-sm !text-paper transition hover:bg-lacquer-hover",
+} satisfies Record<LinkVariant, string>;
 const targetValue = external ? "_blank" : target;
 const relValue = external ? "noreferrer" : rel;
 ---
 
 <a
   href={href}
-  class:list={[ctaClasses.base, ctaClasses.variants[variant], className]}
+  class:list={[baseCtaClass, ctaVariantClasses[variant], className]}
   target={targetValue}
   rel={relValue}
   {...attrs}

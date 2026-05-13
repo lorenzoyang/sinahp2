@@ -50,11 +50,12 @@ const cardClasses = {
     "overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10",
 };
 const mediaClasses = {
-  atmosphereGrid:
-    "grid gap-4 sm:grid-cols-[1.1fr_0.9fr] sm:items-start",
-  atmosphereStack: "grid gap-4",
+  atmosphereGrid: "grid gap-3 sm:grid-cols-2",
+  atmosphereMainFrame:
+    "relative aspect-4/5 overflow-hidden rounded-lg sm:aspect-5/4 lg:aspect-4/5",
+  atmosphereDetailFrame:
+    "relative aspect-4/3 overflow-hidden rounded-lg border border-white/12 bg-ink-panel sm:aspect-5/4 lg:aspect-4/5",
   portraitFrame: "relative aspect-4/5 overflow-hidden rounded-lg",
-  squareFrame: "relative aspect-square overflow-hidden rounded-lg",
   photo: "homepage-photo absolute inset-0 h-full w-full object-cover",
 };
 const pillClasses = {
@@ -311,11 +312,8 @@ const pillClasses = {
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
     >
-      <div
-        class={mediaClasses.atmosphereGrid}
-        data-reveal
-      >
-        <div class={mediaClasses.portraitFrame}>
+      <div class={mediaClasses.atmosphereGrid} data-reveal>
+        <div class={mediaClasses.atmosphereMainFrame}>
           <Image
             src={images.table}
             alt=""
@@ -324,25 +322,14 @@ const pillClasses = {
             loading="lazy"
           />
         </div>
-        <div class={mediaClasses.atmosphereStack}>
-          <div class={mediaClasses.squareFrame}>
-            <Image
-              src={images.culture}
-              alt=""
-              class={mediaClasses.photo}
-              width="1800"
-              loading="lazy"
-            />
-          </div>
-          <div class={mediaClasses.squareFrame}>
-            <Image
-              src={images.ingredients}
-              alt=""
-              class={mediaClasses.photo}
-              width="1800"
-              loading="lazy"
-            />
-          </div>
+        <div class={mediaClasses.atmosphereDetailFrame}>
+          <Image
+            src={images.culture}
+            alt=""
+            class={mediaClasses.photo}
+            width="900"
+            loading="lazy"
+          />
         </div>
       </div>
       <div data-reveal style="--reveal-delay:100ms">

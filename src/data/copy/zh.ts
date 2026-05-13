@@ -99,12 +99,12 @@ export const zhCopy = {
     gallery: {
       eyebrow: "图片展示",
       title: "走近鲜入围煮",
-      intro: "浏览门店餐桌、精选食材、现涮瞬间、蘸料与饮品照片。",
+      intro: "浏览门店的即食菜品、原材料、饮品和火锅餐桌照片。",
       categories: {
-        table: "餐桌氛围",
-        ingredients: "精选食材",
-        action: "现涮瞬间",
-        drinks: "饮品与蘸料",
+        dishes: "即食菜品",
+        drinks: "饮品",
+        ingredients: "原材料",
+        table: "火锅餐桌",
       },
     },
     reservation: {

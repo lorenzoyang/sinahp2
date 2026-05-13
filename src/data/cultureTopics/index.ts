@@ -8,7 +8,16 @@ import { brothsTopic } from "./broths";
 import { etiquetteTopic } from "./etiquette";
 import { ingredientsTopic } from "./ingredients";
 import { ritualTopic } from "./ritual";
-import type { CultureTopic } from "./types";
+import type { CultureTopic, TopicContent } from "./types";
+
+type CultureTopicCard = TopicContent & {
+  id: CultureTopicId;
+  image: CultureTopic["image"];
+};
+
+type RelatedCultureTopic = TopicContent & {
+  id: CultureTopicId;
+};
 
 export const cultureTopics = {
   basics: basicsTopic,
@@ -19,15 +28,9 @@ export const cultureTopics = {
 } as const satisfies Record<CultureTopicId, CultureTopic>;
 
 export function getCultureTopicCards(locale: Locale) {
-  return cultureTopicIds.map((topicId) => {
-    const topic = getCultureTopic(topicId);
-
-    return {
-      id: topicId,
-      image: topic.image,
-      ...topic.content[locale],
-    };
-  });
+  return cultureTopicIds.map((topicId) =>
+    getCultureTopicCard(locale, topicId),
+  );
 }
 
 export function getCultureTopic(topicId: CultureTopicId) {
@@ -49,8 +52,28 @@ export function getRelatedCultureTopics(
   return cultureTopicIds
     .filter((topicId) => topicId !== currentTopicId)
     .slice(0, limit)
-    .map((topicId) => ({
-      id: topicId,
-      ...getCultureTopic(topicId).content[locale],
-    }));
+    .map((topicId) => getRelatedCultureTopic(locale, topicId));
+}
+
+function getCultureTopicCard(
+  locale: Locale,
+  topicId: CultureTopicId,
+): CultureTopicCard {
+  const topic = getCultureTopic(topicId);
+
+  return {
+    id: topicId,
+    image: topic.image,
+    ...topic.content[locale],
+  };
+}
+
+function getRelatedCultureTopic(
+  locale: Locale,
+  topicId: CultureTopicId,
+): RelatedCultureTopic {
+  return {
+    id: topicId,
+    ...getCultureTopicContent(locale, topicId),
+  };
 }

@@ -1,94 +1,88 @@
 import type { ImageMetadata } from "astro";
-import cultureImage from "../assets/images/homepage/homepage-saucetable.jpg";
-import tableImage from "../assets/images/homepage/430.jpg";
-import ingredientsImage from "../assets/images/homepage/homepage-rolledbeef.jpg";
-import platterImage from "../assets/images/food/premium-meat-platter.jpg";
+import {
+  firstImage,
+  imagesFromGlob,
+  imagesWithFallback,
+  type ImageModule,
+} from "./imageAssets";
+import cultureBasicsImage from "../assets/images/culture/culture-basics-placeholder.jpg";
+import cultureBrothsImage from "../assets/images/culture/culture-broths-placeholder.jpg";
+import cultureEtiquetteImage from "../assets/images/culture/culture-etiquette-placeholder.jpg";
+import cultureIngredientsImage from "../assets/images/culture/culture-ingredients-placeholder.jpg";
+import cultureRitualImage from "../assets/images/culture/culture-ritual-placeholder.jpg";
 import mealSpreadImage from "../assets/images/homepage/homepage-sharedtable.jpg";
 import steamingSetupImage from "../assets/images/homepage/homepage-steaming-meat.jpg";
 import heroImage from "../assets/images/homepage/homepage-hero-hotpotpremium.png";
 
-type ImageModule = {
-  default: ImageMetadata;
+export const galleryCategoryIds = [
+  "dishes",
+  "ingredients",
+  "table",
+  "drinks",
+] as const;
+
+export type GalleryCategoryId = (typeof galleryCategoryIds)[number];
+
+export type GalleryGroup = {
+  readonly id: GalleryCategoryId;
+  readonly photos: readonly ImageMetadata[];
 };
 
-export type GalleryCategoryId = "table" | "ingredients" | "action" | "drinks";
-
-function galleryFromGlob(modules: Record<string, ImageModule>) {
-  return Object.entries(modules)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([, module]) => module.default);
+function createGalleryGroup(
+  id: GalleryCategoryId,
+  modules: Record<string, ImageModule>,
+): GalleryGroup {
+  return {
+    id,
+    photos: imagesFromGlob(modules),
+  };
 }
 
-function getPrimaryImage(
-  gallery: readonly ImageMetadata[],
-  fallback: ImageMetadata,
-) {
-  return gallery[0] ?? fallback;
-}
-
-function withFallbackGallery(
-  gallery: readonly ImageMetadata[],
-  fallback: ImageMetadata,
-) {
-  return gallery.length > 0 ? gallery : [fallback];
-}
-
-const pratoGallery = galleryFromGlob(
+const pratoGallery = imagesFromGlob(
   import.meta.glob<ImageModule>(
     "../assets/images/restaurant/prato/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
     { eager: true },
   ),
 );
-const firenzeGallery = galleryFromGlob(
+const firenzeGallery = imagesFromGlob(
   import.meta.glob<ImageModule>(
     "../assets/images/restaurant/firenze/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
     { eager: true },
   ),
 );
-const pratoPrimaryImage = getPrimaryImage(pratoGallery, platterImage);
-const firenzePrimaryImage = getPrimaryImage(firenzeGallery, platterImage);
+const pratoPrimaryImage = firstImage(pratoGallery, cultureEtiquetteImage);
+const firenzePrimaryImage = firstImage(firenzeGallery, cultureEtiquetteImage);
 
 export const galleryGroups = [
-  {
-    id: "table",
-    photos: galleryFromGlob(
-      import.meta.glob<ImageModule>(
-        "../assets/images/gallery/table/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-        { eager: true },
-      ),
+  createGalleryGroup(
+    "dishes",
+    import.meta.glob<ImageModule>(
+      "../assets/images/gallery/dishes/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+      { eager: true },
     ),
-  },
-  {
-    id: "ingredients",
-    photos: galleryFromGlob(
-      import.meta.glob<ImageModule>(
-        "../assets/images/gallery/ingredients/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-        { eager: true },
-      ),
+  ),
+  createGalleryGroup(
+    "ingredients",
+    import.meta.glob<ImageModule>(
+      "../assets/images/gallery/ingredients/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+      { eager: true },
     ),
-  },
-  {
-    id: "action",
-    photos: galleryFromGlob(
-      import.meta.glob<ImageModule>(
-        "../assets/images/gallery/action/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-        { eager: true },
-      ),
+  ),
+  createGalleryGroup(
+    "table",
+    import.meta.glob<ImageModule>(
+      "../assets/images/gallery/table/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+      { eager: true },
     ),
-  },
-  {
-    id: "drinks",
-    photos: galleryFromGlob(
-      import.meta.glob<ImageModule>(
-        "../assets/images/gallery/drinks/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-        { eager: true },
-      ),
+  ),
+  createGalleryGroup(
+    "drinks",
+    import.meta.glob<ImageModule>(
+      "../assets/images/gallery/drinks/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+      { eager: true },
     ),
-  },
-] satisfies readonly {
-  id: GalleryCategoryId;
-  photos: ImageMetadata[];
-}[];
+  ),
+] satisfies readonly GalleryGroup[];
 
 export const brand = {
   chineseName: "鲜入围煮",
@@ -104,12 +98,13 @@ export const images = {
   hero: heroImage,
   interior: pratoPrimaryImage,
   exterior: pratoPrimaryImage,
-  ingredients: ingredientsImage,
-  platter: platterImage,
+  ingredients: cultureIngredientsImage,
+  platter: cultureEtiquetteImage,
+  broths: cultureBrothsImage,
   steamingSetup: steamingSetupImage,
   mealSpread: mealSpreadImage,
-  culture: cultureImage,
-  table: tableImage,
+  culture: cultureBasicsImage,
+  table: cultureRitualImage,
 } as const;
 
 export const locations = [
@@ -121,7 +116,7 @@ export const locations = [
     hours: "18:00-02:00",
     wechatId: "Sinahotpot",
     image: pratoPrimaryImage,
-    gallery: withFallbackGallery(pratoGallery, pratoPrimaryImage),
+    gallery: imagesWithFallback(pratoGallery, pratoPrimaryImage),
     mapHref:
       "https://www.google.com/maps/search/?api=1&query=Via%20cava%20109%2C%20Prato",
   },
@@ -133,7 +128,7 @@ export const locations = [
     hours: "12:00-15:00, 18:30-23:00",
     wechatId: "sinafirenze",
     image: firenzePrimaryImage,
-    gallery: withFallbackGallery(firenzeGallery, firenzePrimaryImage),
+    gallery: imagesWithFallback(firenzeGallery, firenzePrimaryImage),
     mapHref:
       "https://www.google.com/maps/search/?api=1&query=Via%20Ghibellina%2080R%2C%20Firenze",
   },

@@ -118,12 +118,12 @@ export const frCopy = {
       eyebrow: "Galerie",
       title: "Sina Hotpot de près",
       intro:
-        "Parcourez les tables, ingrédients frais, moments de cuisson, sauces et boissons des restaurants.",
+        "Parcourez les plats prêts à déguster, ingrédients bruts, boissons et tables de hotpot des restaurants.",
       categories: {
-        table: "Moments à table",
-        ingredients: "Ingrédients",
-        action: "Cuisson",
-        drinks: "Boissons et sauces",
+        dishes: "Plats prêts",
+        drinks: "Boissons",
+        ingredients: "Ingrédients bruts",
+        table: "Tables hotpot",
       },
     },
     reservation: {

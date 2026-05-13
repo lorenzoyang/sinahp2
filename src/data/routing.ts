@@ -1,23 +1,36 @@
 export const defaultLocale = "it" as const;
 export const locales = ["it", "zh", "en", "es", "fr"] as const;
-export const nonDefaultLocales = ["zh", "en", "es", "fr"] as const;
 
 export type Locale = (typeof locales)[number];
-export type PageId =
-  | "home"
-  | "culture"
-  | "locations"
-  | "gallery"
-  | "reservation"
-  | "success"
-  | "privacy";
+export type NonDefaultLocale = Exclude<Locale, typeof defaultLocale>;
+
+export const nonDefaultLocales = locales.filter(
+  (locale): locale is NonDefaultLocale => locale !== defaultLocale,
+);
+
+export const pageSlugs = {
+  culture: "hotpot-culture",
+  locations: "locations",
+  gallery: "gallery",
+  reservation: "reservation",
+  success: "reservation-success",
+  privacy: "privacy-policy",
+} as const;
+
+type SluggedPageId = keyof typeof pageSlugs;
+
+export type PageId = "home" | SluggedPageId;
 export type LocalizedRoutePage = PageId | "cultureTopic";
-export type CultureTopicId =
-  | "basics"
-  | "broths"
-  | "ingredients"
-  | "ritual"
-  | "etiquette";
+
+export const cultureTopicSlugs = {
+  basics: "what-is-hotpot",
+  broths: "broths-and-flavors",
+  ingredients: "ingredients-and-sauces",
+  ritual: "how-to-eat-hotpot",
+  etiquette: "first-visit-etiquette",
+} as const;
+
+export type CultureTopicId = keyof typeof cultureTopicSlugs;
 export type LocalizedRouteProps = {
   locale: Locale;
   page: LocalizedRoutePage;
@@ -48,40 +61,19 @@ export const htmlLang: Record<Locale, string> = {
   fr: "fr",
 };
 
-export const pageSlugs: Record<Exclude<PageId, "home">, string> = {
-  culture: "hotpot-culture",
-  locations: "locations",
-  gallery: "gallery",
-  reservation: "reservation",
-  success: "reservation-success",
-  privacy: "privacy-policy",
-};
-
 export const primaryNavPages = [
   "home",
   "culture",
   "locations",
   "gallery",
   "reservation",
-] as const satisfies PageId[];
+] as const satisfies readonly PageId[];
 
 const localizedStaticPages = [
-  "home",
-  "culture",
-  "locations",
-  "gallery",
-  "reservation",
+  ...primaryNavPages,
   "success",
   "privacy",
-] as const satisfies PageId[];
-
-export const cultureTopicSlugs: Record<CultureTopicId, string> = {
-  basics: "what-is-hotpot",
-  broths: "broths-and-flavors",
-  ingredients: "ingredients-and-sauces",
-  ritual: "how-to-eat-hotpot",
-  etiquette: "first-visit-etiquette",
-};
+] as const satisfies readonly PageId[];
 
 export const cultureTopicIds = Object.keys(
   cultureTopicSlugs,
@@ -109,9 +101,7 @@ export function getCultureTopicPath(locale: Locale, topic: CultureTopicId) {
 }
 
 export function getCultureTopicAlternatePaths(topic: CultureTopicId) {
-  return Object.fromEntries(
-    locales.map((locale) => [locale, getCultureTopicPath(locale, topic)]),
-  ) as Record<Locale, string>;
+  return mapLocales((locale) => getCultureTopicPath(locale, topic));
 }
 
 export function getLocalizedStaticPaths() {
@@ -163,9 +153,21 @@ function getStaticPageSlug(page: PageId) {
   return page === "home" ? undefined : pageSlugs[page];
 }
 
+function mapLocales<TValue>(
+  mapper: (locale: Locale) => TValue,
+): Record<Locale, TValue> {
+  return Object.fromEntries(
+    locales.map((locale) => [locale, mapper(locale)]),
+  ) as Record<Locale, TValue>;
+}
+
+export function isLocale(value: string | undefined): value is Locale {
+  return locales.includes(value as Locale);
+}
+
 export function asLocale(value: string | undefined): Locale {
-  if (locales.includes(value as Locale)) {
-    return value as Locale;
+  if (isLocale(value)) {
+    return value;
   }
 
   return defaultLocale;

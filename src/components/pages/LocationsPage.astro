@@ -159,22 +159,5 @@ const locationCards = locations.map((location) => ({
 </SiteLayout>
 
 <script>
-  document
-    .querySelectorAll<HTMLButtonElement>("[data-location-carousel-dot]")
-    .forEach((dot) => {
-      dot.addEventListener("click", () => {
-        const slideId = dot.dataset.slideId;
-        const slide = slideId ? document.getElementById(slideId) : null;
-        const track = slide?.closest<HTMLElement>(".location-carousel-track");
-
-        if (!slide || !track) {
-          return;
-        }
-
-        track.scrollTo({
-          left: slide.offsetLeft - track.offsetLeft,
-          behavior: "smooth",
-        });
-      });
-    });
+  import "../../scripts/locationCarousel";
 </script>
