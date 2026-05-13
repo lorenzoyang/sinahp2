@@ -13,6 +13,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 dev-server.*.log
+.codex-devserver.*
 
 # environment variables
 .env

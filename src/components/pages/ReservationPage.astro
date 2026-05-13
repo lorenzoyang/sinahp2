@@ -3,8 +3,9 @@ import { Image } from "astro:assets";
 import ReservationForm from "../ReservationForm.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
-import { brand, images, type Locale } from "../../data/site";
+import { brand, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import { reservationImages } from "../../data/pageImages";
 
 interface Props {
   locale: Locale;
@@ -40,7 +41,7 @@ const pageClasses = {
         />
         <div class={pageClasses.heroImageFrame}>
           <Image
-            src={images.hero}
+            src={reservationImages.hero}
             alt=""
             class={pageClasses.heroImage}
             width="900"

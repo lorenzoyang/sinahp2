@@ -6,11 +6,11 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import {
   getCultureTopicPath,
   getPath,
-  images,
   type Locale,
 } from "../../data/site";
 import { copy } from "../../data/copy";
 import { getCultureTopicCards } from "../../data/cultureTopics";
+import { cultureImages } from "../../data/pageImages";
 
 interface Props {
   locale: Locale;
@@ -73,7 +73,7 @@ const mediaClasses = {
       </SectionHeader>
       <div class={mediaClasses.heroFrame}>
         <Image
-          src={images.culture}
+          src={cultureImages.hero}
           alt=""
           class={mediaClasses.image}
           width="1800"
@@ -176,7 +176,7 @@ const mediaClasses = {
       </SectionHeader>
       <div class={mediaClasses.tableFrame}>
         <Image
-          src={images.table}
+          src={cultureImages.table}
           alt=""
           class={mediaClasses.image}
           width="1800"

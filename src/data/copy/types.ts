@@ -1,5 +1,5 @@
 import type { CultureTopicId, PageId } from "../routing";
-import type { GalleryCategoryId } from "../restaurant";
+import type { GalleryCategoryId } from "../gallery";
 import type { TextPair } from "../types";
 
 export type CultureBlock = readonly [CultureTopicId, string, string];

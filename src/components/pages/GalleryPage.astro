@@ -5,12 +5,11 @@ import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import {
   brand,
-  galleryGroups,
   getPath,
-  images,
   type Locale,
 } from "../../data/site";
 import { copy } from "../../data/copy";
+import { galleryFallbackImages, galleryGroups } from "../../data/gallery";
 
 interface Props {
   locale: Locale;
@@ -38,7 +37,7 @@ const visibleGroups = galleryGroups.flatMap((group) => {
 
 const heroPhoto =
   visibleGroups.find((group) => group.id === "table")?.coverPhoto ??
-  images.table;
+  galleryFallbackImages.table;
 const galleryTotal = visibleGroups.reduce(
   (total, group) => total + group.photos.length,
   0,

@@ -7,10 +7,10 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import {
   brand,
   getPath,
-  images,
   locations,
   type Locale,
 } from "../../data/site";
+import { homeImages } from "../../data/pageImages";
 import { copy } from "../../data/copy";
 import { getHomeSections } from "../../data/homeSections";
 import {
@@ -50,11 +50,8 @@ const cardClasses = {
     "overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10",
 };
 const mediaClasses = {
-  atmosphereGrid: "grid gap-3 sm:grid-cols-2",
-  atmosphereMainFrame:
-    "relative aspect-4/5 overflow-hidden rounded-lg sm:aspect-5/4 lg:aspect-4/5",
-  atmosphereDetailFrame:
-    "relative aspect-4/3 overflow-hidden rounded-lg border border-white/12 bg-ink-panel sm:aspect-5/4 lg:aspect-4/5",
+  atmosphereFrame:
+    "relative aspect-4/5 overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-[0_24px_70px_rgba(0,0,0,0.24)]",
   portraitFrame: "relative aspect-4/5 overflow-hidden rounded-lg",
   photo: "homepage-photo absolute inset-0 h-full w-full object-cover",
 };
@@ -72,7 +69,7 @@ const pillClasses = {
   <section class="homepage-hero relative overflow-hidden">
     <div class="absolute inset-0">
       <Image
-        src={images.hero}
+        src={homeImages.hero}
         alt=""
         class="hero-image-drift absolute inset-0 h-full w-full object-cover"
         width="1792"
@@ -167,7 +164,7 @@ const pillClasses = {
     >
       <div class={mediaClasses.portraitFrame} data-reveal>
         <Image
-          src={images.mealSpread}
+          src={homeImages.premiumSpread}
           alt=""
           class={mediaClasses.photo}
           width="1800"
@@ -260,7 +257,7 @@ const pillClasses = {
     >
       <div class={mediaClasses.portraitFrame} data-reveal>
         <Image
-          src={images.steamingSetup}
+          src={homeImages.visitSteam}
           alt=""
           class={mediaClasses.photo}
           width="1800"
@@ -310,27 +307,16 @@ const pillClasses = {
 
   <section class:list={[sectionClasses.shell, "bg-ink"]}>
     <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center"
+      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
     >
-      <div class={mediaClasses.atmosphereGrid} data-reveal>
-        <div class={mediaClasses.atmosphereMainFrame}>
-          <Image
-            src={images.table}
-            alt=""
-            class={mediaClasses.photo}
-            width="1800"
-            loading="lazy"
-          />
-        </div>
-        <div class={mediaClasses.atmosphereDetailFrame}>
-          <Image
-            src={images.culture}
-            alt=""
-            class={mediaClasses.photo}
-            width="900"
-            loading="lazy"
-          />
-        </div>
+      <div class={mediaClasses.atmosphereFrame} data-reveal>
+        <Image
+          src={homeImages.atmosphereTable}
+          alt=""
+          class={mediaClasses.photo}
+          width="1800"
+          loading="lazy"
+        />
       </div>
       <div data-reveal style="--reveal-delay:100ms">
         <SectionHeader

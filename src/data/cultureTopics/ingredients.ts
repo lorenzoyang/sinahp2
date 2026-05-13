@@ -1,8 +1,8 @@
-import { images } from "../restaurant";
+import { cultureImages } from "../pageImages";
 import type { CultureTopic } from "./types";
 
 export const ingredientsTopic = {
-    image: images.ingredients,
+    image: cultureImages.ingredients,
     content: {
       it: {
         kicker: "Ingredienti e salse",

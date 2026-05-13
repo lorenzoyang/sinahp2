@@ -1,8 +1,8 @@
-import { images } from "../restaurant";
+import { cultureImages } from "../pageImages";
 import type { CultureTopic } from "./types";
 
 export const basicsTopic = {
-    image: images.culture,
+    image: cultureImages.basics,
     content: {
       it: {
         kicker: "Le basi",

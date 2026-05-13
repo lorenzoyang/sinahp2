@@ -1,8 +1,8 @@
-import { images } from "../restaurant";
+import { cultureImages } from "../pageImages";
 import type { CultureTopic } from "./types";
 
 export const etiquetteTopic = {
-    image: images.platter,
+    image: cultureImages.etiquette,
     content: {
       it: {
         kicker: "Consigli pratici",
