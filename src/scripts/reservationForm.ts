@@ -17,6 +17,12 @@ const submit = document.getElementById(
 const dateInput = document.getElementById(
   "reservation-date",
 ) as HTMLInputElement | null;
+const timeSelect = document.getElementById(
+  "reservation-time",
+) as HTMLSelectElement | null;
+const locationSelect = document.getElementById(
+  "reservation-location",
+) as HTMLSelectElement | null;
 
 function getTodayDateValue() {
   const today = new Date();
@@ -37,6 +43,57 @@ function showStatus(message: string) {
   if (status) {
     status.textContent = message;
   }
+}
+
+function getSelectedTimeSlots() {
+  const selectedOption = locationSelect?.selectedOptions[0];
+
+  if (!selectedOption?.dataset.timeSlots) {
+    return [];
+  }
+
+  try {
+    const parsedSlots = JSON.parse(selectedOption.dataset.timeSlots);
+
+    return Array.isArray(parsedSlots)
+      ? parsedSlots.filter((timeSlot): timeSlot is string =>
+          typeof timeSlot === "string",
+        )
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function createTimeOption(value: string, label = value) {
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = label;
+
+  return option;
+}
+
+function updateTimeOptions({ preserveCurrent = false } = {}) {
+  if (!timeSelect) {
+    return;
+  }
+
+  const currentValue = timeSelect.value;
+  const placeholder = timeSelect.dataset.placeholder ?? "";
+  const timeSlots = getSelectedTimeSlots();
+
+  timeSelect.replaceChildren();
+
+  const placeholderOption = createTimeOption("", placeholder);
+  placeholderOption.disabled = true;
+  timeSelect.append(placeholderOption);
+
+  timeSlots.forEach((timeSlot) => {
+    timeSelect.append(createTimeOption(timeSlot));
+  });
+
+  timeSelect.value =
+    preserveCurrent && timeSlots.includes(currentValue) ? currentValue : "";
 }
 
 function setSubmitState(isSending: boolean) {
@@ -67,6 +124,12 @@ async function submitReservation(payload: ReservationPayload) {
 if (dateInput) {
   dateInput.min = getTodayDateValue();
 }
+
+updateTimeOptions({ preserveCurrent: true });
+
+locationSelect?.addEventListener("change", () => {
+  updateTimeOptions();
+});
 
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();

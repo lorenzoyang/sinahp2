@@ -6,6 +6,7 @@ import {
   getPath,
   locations,
   type Locale,
+  type RestaurantLocation,
 } from "../data/site";
 import { copy } from "../data/copy";
 
@@ -18,9 +19,49 @@ const t = copy[locale];
 const successUrl = getPath(locale, "success");
 const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
 const privacyPath = getPath(locale, "privacy");
+const defaultLocationId = "firenze";
+const reservationSlotIntervalMinutes = 30;
+
+function timeToMinutes(time: string) {
+  const [hours = "0", minutes = "0"] = time.split(":");
+
+  return Number(hours) * 60 + Number(minutes);
+}
+
+function minutesToTime(minutes: number) {
+  const normalizedMinutes = minutes % (24 * 60);
+  const hours = Math.floor(normalizedMinutes / 60);
+  const minute = normalizedMinutes % 60;
+
+  return `${String(hours).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
+function getReservationTimeSlots(
+  ranges: RestaurantLocation["reservationTimeRanges"],
+) {
+  return ranges.flatMap(({ start, end }) => {
+    const startMinutes = timeToMinutes(start);
+    const endMinutes = timeToMinutes(end);
+    const adjustedEndMinutes =
+      endMinutes <= startMinutes ? endMinutes + 24 * 60 : endMinutes;
+    const slots: string[] = [];
+
+    for (
+      let minutes = startMinutes;
+      minutes < adjustedEndMinutes;
+      minutes += reservationSlotIntervalMinutes
+    ) {
+      slots.push(minutesToTime(minutes));
+    }
+
+    return slots;
+  });
+}
+
 const locationOptions = locations.map((location) => ({
   ...location,
   label: getLocationLabel(location),
+  timeSlots: getReservationTimeSlots(location.reservationTimeRanges),
 }));
 const formClasses = {
   root: "grid gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6",
@@ -114,21 +155,42 @@ const formClasses = {
 
     <label class={formClasses.label}>
       {t.reservation.labels.time}
-      <input
+      <select
+        id="reservation-time"
         class={formClasses.input}
         name="time"
-        type="time"
         required
-      />
+        data-placeholder={t.reservation.labels.time}
+      >
+        <option value="" disabled selected>
+          {t.reservation.labels.time}
+        </option>
+        {
+          locationOptions
+            .find((location) => location.id === defaultLocationId)
+            ?.timeSlots.map((timeSlot) => (
+              <option value={timeSlot}>{timeSlot}</option>
+            ))
+        }
+      </select>
     </label>
   </div>
 
   <label class={formClasses.label}>
     {t.reservation.labels.location}
-    <select class={formClasses.input} name="location" required>
+    <select
+      id="reservation-location"
+      class={formClasses.input}
+      name="location"
+      required
+    >
       {
         locationOptions.map((location) => (
-          <option value={location.label} selected={location.id === "firenze"}>
+          <option
+            value={location.label}
+            selected={location.id === defaultLocationId}
+            data-time-slots={JSON.stringify(location.timeSlots)}
+          >
             {location.label}
           </option>
         ))
