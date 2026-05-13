@@ -39,6 +39,14 @@ function getPayload(form: HTMLFormElement): ReservationPayload {
   ) as ReservationPayload;
 }
 
+function getCaptchaResponse(form: HTMLFormElement) {
+  const captchaResponse = form.querySelector<HTMLTextAreaElement>(
+    'textarea[name="h-captcha-response"]',
+  );
+
+  return captchaResponse?.value.trim() ?? "";
+}
+
 function showStatus(message: string) {
   if (status) {
     status.textContent = message;
@@ -143,6 +151,11 @@ form?.addEventListener("submit", async (event) => {
 
   if (!payload.access_key) {
     showStatus(labels.missingKey ?? "");
+    return;
+  }
+
+  if (!getCaptchaResponse(form)) {
+    showStatus(labels.captchaRequired ?? "");
     return;
   }
 

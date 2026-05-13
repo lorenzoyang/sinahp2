@@ -155,6 +155,8 @@ export const frCopy = {
         "La demande n’a pas pu être envoyée. Réessayez ou contactez-nous sur WhatsApp.",
       missingKey:
         "Web3forms n’est pas encore configuré. Définissez PUBLIC_WEB3FORMS_ACCESS_KEY avant le lancement.",
+      captchaRequired:
+        "Veuillez compléter la vérification anti-spam avant l’envoi.",
     },
     success: {
       title: "Demande reçue",

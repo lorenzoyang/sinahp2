@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { Image } from "astro:assets";
 import logoUrl from "../assets/images/brand/sina-hotpot-logo-horizontal.svg?url";
 import {
   brand,
@@ -121,12 +122,13 @@ const layoutClasses = {
           class={layoutClasses.brandLink}
           aria-label={brand.publicName}
         >
-          <img
+          <Image
             src={logoUrl}
             alt=""
             class={layoutClasses.brandLogo}
             width="1378"
             height="372"
+            loading="eager"
           />
         </a>
 
@@ -217,12 +219,13 @@ const layoutClasses = {
       <div class={layoutClasses.footerInner}>
         <div>
           <div class={layoutClasses.footerLogoFrame}>
-            <img
+            <Image
               src={logoUrl}
               alt={brand.publicName}
               class={layoutClasses.footerLogo}
               width="1378"
               height="372"
+              loading="lazy"
             />
           </div>
           <p class={layoutClasses.footerDescription}>

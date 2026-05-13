@@ -158,6 +158,8 @@ export const itCopy = {
         "Non è stato possibile inviare la richiesta. Riprova o contattaci via WhatsApp.",
       missingKey:
         "Web3forms non è ancora configurato. Imposta PUBLIC_WEB3FORMS_ACCESS_KEY prima della pubblicazione.",
+      captchaRequired:
+        "Completa il controllo anti-spam prima di inviare la richiesta.",
     },
     success: {
       title: "Richiesta ricevuta",

@@ -155,6 +155,7 @@ export const enCopy = {
         "We could not send the request. Please try again or contact us on WhatsApp.",
       missingKey:
         "Web3forms is not configured yet. Set PUBLIC_WEB3FORMS_ACCESS_KEY before launch.",
+      captchaRequired: "Please complete the anti-spam check before sending.",
     },
     success: {
       title: "Request received",

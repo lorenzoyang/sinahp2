@@ -134,6 +134,7 @@ export const zhCopy = {
       error: "暂时无法提交，请重试或通过 WhatsApp 联系我们。",
       missingKey:
         "Web3forms 尚未配置。发布前请设置 PUBLIC_WEB3FORMS_ACCESS_KEY。",
+      captchaRequired: "请先完成防垃圾验证，再提交预约请求。",
     },
     success: {
       title: "预约请求已收到",

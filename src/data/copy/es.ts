@@ -152,6 +152,8 @@ export const esCopy = {
         "No hemos podido enviar la solicitud. Inténtalo de nuevo o contacta por WhatsApp.",
       missingKey:
         "Web3forms aún no está configurado. Define PUBLIC_WEB3FORMS_ACCESS_KEY antes del lanzamiento.",
+      captchaRequired:
+        "Completa la verificación anti-spam antes de enviar la solicitud.",
     },
     success: {
       title: "Solicitud recibida",

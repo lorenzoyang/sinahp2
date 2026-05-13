@@ -81,6 +81,7 @@ export type LocaleCopy = {
     success: string;
     error: string;
     missingKey: string;
+    captchaRequired: string;
   };
   success: {
     title: string;

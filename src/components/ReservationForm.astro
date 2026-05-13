@@ -76,6 +76,7 @@ const formClasses = {
   finePrint: "text-xs leading-5 text-brown-muted",
   privacyLink:
     "font-semibold text-lacquer underline decoration-gold underline-offset-4",
+  captcha: "min-h-[78px] overflow-visible",
   status: "min-h-5 text-sm font-semibold text-lacquer",
   submitButton:
     "focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover",
@@ -90,6 +91,7 @@ const formClasses = {
   data-submit={t.reservation.submit}
   data-error={t.reservation.error}
   data-missing-key={t.reservation.missingKey}
+  data-captcha-required={t.reservation.captchaRequired}
 >
   <input type="hidden" name="access_key" value={accessKey} />
   <input type="hidden" name="subject" value="Sina Hotpot Reservation Request" />
@@ -216,6 +218,12 @@ const formClasses = {
     </a>
   </p>
 
+  <div
+    class:list={[formClasses.captcha, "h-captcha"]}
+    data-captcha="true"
+  >
+  </div>
+
   <div class={formClasses.submitRow}>
     <p
       id="reservation-status"
@@ -240,3 +248,10 @@ const formClasses = {
 <script>
   import "../scripts/reservationForm";
 </script>
+
+<script
+  is:inline
+  src="https://web3forms.com/client/script.js"
+  async
+  defer
+></script>
