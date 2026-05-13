@@ -7,6 +7,8 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://sinahp.com",
+
   env: {
     schema: {
       PUBLIC_WEB3FORMS_ACCESS_KEY: envField.string({

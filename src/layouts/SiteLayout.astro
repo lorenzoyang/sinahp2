@@ -15,6 +15,16 @@ import {
   type PageId,
 } from "../data/site";
 import { copy } from "../data/copy";
+import {
+  defaultSocialImageAlt,
+  defaultSocialImageUrl,
+  getCanonicalUrl,
+  getHreflangLinks,
+  getPageAlternatePaths,
+  getWebsiteStructuredData,
+  openGraphLocales,
+  toAbsoluteUrl,
+} from "../data/seo";
 
 interface Props {
   locale: Locale;
@@ -22,13 +32,24 @@ interface Props {
   title?: string;
   description?: string;
   alternatePaths?: Partial<Record<Locale, string>>;
+  noindex?: boolean;
 }
 
-const { locale, page, title, description, alternatePaths } = Astro.props;
+const { locale, page, title, description, alternatePaths, noindex = false } =
+  Astro.props;
 const t = copy[locale];
 const layoutLabels = t.layout;
 const pageTitle = title ?? t.meta.homeTitle;
 const pageDescription = description ?? t.meta.description;
+const pageAlternatePaths = {
+  ...getPageAlternatePaths(page),
+  ...alternatePaths,
+};
+const canonicalPath = pageAlternatePaths[locale] ?? getPath(locale, page);
+const canonicalUrl = getCanonicalUrl(canonicalPath);
+const hreflangLinks = getHreflangLinks(pageAlternatePaths);
+const socialImageUrl = toAbsoluteUrl(defaultSocialImageUrl);
+const structuredData = JSON.stringify(getWebsiteStructuredData());
 const navItems = primaryNavPages.map((navPage) => ({
   page: navPage,
   label: t.nav[navPage],
@@ -98,14 +119,37 @@ const layoutClasses = {
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    {
+      hreflangLinks.map((link) => (
+        <link rel="alternate" hreflang={link.hreflang} href={link.href} />
+      ))
+    }
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:image"
-      content="/images/generated/premium-hotpot-hero.png"
-    />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={brand.publicName} />
+    <meta property="og:locale" content={openGraphLocales[locale]} />
+    {
+      locales
+        .filter((targetLocale) => targetLocale !== locale)
+        .map((targetLocale) => (
+          <meta
+            property="og:locale:alternate"
+            content={openGraphLocales[targetLocale]}
+          />
+        ))
+    }
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content={defaultSocialImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <title>{pageTitle}</title>
+    <script type="application/ld+json" is:inline set:html={structuredData} />
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>

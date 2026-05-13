@@ -38,7 +38,13 @@ export const locations = [
     city: "Prato",
     phone: "+39 348 032 8697",
     address: "Via cava 109, Prato",
+    structuredAddress: {
+      streetAddress: "Via Cava 109",
+      addressLocality: "Prato",
+      postalCode: "59100",
+    },
     hours: "18:30-02:00",
+    schemaOpeningHours: ["Mo-Su 18:30-02:00"],
     reservationTimeRanges: [{ start: "18:30", end: "02:00" }],
     wechatId: "Sinahotpot",
     image: pratoPrimaryImage,
@@ -51,7 +57,13 @@ export const locations = [
     city: "Firenze",
     phone: "+39 344 681 3199",
     address: "Via Ghibellina 80R, Firenze",
+    structuredAddress: {
+      streetAddress: "Via Ghibellina 80R",
+      addressLocality: "Firenze",
+      postalCode: "50122",
+    },
     hours: "12:00-15:00, 16:00-23:00",
+    schemaOpeningHours: ["Mo-Su 12:00-15:00", "Mo-Su 16:00-23:00"],
     reservationTimeRanges: [
       { start: "12:00", end: "15:00" },
       { start: "16:00", end: "23:00" },

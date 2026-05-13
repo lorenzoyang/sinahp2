@@ -88,7 +88,7 @@ export function getPath(locale: Locale, page: PageId = "home") {
   const prefix = getLocalePrefix(locale);
 
   if (!pagePath) {
-    return `${prefix || "/"}`;
+    return prefix ? `${prefix}/` : "/";
   }
 
   return `${prefix}/${pagePath}/`;
