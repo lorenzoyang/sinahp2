@@ -17,7 +17,7 @@ export const itCopy = {
       locations: "Ristoranti",
       gallery: "Galleria",
       reservation: "Prenota",
-      privacy: "Privacy",
+      privacy: "Informativa privacy",
       menu: "Menù",
     },
     cta: {
@@ -148,9 +148,10 @@ export const itCopy = {
         phone: "+39 ...",
         message: "Allergie, occasioni speciali o altre richieste",
       },
-      consent:
-        "Inviando il modulo accetti che Sina Hotpot usi questi dati solo per gestire la richiesta di prenotazione.",
-      privacyLink: "Leggi la privacy policy",
+      consentPrefix: "Ho letto l'",
+      privacyLink: "informativa privacy",
+      consentSuffix:
+        " e acconsento all'uso dei dati inseriti per gestire la prenotazione, incluse eventuali note su allergie o salute.",
       submit: "Invia richiesta",
       sending: "Invio in corso...",
       success: "Richiesta inviata.",
@@ -168,30 +169,88 @@ export const itCopy = {
       next: "Nel frattempo puoi controllare indirizzo, orari e percorso della sede scelta.",
     },
     privacy: {
-      title: "Privacy policy",
+      title: "Informativa privacy",
       intro:
-        "Questa pagina spiega in modo semplice quali dati vengono raccolti dal sito Sina Hotpot e per quali finalità.",
+        "Questa informativa spiega come il sito Sina Hotpot tratta i dati personali raccolti tramite il sito e il modulo di prenotazione.",
+      updated: "Ultimo aggiornamento: 13 maggio 2026",
       sections: [
-        [
-          "Dati raccolti",
-          "Il modulo di prenotazione raccoglie nome, telefono, numero di persone, data, ora, sede scelta e note opzionali. Le note possono includere allergie o richieste particolari solo se le inserisci volontariamente.",
-        ],
-        [
-          "Finalità del trattamento",
-          "I dati vengono usati per ricevere e gestire la richiesta di prenotazione, contattarti se necessario e organizzare il servizio in sala.",
-        ],
-        [
-          "Base giuridica e conservazione",
-          "Il trattamento avviene per dare seguito alla tua richiesta. I dati sono conservati solo per il tempo necessario alla gestione della prenotazione e degli obblighi amministrativi applicabili.",
-        ],
-        [
-          "Servizi terzi",
-          "Il modulo usa Web3forms per inoltrare la richiesta via email. Link esterni come Google Maps, Instagram, Facebook e WhatsApp possono applicare le proprie policy.",
-        ],
-        [
-          "Diritti e contatti",
-          "Puoi chiedere informazioni, rettifica o cancellazione dei dati scrivendo a sinahotpot@gmail.com. Questa informativa è una base operativa e non sostituisce una revisione legale professionale.",
-        ],
+        {
+          title: "Titolare del trattamento",
+          paragraphs: [
+            "Il titolare del trattamento è Sina Hotpot, contattabile all'indirizzo email sinahotpot@gmail.com. Il sito riguarda le sedi operative di Prato, Via Cava 109, 59100 Prato, e Firenze, Via Ghibellina 80R, 50122 Firenze.",
+          ],
+        },
+        {
+          title: "Dati raccolti",
+          paragraphs: [
+            "Il modulo di prenotazione raccoglie nome, numero di telefono, numero di persone, data, ora, sede scelta e note opzionali. I dati tecnici necessari alla navigazione, come indirizzo IP, informazioni del browser, data e ora delle richieste, possono essere trattati dai servizi di hosting e sicurezza.",
+            "Le note opzionali non sono obbligatorie. Se scegli di inserire allergie, esigenze alimentari o altre informazioni relative alla salute, tali dati saranno usati solo per gestire la prenotazione e organizzare il servizio richiesto.",
+          ],
+        },
+        {
+          title: "Finalità e basi giuridiche",
+          paragraphs: [
+            "I dati sono trattati per ricevere e gestire le richieste di prenotazione, contattarti se necessario, organizzare il servizio in sala, mantenere il sito sicuro e funzionante e adempiere eventuali obblighi amministrativi o di legge.",
+          ],
+          items: [
+            "Richieste di prenotazione: esecuzione di misure precontrattuali o contrattuali richieste dall'utente, art. 6(1)(b) GDPR.",
+            "Dati tecnici, sicurezza e prevenzione spam: legittimo interesse al funzionamento e alla protezione del sito, art. 6(1)(f) GDPR.",
+            "Eventuali obblighi amministrativi o legali: obbligo di legge, art. 6(1)(c) GDPR.",
+            "Allergie o informazioni relative alla salute inserite volontariamente nelle note: consenso esplicito dell'utente per la specifica finalità di gestire la prenotazione e il servizio, art. 9(2)(a) GDPR.",
+          ],
+        },
+        {
+          title: "Conferimento dei dati",
+          paragraphs: [
+            "Nome, telefono, numero di persone, data, ora e sede sono necessari per inviare la richiesta di prenotazione. Senza questi dati Sina Hotpot potrebbe non essere in grado di gestire la richiesta. Le note opzionali possono essere lasciate vuote.",
+          ],
+        },
+        {
+          title: "Destinatari e servizi terzi",
+          paragraphs: [
+            "I dati possono essere trattati da personale autorizzato di Sina Hotpot e da fornitori tecnici usati per pubblicare il sito, proteggere il servizio e inoltrare le richieste di prenotazione.",
+          ],
+          items: [
+            "Web3Forms: riceve i dati del modulo e li inoltra via email a Sina Hotpot.",
+            "Cloudflare: fornisce hosting, distribuzione del sito, sicurezza e log tecnici.",
+            "Provider email: riceve e conserva le email di prenotazione nella casella di Sina Hotpot.",
+            "hCaptcha o strumenti anti-spam equivalenti: possono essere attivati sul modulo per verificare che l'invio provenga da una persona e non da un bot.",
+            "Google Maps, Instagram, Facebook e WhatsApp sono collegamenti esterni. I relativi servizi trattano dati solo se decidi di aprire quei link o usare quelle piattaforme.",
+          ],
+        },
+        {
+          title: "Trasferimenti fuori dallo Spazio Economico Europeo",
+          paragraphs: [
+            "Alcuni fornitori tecnici, inclusi servizi di hosting, sicurezza, moduli, email o anti-spam, possono trattare dati anche fuori dallo Spazio Economico Europeo. In questi casi il trattamento deve basarsi sulle garanzie disponibili presso i fornitori, come decisioni di adeguatezza, Data Privacy Framework, clausole contrattuali standard o misure equivalenti quando applicabili.",
+          ],
+        },
+        {
+          title: "Conservazione",
+          paragraphs: [
+            "Le richieste di prenotazione sono conservate per il tempo necessario a gestire la prenotazione e, di norma, non oltre 12 mesi dalla data della richiesta, salvo necessità di conservazione più lunga per obblighi di legge, sicurezza, prevenzione abusi o difesa di diritti.",
+            "I log tecnici e anti-spam sono conservati secondo le impostazioni e i tempi dei rispettivi fornitori. Web3Forms dichiara di non conservare le submission del modulo e di cancellare periodicamente eventuali log tecnici.",
+          ],
+        },
+        {
+          title: "Cookie e strumenti di tracciamento",
+          paragraphs: [
+            "Il sito non usa cookie di profilazione, cookie pubblicitari o cookie analytics tramite il proprio codice. Non è quindi mostrato un banner di consenso cookie.",
+            "Possono essere usati strumenti tecnici strettamente necessari alla navigazione, alla sicurezza, all'inoltro del modulo e alla prevenzione dello spam. Se in futuro saranno introdotti analytics, pixel pubblicitari, mappe incorporate, social widget o altri strumenti non tecnici, questa informativa e il meccanismo di consenso dovranno essere aggiornati prima dell'attivazione.",
+          ],
+        },
+        {
+          title: "Diritti dell'interessato",
+          paragraphs: [
+            "Puoi chiedere accesso, rettifica, cancellazione, limitazione, portabilità dei dati, opposizione al trattamento quando applicabile e revoca del consenso per i dati trattati sulla base del consenso. La revoca non incide sulla liceità del trattamento effettuato prima della revoca.",
+            "Puoi esercitare i diritti scrivendo a sinahotpot@gmail.com. Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali, www.garanteprivacy.it.",
+          ],
+        },
+        {
+          title: "Decisioni automatizzate",
+          paragraphs: [
+            "Il sito non effettua profilazione o decisioni automatizzate che producano effetti giuridici o incidano in modo analogo sugli utenti.",
+          ],
+        },
       ],
     },
   } as const satisfies LocaleCopy;

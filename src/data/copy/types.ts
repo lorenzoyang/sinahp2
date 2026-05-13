@@ -4,6 +4,12 @@ import type { TextPair } from "../types";
 
 export type CultureBlock = readonly [CultureTopicId, string, string];
 
+export type PrivacySection = {
+  title: string;
+  paragraphs: readonly string[];
+  items?: readonly string[];
+};
+
 export type LocaleCopy = {
   meta: {
     homeTitle: string;
@@ -74,8 +80,9 @@ export type LocaleCopy = {
       string
     >;
     placeholders: Record<"name" | "phone" | "message", string>;
-    consent: string;
+    consentPrefix: string;
     privacyLink: string;
+    consentSuffix: string;
     submit: string;
     sending: string;
     success: string;
@@ -91,6 +98,7 @@ export type LocaleCopy = {
   privacy: {
     title: string;
     intro: string;
-    sections: readonly TextPair[];
+    updated: string;
+    sections: readonly PrivacySection[];
   };
 };
