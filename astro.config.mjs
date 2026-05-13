@@ -16,6 +16,14 @@ export default defineConfig({
         access: "public",
         optional: true,
       }),
+      // Controls whether to enable the captcha, defaulting to false.
+      // It determines whether the captcha UI component is displayed,
+      // whether the relevant JS script is loaded, and whether a captcha token is required and sent.
+      PUBLIC_WEB3FORMS_CAPTCHA_ENABLED: envField.boolean({
+        context: "client",
+        access: "public",
+        default: false,
+      }),
     },
   },
 

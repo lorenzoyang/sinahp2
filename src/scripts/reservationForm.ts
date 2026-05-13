@@ -47,6 +47,10 @@ function getCaptchaResponse(form: HTMLFormElement) {
   return captchaResponse?.value.trim() ?? "";
 }
 
+function isCaptchaEnabled(form: HTMLFormElement) {
+  return form.dataset.captchaEnabled === "true";
+}
+
 function showStatus(message: string) {
   if (status) {
     status.textContent = message;
@@ -154,7 +158,7 @@ form?.addEventListener("submit", async (event) => {
     return;
   }
 
-  if (!getCaptchaResponse(form)) {
+  if (isCaptchaEnabled(form) && !getCaptchaResponse(form)) {
     showStatus(labels.captchaRequired ?? "");
     return;
   }

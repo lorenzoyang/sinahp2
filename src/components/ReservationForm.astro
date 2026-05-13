@@ -1,5 +1,8 @@
 ---
-import { PUBLIC_WEB3FORMS_ACCESS_KEY } from "astro:env/client";
+import {
+  PUBLIC_WEB3FORMS_ACCESS_KEY,
+  PUBLIC_WEB3FORMS_CAPTCHA_ENABLED,
+} from "astro:env/client";
 import {
   brand,
   getLocationLabel,
@@ -18,6 +21,7 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const successUrl = getPath(locale, "success");
 const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+const captchaEnabled = PUBLIC_WEB3FORMS_CAPTCHA_ENABLED;
 const privacyPath = getPath(locale, "privacy");
 const defaultLocationId = "firenze";
 const reservationSlotIntervalMinutes = 30;
@@ -92,6 +96,7 @@ const formClasses = {
   data-error={t.reservation.error}
   data-missing-key={t.reservation.missingKey}
   data-captcha-required={t.reservation.captchaRequired}
+  data-captcha-enabled={captchaEnabled ? "true" : "false"}
 >
   <input type="hidden" name="access_key" value={accessKey} />
   <input type="hidden" name="subject" value="Sina Hotpot Reservation Request" />
@@ -218,11 +223,15 @@ const formClasses = {
     </a>
   </p>
 
-  <div
-    class:list={[formClasses.captcha, "h-captcha"]}
-    data-captcha="true"
-  >
-  </div>
+  {
+    captchaEnabled && (
+      <div
+        class:list={[formClasses.captcha, "h-captcha"]}
+        data-captcha="true"
+      >
+      </div>
+    )
+  }
 
   <div class={formClasses.submitRow}>
     <p
@@ -249,9 +258,13 @@ const formClasses = {
   import "../scripts/reservationForm";
 </script>
 
-<script
-  is:inline
-  src="https://web3forms.com/client/script.js"
-  async
-  defer
-></script>
+{
+  captchaEnabled && (
+    <script
+      is:inline
+      src="https://web3forms.com/client/script.js"
+      async
+      defer
+    ></script>
+  )
+}

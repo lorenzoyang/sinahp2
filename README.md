@@ -41,6 +41,13 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Reservation Form
+
+The reservation form submits through Web3Forms.
+
+- `PUBLIC_WEB3FORMS_ACCESS_KEY`: Web3Forms access key.
+- `PUBLIC_WEB3FORMS_CAPTCHA_ENABLED`: set to `true` to render and require hCaptcha. Leave it unset or set it to `false` to temporarily disable captcha without deleting the related code.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
