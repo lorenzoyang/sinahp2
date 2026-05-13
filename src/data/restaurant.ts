@@ -5,11 +5,11 @@ import {
   imagesWithFallback,
   type ImageModule,
 } from "./imageAssets";
-import cultureBasicsImage from "../assets/images/culture/culture-basics-placeholder.jpg";
-import cultureBrothsImage from "../assets/images/culture/culture-broths-placeholder.jpg";
-import cultureEtiquetteImage from "../assets/images/culture/culture-etiquette-placeholder.jpg";
-import cultureIngredientsImage from "../assets/images/culture/culture-ingredients-placeholder.jpg";
-import cultureRitualImage from "../assets/images/culture/culture-ritual-placeholder.jpg";
+import cultureBasicsImage from "../assets/images/homepage/homepage-tablefood1.jpg";
+import cultureBrothsImage from "../assets/images/hotpot-culture/hotpot-culture-hero.png";
+import cultureEtiquetteImage from "../assets/images/hotpot-culture/culture-etiquette-placeholder.jpg";
+import cultureIngredientsImage from "../assets/images/hotpot-culture/culture-ingredients-placeholder.jpg";
+import cultureRitualImage from "../assets/images/homepage/homepage-tablefood2.jpg";
 import mealSpreadImage from "../assets/images/homepage/homepage-sharedtable.jpg";
 import steamingSetupImage from "../assets/images/homepage/homepage-steaming-meat.jpg";
 import heroImage from "../assets/images/homepage/homepage-hero-hotpotpremium.png";
