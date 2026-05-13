@@ -1,7 +1,7 @@
 import type { ImageMetadata } from "astro";
-import cultureImage from "../assets/images/culture/sauce-bar-table.jpg";
-import tableImage from "../assets/images/culture/hotpot-table-ritual.jpg";
-import ingredientsImage from "../assets/images/food/rolled-beef-platter.jpg";
+import cultureImage from "../assets/images/homepage/homepage-saucetable.jpg";
+import tableImage from "../assets/images/homepage/430.jpg";
+import ingredientsImage from "../assets/images/homepage/homepage-rolledbeef.jpg";
 import platterImage from "../assets/images/food/premium-meat-platter.jpg";
 import mealSpreadImage from "../assets/images/homepage/homepage-sharedtable.jpg";
 import steamingSetupImage from "../assets/images/homepage/homepage-steaming-meat.jpg";
