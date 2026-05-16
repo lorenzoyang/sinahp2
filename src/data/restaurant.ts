@@ -1,3 +1,4 @@
+import type { ImageMetadata } from "astro";
 import {
   firstImage,
   imagesFromGlob,
@@ -21,6 +22,32 @@ const firenzeGallery = imagesFromGlob(
 );
 const pratoPrimaryImage = firstImage(pratoGallery, pratoFallbackImage);
 const firenzePrimaryImage = firstImage(firenzeGallery, firenzeFallbackImage);
+
+export type ReservationTimeRange = {
+  readonly start: string;
+  readonly end: string;
+};
+
+type StructuredAddress = {
+  readonly streetAddress: string;
+  readonly addressLocality: string;
+  readonly postalCode: string;
+};
+
+type RestaurantLocationData = {
+  readonly id: "prato" | "firenze";
+  readonly city: string;
+  readonly phone: string;
+  readonly address: string;
+  readonly structuredAddress: StructuredAddress;
+  readonly hours: string;
+  readonly schemaOpeningHours: readonly string[];
+  readonly reservationTimeRanges: readonly ReservationTimeRange[];
+  readonly wechatId: string;
+  readonly image: ImageMetadata;
+  readonly gallery: readonly ImageMetadata[];
+  readonly mapHref: string;
+};
 
 export const brand = {
   chineseName: "鲜入围煮",
@@ -74,9 +101,13 @@ export const locations = [
     mapHref:
       "https://www.google.com/maps/search/?api=1&query=Via%20Ghibellina%2080R%2C%20Firenze",
   },
-] as const;
+] as const satisfies readonly RestaurantLocationData[];
 
 export type RestaurantLocation = (typeof locations)[number];
+export type RestaurantLocationId = RestaurantLocation["id"];
+
+export const defaultReservationLocationId =
+  "firenze" satisfies RestaurantLocationId;
 
 export function getPhoneHref(phone: string) {
   return `tel:${phone.replaceAll(" ", "")}`;

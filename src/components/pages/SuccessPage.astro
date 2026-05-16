@@ -4,6 +4,10 @@ import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, getPath, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import {
+  cardClasses as sharedCardClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -12,15 +16,15 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const sectionClasses = {
-  hero: "bg-ink px-4 py-16 sm:px-6 lg:px-8",
-  locations: "page-band bg-paper px-4 py-12 text-ink sm:px-6 lg:px-8",
+  hero: sharedSectionClasses.heroDarkSpacious,
+  locations: sharedSectionClasses.paperTight,
 };
 const textClasses = {
   intro: "mt-5 text-lg leading-8 text-paper-soft/84",
   next: "mt-4 text-base leading-7 text-paper-soft/72",
 };
 const cardClasses = {
-  location: "rounded-lg border border-warm-line bg-white/62 p-5",
+  location: `${sharedCardClasses.light} p-5`,
 };
 ---
 

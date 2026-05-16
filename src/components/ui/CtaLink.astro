@@ -49,7 +49,7 @@ const ctaVariantClasses = {
     "bg-lacquer px-4 py-2 text-sm !text-paper transition hover:bg-lacquer-hover",
 } satisfies Record<LinkVariant, string>;
 const targetValue = external ? "_blank" : target;
-const relValue = external ? "noreferrer" : rel;
+const relValue = external ? (rel ?? "noopener noreferrer") : rel;
 ---
 
 <a

@@ -5,6 +5,13 @@ import LocationActions from "../LocationActions.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import {
+  cardClasses as sharedCardClasses,
+  headingClasses,
+  imageSizes,
+  mediaClasses as sharedMediaClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -13,20 +20,16 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const sectionClasses = {
-  hero: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
-  listing: "page-band bg-ink-band px-4 py-12 sm:px-6 lg:px-8",
-};
-const headingClasses = {
-  title: "mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl",
-  intro: "mt-5 max-w-3xl text-lg leading-8 text-paper-soft/82",
+  hero: sharedSectionClasses.heroDark,
+  listing: sharedSectionClasses.inkBandTight,
 };
 const cardClasses = {
-  location: "overflow-hidden rounded-lg border border-white/12 bg-paper text-ink",
+  location: `overflow-hidden ${sharedCardClasses.paperPanel}`,
   carousel: "relative overflow-hidden bg-ink",
   track:
     "location-carousel-track scrollbar-hidden focus-ring flex snap-x snap-mandatory overflow-x-auto scroll-smooth",
   slide: "relative aspect-16/10 w-full shrink-0 snap-center overflow-hidden",
-  image: "absolute inset-0 h-full w-full object-cover",
+  image: sharedMediaClasses.absoluteImage,
   dots:
     "absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-ink/72 px-2.5 py-2 shadow-lg shadow-black/20 backdrop-blur",
   dot: "focus-ring block h-2.5 w-2.5 cursor-pointer appearance-none rounded-full border-0 bg-paper/72 p-0 ring-1 ring-white/20 transition hover:bg-gold focus-visible:bg-gold",
@@ -60,8 +63,8 @@ const locationCards = locations.map((location) => ({
       title={t.locations.title}
       intro={t.locations.intro}
       containerClass="mx-auto max-w-7xl"
-      titleClass={headingClasses.title}
-      introClass={headingClasses.intro}
+      titleClass={headingClasses.heroTitle}
+      introClass={headingClasses.heroIntro}
     />
   </section>
 
@@ -75,11 +78,13 @@ const locationCards = locations.map((location) => ({
               role="region"
               aria-label={`${location.city} restaurant photos`}
               aria-roledescription="carousel"
+              data-location-carousel
             >
               <div
                 class={cardClasses.track}
                 tabindex="0"
                 aria-label={`${location.city} photo slides`}
+                data-location-carousel-track
               >
                 {
                   location.slides.map((slide) => (
@@ -88,9 +93,9 @@ const locationCards = locations.map((location) => ({
                         src={slide.photo}
                         alt={slide.alt}
                         class={cardClasses.image}
-                        width={1200}
-                        widths={[360, 640, 900, 1200]}
-                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        width={imageSizes.splitPanel.width}
+                        widths={imageSizes.splitPanel.widths}
+                        sizes={imageSizes.splitPanel.sizes}
                         loading="lazy"
                       />
                     </div>
@@ -110,6 +115,9 @@ const locationCards = locations.map((location) => ({
                           class={cardClasses.dot}
                           aria-label={slide.label}
                           aria-controls={slide.id}
+                          aria-current={slide.id.endsWith("-1")
+                            ? "true"
+                            : undefined}
                           data-location-carousel-dot
                           data-slide-id={slide.id}
                         />

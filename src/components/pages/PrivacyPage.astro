@@ -4,6 +4,10 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import type { PrivacySection } from "../../data/copy/types";
+import {
+  cardClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -13,11 +17,11 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const privacySections = t.privacy.sections as readonly PrivacySection[];
 const sectionClasses = {
-  hero: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
-  content: "page-band bg-paper px-4 py-12 text-ink sm:px-6 lg:px-8",
+  hero: sharedSectionClasses.heroDark,
+  content: sharedSectionClasses.paperTight,
 };
 const articleClasses = {
-  privacy: "rounded-lg border border-warm-line bg-white/70 p-5",
+  privacy: cardClasses.lightPanel,
   updated: "text-sm font-semibold text-brown-muted",
   body: "text-base leading-7 text-brown-body",
   list: "mt-3 grid list-disc gap-2 pl-5 text-base leading-7 text-brown-body",

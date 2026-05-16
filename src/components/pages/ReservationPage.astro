@@ -6,6 +6,11 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import { reservationImages } from "../../data/pageImages";
+import {
+  imageSizes,
+  mediaClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -14,9 +19,9 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const pageClasses = {
-  section: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
-  heroImageFrame: "relative mt-7 aspect-4/3 overflow-hidden rounded-lg",
-  heroImage: "absolute inset-0 h-full w-full object-cover",
+  section: sharedSectionClasses.heroDark,
+  heroImageFrame: `${mediaClasses.landscapeFrame} mt-7`,
+  heroImage: mediaClasses.absoluteImage,
   contactGrid: "mt-6 grid gap-3 text-sm text-paper-soft/78",
   contactLink:
     "focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10",
@@ -44,7 +49,9 @@ const pageClasses = {
             src={reservationImages.hero}
             alt=""
             class={pageClasses.heroImage}
-            width="900"
+            width={imageSizes.splitPanel.width}
+            widths={imageSizes.splitPanel.widths}
+            sizes={imageSizes.splitPanel.sizes}
             loading="lazy"
           />
         </div>

@@ -9,7 +9,18 @@ import {
   type Locale,
 } from "../../data/site";
 import { copy } from "../../data/copy";
-import { galleryFallbackImages, galleryGroups } from "../../data/gallery";
+import {
+  galleryFallbackImages,
+  getGalleryPhotoCountLabel,
+  getGalleryPhotoTotal,
+  getVisibleGalleryGroups,
+} from "../../data/gallery";
+import {
+  headingClasses,
+  imageSizes,
+  mediaClasses as sharedMediaClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -18,67 +29,29 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 
-const photoCountLabel = (count: number) => `${count} foto`;
-const visibleGroups = galleryGroups.flatMap((group) => {
-  const [coverPhoto] = group.photos;
-
-  if (!coverPhoto) {
-    return [];
-  }
-
-  return {
-    ...group,
-    coverPhoto,
-    sectionId: `gallery-${group.id}`,
-    label: t.gallery.categories[group.id],
-    photoCountLabel: photoCountLabel(group.photos.length),
-  };
-});
+const visibleGroups = getVisibleGalleryGroups().map((group) => ({
+  ...group,
+  label: t.gallery.categories[group.id],
+  photoCountLabel: getGalleryPhotoCountLabel(group.photos.length, locale),
+}));
 
 const heroPhoto =
   visibleGroups.find((group) => group.id === "table")?.coverPhoto ??
   galleryFallbackImages.table;
-const galleryTotal = visibleGroups.reduce(
-  (total, group) => total + group.photos.length,
-  0,
-);
-const galleryTotalLabel = photoCountLabel(galleryTotal);
+const galleryTotal = getGalleryPhotoTotal(visibleGroups);
+const galleryTotalLabel = getGalleryPhotoCountLabel(galleryTotal, locale);
 const sectionClasses = {
-  hero: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
-  band: "page-band px-4 py-12 sm:px-6 lg:px-8",
-};
-const headingClasses = {
-  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
-  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
-  darkIntro: "mt-4 max-w-3xl text-base leading-7 text-paper-soft/76",
+  hero: sharedSectionClasses.heroDark,
+  bandDark: sharedSectionClasses.darkTight,
+  bandInk: sharedSectionClasses.inkBandTight,
 };
 const mediaClasses = {
   heroFrame:
     "relative aspect-4/3 min-w-0 overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-2xl shadow-black/20 sm:aspect-16/9 lg:aspect-21/9",
   card:
     "group focus-ring relative min-h-36 overflow-hidden rounded-lg border border-white/12 bg-ink-panel transition hover:border-gold",
-  tile:
-    "group relative aspect-4/3 min-w-0 overflow-hidden rounded-lg border border-white/12 bg-ink-panel",
-  image:
-    "absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]",
-};
-const imageSizes = {
-  hero: {
-    width: 1400,
-    widths: [420, 720, 960, 1200, 1600],
-    sizes: "(min-width: 1024px) 58vw, 92vw",
-  },
-  card: {
-    width: 720,
-    widths: [320, 520, 720, 960],
-    sizes: "(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 92vw",
-  },
-  tile: {
-    width: 900,
-    widths: [320, 520, 720, 960, 1200],
-    sizes:
-      "(min-width: 1280px) 23vw, (min-width: 1024px) 31vw, (min-width: 640px) 45vw, 92vw",
-  },
+  tile: sharedMediaClasses.darkTile,
+  image: sharedMediaClasses.hoverImage,
 };
 ---
 
@@ -112,9 +85,9 @@ const imageSizes = {
             src={heroPhoto}
             alt={`${brand.publicName} ${t.gallery.title}`}
             class="absolute inset-0 h-full w-full object-cover"
-            width={imageSizes.hero.width}
-            widths={imageSizes.hero.widths}
-            sizes={imageSizes.hero.sizes}
+            width={imageSizes.heroWide.width}
+            widths={imageSizes.heroWide.widths}
+            sizes={imageSizes.heroWide.sizes}
             loading="eager"
           />
           <div
@@ -167,10 +140,9 @@ const imageSizes = {
     visibleGroups.map((group, groupIndex) => (
       <section
         id={group.sectionId}
-        class:list={[
-          sectionClasses.band,
-          groupIndex % 2 === 0 ? "bg-ink-band" : "bg-ink",
-        ]}
+        class={groupIndex % 2 === 0
+          ? sectionClasses.bandInk
+          : sectionClasses.bandDark}
       >
         <div class="mx-auto max-w-7xl">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">

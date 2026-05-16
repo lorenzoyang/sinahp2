@@ -113,6 +113,10 @@ textarea {
   display: none;
 }
 
+[data-location-carousel-dot][aria-current="true"] {
+  background: var(--gold);
+}
+
 /* Header navigation */
 .site-nav-link {
   background: transparent;

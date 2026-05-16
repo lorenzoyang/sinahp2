@@ -1,53 +1,60 @@
-# Astro Starter Kit: Basics
+# Sina Hotpot Website
 
-```sh
-npm create astro@latest -- --template basics
-```
+Astro site for Sina Hotpot with multilingual static pages, Cloudflare output,
+optimized local image assets, and a Web3Forms reservation flow.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+Run commands from the project root.
 
-Inside of your Astro project, you'll see the following folders and files:
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local Astro dev server. |
+| `npm run check` | Run Astro and TypeScript diagnostics. |
+| `npm run build` | Run diagnostics and build the Cloudflare output. |
+| `npm run validate` | Alias for the production build check. |
+| `npm run preview` | Build and preview through Wrangler. |
+| `npm run deploy` | Build and deploy with Wrangler. |
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Project Structure
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- `src/pages`: default and localized route entrypoints.
+- `src/layouts/SiteLayout.astro`: shared document shell, navigation, SEO tags, and footer.
+- `src/components/pages`: page-level Astro components.
+- `src/components/ui`: small reusable UI components.
+- `src/data`: restaurant, routing, SEO, gallery, copy, and page image data.
+- `src/utils`: presentation helpers, shared UI class maps, and reservation time utilities.
+- `src/scripts`: small client-side enhancements for menus, carousels, reveals, and reservations.
+- `src/assets/images`: imported images processed by Astro.
 
-## 🧞 Commands
+## Content And Data
 
-All commands are run from the root of the project, from a terminal:
+- Restaurant metadata is in `src/data/restaurant.ts`.
+- Routes and locale rules are in `src/data/routing.ts`.
+- SEO and structured data are in `src/data/seo.ts`.
+- Gallery groups are derived in `src/data/gallery.ts` from image folders.
+- Page copy is split by locale under `src/data/copy`.
+- Home section copy is split by locale under `src/data/homeSections`.
+- Culture topic content is split by topic under `src/data/cultureTopics`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+When editing restaurant hours, update both the display text (`hours`) and the
+structured values (`schemaOpeningHours`, `reservationTimeRanges`) so the site,
+schema output, and reservation form stay aligned.
 
 ## Reservation Form
 
 The reservation form submits through Web3Forms.
 
 - `PUBLIC_WEB3FORMS_ACCESS_KEY`: Web3Forms access key.
-- `PUBLIC_WEB3FORMS_CAPTCHA_ENABLED`: set to `true` to render and require hCaptcha. Leave it unset or set it to `false` to temporarily disable captcha without deleting the related code.
+- `PUBLIC_WEB3FORMS_CAPTCHA_ENABLED`: set to `true` to render and require
+  hCaptcha. Leave unset or set to `false` to disable captcha without removing
+  the related code.
 
-## 👀 Want to learn more?
+Reservation time slots are generated from `reservationTimeRanges` with the
+shared helper in `src/utils/reservation.ts`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Deployment Notes
+
+The project uses `@astrojs/cloudflare` with compile-time image optimization.
+Before deploying, run `npm run build` and verify that Astro reports zero
+diagnostics.

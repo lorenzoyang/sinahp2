@@ -17,6 +17,12 @@ import {
   getRelatedCultureTopics,
 } from "../../data/cultureTopics";
 import { formatSequenceNumber } from "../../utils/presentation";
+import {
+  cardClasses as sharedCardClasses,
+  headingClasses,
+  imageSizes,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -31,23 +37,22 @@ const relatedTopics = getRelatedCultureTopics(locale, topicId);
 const alternatePaths = getCultureTopicAlternatePaths(topicId);
 const sectionClasses = {
   topicHero: "relative overflow-hidden bg-ink",
-  shell: "page-band px-4 py-14 sm:px-6 lg:px-8",
-  shellLight: "page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8",
+  dark: sharedSectionClasses.dark,
+  inkBand: sharedSectionClasses.inkBand,
+  paper: sharedSectionClasses.paper,
 };
-const headingClasses = {
+const topicHeadingClasses = {
   heroEyebrow:
     "mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-gold",
   heroIntro: "mt-5 max-w-3xl text-lg leading-8 text-paper-soft/86",
-  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
-  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white",
 };
 const cardClasses = {
   highlight:
     "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-semibold text-paper-soft backdrop-blur",
-  content: "rounded-lg border border-warm-line bg-white/72 p-5 sm:p-6",
-  tip: "rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82",
+  content: `${sharedCardClasses.lightSoft} p-5 sm:p-6`,
+  tip: `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
   related:
-    "focus-ring rounded-lg border border-white/12 bg-white/5.5 p-5 transition hover:border-gold hover:bg-white/8",
+    `focus-ring ${sharedCardClasses.darkInteractive} p-5`,
 };
 ---
 
@@ -64,7 +69,9 @@ const cardClasses = {
         src={topic.image}
         alt=""
         class="absolute inset-0 h-full w-full object-cover opacity-40"
-        width="1800"
+        width={imageSizes.fullBleedHero.width}
+        widths={imageSizes.fullBleedHero.widths}
+        sizes={imageSizes.fullBleedHero.sizes}
         loading="eager"
       />
       <div
@@ -87,8 +94,8 @@ const cardClasses = {
         eyebrow={content.kicker}
         title={content.title}
         intro={content.detailIntro}
-        eyebrowClass={headingClasses.heroEyebrow}
-        introClass={headingClasses.heroIntro}
+        eyebrowClass={topicHeadingClasses.heroEyebrow}
+        introClass={topicHeadingClasses.heroIntro}
       />
       <div class="mt-8 grid gap-3 sm:grid-cols-3">
         {
@@ -100,7 +107,7 @@ const cardClasses = {
     </div>
   </section>
 
-  <section class={sectionClasses.shellLight}>
+  <section class={sectionClasses.paper}>
     <div class="mx-auto grid max-w-5xl gap-5">
       {
         content.sections.map((section, index) => (
@@ -120,7 +127,7 @@ const cardClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink-band"]}>
+  <section class={sectionClasses.inkBand}>
     <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
       <SectionHeader
         eyebrow="Sina Hotpot"
@@ -135,7 +142,7 @@ const cardClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink"]}>
+  <section class={sectionClasses.dark}>
     <div class="mx-auto max-w-5xl">
       <div class="flex flex-col gap-3 sm:flex-row">
         <CtaLink href={getPath(locale, "reservation")} variant="gold">

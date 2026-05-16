@@ -7,23 +7,6 @@ type ReservationPayload = Record<string, FormDataEntryValue>;
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
-const form = document.getElementById(
-  "reservation-form",
-) as HTMLFormElement | null;
-const status = document.getElementById("reservation-status");
-const submit = document.getElementById(
-  "reservation-submit",
-) as HTMLButtonElement | null;
-const dateInput = document.getElementById(
-  "reservation-date",
-) as HTMLInputElement | null;
-const timeSelect = document.getElementById(
-  "reservation-time",
-) as HTMLSelectElement | null;
-const locationSelect = document.getElementById(
-  "reservation-location",
-) as HTMLSelectElement | null;
-
 function getTodayDateValue() {
   const today = new Date();
   const year = today.getFullYear();
@@ -51,13 +34,13 @@ function isCaptchaEnabled(form: HTMLFormElement) {
   return form.dataset.captchaEnabled === "true";
 }
 
-function showStatus(message: string) {
+function showStatus(status: Element | null, message: string) {
   if (status) {
     status.textContent = message;
   }
 }
 
-function getSelectedTimeSlots() {
+function getSelectedTimeSlots(locationSelect: HTMLSelectElement | null) {
   const selectedOption = locationSelect?.selectedOptions[0];
 
   if (!selectedOption?.dataset.timeSlots) {
@@ -85,14 +68,18 @@ function createTimeOption(value: string, label = value) {
   return option;
 }
 
-function updateTimeOptions({ preserveCurrent = false } = {}) {
+function updateTimeOptions(
+  timeSelect: HTMLSelectElement | null,
+  locationSelect: HTMLSelectElement | null,
+  { preserveCurrent = false } = {},
+) {
   if (!timeSelect) {
     return;
   }
 
   const currentValue = timeSelect.value;
   const placeholder = timeSelect.dataset.placeholder ?? "";
-  const timeSlots = getSelectedTimeSlots();
+  const timeSlots = getSelectedTimeSlots(locationSelect);
 
   timeSelect.replaceChildren();
 
@@ -108,8 +95,12 @@ function updateTimeOptions({ preserveCurrent = false } = {}) {
     preserveCurrent && timeSlots.includes(currentValue) ? currentValue : "";
 }
 
-function setSubmitState(isSending: boolean) {
-  if (!submit || !form) {
+function setSubmitState(
+  form: HTMLFormElement,
+  submit: HTMLButtonElement | null,
+  isSending: boolean,
+) {
+  if (!submit) {
     return;
   }
 
@@ -133,53 +124,73 @@ async function submitReservation(payload: ReservationPayload) {
   return { response, result };
 }
 
-if (dateInput) {
-  dateInput.min = getTodayDateValue();
-}
+function initReservationForm(form: HTMLFormElement) {
+  const status = form.querySelector("[data-reservation-status]");
+  const submit = form.querySelector<HTMLButtonElement>(
+    "[data-reservation-submit]",
+  );
+  const dateInput = form.querySelector<HTMLInputElement>(
+    "[data-reservation-date]",
+  );
+  const timeSelect = form.querySelector<HTMLSelectElement>(
+    "[data-reservation-time]",
+  );
+  const locationSelect = form.querySelector<HTMLSelectElement>(
+    "[data-reservation-location]",
+  );
 
-updateTimeOptions({ preserveCurrent: true });
-
-locationSelect?.addEventListener("change", () => {
-  updateTimeOptions();
-});
-
-form?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  if (!form.reportValidity() || !submit || !status) {
-    return;
+  if (dateInput) {
+    dateInput.min = getTodayDateValue();
   }
 
-  const payload = getPayload(form);
-  const labels = form.dataset;
+  updateTimeOptions(timeSelect, locationSelect, { preserveCurrent: true });
 
-  if (!payload.access_key) {
-    showStatus(labels.missingKey ?? "");
-    return;
-  }
+  locationSelect?.addEventListener("change", () => {
+    updateTimeOptions(timeSelect, locationSelect);
+  });
 
-  if (isCaptchaEnabled(form) && !getCaptchaResponse(form)) {
-    showStatus(labels.captchaRequired ?? "");
-    return;
-  }
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  setSubmitState(true);
-  showStatus("");
-
-  try {
-    const { response, result } = await submitReservation(payload);
-
-    if (response.ok && result.success) {
-      window.location.href = labels.successUrl ?? "/reservation-success/";
+    if (!form.reportValidity() || !submit || !status) {
       return;
     }
 
-    showStatus(result.message || labels.error || "");
-  } catch {
-    showStatus(labels.error ?? "");
-  } finally {
-    setSubmitState(false);
-  }
-});
+    const payload = getPayload(form);
+    const labels = form.dataset;
+
+    if (!payload.access_key) {
+      showStatus(status, labels.missingKey ?? "");
+      return;
+    }
+
+    if (isCaptchaEnabled(form) && !getCaptchaResponse(form)) {
+      showStatus(status, labels.captchaRequired ?? "");
+      return;
+    }
+
+    setSubmitState(form, submit, true);
+    showStatus(status, "");
+
+    try {
+      const { response, result } = await submitReservation(payload);
+
+      if (response.ok && result.success) {
+        window.location.href = labels.successUrl ?? "/reservation-success/";
+        return;
+      }
+
+      showStatus(status, result.message || labels.error || "");
+    } catch {
+      showStatus(status, labels.error ?? "");
+    } finally {
+      setSubmitState(form, submit, false);
+    }
+  });
+}
+
+document
+  .querySelectorAll<HTMLFormElement>("[data-reservation-form]")
+  .forEach(initReservationForm);
 
 export {};

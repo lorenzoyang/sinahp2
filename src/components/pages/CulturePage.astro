@@ -11,6 +11,13 @@ import {
 import { copy } from "../../data/copy";
 import { getCultureTopicCards } from "../../data/cultureTopics";
 import { cultureImages } from "../../data/pageImages";
+import {
+  cardClasses as sharedCardClasses,
+  headingClasses,
+  imageSizes,
+  mediaClasses as sharedMediaClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -20,30 +27,25 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const topicCards = getCultureTopicCards(locale);
 const sectionClasses = {
-  hero: "bg-ink px-4 py-12 sm:px-6 lg:px-8",
-  shell: "page-band px-4 py-14 sm:px-6 lg:px-8",
-  shellLight: "page-band bg-paper px-4 py-14 text-ink sm:px-6 lg:px-8",
-};
-const headingClasses = {
-  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
-  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
-  darkIntro: "mt-4 text-base leading-7 text-paper-soft/76",
-  lightTitle: "text-3xl font-semibold leading-tight sm:text-4xl",
+  hero: sharedSectionClasses.heroDark,
+  dark: sharedSectionClasses.dark,
+  inkBand: sharedSectionClasses.inkBand,
+  paper: sharedSectionClasses.paper,
 };
 const cardClasses = {
-  dark: "rounded-lg border border-white/12 bg-white/5.5",
+  dark: sharedCardClasses.dark,
   topic:
-    "flex min-h-100 flex-col overflow-hidden rounded-lg border border-white/12 bg-white/5.5",
+    `flex min-h-100 flex-col overflow-hidden ${sharedCardClasses.dark}`,
   lightListItem:
     "rounded-md border border-warm-line bg-white/60 px-4 py-3 leading-7",
   etiquette:
-    "rounded-lg border border-white/12 bg-white/5.5 px-5 py-4 text-base leading-7 text-paper-soft/82",
+    `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
 };
 const mediaClasses = {
   heroFrame: "relative aspect-5/4 overflow-hidden rounded-lg",
   topicFrame: "relative aspect-4/3 w-full overflow-hidden",
-  tableFrame: "relative aspect-4/3 overflow-hidden rounded-lg",
-  image: "absolute inset-0 h-full w-full object-cover",
+  tableFrame: sharedMediaClasses.landscapeFrame,
+  image: sharedMediaClasses.absoluteImage,
 };
 ---
 
@@ -76,14 +78,16 @@ const mediaClasses = {
           src={cultureImages.hero}
           alt=""
           class={mediaClasses.image}
-          width="1800"
+          width={imageSizes.splitPanel.width}
+          widths={imageSizes.splitPanel.widths}
+          sizes={imageSizes.splitPanel.sizes}
           loading="eager"
         />
       </div>
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink-band"]}>
+  <section class={sectionClasses.inkBand}>
     <div class="mx-auto max-w-7xl">
       <SectionHeader
         eyebrow={t.culture.whyTitle}
@@ -104,7 +108,9 @@ const mediaClasses = {
                   src={topic.image}
                   alt=""
                   class={mediaClasses.image}
-                  width="720"
+                  width={imageSizes.card.width}
+                  widths={imageSizes.card.widths}
+                  sizes={imageSizes.card.sizes}
                   loading="lazy"
                 />
               </div>
@@ -133,7 +139,7 @@ const mediaClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink"]}>
+  <section class={sectionClasses.dark}>
     <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
       {
         t.culture.blocks.map(([topicId, title, text]) => (
@@ -154,7 +160,7 @@ const mediaClasses = {
   </section>
 
   <section
-    class={sectionClasses.shellLight}
+    class={sectionClasses.paper}
   >
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center"
@@ -179,14 +185,16 @@ const mediaClasses = {
           src={cultureImages.table}
           alt=""
           class={mediaClasses.image}
-          width="1800"
+          width={imageSizes.splitPanel.width}
+          widths={imageSizes.splitPanel.widths}
+          sizes={imageSizes.splitPanel.sizes}
           loading="lazy"
         />
       </div>
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink"]}>
+  <section class={sectionClasses.dark}>
     <div class="mx-auto max-w-4xl">
       <h2 class="text-3xl font-semibold text-white">
         {t.culture.etiquetteTitle}

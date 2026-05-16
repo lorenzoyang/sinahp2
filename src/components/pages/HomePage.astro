@@ -17,6 +17,14 @@ import {
   formatSequenceNumber,
   getStaggerStyle,
 } from "../../utils/presentation";
+import {
+  cardClasses as sharedCardClasses,
+  headingClasses,
+  imageSizes,
+  layoutClasses,
+  mediaClasses as sharedMediaClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
 
 interface Props {
   locale: Locale;
@@ -28,32 +36,21 @@ const homeSections = getHomeSections(locale);
 const reservationPath = getPath(locale, "reservation");
 const culturePath = getPath(locale, "culture");
 const sectionClasses = {
-  shell: "page-band px-4 py-14 sm:px-6 lg:px-8",
   heroInner:
     "relative mx-auto flex min-h-[82svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:px-6 lg:px-8",
-  container: "mx-auto max-w-7xl",
-};
-const headingClasses = {
-  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
-  darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
-  darkIntro: "mt-4 text-base leading-7 text-paper-soft/76",
-  lightEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-lacquer",
-  lightTitle: "mt-3 text-3xl font-semibold leading-tight sm:text-4xl",
-  lightIntro: "mt-4 text-base leading-7 text-brown-text",
 };
 const cardClasses = {
-  dark: "homepage-card rounded-lg border border-white/12 bg-white/5.5",
-  light: "homepage-card rounded-lg border border-warm-line bg-white/70",
-  lightSoft: "homepage-card rounded-lg border border-warm-line bg-white/72",
-  location: "homepage-card rounded-lg border border-white/12 bg-paper p-5 text-ink",
+  dark: `homepage-card ${sharedCardClasses.dark}`,
+  light: `homepage-card ${sharedCardClasses.light}`,
+  lightSoft: `homepage-card ${sharedCardClasses.lightSoft}`,
+  location: `homepage-card ${sharedCardClasses.paperPanel} p-5`,
   reservationPanel:
     "overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10",
 };
 const mediaClasses = {
-  atmosphereFrame:
-    "relative aspect-4/5 overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-[0_24px_70px_rgba(0,0,0,0.24)]",
-  portraitFrame: "relative aspect-4/5 overflow-hidden rounded-lg",
-  photo: "homepage-photo absolute inset-0 h-full w-full object-cover",
+  atmosphereFrame: sharedMediaClasses.darkPortraitFrame,
+  portraitFrame: sharedMediaClasses.portraitFrame,
+  photo: `homepage-photo ${sharedMediaClasses.absoluteImage}`,
 };
 const pillClasses = {
   heroProof:
@@ -72,7 +69,9 @@ const pillClasses = {
         src={homeImages.hero}
         alt=""
         class="hero-image-drift absolute inset-0 h-full w-full object-cover"
-        width="1792"
+        width={imageSizes.fullBleedHero.width}
+        widths={imageSizes.fullBleedHero.widths}
+        sizes={imageSizes.fullBleedHero.sizes}
         loading="eager"
       />
       <div
@@ -121,7 +120,7 @@ const pillClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink"]}>
+  <section class={sharedSectionClasses.dark}>
     <div
       class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
     >
@@ -156,9 +155,7 @@ const pillClasses = {
     </div>
   </section>
 
-  <section
-    class:list={[sectionClasses.shell, "bg-paper text-ink"]}
-  >
+  <section class={sharedSectionClasses.paper}>
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
     >
@@ -167,7 +164,9 @@ const pillClasses = {
           src={homeImages.premiumSpread}
           alt=""
           class={mediaClasses.photo}
-          width="1800"
+          width={imageSizes.splitPanel.width}
+          widths={imageSizes.splitPanel.widths}
+          sizes={imageSizes.splitPanel.sizes}
           loading="lazy"
         />
       </div>
@@ -215,8 +214,8 @@ const pillClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink-band"]}>
-    <div class={sectionClasses.container}>
+  <section class={sharedSectionClasses.inkBand}>
+    <div class={layoutClasses.container}>
       <div data-reveal>
         <SectionHeader
           eyebrow={homeSections.occasions.eyebrow}
@@ -249,9 +248,7 @@ const pillClasses = {
     </div>
   </section>
 
-  <section
-    class:list={[sectionClasses.shell, "bg-paper-soft text-ink"]}
-  >
+  <section class={sharedSectionClasses.paperSoft}>
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-center"
     >
@@ -260,7 +257,9 @@ const pillClasses = {
           src={homeImages.visitSteam}
           alt=""
           class={mediaClasses.photo}
-          width="1800"
+          width={imageSizes.splitPanel.width}
+          widths={imageSizes.splitPanel.widths}
+          sizes={imageSizes.splitPanel.sizes}
           loading="lazy"
         />
       </div>
@@ -305,7 +304,7 @@ const pillClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink"]}>
+  <section class={sharedSectionClasses.dark}>
     <div
       class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
     >
@@ -314,7 +313,9 @@ const pillClasses = {
           src={homeImages.atmosphereTable}
           alt=""
           class={mediaClasses.photo}
-          width="1800"
+          width={imageSizes.splitPanel.width}
+          widths={imageSizes.splitPanel.widths}
+          sizes={imageSizes.splitPanel.sizes}
           loading="lazy"
         />
       </div>
@@ -361,8 +362,8 @@ const pillClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink-band"]}>
-    <div class={sectionClasses.container}>
+  <section class={sharedSectionClasses.inkBand}>
+    <div class={layoutClasses.container}>
       <div data-reveal>
         <SectionHeader
           title={t.home.sections.locationsTitle}
@@ -400,8 +401,8 @@ const pillClasses = {
     </div>
   </section>
 
-  <section class:list={[sectionClasses.shell, "bg-ink-footer"]}>
-    <div class={sectionClasses.container}>
+  <section class={sharedSectionClasses.footerDark}>
+    <div class={layoutClasses.container}>
       <div class={cardClasses.reservationPanel} data-reveal>
         <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
           <SectionHeader

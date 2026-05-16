@@ -3,6 +3,7 @@ import {
   imagesFromGlob,
   type ImageModule,
 } from "./imageAssets";
+import type { Locale } from "./routing";
 import galleryTableFallbackImage from "../assets/images/gallery/table/gallery-table-1.jpg";
 
 export const galleryCategoryIds = [
@@ -18,6 +19,19 @@ export type GalleryGroup = {
   readonly id: GalleryCategoryId;
   readonly photos: readonly ImageMetadata[];
 };
+
+export type VisibleGalleryGroup = GalleryGroup & {
+  readonly coverPhoto: ImageMetadata;
+  readonly sectionId: string;
+};
+
+const photoCountLabels = {
+  it: ["foto", "foto"],
+  zh: ["张照片", "张照片"],
+  en: ["photo", "photos"],
+  es: ["foto", "fotos"],
+  fr: ["photo", "photos"],
+} as const satisfies Record<Locale, readonly [string, string]>;
 
 function createGalleryGroup(
   id: GalleryCategoryId,
@@ -63,3 +77,39 @@ export const galleryGroups = [
 export const galleryFallbackImages = {
   table: galleryTableFallbackImage,
 } as const satisfies Record<string, ImageMetadata>;
+
+export function getGallerySectionId(id: GalleryCategoryId): string {
+  return `gallery-${id}`;
+}
+
+export function getVisibleGalleryGroups(
+  groups: readonly GalleryGroup[] = galleryGroups,
+): VisibleGalleryGroup[] {
+  return groups.flatMap((group) => {
+    const [coverPhoto] = group.photos;
+
+    if (!coverPhoto) {
+      return [];
+    }
+
+    return {
+      ...group,
+      coverPhoto,
+      sectionId: getGallerySectionId(group.id),
+    };
+  });
+}
+
+export function getGalleryPhotoTotal(groups: readonly GalleryGroup[]): number {
+  return groups.reduce((total, group) => total + group.photos.length, 0);
+}
+
+export function getGalleryPhotoCountLabel(
+  count: number,
+  locale: Locale,
+): string {
+  const [singular, plural] = photoCountLabels[locale];
+  const label = count === 1 ? singular : plural;
+
+  return locale === "zh" ? `${count}${label}` : `${count} ${label}`;
+}

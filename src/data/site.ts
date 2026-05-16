@@ -3,10 +3,13 @@
 export * from "./routing";
 export {
   brand,
+  defaultReservationLocationId,
   getLocationLabel,
   getPhoneHref,
   locations,
 } from "./restaurant";
 export type {
+  ReservationTimeRange,
   RestaurantLocation,
+  RestaurantLocationId,
 } from "./restaurant";
