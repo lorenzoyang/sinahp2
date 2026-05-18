@@ -10,7 +10,6 @@ import {
 } from "../../data/site";
 import { copy } from "../../data/copy";
 import {
-  galleryFallbackImages,
   getGalleryPhotoCountLabel,
   getGalleryPhotoTotal,
   getVisibleGalleryGroups,
@@ -35,9 +34,7 @@ const visibleGroups = getVisibleGalleryGroups().map((group) => ({
   photoCountLabel: getGalleryPhotoCountLabel(group.photos.length, locale),
 }));
 
-const heroPhoto =
-  visibleGroups.find((group) => group.id === "table")?.coverPhoto ??
-  galleryFallbackImages.table;
+const heroPhoto = visibleGroups[0]?.coverPhoto;
 const galleryTotal = getGalleryPhotoTotal(visibleGroups);
 const galleryTotalLabel = getGalleryPhotoCountLabel(galleryTotal, locale);
 const sectionClasses = {
@@ -80,32 +77,32 @@ const mediaClasses = {
           </div>
         </SectionHeader>
 
-        <figure class={mediaClasses.heroFrame}>
-          <Image
-            src={heroPhoto}
-            alt={`${brand.publicName} ${t.gallery.title}`}
-            class="absolute inset-0 h-full w-full object-cover"
-            width={imageSizes.heroWide.width}
-            widths={imageSizes.heroWide.widths}
-            sizes={imageSizes.heroWide.sizes}
-            loading="eager"
-          />
-          <div
-            class="absolute inset-0 bg-linear-to-t from-ink/64 via-transparent to-transparent"
-          >
-          </div>
-          <p
-            class="absolute bottom-4 left-4 rounded-md border border-white/12 bg-black/28 px-3 py-2 text-sm font-semibold text-paper-soft backdrop-blur"
-          >
-            {galleryTotalLabel}
-          </p>
-        </figure>
+        {
+          heroPhoto && (
+            <figure class={mediaClasses.heroFrame}>
+              <Image
+                src={heroPhoto}
+                alt={`${brand.publicName} ${t.gallery.title}`}
+                class="absolute inset-0 h-full w-full object-cover"
+                width={imageSizes.heroWide.width}
+                widths={imageSizes.heroWide.widths}
+                sizes={imageSizes.heroWide.sizes}
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-ink/64 via-transparent to-transparent">
+              </div>
+              <p class="absolute bottom-4 left-4 rounded-md border border-white/12 bg-black/28 px-3 py-2 text-sm font-semibold text-paper-soft backdrop-blur">
+                {galleryTotalLabel}
+              </p>
+            </figure>
+          )
+        }
       </div>
 
       {
         visibleGroups.length > 0 && (
           <nav
-            class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+            class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
             aria-label={t.gallery.title}
           >
             {visibleGroups.map((group) => (

@@ -4,13 +4,11 @@ import {
   type ImageModule,
 } from "./imageAssets";
 import type { Locale } from "./routing";
-import galleryTableFallbackImage from "../assets/images/gallery/table/gallery-table-1.jpg";
 
 export const galleryCategoryIds = [
   "dishes",
   "ingredients",
-  "table",
-  "drinks",
+  "refreshments",
 ] as const;
 
 export type GalleryCategoryId = (typeof galleryCategoryIds)[number];
@@ -59,24 +57,13 @@ export const galleryGroups = [
     ),
   ),
   createGalleryGroup(
-    "table",
+    "refreshments",
     import.meta.glob<ImageModule>(
-      "../assets/images/gallery/table/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-      { eager: true },
-    ),
-  ),
-  createGalleryGroup(
-    "drinks",
-    import.meta.glob<ImageModule>(
-      "../assets/images/gallery/drinks/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+      "../assets/images/gallery/refreshments/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
       { eager: true },
     ),
   ),
 ] satisfies readonly GalleryGroup[];
-
-export const galleryFallbackImages = {
-  table: galleryTableFallbackImage,
-} as const satisfies Record<string, ImageMetadata>;
 
 export function getGallerySectionId(id: GalleryCategoryId): string {
   return `gallery-${id}`;

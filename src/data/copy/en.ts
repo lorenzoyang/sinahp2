@@ -113,12 +113,11 @@ export const enCopy = {
       eyebrow: "Gallery",
       title: "A closer look at Sina Hotpot",
       intro:
-        "Browse ready-to-eat dishes, raw ingredients, drinks, and hotpot table moments from the restaurants.",
+        "Browse ready-to-eat dishes, raw ingredients, desserts, and drinks from the restaurants.",
       categories: {
         dishes: "Ready-to-eat dishes",
-        drinks: "Drinks",
         ingredients: "Raw ingredients",
-        table: "Hotpot tables",
+        refreshments: "Refreshments",
       },
     },
     reservation: {

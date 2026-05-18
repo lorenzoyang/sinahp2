@@ -110,12 +110,11 @@ export const esCopy = {
       eyebrow: "Galería",
       title: "Sina Hotpot de cerca",
       intro:
-        "Explora platos listos para comer, materias primas, bebidas y mesas de hotpot de los restaurantes.",
+        "Explora platos listos para comer, materias primas, postres y bebidas de los restaurantes.",
       categories: {
         dishes: "Platos listos",
-        drinks: "Bebidas",
         ingredients: "Materias primas",
-        table: "Mesas hotpot",
+        refreshments: "Postres y bebidas",
       },
     },
     reservation: {

@@ -116,12 +116,11 @@ export const itCopy = {
       eyebrow: "Galleria",
       title: "Dentro Sina Hotpot",
       intro:
-        "Scorri piatti pronti, materie prime, bevande e tavoli hotpot fotografati nei ristoranti.",
+        "Scorri piatti pronti, materie prime, dolci e bevande fotografati nei ristoranti.",
       categories: {
         dishes: "Piatti pronti",
-        drinks: "Bevande",
         ingredients: "Materie prime",
-        table: "Tavoli hotpot",
+        refreshments: "Dolci e bevande",
       },
     },
     reservation: {
