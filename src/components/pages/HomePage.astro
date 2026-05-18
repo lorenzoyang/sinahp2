@@ -37,28 +37,22 @@ const reservationPath = getPath(locale, "reservation");
 const culturePath = getPath(locale, "culture");
 const sectionClasses = {
   heroInner:
-    "relative mx-auto flex min-h-[82svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:px-6 lg:px-8",
+    "relative mx-auto flex min-h-[78svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:min-h-[82svh] sm:px-6 lg:px-8",
 };
 const cardClasses = {
   dark: `homepage-card ${sharedCardClasses.dark}`,
   light: `homepage-card ${sharedCardClasses.light}`,
-  lightSoft: `homepage-card ${sharedCardClasses.lightSoft}`,
   location: `homepage-card ${sharedCardClasses.paperPanel} p-5`,
   reservationPanel:
     "overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10",
 };
 const mediaClasses = {
-  atmosphereFrame: sharedMediaClasses.darkPortraitFrame,
   portraitFrame: sharedMediaClasses.portraitFrame,
   photo: `homepage-photo ${sharedMediaClasses.absoluteImage}`,
 };
 const pillClasses = {
   heroProof:
-    "rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-paper-soft backdrop-blur",
-  lightPremium:
-    "rounded-full border border-warm-line bg-white/72 px-4 py-2 text-sm font-medium text-brown-text",
-  darkStat:
-    "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-medium text-paper-soft",
+    "min-w-0 rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-paper-soft backdrop-blur",
 };
 ---
 
@@ -85,24 +79,32 @@ const pillClasses = {
     </div>
 
     <div class={sectionClasses.heroInner}>
-      <div class="max-w-3xl" data-reveal>
+      <div class="w-full max-w-3xl min-w-0" data-reveal>
         <SectionHeader
           eyebrow={t.home.eyebrow}
           title={t.home.title}
           intro={t.home.intro}
-          containerClass="max-w-3xl"
-          titleClass="mt-5 text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl"
-          introClass="mt-5 max-w-2xl text-lg leading-8 text-paper/88 sm:text-xl"
+          containerClass="w-full max-w-3xl min-w-0"
+          titleClass="mt-5 max-w-full break-words text-4xl font-semibold leading-[0.98] text-white sm:text-6xl lg:text-7xl"
+          introClass="mt-5 max-w-full break-words text-base leading-7 text-paper/88 sm:max-w-2xl sm:text-xl sm:leading-8"
         >
-          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-            <CtaLink href={reservationPath} variant="goldHero">
+          <div class="mt-7 flex w-full min-w-0 flex-col gap-3 sm:flex-row">
+            <CtaLink
+              href={reservationPath}
+              variant="goldHero"
+              class="w-full sm:w-auto"
+            >
               {t.cta.reserve}
             </CtaLink>
-            <CtaLink href={culturePath} variant="whiteOutlineHero">
+            <CtaLink
+              href={culturePath}
+              variant="whiteOutlineHero"
+              class="w-full sm:w-auto"
+            >
               {t.cta.culture}
             </CtaLink>
           </div>
-          <div class="mt-8 grid gap-2 sm:grid-cols-3">
+          <div class="mt-8 grid w-full min-w-0 gap-2 sm:grid-cols-3">
             {
               t.home.proof.map((item, index) => (
                 <p
@@ -121,21 +123,20 @@ const pillClasses = {
   </section>
 
   <section class={sharedSectionClasses.dark}>
-    <div
-      class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
-    >
+    <div class={layoutClasses.container}>
       <div data-reveal>
         <SectionHeader
           eyebrow={brand.publicName}
           title={t.home.sections.ritualTitle}
           intro={t.home.sections.ritualIntro}
           headingTag="h2"
+          containerClass="max-w-3xl"
           eyebrowClass={headingClasses.darkEyebrow}
           titleClass={headingClasses.darkTitle}
-          introClass="mt-4 text-base leading-7 text-paper-soft/78"
+          introClass="mt-4 max-w-2xl text-base leading-7 text-paper-soft/78"
         />
       </div>
-      <div class="grid gap-3 sm:grid-cols-2">
+      <div class="mt-8 grid w-full min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {
           t.home.steps.map(([title, text], index) => (
             <article
@@ -146,7 +147,7 @@ const pillClasses = {
               <span class="text-sm font-semibold text-gold">
                 {formatSequenceNumber(index)}
               </span>
-              <h3 class="mt-4 text-xl font-semibold text-white">{title}</h3>
+              <h3 class="mt-4 text-lg font-semibold text-white">{title}</h3>
               <p class="mt-3 text-sm leading-6 text-paper-soft/74">{text}</p>
             </article>
           ))
@@ -197,172 +198,11 @@ const pillClasses = {
             ))
           }
         </div>
-        <div class="mt-6 flex flex-wrap gap-2">
-          {
-            t.home.premium.map((item, index) => (
-              <p
-                class={pillClasses.lightPremium}
-                data-reveal
-                style={getStaggerStyle(index, 340, 70)}
-              >
-                {item}
-              </p>
-            ))
-          }
-        </div>
       </div>
     </div>
   </section>
 
-  <section class={sharedSectionClasses.inkBand}>
-    <div class={layoutClasses.container}>
-      <div data-reveal>
-        <SectionHeader
-          eyebrow={homeSections.occasions.eyebrow}
-          title={homeSections.occasions.title}
-          intro={homeSections.occasions.intro}
-          headingTag="h2"
-          containerClass="max-w-3xl"
-          eyebrowClass={headingClasses.darkEyebrow}
-          titleClass={headingClasses.darkTitle}
-          introClass={headingClasses.darkIntro}
-        />
-      </div>
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        {
-          homeSections.occasions.items.map(([title, text], index) => (
-            <article
-              class:list={[cardClasses.dark, "p-5"]}
-              data-reveal
-              style={getStaggerStyle(index, 0, 90)}
-            >
-              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-                {formatSequenceNumber(index)}
-              </p>
-              <h3 class="mt-3 text-2xl font-semibold text-white">{title}</h3>
-              <p class="mt-3 text-sm leading-6 text-paper-soft/74">{text}</p>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class={sharedSectionClasses.paperSoft}>
-    <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-center"
-    >
-      <div class={mediaClasses.portraitFrame} data-reveal>
-        <Image
-          src={homeImages.visitSteam}
-          alt=""
-          class={mediaClasses.photo}
-          width={imageSizes.splitPanel.width}
-          widths={imageSizes.splitPanel.widths}
-          sizes={imageSizes.splitPanel.sizes}
-          loading="lazy"
-        />
-      </div>
-      <div data-reveal style="--reveal-delay:80ms">
-        <SectionHeader
-          eyebrow={homeSections.visit.eyebrow}
-          title={homeSections.visit.title}
-          intro={homeSections.visit.intro}
-          headingTag="h2"
-          eyebrowClass={headingClasses.lightEyebrow}
-          titleClass={headingClasses.lightTitle}
-          introClass={headingClasses.lightIntro}
-        />
-        <div class="mt-6 grid gap-3">
-          {
-            homeSections.visit.items.map((item, index) => (
-              <p
-                class:list={[
-                  cardClasses.lightSoft,
-                  "px-4 py-4 text-base leading-7 text-brown-text",
-                ]}
-                data-reveal
-                style={getStaggerStyle(index, 140, 80)}
-              >
-                <span class="mr-3 font-semibold text-lacquer">
-                  {formatSequenceNumber(index)}
-                </span>
-                {item}
-              </p>
-            ))
-          }
-        </div>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <CtaLink href={culturePath} variant="lightOutlineSmall">
-            {t.cta.culture}
-          </CtaLink>
-          <CtaLink href={reservationPath} variant="redSmall">
-            {t.cta.reserve}
-          </CtaLink>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class={sharedSectionClasses.dark}>
-    <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
-    >
-      <div class={mediaClasses.atmosphereFrame} data-reveal>
-        <Image
-          src={homeImages.atmosphereTable}
-          alt=""
-          class={mediaClasses.photo}
-          width={imageSizes.splitPanel.width}
-          widths={imageSizes.splitPanel.widths}
-          sizes={imageSizes.splitPanel.sizes}
-          loading="lazy"
-        />
-      </div>
-      <div data-reveal style="--reveal-delay:100ms">
-        <SectionHeader
-          eyebrow={homeSections.atmosphere.eyebrow}
-          title={homeSections.atmosphere.title}
-          intro={homeSections.atmosphere.intro}
-          headingTag="h2"
-          eyebrowClass={headingClasses.darkEyebrow}
-          titleClass={headingClasses.darkTitle}
-          introClass={headingClasses.darkIntro}
-        />
-        <div class="mt-6 grid gap-3">
-          {
-            homeSections.atmosphere.items.map((item, index) => (
-              <p
-                class:list={[
-                  cardClasses.dark,
-                  "px-4 py-4 text-base leading-7 text-paper-soft/82",
-                ]}
-                data-reveal
-                style={getStaggerStyle(index, 160, 80)}
-              >
-                {item}
-              </p>
-            ))
-          }
-        </div>
-        <div class="mt-6 grid gap-2 sm:grid-cols-2">
-          {
-            homeSections.atmosphere.stats.map((item, index) => (
-              <p
-                class={pillClasses.darkStat}
-                data-reveal
-                style={getStaggerStyle(index, 340, 70)}
-              >
-                {item}
-              </p>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class={sharedSectionClasses.inkBand}>
+  <section class={sharedSectionClasses.footerDark}>
     <div class={layoutClasses.container}>
       <div data-reveal>
         <SectionHeader
@@ -374,77 +214,61 @@ const pillClasses = {
           introClass={headingClasses.darkIntro}
         />
       </div>
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        {
-          locations.map((location, index) => (
-            <article
-              class={cardClasses.location}
-              data-reveal
-              style={getStaggerStyle(index, 0, 100)}
-            >
-              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-lacquer">
-                {location.city}
-              </p>
-              <h3 class="mt-3 text-2xl font-semibold">{location.address}</h3>
-              <p class="mt-3 text-sm font-medium text-brown-muted">
-                {location.hours}
-              </p>
-              <LocationActions
-                location={location}
-                callLabel={t.cta.call}
-                mapLabel={t.cta.map}
-              />
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class={sharedSectionClasses.footerDark}>
-    <div class={layoutClasses.container}>
-      <div class={cardClasses.reservationPanel} data-reveal>
-        <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
-          <SectionHeader
-            eyebrow={homeSections.reservation.eyebrow}
-            title={homeSections.reservation.title}
-            intro={homeSections.reservation.intro}
-            headingTag="h2"
-            eyebrowClass="text-xs font-semibold uppercase tracking-[0.24em] text-gold-soft"
-            titleClass="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-            introClass="mt-4 text-base leading-7 text-cream-soft/82"
-          >
-            <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-              <CtaLink href={reservationPath} variant="goldHero">
-                {t.cta.reserve}
-              </CtaLink>
-              <CtaLink
-                href={brand.whatsappHref}
-                variant="whiteOutlineHero"
-                external={true}
+      <div class="mt-8 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            locations.map((location, index) => (
+              <article
+                class={cardClasses.location}
+                data-reveal
+                style={getStaggerStyle(index, 0, 100)}
               >
-                {t.cta.whatsapp}
-              </CtaLink>
-            </div>
-          </SectionHeader>
-
-          <div class="grid gap-3">
-            {
-              homeSections.reservation.items.map((item, index) => (
-                <p
-                  class="rounded-lg border border-white/12 bg-black/16 px-4 py-4 text-base leading-7 text-cream-soft"
-                  data-reveal
-                  style={getStaggerStyle(index, 120, 90)}
-                >
-                  <span class="mr-3 font-semibold text-gold-soft">
-                    {formatSequenceNumber(index)}
-                  </span>
-                  {item}
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-lacquer">
+                  {location.city}
                 </p>
-              ))
-            }
-          </div>
+                <h3 class="mt-3 text-xl font-semibold sm:text-2xl">
+                  {location.address}
+                </h3>
+                <p class="mt-3 text-sm font-medium text-brown-muted">
+                  {location.hours}
+                </p>
+                <LocationActions
+                  location={location}
+                  callLabel={t.cta.call}
+                  mapLabel={t.cta.map}
+                />
+              </article>
+            ))
+          }
         </div>
+
+        <aside
+          class={cardClasses.reservationPanel}
+          data-reveal
+          style="--reveal-delay:120ms"
+        >
+          <p class="text-xs font-semibold uppercase tracking-[0.24em] text-gold-soft">
+            {homeSections.reservation.eyebrow}
+          </p>
+          <h3 class="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl">
+            {homeSections.reservation.title}
+          </h3>
+          <p class="mt-4 text-base leading-7 text-cream-soft/82">
+            {homeSections.reservation.intro}
+          </p>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+            <CtaLink href={reservationPath} variant="goldHero">
+              {t.cta.reserve}
+            </CtaLink>
+            <CtaLink
+              href={brand.whatsappHref}
+              variant="whiteOutlineHero"
+              external={true}
+            >
+              {t.cta.whatsapp}
+            </CtaLink>
+          </div>
+        </aside>
       </div>
     </div>
   </section>

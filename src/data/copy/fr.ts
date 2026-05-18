@@ -30,43 +30,38 @@ export const frCopy = {
       learnMore: "En savoir plus",
     },
     home: {
-      eyebrow: "Hotpot chinois premium en Toscane",
+      eyebrow: "Hotpot chinois en Toscane",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "Une marmite fumante, des bouillons parfumés et des ingrédients choisis à cuire à table: une expérience raffinée, conviviale et facile à aimer.",
+        "Bouillons parfumés, ingrédients frais et cuisson à table: réservez à Prato ou Florence et découvrez le hotpot sans complication.",
       proof: [
-        "Deux adresses: Prato et Florence",
-        "Ingrédients frais à partager",
-        "Demande de réservation rapide",
+        "Prato et Florence",
+        "Facile dès la première visite",
+        "Réservation rapide en ligne",
       ],
       sections: {
         ritualTitle: "Comment ça marche",
         ritualIntro:
-          "Le hotpot n’est pas seulement une soupe: c’est un repas partagé où chacun choisit bouillon, ingrédients, rythme et sauces.",
-        locationsTitle: "Choisir une adresse",
+          "Choisissez, cuisez et partagez: quelques étapes suffisent.",
+        locationsTitle: "Prato ou Florence",
         locationsIntro:
-          "Prato ouvre tard le soir; Florence accueille le midi et le soir dans le centre historique.",
-        premiumTitle: "Pour un dîner qui compte",
+          "Choisissez l’adresse la plus pratique et réservez en quelques clics.",
+        premiumTitle: "Pourquoi choisir Sina",
       },
       steps: [
         [
           "Choisir le bouillon",
-          "Épicé, doux ou double: le bouillon donne le ton.",
+          "Épicé, doux ou double: c’est la base de votre table.",
         ],
         [
           "Commander les ingrédients",
-          "Bœuf, légumes, champignons, tofu et spécialités cuisent en quelques instants.",
+          "Viandes, légumes, champignons et tofu arrivent prêts à cuire.",
         ],
-        ["Cuire à table", "Chaque invité contrôle le rythme et la cuisson."],
+        ["Cuire à table", "Plongez, attendez quelques secondes et goûtez à votre rythme."],
         [
-          "Partager le moment",
-          "La marmite transforme la table en centre de la soirée.",
+          "Partager",
+          "La marmite au centre rend le dîner naturel et convivial.",
         ],
-      ],
-      premium: [
-        "Atmosphère moderne avec détails chinois chaleureux.",
-        "Idéal pour groupes, couples, familles et curieux.",
-        "Une manière claire et accueillante de découvrir la culture culinaire chinoise.",
       ],
     },
     culture: {

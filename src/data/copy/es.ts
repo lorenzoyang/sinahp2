@@ -30,40 +30,35 @@ export const esCopy = {
       learnMore: "Ver detalles",
     },
     home: {
-      eyebrow: "Hotpot chino premium en Toscana",
+      eyebrow: "Hotpot chino en Toscana",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "Una olla caliente, caldos aromáticos e ingredientes seleccionados para cocinar en la mesa: una experiencia refinada, social y fácil de disfrutar.",
+        "Caldos aromáticos, ingredientes frescos y cocción en la mesa: reserva en Prato o Florencia y descubre el hotpot sin complicaciones.",
       proof: [
-        "Dos locales: Prato y Florencia",
-        "Ingredientes frescos para compartir",
-        "Solicitud de reserva online",
+        "Prato y Florencia",
+        "Fácil para la primera vez",
+        "Reserva online rápida",
       ],
       sections: {
         ritualTitle: "Cómo funciona",
         ritualIntro:
-          "El hotpot no es solo sopa. Es una forma de comer juntos eligiendo caldo, ingredientes, ritmo y salsas.",
-        locationsTitle: "Elige tu local",
+          "Elige, cocina y comparte: bastan pocos pasos para empezar.",
+        locationsTitle: "Prato o Florencia",
         locationsIntro:
-          "Prato abre hasta tarde; Florencia recibe al mediodía y por la noche en el centro histórico.",
-        premiumTitle: "Pensado para una cena especial",
+          "Elige el local más cómodo y reserva en pocos clics.",
+        premiumTitle: "Por qué elegir Sina",
       },
       steps: [
-        ["Elige el caldo", "Picante, suave o doble: el caldo marca el tono."],
+        ["Elige el caldo", "Picante, suave o doble: es la base de tu mesa."],
         [
-          "Pide ingredientes frescos",
-          "Carne, verduras, setas, tofu y especialidades se cocinan en pocos momentos.",
+          "Pide ingredientes",
+          "Carne, verduras, setas y tofu llegan listos para cocinar.",
         ],
-        ["Cocina en la mesa", "Cada persona controla el punto y el ritmo."],
+        ["Cocina en la mesa", "Sumerge, espera unos segundos y prueba a tu ritmo."],
         [
-          "Comparte la experiencia",
-          "La olla convierte la mesa en el centro de la noche.",
+          "Comparte",
+          "La olla al centro hace que la cena sea natural y social.",
         ],
-      ],
-      premium: [
-        "Ambiente moderno con detalles chinos cálidos.",
-        "Ideal para grupos, parejas, familias y curiosos.",
-        "Una forma clara y acogedora de descubrir la cultura gastronómica china.",
       ],
     },
     culture: {

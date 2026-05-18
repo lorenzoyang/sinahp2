@@ -30,43 +30,38 @@ export const enCopy = {
       learnMore: "Learn more",
     },
     home: {
-      eyebrow: "Premium Chinese hotpot in Tuscany",
+      eyebrow: "Chinese hotpot in Tuscany",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "A simmering pot, aromatic broths, and selected ingredients cooked at your table: refined, social, and easy to enjoy on the first visit.",
+        "Aromatic broths, fresh ingredients, and table cooking: reserve in Prato or Florence and discover hotpot without complications.",
       proof: [
-        "Two locations: Prato and Florence",
-        "Fresh ingredients to share",
-        "Quick online reservation request",
+        "Prato and Florence",
+        "Easy on the first visit",
+        "Quick online reservation",
       ],
       sections: {
         ritualTitle: "How it works",
         ritualIntro:
-          "Hotpot is not just soup. It is a shared dining ritual where guests choose the broth, ingredients, pace, and sauces.",
-        locationsTitle: "Choose your location",
+          "Choose, cook, and share: a few simple steps are enough to begin.",
+        locationsTitle: "Prato or Florence",
         locationsIntro:
-          "Prato is open late into the night, while Florence welcomes lunch and dinner guests in the historic center.",
-        premiumTitle: "Built for a memorable dinner",
+          "Choose the most convenient location and reserve in a few clicks.",
+        premiumTitle: "Why choose Sina",
       },
       steps: [
         [
           "Choose your broth",
-          "Spicy, mild, or split: the broth sets the tone.",
+          "Spicy, mild, or split: it is the base of your table.",
         ],
         [
-          "Order fresh ingredients",
-          "Beef, vegetables, mushrooms, tofu, and house specialties cook in moments.",
+          "Order ingredients",
+          "Meat, vegetables, mushrooms, and tofu arrive ready to cook.",
         ],
-        ["Cook at the table", "Each guest controls the pace and doneness."],
+        ["Cook at the table", "Dip, wait a few seconds, and taste at your pace."],
         [
-          "Share the moment",
-          "The center of the table becomes the center of the evening.",
+          "Share",
+          "The pot at the center keeps dinner natural and social.",
         ],
-      ],
-      premium: [
-        "Modern atmosphere with warm Chinese details.",
-        "Ideal for groups, couples, families, and curious first-timers.",
-        "A clear, welcoming way to experience Chinese dining culture.",
       ],
     },
     culture: {

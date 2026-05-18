@@ -1,8 +1,6 @@
 import type { ImageMetadata } from "astro";
 import homeHeroImage from "../assets/images/homepage/homepage-hero-hotpotpremium.png";
 import homePremiumSpreadImage from "../assets/images/homepage/homepage-sharedtable.jpg";
-import homeVisitSteamImage from "../assets/images/homepage/homepage-steaming-meat.jpg";
-import homeAtmosphereTableImage from "../assets/images/homepage/homepage-tablefood1.jpg";
 import cultureHeroImage from "../assets/images/hotpot-culture/hotpot-culture-hero0.png";
 import cultureBasicsImage from "../assets/images/hotpot-culture/hotpot-culture-basics.png";
 import cultureBrothsImage from "../assets/images/hotpot-culture/hotpot-culture-broths.png";
@@ -17,8 +15,6 @@ type ImageMap = Record<string, ImageMetadata>;
 export const homeImages = {
   hero: homeHeroImage,
   premiumSpread: homePremiumSpreadImage,
-  visitSteam: homeVisitSteamImage,
-  atmosphereTable: homeAtmosphereTableImage,
 } as const satisfies ImageMap;
 
 export const cultureImages = {

@@ -44,7 +44,6 @@ export type LocaleCopy = {
       premiumTitle: string;
     };
     steps: readonly TextPair[];
-    premium: readonly string[];
   };
   culture: {
     eyebrow: string;

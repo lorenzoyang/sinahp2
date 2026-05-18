@@ -30,46 +30,41 @@ export const itCopy = {
       learnMore: "Scopri di più",
     },
     home: {
-      eyebrow: "Hotpot cinese premium in Toscana",
+      eyebrow: "Hotpot cinese in Toscana",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "Un tavolo caldo, brodi aromatici e ingredienti scelti da cuocere al momento: un’esperienza raffinata, sociale e facile da amare anche al primo assaggio.",
+        "Brodi aromatici, ingredienti freschi e cottura al tavolo: prenota a Prato o Firenze e scopri l’hotpot senza complicazioni.",
       proof: [
-        "Due sedi: Prato e Firenze",
-        "Ingredienti freschi da condividere",
+        "Prato e Firenze",
+        "Facile anche al primo assaggio",
         "Prenotazione rapida online",
       ],
       sections: {
         ritualTitle: "Come funziona",
         ritualIntro:
-          "L’hotpot non è solo una zuppa: è un modo di cenare insieme, scegliendo tempi, sapori e ingredienti direttamente al tavolo.",
-        locationsTitle: "Scegli la sede più comoda",
+          "Scegli, cuoci e condividi: bastano pochi passaggi per iniziare.",
+        locationsTitle: "Prato o Firenze",
         locationsIntro:
-          "Prato apre fino a tardi, Firenze accoglie anche a pranzo nel centro storico.",
-        premiumTitle: "Pensato per una cena importante",
+          "Scegli la sede più comoda e prenota in pochi clic.",
+        premiumTitle: "Perché scegliere Sina",
       },
       steps: [
         [
           "Scegli il brodo",
-          "Piccante, delicato o doppio: la base definisce il ritmo della cena.",
+          "Piccante, delicato o doppio: è la base del tuo tavolo.",
         ],
         [
-          "Ordina ingredienti freschi",
-          "Carne, verdure, funghi, tofu e specialità da cuocere pochi secondi.",
+          "Ordina gli ingredienti",
+          "Carne, verdure, funghi e tofu arrivano pronti da cuocere.",
         ],
         [
           "Cuoci al tavolo",
-          "Ogni ospite prepara il boccone come preferisce, senza fretta.",
+          "Immergi, aspetta pochi secondi e assaggia al tuo ritmo.",
         ],
         [
-          "Condividi il momento",
-          "Il centro del tavolo diventa il punto di incontro della serata.",
+          "Condividi",
+          "La pentola al centro rende la cena naturale e conviviale.",
         ],
-      ],
-      premium: [
-        "Atmosfera moderna con dettagli caldi e orientali.",
-        "Percorso ideale per gruppi, coppie e clienti curiosi.",
-        "Esperienza memorabile per ospiti italiani e internazionali.",
       ],
     },
     culture: {
