@@ -1,16 +1,12 @@
 ---
 import "../styles/global.css";
-import { Image } from "astro:assets";
-import logoUrl from "../assets/images/brand/sina-hotpot-logo-horizontal.svg?url";
+import SiteFooter from "../components/layout/SiteFooter.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
 import {
   brand,
   getPath,
   htmlLang,
-  locations,
-  localeFlags,
-  localeNames,
   locales,
-  primaryNavPages,
   type Locale,
   type PageId,
 } from "../data/site";
@@ -50,63 +46,9 @@ const canonicalUrl = getCanonicalUrl(canonicalPath);
 const hreflangLinks = getHreflangLinks(pageAlternatePaths);
 const socialImageUrl = toAbsoluteUrl(defaultSocialImageUrl);
 const structuredData = JSON.stringify(getWebsiteStructuredData());
-const navItems = primaryNavPages.map((navPage) => ({
-  page: navPage,
-  label: t.nav[navPage],
-}));
-const localeOptions = locales.map((targetLocale) => ({
-  locale: targetLocale,
-  label: localeNames[targetLocale],
-  flag: localeFlags[targetLocale],
-  code: targetLocale.toUpperCase(),
-  path: alternatePaths?.[targetLocale] ?? getPath(targetLocale, page),
-}));
-const currentLocaleOption =
-  localeOptions.find((option) => option.locale === locale) ?? localeOptions[0];
 const layoutClasses = {
   skipLink:
     "focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink",
-  header:
-    "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
-  headerInner:
-    "mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8",
-  brandLink:
-    "focus-ring flex min-w-0 shrink items-center rounded-md bg-paper px-2 py-1",
-  brandLogo: "h-9 w-auto max-w-[10rem] object-contain sm:h-10 sm:max-w-[13rem]",
-  desktopNav: "hidden items-center gap-1 lg:flex",
-  navLink:
-    "site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition",
-  headerActions: "flex shrink-0 items-center gap-2",
-  localeMenu: "site-locale-menu group relative",
-  localeTrigger:
-    "site-locale-trigger focus-ring flex h-10 min-w-19 list-none items-center justify-center gap-1.5 rounded-full border px-3 text-sm font-semibold transition marker:hidden",
-  localeFlag: "text-base leading-none",
-  localePanel:
-    "absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-ink-panel p-2 shadow-2xl",
-  localeNav: "grid gap-1",
-  localeOption:
-    "site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition",
-  localeLabel: "flex-1",
-  localeCode: "site-locale-code text-xs uppercase",
-  mobileMenu: "group relative lg:hidden",
-  mobileMenuTrigger:
-    "focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-paper marker:hidden",
-  mobilePanel:
-    "absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-ink-panel p-3 shadow-2xl",
-  mobileNavLink:
-    "site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium",
-  footer: "page-band bg-ink-footer",
-  footerInner:
-    "mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8",
-  footerLogoFrame: "inline-flex rounded-md bg-paper px-3 py-2",
-  footerLogo: "h-12 w-auto max-w-[14rem] object-contain sm:max-w-[18rem]",
-  footerDescription: "mt-4 max-w-xl text-sm leading-6 text-paper-soft/72",
-  footerLinksGrid: "grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2",
-  footerHeading: "font-semibold text-white",
-  footerLink: "focus-ring mt-2 block rounded-sm hover:text-white",
-  footerLinkTight: "focus-ring mt-1 block rounded-sm hover:text-white",
-  footerSocialText: "mt-1 text-paper-soft/80",
-  footerSocialId: "font-medium text-paper-soft",
 };
 ---
 
@@ -159,167 +101,13 @@ const layoutClasses = {
       {layoutLabels.skipToContent}
     </a>
 
-    <header class={layoutClasses.header}>
-      <div class={layoutClasses.headerInner}>
-        <a
-          href={getPath(locale)}
-          class={layoutClasses.brandLink}
-          aria-label={brand.publicName}
-        >
-          <Image
-            src={logoUrl}
-            alt=""
-            class={layoutClasses.brandLogo}
-            width="1378"
-            height="372"
-            loading="eager"
-          />
-        </a>
-
-        <nav class={layoutClasses.desktopNav} aria-label="Primary">
-          {
-            navItems.map((item) => (
-              <a
-                href={getPath(locale, item.page)}
-                aria-current={page === item.page ? "page" : undefined}
-                class={layoutClasses.navLink}
-              >
-                {item.label}
-              </a>
-            ))
-          }
-        </nav>
-
-        <div class={layoutClasses.headerActions}>
-          <details class={layoutClasses.localeMenu} data-header-details>
-            <summary
-              class={layoutClasses.localeTrigger}
-              aria-label="Language"
-              title={currentLocaleOption.label}
-            >
-              <span class={layoutClasses.localeFlag} aria-hidden="true">
-                {currentLocaleOption.flag}
-              </span>
-              <span>{currentLocaleOption.code}</span>
-            </summary>
-            <div class={layoutClasses.localePanel}>
-              <nav class={layoutClasses.localeNav} aria-label="Language">
-                {
-                  localeOptions.map((option) => (
-                    <a
-                      href={option.path}
-                      aria-current={
-                        option.locale === locale ? "true" : undefined
-                      }
-                      aria-label={option.label}
-                      class={layoutClasses.localeOption}
-                    >
-                      <span class={layoutClasses.localeFlag} aria-hidden="true">
-                        {option.flag}
-                      </span>
-                      <span class={layoutClasses.localeLabel}>
-                        {option.label}
-                      </span>
-                      <span class={layoutClasses.localeCode}>
-                        {option.code}
-                      </span>
-                    </a>
-                  ))
-                }
-              </nav>
-            </div>
-          </details>
-
-          <details class={layoutClasses.mobileMenu} data-header-details>
-            <summary class={layoutClasses.mobileMenuTrigger}>
-              {t.nav.menu}
-            </summary>
-            <div class={layoutClasses.mobilePanel}>
-              <nav class={layoutClasses.localeNav} aria-label="Mobile primary">
-                {
-                  navItems.map((item) => (
-                    <a
-                      href={getPath(locale, item.page)}
-                      aria-current={page === item.page ? "page" : undefined}
-                      aria-label={item.label}
-                      class={layoutClasses.mobileNavLink}
-                    >
-                      {item.label}
-                    </a>
-                  ))
-                }
-              </nav>
-            </div>
-          </details>
-        </div>
-      </div>
-    </header>
+    <SiteHeader locale={locale} page={page} alternatePaths={alternatePaths} />
 
     <main id="main">
       <slot />
     </main>
 
-    <footer class={layoutClasses.footer}>
-      <div class={layoutClasses.footerInner}>
-        <div>
-          <div class={layoutClasses.footerLogoFrame}>
-            <Image
-              src={logoUrl}
-              alt={brand.publicName}
-              class={layoutClasses.footerLogo}
-              width="1378"
-              height="372"
-              loading="lazy"
-            />
-          </div>
-          <p class={layoutClasses.footerDescription}>
-            {t.meta.description}
-          </p>
-        </div>
-        <div class={layoutClasses.footerLinksGrid}>
-          <div>
-            <p class={layoutClasses.footerHeading}>{layoutLabels.contact}</p>
-            <a class={layoutClasses.footerLink} href={`mailto:${brand.email}`}
-              >{brand.email}</a
-            >
-            <a class={layoutClasses.footerLinkTight} href={brand.whatsappHref}
-              >{brand.whatsapp}</a
-            >
-          </div>
-          <div>
-            <p class={layoutClasses.footerHeading}>{layoutLabels.social}</p>
-            <a
-              class={layoutClasses.footerLink}
-              href={brand.instagram}
-              target="_blank"
-              rel="noreferrer">Instagram</a
-            >
-            <a
-              class={layoutClasses.footerLinkTight}
-              href={brand.facebook}
-              target="_blank"
-              rel="noreferrer">Facebook</a
-            >
-            <div class="mt-2">
-              {
-                locations.map((location) => (
-                  <p class={layoutClasses.footerSocialText}>
-                    WeChat {location.city}:{" "}
-                    <span class={layoutClasses.footerSocialId}>
-                      {location.wechatId}
-                    </span>
-                  </p>
-                ))
-              }
-            </div>
-            <a
-              class={layoutClasses.footerLinkTight}
-              href={getPath(locale, "privacy")}>{t.nav.privacy}</a
-            >
-          </div>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter locale={locale} />
     <script>
       import "../scripts/headerMenus";
     </script>

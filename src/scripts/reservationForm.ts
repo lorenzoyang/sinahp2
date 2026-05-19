@@ -4,10 +4,17 @@ type Web3FormsResponse = {
 };
 
 type ReservationPayload = Record<string, FormDataEntryValue>;
+type SubmitReservationResult = {
+  response: Response;
+  result: Web3FormsResponse;
+};
+type UpdateTimeOptionsOptions = {
+  preserveCurrent?: boolean;
+};
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
-function getTodayDateValue() {
+function getTodayDateValue(): string {
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -22,7 +29,7 @@ function getPayload(form: HTMLFormElement): ReservationPayload {
   ) as ReservationPayload;
 }
 
-function getCaptchaResponse(form: HTMLFormElement) {
+function getCaptchaResponse(form: HTMLFormElement): string {
   const captchaResponse = form.querySelector<HTMLTextAreaElement>(
     'textarea[name="h-captcha-response"]',
   );
@@ -30,17 +37,19 @@ function getCaptchaResponse(form: HTMLFormElement) {
   return captchaResponse?.value.trim() ?? "";
 }
 
-function isCaptchaEnabled(form: HTMLFormElement) {
+function isCaptchaEnabled(form: HTMLFormElement): boolean {
   return form.dataset.captchaEnabled === "true";
 }
 
-function showStatus(status: Element | null, message: string) {
+function showStatus(status: Element | null, message: string): void {
   if (status) {
     status.textContent = message;
   }
 }
 
-function getSelectedTimeSlots(locationSelect: HTMLSelectElement | null) {
+function getSelectedTimeSlots(
+  locationSelect: HTMLSelectElement | null,
+): string[] {
   const selectedOption = locationSelect?.selectedOptions[0];
 
   if (!selectedOption?.dataset.timeSlots) {
@@ -60,7 +69,7 @@ function getSelectedTimeSlots(locationSelect: HTMLSelectElement | null) {
   }
 }
 
-function createTimeOption(value: string, label = value) {
+function createTimeOption(value: string, label = value): HTMLOptionElement {
   const option = document.createElement("option");
   option.value = value;
   option.textContent = label;
@@ -71,8 +80,8 @@ function createTimeOption(value: string, label = value) {
 function updateTimeOptions(
   timeSelect: HTMLSelectElement | null,
   locationSelect: HTMLSelectElement | null,
-  { preserveCurrent = false } = {},
-) {
+  { preserveCurrent = false }: UpdateTimeOptionsOptions = {},
+): void {
   if (!timeSelect) {
     return;
   }
@@ -99,7 +108,7 @@ function setSubmitState(
   form: HTMLFormElement,
   submit: HTMLButtonElement | null,
   isSending: boolean,
-) {
+): void {
   if (!submit) {
     return;
   }
@@ -110,7 +119,9 @@ function setSubmitState(
     : (form.dataset.submit ?? submit.textContent);
 }
 
-async function submitReservation(payload: ReservationPayload) {
+async function submitReservation(
+  payload: ReservationPayload,
+): Promise<SubmitReservationResult> {
   const response = await fetch(WEB3FORMS_ENDPOINT, {
     method: "POST",
     headers: {
@@ -124,7 +135,7 @@ async function submitReservation(payload: ReservationPayload) {
   return { response, result };
 }
 
-function initReservationForm(form: HTMLFormElement) {
+function initReservationForm(form: HTMLFormElement): void {
   const status = form.querySelector("[data-reservation-status]");
   const submit = form.querySelector<HTMLButtonElement>(
     "[data-reservation-submit]",

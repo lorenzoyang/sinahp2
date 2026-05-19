@@ -42,7 +42,7 @@ export type IndexableUrlGroup = {
   paths: Record<Locale, string>;
 };
 
-export function toAbsoluteUrl(pathOrUrl: string) {
+export function toAbsoluteUrl(pathOrUrl: string): string {
   if (/^https?:\/\//i.test(pathOrUrl)) {
     return pathOrUrl;
   }
@@ -50,7 +50,7 @@ export function toAbsoluteUrl(pathOrUrl: string) {
   return new URL(pathOrUrl, `${siteOrigin}/`).toString();
 }
 
-export function getCanonicalUrl(path: string) {
+export function getCanonicalUrl(path: string): string {
   return toAbsoluteUrl(path);
 }
 
@@ -99,7 +99,7 @@ export function getIndexableUrlGroups(): IndexableUrlGroup[] {
   return [...pageGroups, ...topicGroups];
 }
 
-export function getWebsiteStructuredData() {
+export function getWebsiteStructuredData(): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@graph": [

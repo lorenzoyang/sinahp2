@@ -109,10 +109,10 @@ export type RestaurantLocationId = RestaurantLocation["id"];
 export const defaultReservationLocationId =
   "firenze" satisfies RestaurantLocationId;
 
-export function getPhoneHref(phone: string) {
+export function getPhoneHref(phone: string): string {
   return `tel:${phone.replaceAll(" ", "")}`;
 }
 
-export function getLocationLabel(location: RestaurantLocation) {
+export function getLocationLabel(location: RestaurantLocation): string {
   return `${location.city} - ${location.address}`;
 }

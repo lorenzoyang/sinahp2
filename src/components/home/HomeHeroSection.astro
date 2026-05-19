@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import CtaLink from "../ui/CtaLink.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import { getPath, type Locale } from "../../data/site";
+import { copy } from "../../data/copy";
+import { homeImages } from "../../data/pageImages";
+import { getStaggerStyle } from "../../utils/presentation";
+import { imageSizes } from "../../utils/ui";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = copy[locale];
+const reservationPath = getPath(locale, "reservation");
+const culturePath = getPath(locale, "culture");
+const sectionClasses = {
+  heroInner:
+    "relative mx-auto flex min-h-[78svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:min-h-[82svh] sm:px-6 lg:px-8",
+};
+const pillClasses = {
+  heroProof:
+    "min-w-0 rounded-md border border-white/12 bg-black/18 px-3 py-3 text-sm font-medium text-paper-soft backdrop-blur",
+};
+---
+
+<section class="homepage-hero relative overflow-hidden">
+  <div class="absolute inset-0">
+    <Image
+      src={homeImages.hero}
+      alt=""
+      class="hero-image-drift absolute inset-0 h-full w-full object-cover"
+      width={imageSizes.fullBleedHero.width}
+      widths={imageSizes.fullBleedHero.widths}
+      sizes={imageSizes.fullBleedHero.sizes}
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-linear-to-b from-ink/46 via-ink/64 to-ink">
+    </div>
+    <div
+      class="absolute inset-0 bg-linear-to-r from-ink/92 via-ink/56 to-transparent"
+    >
+    </div>
+  </div>
+
+  <div class={sectionClasses.heroInner}>
+    <div class="w-full max-w-3xl min-w-0" data-reveal>
+      <SectionHeader
+        eyebrow={t.home.eyebrow}
+        title={t.home.title}
+        intro={t.home.intro}
+        containerClass="w-full max-w-3xl min-w-0"
+        titleClass="mt-5 max-w-full break-words text-4xl font-semibold leading-[0.98] text-white sm:text-6xl lg:text-7xl"
+        introClass="mt-5 max-w-full break-words text-base leading-7 text-paper/88 sm:max-w-2xl sm:text-xl sm:leading-8"
+      >
+        <div class="mt-7 flex w-full min-w-0 flex-col gap-3 sm:flex-row">
+          <CtaLink
+            href={reservationPath}
+            variant="goldHero"
+            class="w-full sm:w-auto"
+          >
+            {t.cta.reserve}
+          </CtaLink>
+          <CtaLink
+            href={culturePath}
+            variant="whiteOutlineHero"
+            class="w-full sm:w-auto"
+          >
+            {t.cta.culture}
+          </CtaLink>
+        </div>
+        <div class="mt-8 grid w-full min-w-0 gap-2 sm:grid-cols-3">
+          {
+            t.home.proof.map((item, index) => (
+              <p
+                class={pillClasses.heroProof}
+                data-reveal
+                style={getStaggerStyle(index, 120, 90)}
+              >
+                {item}
+              </p>
+            ))
+          }
+        </div>
+      </SectionHeader>
+    </div>
+  </div>
+</section>

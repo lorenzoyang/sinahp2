@@ -1,0 +1,160 @@
+---
+import { Image } from "astro:assets";
+import logoUrl from "../../assets/images/brand/sina-hotpot-logo-horizontal.svg?url";
+import {
+  brand,
+  getPath,
+  localeFlags,
+  localeNames,
+  locales,
+  primaryNavPages,
+  type Locale,
+  type PageId,
+} from "../../data/site";
+import { copy } from "../../data/copy";
+
+interface Props {
+  locale: Locale;
+  page: PageId;
+  alternatePaths?: Partial<Record<Locale, string>>;
+}
+
+const { locale, page, alternatePaths } = Astro.props;
+const t = copy[locale];
+const navItems = primaryNavPages.map((navPage) => ({
+  page: navPage,
+  label: t.nav[navPage],
+}));
+const localeOptions = locales.map((targetLocale) => ({
+  locale: targetLocale,
+  label: localeNames[targetLocale],
+  flag: localeFlags[targetLocale],
+  code: targetLocale.toUpperCase(),
+  path: alternatePaths?.[targetLocale] ?? getPath(targetLocale, page),
+}));
+const currentLocaleOption =
+  localeOptions.find((option) => option.locale === locale) ?? localeOptions[0];
+const headerClasses = {
+  header:
+    "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
+  headerInner:
+    "mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8",
+  brandLink:
+    "focus-ring flex min-w-0 shrink items-center rounded-md bg-paper px-2 py-1",
+  brandLogo: "h-9 w-auto max-w-[10rem] object-contain sm:h-10 sm:max-w-[13rem]",
+  desktopNav: "hidden items-center gap-1 lg:flex",
+  navLink:
+    "site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition",
+  headerActions: "flex shrink-0 items-center gap-2",
+  localeMenu: "site-locale-menu group relative",
+  localeTrigger:
+    "site-locale-trigger focus-ring flex h-10 min-w-19 list-none items-center justify-center gap-1.5 rounded-full border px-3 text-sm font-semibold transition marker:hidden",
+  localeFlag: "text-base leading-none",
+  localePanel:
+    "absolute right-0 z-50 mt-3 w-44 rounded-lg border border-white/12 bg-ink-panel p-2 shadow-2xl",
+  localeNav: "grid gap-1",
+  localeOption:
+    "site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition",
+  localeLabel: "flex-1",
+  localeCode: "site-locale-code text-xs uppercase",
+  mobileMenu: "group relative lg:hidden",
+  mobileMenuTrigger:
+    "focus-ring list-none rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-paper marker:hidden",
+  mobilePanel:
+    "absolute right-0 z-50 mt-3 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-white/12 bg-ink-panel p-3 shadow-2xl",
+  mobileNavLink:
+    "site-nav-link focus-ring rounded-md px-3 py-2 text-sm font-medium",
+};
+---
+
+<header class={headerClasses.header}>
+  <div class={headerClasses.headerInner}>
+    <a
+      href={getPath(locale)}
+      class={headerClasses.brandLink}
+      aria-label={brand.publicName}
+    >
+      <Image
+        src={logoUrl}
+        alt=""
+        class={headerClasses.brandLogo}
+        width="1378"
+        height="372"
+        loading="eager"
+      />
+    </a>
+
+    <nav class={headerClasses.desktopNav} aria-label="Primary">
+      {
+        navItems.map((item) => (
+          <a
+            href={getPath(locale, item.page)}
+            aria-current={page === item.page ? "page" : undefined}
+            class={headerClasses.navLink}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class={headerClasses.headerActions}>
+      <details class={headerClasses.localeMenu} data-header-details>
+        <summary
+          class={headerClasses.localeTrigger}
+          aria-label="Language"
+          title={currentLocaleOption.label}
+        >
+          <span class={headerClasses.localeFlag} aria-hidden="true">
+            {currentLocaleOption.flag}
+          </span>
+          <span>{currentLocaleOption.code}</span>
+        </summary>
+        <div class={headerClasses.localePanel}>
+          <nav class={headerClasses.localeNav} aria-label="Language">
+            {
+              localeOptions.map((option) => (
+                <a
+                  href={option.path}
+                  aria-current={option.locale === locale ? "true" : undefined}
+                  aria-label={option.label}
+                  class={headerClasses.localeOption}
+                >
+                  <span class={headerClasses.localeFlag} aria-hidden="true">
+                    {option.flag}
+                  </span>
+                  <span class={headerClasses.localeLabel}>
+                    {option.label}
+                  </span>
+                  <span class={headerClasses.localeCode}>{option.code}</span>
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </details>
+
+      <details class={headerClasses.mobileMenu} data-header-details>
+        <summary class={headerClasses.mobileMenuTrigger}>
+          {t.nav.menu}
+        </summary>
+        <div class={headerClasses.mobilePanel}>
+          <nav class={headerClasses.localeNav} aria-label="Mobile primary">
+            {
+              navItems.map((item) => (
+                <a
+                  href={getPath(locale, item.page)}
+                  aria-current={page === item.page ? "page" : undefined}
+                  aria-label={item.label}
+                  class={headerClasses.mobileNavLink}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

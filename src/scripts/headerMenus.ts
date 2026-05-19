@@ -2,7 +2,7 @@ const headerDetails = document.querySelectorAll<HTMLDetailsElement>(
   "[data-header-details]",
 );
 
-function closeDetails(details: HTMLDetailsElement) {
+function closeDetails(details: HTMLDetailsElement): void {
   details.open = false;
 }
 

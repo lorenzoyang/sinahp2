@@ -2,11 +2,11 @@ const dotSelector = "[data-location-carousel-dot]";
 const carouselSelector = "[data-location-carousel]";
 const trackSelector = "[data-location-carousel-track]";
 
-function getSlideOffset(track: HTMLElement, slide: HTMLElement) {
+function getSlideOffset(track: HTMLElement, slide: HTMLElement): number {
   return slide.offsetLeft - track.offsetLeft;
 }
 
-function scrollToSlide(dot: HTMLButtonElement) {
+function scrollToSlide(dot: HTMLButtonElement): void {
   const slideId = dot.dataset.slideId;
   const slide = slideId ? document.getElementById(slideId) : null;
   const track = slide?.closest<HTMLElement>(trackSelector);
@@ -21,7 +21,7 @@ function scrollToSlide(dot: HTMLButtonElement) {
   });
 }
 
-function updateActiveDot(carousel: HTMLElement) {
+function updateActiveDot(carousel: HTMLElement): void {
   const track = carousel.querySelector<HTMLElement>(trackSelector);
   const dots = carousel.querySelectorAll<HTMLButtonElement>(dotSelector);
 
@@ -53,7 +53,7 @@ function updateActiveDot(carousel: HTMLElement) {
   });
 }
 
-function initCarousel(carousel: HTMLElement) {
+function initCarousel(carousel: HTMLElement): void {
   const track = carousel.querySelector<HTMLElement>(trackSelector);
   let frame = 0;
 

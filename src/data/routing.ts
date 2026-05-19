@@ -79,11 +79,11 @@ export const cultureTopicIds = Object.keys(
   cultureTopicSlugs,
 ) as CultureTopicId[];
 
-function getLocalePrefix(locale: Locale) {
+function getLocalePrefix(locale: Locale): string {
   return locale === defaultLocale ? "" : `/${locale}`;
 }
 
-export function getPath(locale: Locale, page: PageId = "home") {
+export function getPath(locale: Locale, page: PageId = "home"): string {
   const pagePath = page === "home" ? "" : pageSlugs[page];
   const prefix = getLocalePrefix(locale);
 
@@ -94,13 +94,18 @@ export function getPath(locale: Locale, page: PageId = "home") {
   return `${prefix}/${pagePath}/`;
 }
 
-export function getCultureTopicPath(locale: Locale, topic: CultureTopicId) {
+export function getCultureTopicPath(
+  locale: Locale,
+  topic: CultureTopicId,
+): string {
   const prefix = getLocalePrefix(locale);
 
   return `${prefix}/${pageSlugs.culture}/${cultureTopicSlugs[topic]}/`;
 }
 
-export function getCultureTopicAlternatePaths(topic: CultureTopicId) {
+export function getCultureTopicAlternatePaths(
+  topic: CultureTopicId,
+): Record<Locale, string> {
   return mapLocales((locale) => getCultureTopicPath(locale, topic));
 }
 
@@ -149,7 +154,7 @@ function createLocalizedTopic(locale: Locale, topicId: CultureTopicId) {
   };
 }
 
-function getStaticPageSlug(page: PageId) {
+function getStaticPageSlug(page: PageId): string | undefined {
   return page === "home" ? undefined : pageSlugs[page];
 }
 

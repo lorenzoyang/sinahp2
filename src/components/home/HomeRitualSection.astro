@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import SectionHeader from "../ui/SectionHeader.astro";
+import { brand, type Locale } from "../../data/site";
+import { copy } from "../../data/copy";
+import { homeImages } from "../../data/pageImages";
+import {
+  formatSequenceNumber,
+  getStaggerStyle,
+} from "../../utils/presentation";
+import {
+  cardClasses as sharedCardClasses,
+  headingClasses,
+  imageSizes,
+  layoutClasses,
+  mediaClasses as sharedMediaClasses,
+  sectionClasses as sharedSectionClasses,
+} from "../../utils/ui";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = copy[locale];
+const cardClasses = {
+  dark: `homepage-card ${sharedCardClasses.dark}`,
+};
+const mediaClasses = {
+  ritualFrame:
+    "relative aspect-4/3 overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-[0_24px_70px_rgba(0,0,0,0.24)]",
+  photo: `homepage-photo ${sharedMediaClasses.absoluteImage}`,
+};
+---
+
+<section class={sharedSectionClasses.dark}>
+  <div
+    class={`${layoutClasses.container} grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center`}
+  >
+    <div class="contents lg:block">
+      <div class="order-1" data-reveal>
+        <SectionHeader
+          eyebrow={brand.publicName}
+          title={t.home.sections.ritualTitle}
+          intro={t.home.sections.ritualIntro}
+          headingTag="h2"
+          containerClass="max-w-3xl"
+          eyebrowClass={headingClasses.darkEyebrow}
+          titleClass={headingClasses.darkTitle}
+          introClass="mt-4 max-w-2xl text-base leading-7 text-paper-soft/78"
+        />
+      </div>
+      <div class="order-3 grid w-full min-w-0 gap-3 sm:grid-cols-2 lg:mt-8">
+        {
+          t.home.steps.map(([title, text], index) => (
+            <article
+              class:list={[cardClasses.dark, "p-5"]}
+              data-reveal
+              style={getStaggerStyle(index, 0, 90)}
+            >
+              <span class="text-sm font-semibold text-gold">
+                {formatSequenceNumber(index)}
+              </span>
+              <h3 class="mt-4 text-lg font-semibold text-white">{title}</h3>
+              <p class="mt-3 text-sm leading-6 text-paper-soft/74">{text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class:list={[mediaClasses.ritualFrame, "order-2 lg:order-0"]}
+      data-reveal
+      style="--reveal-delay:90ms"
+    >
+      <Image
+        src={homeImages.howToEat}
+        alt=""
+        class={mediaClasses.photo}
+        width={imageSizes.splitPanel.width}
+        widths={imageSizes.splitPanel.widths}
+        sizes={imageSizes.splitPanel.sizes}
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
