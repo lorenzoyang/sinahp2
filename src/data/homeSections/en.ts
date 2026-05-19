@@ -3,26 +3,26 @@ import type { HomeSectionContent } from "./types";
 export const enHomeSections = {
     signatures: {
       intro:
-        "Clear quality: aromatic broths, fresh ingredients, and sauces guests can shape for themselves.",
+        "Quality lives in the rhythm of the table: fragrant broth, ingredients cooked in the moment, and sauces that make every bite your own.",
       items: [
         [
-          "Aromatic broths",
-          "Choose a mild, spicy, or split base for the table.",
+          "Broths that open the meal",
+          "Mild, spicy, or split, the broth gives the table character without making it complicated.",
         ],
         [
-          "Fresh ingredients",
-          "Thin cuts and vegetables arrive ready for quick cooking.",
+          "Ingredients cooked in the moment",
+          "Thin meats, vegetables, mushrooms, and tofu are made for small, hot tastings throughout the meal.",
         ],
         [
-          "Personal sauces",
-          "Finish each bite with your own balance of flavor.",
+          "Sauces for your own balance",
+          "Each guest can find their point between savory, fresh, spicy, and aromatic.",
         ],
       ],
     },
     reservation: {
       eyebrow: "Reservation",
-      title: "Reserve your table",
+      title: "Bring everyone around the pot",
       intro:
-        "Send a request online or message us on WhatsApp for quick confirmation.",
+        "Send a request online or message us on WhatsApp for quick confirmation and last-minute changes.",
     },
   } as const satisfies HomeSectionContent;

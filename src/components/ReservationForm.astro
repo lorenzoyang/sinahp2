@@ -31,18 +31,18 @@ const locationOptions = locations.map((location) => ({
   timeSlots: getReservationTimeSlots(location.reservationTimeRanges),
 }));
 const formClasses = {
-  root: "grid gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6",
-  rowTwo: "grid gap-4 sm:grid-cols-2",
-  rowThree: "grid gap-4 sm:grid-cols-3",
-  submitRow: "grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center",
-  label: "grid gap-2 text-sm font-semibold",
+  root: "grid min-w-0 gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6",
+  rowTwo: "grid min-w-0 gap-4 sm:grid-cols-2",
+  rowThree: "grid min-w-0 gap-4 sm:grid-cols-3",
+  submitRow: "grid min-w-0 gap-3 sm:grid-cols-[1fr_auto] sm:items-center",
+  label: "grid min-w-0 gap-2 text-sm font-semibold",
   consent: "flex items-start gap-3 text-xs leading-5 text-brown-muted",
   checkbox:
     "focus-ring mt-1 size-4 shrink-0 rounded border border-warm-line bg-white accent-lacquer [color-scheme:light]",
   input:
-    "focus-ring min-h-12 rounded-md border border-warm-line bg-white px-3 text-base text-ink",
+    "focus-ring min-h-12 w-full min-w-0 rounded-md border border-warm-line bg-white px-3 text-base text-ink",
   textarea:
-    "focus-ring min-h-28 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink",
+    "focus-ring min-h-28 w-full min-w-0 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink",
   finePrint: "text-xs leading-5 text-brown-muted",
   privacyLink:
     "font-semibold text-lacquer underline decoration-gold underline-offset-4",

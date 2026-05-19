@@ -6,166 +6,162 @@ export const etiquetteTopic = {
     content: {
       it: {
         kicker: "Consigli pratici",
-        title: "Etichetta, allergie e comfort al tavolo",
+        title: "Comfort, allergie e piccoli gesti al tavolo",
         summary:
-          "L’hotpot è informale, ma qualche regola semplice rende la cena più elegante, sicura e piacevole per tutti.",
+          "L’hotpot è rilassato e conviviale. Qualche attenzione semplice rende la cena più ordinata, sicura e piacevole per tutti.",
         highlights: [
           "Condivisione rispettosa",
-          "Attenzione ad allergie e preferenze",
-          "Comfort per turisti e nuovi ospiti",
+          "Allergie comunicate in anticipo",
+          "Guida utile per prime visite",
         ],
         detailIntro:
-          "Un’esperienza premium non dipende solo dal cibo. Dipende anche da chiarezza, comfort e attenzione alle esigenze individuali.",
+          "Una buona esperienza non dipende solo dal brodo. Dipende anche dalla chiarezza, dal comfort e dalla cura per le esigenze di ogni ospite.",
         sections: [
           {
             title: "Condividere senza confondere",
-            body: "Usare utensili separati quando necessario e non lasciare ingredienti troppo a lungo nel brodo aiuta il tavolo a restare ordinato e piacevole.",
+            body: "Usare utensili separati quando serve e non lasciare ingredienti troppo a lungo nella pentola aiuta il tavolo a restare ordinato e il brodo piacevole.",
           },
           {
-            title: "Allergie e preferenze vanno comunicate prima",
-            body: "Il modulo di prenotazione include note opzionali proprio per allergie, esigenze alimentari o occasioni speciali. Segnalarle in anticipo rende il servizio più attento.",
+            title: "Allergie e preferenze vanno segnalate prima",
+            body: "Nel modulo di prenotazione puoi indicare allergie, esigenze alimentari o occasioni speciali. Scriverlo in anticipo ci aiuta a preparare un servizio più attento.",
           },
           {
-            title: "Il personale può guidare la prima esperienza",
-            body: "Per clienti italiani o turisti, una breve spiegazione su brodo, tempi e salsa trasforma la curiosità in fiducia.",
+            title: "Chiedere una guida è normale",
+            body: "Se è la tua prima volta, chiedi consiglio su brodo, tempi e salse. Poche indicazioni bastano per godersi la cena con sicurezza.",
           },
         ],
         tipsTitle: "Prima di arrivare",
         tips: [
-          "Indica allergie nella prenotazione.",
+          "Indica allergie o esigenze nelle note.",
           "Scegli Prato o Firenze in base agli orari.",
-          "Per dubbi urgenti usa WhatsApp.",
+          "Per domande urgenti usa WhatsApp.",
         ],
       },
       zh: {
         kicker: "实用建议",
-        title: "礼仪、过敏说明与舒适体验",
+        title: "舒适体验、过敏说明和桌边小礼仪",
         summary:
-          "火锅氛围轻松，但一些简单规则能让整桌体验更高级、更安全，也更适合第一次尝试的外国客人。",
-        highlights: [
-          "尊重共享节奏",
-          "提前说明过敏与偏好",
-          "让游客和新客人更安心",
-        ],
+          "火锅本身轻松热闹，但几个简单习惯能让整桌更有秩序、更安全，也更适合第一次尝试的客人。",
+        highlights: ["尊重共享节奏", "提前说明过敏与需求", "第一次来可以寻求引导"],
         detailIntro:
-          "高端体验不只来自食物，也来自清晰说明、舒适服务和对个人需求的重视。",
+          "好的火锅体验不只来自锅底，也来自清楚说明、舒适服务和对每位客人需求的照顾。",
         sections: [
           {
             title: "共享但不混乱",
-            body: "必要时使用公筷或单独夹具，不把食材长时间留在锅里，能让桌面和汤底都保持更好的状态。",
+            body: "需要时使用公筷或单独夹具，不把食材长时间留在锅里，可以让桌面更整洁，也让汤底保持更好的状态。",
           },
           {
-            title: "过敏和特殊偏好应提前说明",
-            body: "预约表单中的可选说明就是为过敏、饮食限制或特殊场合准备的。提前填写可以帮助门店更好安排服务。",
+            title: "过敏和偏好最好提前说明",
+            body: "预约表单中的备注可以填写过敏、饮食需求或特殊场合。提前说明能帮助门店更好安排服务。",
           },
           {
-            title: "服务说明能降低陌生感",
-            body: "对于意大利本地客人和游客，简单解释锅底、涮煮时间和蘸料搭配，会让他们从好奇变得更有信心。",
+            title: "第一次来可以请店员说明",
+            body: "如果不熟悉火锅，可以询问锅底、涮煮时间和蘸料搭配。几句说明就能让整顿饭更安心。",
           },
         ],
         tipsTitle: "到店前建议",
         tips: [
-          "预约时注明过敏情况。",
+          "在预约备注中说明过敏或特殊需求。",
           "根据营业时间选择 Prato 或 Firenze。",
-          "紧急问题可使用 WhatsApp。",
+          "紧急问题可以使用 WhatsApp。",
         ],
       },
       en: {
         kicker: "Practical guidance",
-        title: "Etiquette, allergies, and comfort",
+        title: "Comfort, allergies, and simple table habits",
         summary:
-          "Hotpot is relaxed, but a few simple habits make the table more elegant, safe, and comfortable for everyone.",
+          "Hotpot is relaxed and social. A few simple habits make the table more orderly, comfortable, and safe for everyone.",
         highlights: [
           "Respectful sharing",
-          "Allergy and preference notes",
-          "Comfort for tourists and first-timers",
+          "Allergies noted in advance",
+          "Guidance for first visits",
         ],
         detailIntro:
-          "A premium experience depends on more than food. It also depends on clarity, comfort, and attention to individual needs.",
+          "A good experience depends on more than broth. It also depends on clarity, comfort, and care for each guest’s needs.",
         sections: [
           {
             title: "Share without confusion",
-            body: "Use separate utensils when needed and avoid leaving ingredients in the broth too long. This keeps the table orderly and the broth pleasant.",
+            body: "Use separate utensils when needed and avoid leaving ingredients in the pot too long. This keeps the table orderly and the broth pleasant.",
           },
           {
             title: "Mention allergies and preferences early",
-            body: "The reservation form includes an optional note for allergies, dietary needs, or special occasions. Sharing this early helps the restaurant prepare.",
+            body: "The reservation note is the right place for allergies, dietary needs, or special occasions. Sharing them early helps the restaurant prepare with more care.",
           },
           {
-            title: "Guidance builds confidence",
-            body: "For Italian guests and tourists, a short explanation of broth, timing, and sauces turns curiosity into confidence.",
+            title: "Asking for guidance is normal",
+            body: "If it is your first hotpot, ask about broth, timing, and sauces. A short explanation is often enough to enjoy the meal with confidence.",
           },
         ],
         tipsTitle: "Before you arrive",
         tips: [
-          "Mention allergies in the reservation.",
-          "Choose Prato or Florence based on hours.",
+          "Mention allergies or needs in the notes.",
+          "Choose Prato or Firenze based on hours.",
           "Use WhatsApp for urgent questions.",
         ],
       },
       es: {
         kicker: "Consejos prácticos",
-        title: "Etiqueta, alergias y comodidad",
+        title: "Comodidad, alergias y pequeños gestos en la mesa",
         summary:
-          "El hotpot es relajado, pero unos hábitos simples hacen que la mesa sea más elegante, segura y cómoda.",
+          "El hotpot es relajado y social. Unos hábitos simples hacen que la mesa sea más ordenada, cómoda y segura para todos.",
         highlights: [
           "Compartir con respeto",
-          "Notas de alergias y preferencias",
-          "Comodidad para turistas y principiantes",
+          "Alergias indicadas antes",
+          "Guía para primeras visitas",
         ],
         detailIntro:
-          "Una experiencia premium depende de algo más que la comida: claridad, comodidad y atención a necesidades individuales.",
+          "Una buena experiencia depende de algo más que el caldo. También depende de claridad, comodidad y atención a las necesidades de cada persona.",
         sections: [
           {
             title: "Compartir sin confusión",
-            body: "Usar utensilios separados cuando sea necesario y no dejar ingredientes demasiado tiempo mantiene la mesa ordenada y el caldo agradable.",
+            body: "Usar utensilios separados cuando sea necesario y no dejar ingredientes demasiado tiempo en la olla mantiene la mesa ordenada y el caldo agradable.",
           },
           {
             title: "Comunica alergias y preferencias antes",
-            body: "El formulario de reserva incluye una nota opcional para alergias, necesidades alimentarias u ocasiones especiales. Avisar antes ayuda al restaurante.",
+            body: "La nota de reserva es el lugar adecuado para alergias, necesidades alimentarias u ocasiones especiales. Avisar antes ayuda al restaurante a prepararse mejor.",
           },
           {
-            title: "La guía del personal da confianza",
-            body: "Para clientes italianos y turistas, una breve explicación sobre caldo, tiempos y salsas convierte la curiosidad en confianza.",
+            title: "Pedir guía es normal",
+            body: "Si es tu primer hotpot, pregunta sobre caldo, tiempos y salsas. Una explicación breve suele bastar para disfrutar con confianza.",
           },
         ],
         tipsTitle: "Antes de llegar",
         tips: [
-          "Indica alergias en la reserva.",
-          "Elige Prato o Florencia según horarios.",
+          "Indica alergias o necesidades en la nota.",
+          "Elige Prato o Firenze según horarios.",
           "Usa WhatsApp para dudas urgentes.",
         ],
       },
       fr: {
         kicker: "Conseils pratiques",
-        title: "Étiquette, allergies et confort",
+        title: "Confort, allergies et petits gestes à table",
         summary:
-          "Le hotpot est détendu, mais quelques habitudes simples rendent la table plus élégante, sûre et confortable.",
+          "Le hotpot est détendu et convivial. Quelques habitudes simples rendent la table plus ordonnée, confortable et sûre pour tous.",
         highlights: [
           "Partage respectueux",
-          "Notes allergies et préférences",
-          "Confort pour touristes et débutants",
+          "Allergies signalées à l’avance",
+          "Guide utile pour premières visites",
         ],
         detailIntro:
-          "Une expérience premium dépend de plus que la cuisine: clarté, confort et attention aux besoins individuels.",
+          "Une bonne expérience dépend de plus que le bouillon. Elle dépend aussi de la clarté, du confort et de l’attention portée aux besoins de chacun.",
         sections: [
           {
             title: "Partager sans confusion",
-            body: "Utiliser des ustensiles séparés si nécessaire et éviter de laisser les ingrédients trop longtemps garde la table ordonnée et le bouillon agréable.",
+            body: "Utiliser des ustensiles séparés si nécessaire et éviter de laisser les ingrédients trop longtemps dans la marmite garde la table ordonnée et le bouillon agréable.",
           },
           {
             title: "Signaler allergies et préférences tôt",
-            body: "Le formulaire de réservation inclut une note optionnelle pour allergies, besoins alimentaires ou occasions spéciales. L’indiquer aide le restaurant.",
+            body: "La note de réservation est l’endroit prévu pour allergies, besoins alimentaires ou occasions spéciales. Le signaler à l’avance aide le restaurant à mieux se préparer.",
           },
           {
-            title: "L’explication du personnel rassure",
-            body: "Pour les clients italiens et touristes, une brève explication du bouillon, des temps et des sauces transforme la curiosité en confiance.",
+            title: "Demander des conseils est normal",
+            body: "Si c’est votre premier hotpot, demandez conseil sur le bouillon, les temps et les sauces. Quelques indications suffisent souvent pour profiter du repas avec confiance.",
           },
         ],
         tipsTitle: "Avant votre arrivée",
         tips: [
-          "Indiquez les allergies dans la réservation.",
-          "Choisissez Prato ou Florence selon les horaires.",
+          "Indiquez allergies ou besoins dans les notes.",
+          "Choisissez Prato ou Firenze selon les horaires.",
           "Utilisez WhatsApp pour les questions urgentes.",
         ],
       },

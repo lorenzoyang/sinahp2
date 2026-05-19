@@ -24,7 +24,7 @@ const pageClasses = {
   heroImage: mediaClasses.absoluteImage,
   contactGrid: "mt-6 grid gap-3 text-sm text-paper-soft/78",
   contactLink:
-    "focus-ring rounded-md border border-white/12 px-4 py-3 hover:bg-white/10",
+    "focus-ring min-w-0 break-words rounded-md border border-white/12 px-4 py-3 hover:bg-white/10",
 };
 ---
 
@@ -36,13 +36,12 @@ const pageClasses = {
 >
   <section class={pageClasses.section}>
     <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
+      class="mx-auto grid max-w-7xl min-w-0 gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
     >
-      <div class="lg:sticky lg:top-24">
+      <div class="min-w-0 lg:sticky lg:top-24">
         <SectionHeader
           eyebrow={t.reservation.eyebrow}
           title={t.reservation.title}
-          intro={t.reservation.intro}
         />
         <div class={pageClasses.heroImageFrame}>
           <Image

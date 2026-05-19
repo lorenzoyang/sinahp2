@@ -6,163 +6,163 @@ export const ingredientsTopic = {
     content: {
       it: {
         kicker: "Ingredienti e salse",
-        title: "Freschezza, tagli sottili e salsa personale",
+        title: "Ingredienti freschi, salse personali, bocconi sempre diversi",
         summary:
-          "La qualità dell’hotpot si vede negli ingredienti: tagli sottili, verdure fresche, funghi, tofu e salse che trasformano ogni boccone.",
+          "La bellezza dell’hotpot è nella scelta: tagli sottili, verdure, funghi, tofu e salse permettono a ogni ospite di costruire il proprio assaggio.",
         highlights: [
-          "Carni tagliate sottili",
-          "Verdure e funghi per equilibrio",
-          "Salse personalizzabili",
+          "Tagli sottili per cotture rapide",
+          "Verdure e funghi per freschezza",
+          "Salse da comporre al proprio gusto",
         ],
         detailIntro:
-          "Gli ingredienti non hanno tutti lo stesso ruolo. Alcuni cuociono in pochi secondi, altri arricchiscono il brodo e altri ancora servono a bilanciare consistenza e freschezza.",
+          "Ogni ingrediente ha un ruolo. Alcuni cuociono in pochi secondi, altri danno corpo al brodo, altri ancora portano equilibrio dopo sapori più intensi.",
         sections: [
           {
-            title: "La carne sottile cuoce velocemente",
-            body: "Fette sottili di manzo o altri tagli premium vanno immerse per poco tempo. Restano morbide e assorbono il profumo del brodo senza perdere succosità.",
+            title: "I tagli sottili chiedono attenzione",
+            body: "Carne e altri ingredienti sottili hanno bisogno di poco tempo. Cuocerli al momento li mantiene morbidi e permette al brodo di profumarli senza coprirli.",
           },
           {
-            title: "Verdure, funghi e tofu creano equilibrio",
-            body: "Dopo sapori intensi, ingredienti vegetali e tofu riportano freschezza. Funghi e verdure aggiungono dolcezza naturale e rendono il brodo più rotondo.",
+            title: "Verdure, funghi e tofu alleggeriscono il tavolo",
+            body: "Dopo assaggi ricchi o piccanti, ingredienti vegetali e tofu riportano freschezza. Funghi e verdure aggiungono dolcezza naturale e rendono il brodo più rotondo.",
           },
           {
-            title: "La salsa è la firma personale",
-            body: "Ogni ospite può combinare elementi sapidi, freschi, piccanti o aromatici. Questo rende lo stesso tavolo diverso per ogni persona.",
+            title: "La salsa racconta il tuo gusto",
+            body: "Lo stesso ingrediente cambia con una salsa diversa. Puoi cercare note sapide, fresche, piccanti o aromatiche e correggere il mix durante la cena.",
           },
         ],
         tipsTitle: "Ordine consigliato",
         tips: [
-          "Inizia da verdure e tofu.",
+          "Inizia con ingredienti delicati.",
           "Cuoci la carne solo per il tempo necessario.",
-          "Regola la salsa a piccoli passaggi.",
+          "Regola la salsa in piccoli passaggi.",
         ],
       },
       zh: {
         kicker: "食材与蘸料",
-        title: "新鲜食材、薄切肉片和专属蘸料",
+        title: "新鲜食材、个人蘸料，每一口都能变化",
         summary:
-          "火锅品质往往体现在食材上：薄切肉类、新鲜蔬菜、菌菇、豆制品和自由搭配的蘸料，会让每一口都有变化。",
-        highlights: ["肉片薄切易熟", "蔬菜菌菇平衡味道", "蘸料体现个人口味"],
+          "火锅的魅力在于选择：薄切肉片、蔬菜、菌菇、豆制品和可自由搭配的蘸料，让每位客人都能调出自己的味道。",
+        highlights: ["薄切食材适合快速涮煮", "蔬菜菌菇带来清爽平衡", "蘸料可以自由组合"],
         detailIntro:
-          "火锅食材并不是简单放进锅里。不同食材有不同作用：有些快速成熟，有些增加汤底鲜味，有些提供清爽和平衡。",
+          "火锅食材各有作用。有些几秒钟就能成熟，有些会让汤底更丰富，有些则在浓郁味道之后带来清爽和平衡。",
         sections: [
           {
-            title: "薄切肉片需要短时间涮煮",
-            body: "优质牛肉或其他肉类切得越薄，越能在短时间内达到柔嫩口感。时间过长会影响质地，适度涮煮才能保留鲜嫩。",
+            title: "薄切食材需要掌握时间",
+            body: "肉片和其他薄切食材不需要久煮。现涮现吃能保留柔嫩口感，也让锅底香气刚好附着在食材上。",
           },
           {
-            title: "蔬菜、菌菇和豆腐负责平衡",
-            body: "在浓郁味道之后，蔬菜和豆腐能带来清爽感。菌菇和叶菜还会给汤底增加自然鲜甜。",
+            title: "蔬菜、菌菇和豆腐让一桌更平衡",
+            body: "在浓郁或麻辣的味道之后，蔬菜和豆腐能带来清爽感。菌菇和叶菜也会给汤底增加自然鲜甜。",
           },
           {
-            title: "蘸料是个人风味签名",
-            body: "同样的食材搭配不同蘸料，会变成完全不同的味道。客人可以通过咸、辣、鲜、香的比例找到自己的口味。",
+            title: "蘸料表达个人口味",
+            body: "同样的食材配上不同蘸料，会变成完全不同的味道。咸、辣、鲜、香的比例可以在用餐过程中一点点调整。",
           },
         ],
         tipsTitle: "推荐顺序",
         tips: [
-          "先从蔬菜和豆腐开始。",
+          "先从清淡食材开始。",
           "肉类只涮到刚好成熟。",
           "蘸料少量多次调整。",
         ],
       },
       en: {
         kicker: "Ingredients and sauces",
-        title: "Fresh ingredients and a personal sauce",
+        title: "Fresh ingredients, personal sauces, different bites",
         summary:
-          "Hotpot quality shows in the ingredients: thin-sliced meats, fresh vegetables, mushrooms, tofu, and sauces that change each bite.",
+          "The pleasure of hotpot is choice: thin cuts, vegetables, mushrooms, tofu, and sauces let every guest build their own bite.",
         highlights: [
-          "Thin cuts cook quickly",
-          "Vegetables and mushrooms bring balance",
-          "Sauces personalize the meal",
+          "Thin cuts for quick cooking",
+          "Vegetables and mushrooms for freshness",
+          "Sauces shaped to your taste",
         ],
         detailIntro:
-          "Ingredients have different roles. Some cook in seconds, some enrich the broth, and others bring freshness, texture, or contrast.",
+          "Each ingredient has a role. Some cook in seconds, some enrich the broth, and others bring balance after deeper flavors.",
         sections: [
           {
-            title: "Thin-sliced meat cooks fast",
-            body: "Premium beef or other thin cuts need only a short dip. They stay tender and absorb the broth aroma without losing juiciness.",
+            title: "Thin cuts need attention",
+            body: "Meat and other thin ingredients need only a short time. Cooking them in the moment keeps them tender and lets the broth perfume them without overwhelming them.",
           },
           {
-            title: "Vegetables, mushrooms, and tofu balance the table",
-            body: "After rich flavors, vegetables and tofu bring freshness. Mushrooms and greens also add natural sweetness and make the broth rounder.",
+            title: "Vegetables, mushrooms, and tofu lighten the table",
+            body: "After rich or spicy bites, vegetables and tofu bring freshness. Mushrooms and greens add natural sweetness and make the broth rounder.",
           },
           {
-            title: "Sauce is your personal signature",
-            body: "The same ingredient can taste different with a new sauce. Guests can balance savory, spicy, fresh, and aromatic notes to fit their taste.",
+            title: "Sauce expresses your taste",
+            body: "The same ingredient changes with a different sauce. You can look for savory, fresh, spicy, or aromatic notes and adjust the mix during the meal.",
           },
         ],
         tipsTitle: "Suggested order",
         tips: [
-          "Start with vegetables and tofu.",
+          "Start with delicate ingredients.",
           "Cook meat only as long as needed.",
           "Adjust sauce in small steps.",
         ],
       },
       es: {
         kicker: "Ingredientes y salsas",
-        title: "Frescura, cortes finos y salsa personal",
+        title: "Ingredientes frescos, salsas personales, bocados distintos",
         summary:
-          "La calidad del hotpot se nota en los ingredientes: carnes finas, verduras frescas, setas, tofu y salsas que cambian cada bocado.",
+          "El placer del hotpot está en elegir: cortes finos, verduras, setas, tofu y salsas permiten que cada persona construya su bocado.",
         highlights: [
-          "Cortes finos que cocinan rápido",
-          "Verduras y setas para equilibrio",
-          "Salsas personalizadas",
+          "Cortes finos para cocción rápida",
+          "Verduras y setas para frescura",
+          "Salsas a tu gusto",
         ],
         detailIntro:
-          "Los ingredientes cumplen papeles distintos. Algunos cocinan en segundos, otros enriquecen el caldo y otros aportan frescura o textura.",
+          "Cada ingrediente cumple un papel. Algunos se cocinan en segundos, otros enriquecen el caldo y otros equilibran después de sabores intensos.",
         sections: [
           {
-            title: "La carne fina cocina rapido",
-            body: "El buey premium u otros cortes finos necesitan poco tiempo. Quedan tiernos y absorben el aroma del caldo sin perder jugosidad.",
+            title: "Los cortes finos necesitan atención",
+            body: "La carne y otros ingredientes finos necesitan poco tiempo. Cocinarlos al momento los mantiene tiernos y deja que el caldo los perfume sin cubrirlos.",
           },
           {
-            title: "Verduras, setas y tofu equilibran",
-            body: "Después de sabores intensos, verduras y tofu aportan frescura. Setas y hojas verdes también dan dulzor natural al caldo.",
+            title: "Verduras, setas y tofu aligeran la mesa",
+            body: "Después de bocados ricos o picantes, verduras y tofu aportan frescura. Setas y hojas verdes añaden dulzor natural al caldo.",
           },
           {
-            title: "La salsa es tu firma personal",
-            body: "El mismo ingrediente cambia con otra salsa. Cada persona puede equilibrar notas saladas, picantes, frescas y aromáticas.",
+            title: "La salsa expresa tu gusto",
+            body: "El mismo ingrediente cambia con otra salsa. Puedes buscar notas saladas, frescas, picantes o aromáticas y ajustar la mezcla durante la comida.",
           },
         ],
         tipsTitle: "Orden sugerido",
         tips: [
-          "Empieza con verduras y tofu.",
+          "Empieza con ingredientes delicados.",
           "Cocina la carne solo lo necesario.",
           "Ajusta la salsa poco a poco.",
         ],
       },
       fr: {
         kicker: "Ingrédients et sauces",
-        title: "Fraîcheur, fines tranches et sauce personnelle",
+        title: "Ingrédients frais, sauces personnelles, bouchées variées",
         summary:
-          "La qualité du hotpot se voit dans les ingrédients: viandes fines, légumes frais, champignons, tofu et sauces qui transforment chaque bouchée.",
+          "Le plaisir du hotpot vient du choix: fines tranches, légumes, champignons, tofu et sauces permettent à chacun de composer sa bouchée.",
         highlights: [
-          "Fines tranches rapides à cuire",
-          "Légumes et champignons pour l’équilibre",
-          "Sauces personnalisables",
+          "Fines tranches pour cuisson rapide",
+          "Légumes et champignons pour la fraîcheur",
+          "Sauces selon votre goût",
         ],
         detailIntro:
-          "Les ingrédients n’ont pas tous le même rôle. Certains cuisent en secondes, d’autres enrichissent le bouillon et d’autres apportent fraîcheur ou texture.",
+          "Chaque ingrédient a son rôle. Certains cuisent en secondes, d’autres enrichissent le bouillon et d’autres équilibrent les saveurs plus profondes.",
         sections: [
           {
-            title: "La viande fine cuit vite",
-            body: "Le bœuf premium ou d’autres fines tranches demandent peu de temps. Elles restent tendres et absorbent le parfum du bouillon.",
+            title: "Les fines tranches demandent de l’attention",
+            body: "La viande et les autres ingrédients fins demandent peu de temps. Les cuire au moment les garde tendres et laisse le bouillon les parfumer sans les couvrir.",
           },
           {
-            title: "Légumes, champignons et tofu équilibrent",
-            body: "Après des saveurs intenses, légumes et tofu apportent de la fraîcheur. Champignons et verdures ajoutent aussi une douceur naturelle.",
+            title: "Légumes, champignons et tofu allègent la table",
+            body: "Après des bouchées riches ou épicées, légumes et tofu apportent de la fraîcheur. Champignons et verdures ajoutent une douceur naturelle au bouillon.",
           },
           {
-            title: "La sauce est une signature personnelle",
-            body: "Le même ingrédient change avec une sauce différente. Chaque invité peut équilibrer notes salées, épicées, fraîches et aromatiques.",
+            title: "La sauce exprime votre goût",
+            body: "Le même ingrédient change avec une autre sauce. Vous pouvez chercher des notes salées, fraîches, piquantes ou parfumées et ajuster le mélange pendant le repas.",
           },
         ],
         tipsTitle: "Ordre conseillé",
         tips: [
-          "Commencez par légumes et tofu.",
+          "Commencez par les ingrédients délicats.",
           "Cuisez la viande juste le temps nécessaire.",
-          "Ajustez la sauce progressivement.",
+          "Ajustez la sauce par petites étapes.",
         ],
       },
     },

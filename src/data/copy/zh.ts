@@ -2,18 +2,28 @@ import type { LocaleCopy } from "./types";
 
 export const zhCopy = {
     meta: {
-      homeTitle: "鲜入围煮 Sina Hotpot | 普拉托与佛罗伦萨高端火锅",
+      homeTitle: "鲜入围煮 Sina Hotpot | Prato 与 Firenze 中式火锅",
       description:
-        "鲜入围煮 Sina Hotpot 在托斯卡纳呈现高端中式火锅体验，服务 Prato 与 Firenze 两家门店。",
+        "在 Prato 与 Firenze，Sina Hotpot 用香气锅底、新鲜食材和桌边现涮，呈现精致而轻松的中式火锅体验。",
     },
     layout: {
       skipToContent: "跳到主要内容",
       contact: "联系",
       social: "社交",
     },
+    a11y: {
+      primaryNavigation: "主导航",
+      languageMenu: "选择语言",
+      mobileNavigation: "移动端导航",
+      restaurantPhotos: "{city} 门店照片",
+      photoSlides: "{city} 照片幻灯片",
+      photoNavigation: "{city} 照片导航",
+      photoLabel: "{city} 第 {number} 张照片",
+      carousel: "轮播",
+    },
     nav: {
       home: "首页",
-      culture: "火锅文化",
+      culture: "认识火锅",
       locations: "门店",
       gallery: "图片",
       reservation: "预约",
@@ -21,71 +31,72 @@ export const zhCopy = {
       menu: "菜单",
     },
     cta: {
-      reserve: "预约座位",
-      culture: "了解火锅",
+      reserve: "预约餐位",
+      culture: "火锅怎么吃",
       call: "电话",
       map: "打开地图",
       whatsapp: "WhatsApp",
       backHome: "返回首页",
-      learnMore: "了解详细",
-      gallery: "查看图片",
+      learnMore: "继续了解",
+      gallery: "浏览图片",
     },
     home: {
-      eyebrow: "托斯卡纳高端中式火锅",
+      eyebrow: "托斯卡纳的中式共享火锅",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "香气锅底、新鲜食材、桌边现涮：在 Prato 或 Firenze 预约座位，轻松享受中式火锅。",
+        "一口锅在桌中央慢慢升温，香气锅底、新鲜食材和现涮现吃的节奏，让朋友、家人或第一次尝试火锅的人都能自然投入。",
       proof: [
         "Prato 与 Firenze 两家门店",
-        "第一次来也容易上手",
-        "线上快速预约",
+        "第一次吃也容易上手",
+        "线上或 WhatsApp 预约",
       ],
       sections: {
-        ritualTitle: "火锅怎么吃",
-        ritualIntro: "选锅底、涮食材、一起分享，几个步骤就能开始。",
-        locationsTitle: "Prato 或 Firenze",
-        locationsIntro: "选择更方便的门店，几步完成预约。",
-        premiumTitle: "为什么选择 Sina",
+        ritualTitle: "简单、热闹、一起分享",
+        ritualIntro: "先选锅底，再少量多次下食材，最后用蘸料调出属于自己的味道。",
+        locationsTitle: "预约 Prato 或 Firenze",
+        locationsIntro:
+          "Prato 适合晚间和深夜聚餐；Firenze 靠近历史中心，午餐和晚餐都方便安排。",
+        premiumTitle: "Sina 的一桌火锅",
       },
       steps: [
-        ["选择锅底", "麻辣、清汤或鸳鸯锅，是整桌的味道基础。"],
-        ["点选食材", "肉类、蔬菜、菌菇和豆制品上桌后即可现涮。"],
-        ["桌边现涮", "放入锅中，等几秒钟，按自己的节奏享用。"],
-        ["一起分享", "锅在桌中央，让聚餐自然有互动。"],
+        ["选择锅底", "清淡、麻辣或鸳鸯锅，先为整桌确定舒服的味道方向。"],
+        ["加入食材", "薄切肉片、蔬菜、菌菇和豆制品上桌后，就能按节奏现涮。"],
+        ["现涮现吃", "少量放入锅中，等待合适时间，让香气和口感都刚刚好。"],
+        ["一起分享", "锅在桌中央，聊天、选择和品尝会自然发生。"],
       ],
     },
     culture: {
-      eyebrow: "第一次吃火锅指南",
-      title: "火锅是什么？",
+      eyebrow: "中式火锅指南",
+      title: "认识火锅：一顿一起完成的晚餐",
       intro:
-        "火锅是一种来自中国的共享式餐饮体验：汤底在桌上持续加热，客人把新鲜食材放入锅中煮熟，再搭配蘸料享用。",
+        "火锅是一种来自中国的共享式餐饮体验：汤底在桌中央持续加热，客人把新鲜食材放入锅中现煮，再搭配蘸料，按自己的节奏享用。",
       blocks: [
-        ["ritual", "共同参与的晚餐", "食物不是全部预先做好，而是在桌上一起完成。"],
-        ["ingredients", "味道可以定制", "锅底、辣度、食材和蘸料都能根据个人偏好调整。"],
+        ["ritual", "餐桌会变得有互动", "火锅不是等一道成品菜上桌，而是同桌一起选择、下锅和品尝。"],
+        ["ingredients", "每个人都能找到口味", "锅底、辣度、食材和蘸料都能调整，让同桌客人各自舒服。"],
         [
           "basics",
-          "认识中国文化",
-          "火锅轻松、有互动感，很适合第一次尝试中餐文化的外国客人。",
+          "第一次尝试也不难",
+          "可以从熟悉的食材开始，再慢慢探索更有中式风味的组合。",
         ],
       ],
       whyTitle: "为什么值得尝试",
       whyItems: [
-        "它很适合社交，整顿饭都有交流。",
-        "它很灵活，每个人都能找到适合自己的味道。",
-        "它很有记忆点，热气、香气和食材色彩都很有感染力。",
+        "它很适合社交：一顿饭会随着下锅、等待和分享自然展开。",
+        "它很灵活：每个人都能选择自己的辣度、蘸料和涮煮节奏。",
+        "它很有记忆点：热气、香气和食材色彩会把聚餐变成一次体验。",
       ],
       etiquetteTitle: "小建议",
       etiquette: [
         "先从清淡食材开始，再尝试更浓郁的味道。",
-        "蘸料可以少量多次调整。",
-        "如有过敏或特殊需求，请在预约备注中说明。",
+        "蘸料少量多次调整，找到自己喜欢的咸、辣、鲜、香比例。",
+        "如有过敏或特殊需求，请在预约备注中说明，方便门店提前准备。",
       ],
     },
     locations: {
       eyebrow: "Prato 与 Firenze",
-      title: "两家门店，选择你的下一次火锅",
+      title: "两家门店，围起下一次热气腾腾的聚餐",
       intro:
-        "Prato 适合晚间与深夜聚餐；Firenze 位于历史中心附近，午餐和晚餐都可安排。",
+        "Prato 适合晚间与深夜聚餐；Firenze 靠近历史中心，午餐和晚餐都可安排。选择更方便的门店，把同桌的人聚到同一口锅旁。",
       daily: "每天营业",
       phone: "电话",
       address: "地址",
@@ -93,8 +104,8 @@ export const zhCopy = {
     },
     gallery: {
       eyebrow: "图片展示",
-      title: "走近鲜入围煮",
-      intro: "浏览门店的即食菜品、原材料、甜品与饮品照片。",
+      title: "先看看即将上桌的味道",
+      intro: "浏览菜品、原材料、甜品与饮品照片，提前感受 Sina Hotpot 的餐桌氛围。",
       categories: {
         dishes: "即食菜品",
         ingredients: "原材料",
@@ -102,9 +113,10 @@ export const zhCopy = {
       },
     },
     reservation: {
-      eyebrow: "预约请求",
-      title: "预约座位",
-      intro: "填写以下信息后，门店负责人会通过邮件收到预约通知。",
+      eyebrow: "预约",
+      title: "预约你的火锅餐位",
+      intro:
+        "填写日期、时间、人数和门店后，我们会通过邮件收到预约请求，并在需要时与你确认细节。",
       labels: {
         name: "姓名",
         phone: "电话号码",
@@ -117,7 +129,7 @@ export const zhCopy = {
       placeholders: {
         name: "你的姓名",
         phone: "+39 ...",
-        message: "过敏、特殊情况或其他需求",
+        message: "过敏、特殊场合或座位偏好",
       },
       consentPrefix: "我已阅读",
       privacyLink: "隐私政策",
@@ -134,7 +146,7 @@ export const zhCopy = {
     success: {
       title: "预约请求已收到",
       intro:
-        "谢谢。你的预约请求已发送给 Sina Hotpot。如需紧急修改，请直接通过 WhatsApp 联系我们。",
+        "谢谢。你的预约请求已发送给 Sina Hotpot。如需紧急修改或快速确认，请直接通过 WhatsApp 联系我们。",
       next: "你也可以继续查看门店地址、营业时间与路线。",
     },
     privacy: {

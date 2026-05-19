@@ -20,6 +20,16 @@ export type LocaleCopy = {
     contact: string;
     social: string;
   };
+  a11y: {
+    primaryNavigation: string;
+    languageMenu: string;
+    mobileNavigation: string;
+    restaurantPhotos: string;
+    photoSlides: string;
+    photoNavigation: string;
+    photoLabel: string;
+    carousel: string;
+  };
   nav: Record<Exclude<PageId, "success"> | "menu", string>;
   cta: Record<
     | "reserve"

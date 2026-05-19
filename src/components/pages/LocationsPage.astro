@@ -36,16 +36,30 @@ const cardClasses = {
   label: "text-xs font-semibold uppercase tracking-[0.22em] text-lacquer",
 };
 
+function formatA11yLabel(
+  template: string,
+  values: Record<string, string | number>,
+) {
+  return Object.entries(values).reduce(
+    (label, [key, value]) => label.replaceAll(`{${key}}`, String(value)),
+    template,
+  );
+}
+
 const locationCards = locations.map((location) => ({
   ...location,
   slides: location.gallery.map((photo, index) => {
     const number = index + 1;
+    const photoLabel = formatA11yLabel(t.a11y.photoLabel, {
+      city: location.city,
+      number,
+    });
 
     return {
       id: `location-${location.id}-photo-${number}`,
       photo,
-      alt: `${brand.publicName} ${location.city} restaurant photo ${number}`,
-      label: `${location.city} photo ${number}`,
+      alt: `${brand.publicName} ${photoLabel}`,
+      label: photoLabel,
     };
   }),
 }));
@@ -76,14 +90,18 @@ const locationCards = locations.map((location) => ({
             <div
               class={cardClasses.carousel}
               role="region"
-              aria-label={`${location.city} restaurant photos`}
-              aria-roledescription="carousel"
+              aria-label={formatA11yLabel(t.a11y.restaurantPhotos, {
+                city: location.city,
+              })}
+              aria-roledescription={t.a11y.carousel}
               data-location-carousel
             >
               <div
                 class={cardClasses.track}
                 tabindex="0"
-                aria-label={`${location.city} photo slides`}
+                aria-label={formatA11yLabel(t.a11y.photoSlides, {
+                  city: location.city,
+                })}
                 data-location-carousel-track
               >
                 {
@@ -106,7 +124,9 @@ const locationCards = locations.map((location) => ({
                 location.slides.length > 1 && (
                   <nav
                     class={cardClasses.dots}
-                    aria-label={`${location.city} photo navigation`}
+                    aria-label={formatA11yLabel(t.a11y.photoNavigation, {
+                      city: location.city,
+                    })}
                   >
                     {
                       location.slides.map((slide) => (

@@ -2,18 +2,28 @@ import type { LocaleCopy } from "./types";
 
 export const itCopy = {
     meta: {
-      homeTitle: "Sina Hotpot | Hotpot premium a Prato e Firenze",
+      homeTitle: "鲜入围煮 Sina Hotpot | Hotpot cinese a Prato e Firenze",
       description:
-        "Sina Hotpot porta in Toscana l’esperienza conviviale dell’hotpot cinese, con ingredienti selezionati, brodi intensi e due ristoranti a Prato e Firenze.",
+        "A Prato e Firenze, Sina Hotpot porta in tavola brodi aromatici, ingredienti freschi e il piacere dell’hotpot condiviso, facile anche al primo assaggio.",
     },
     layout: {
       skipToContent: "Vai al contenuto",
       contact: "Contatti",
       social: "Social",
     },
+    a11y: {
+      primaryNavigation: "Navigazione principale",
+      languageMenu: "Scegli lingua",
+      mobileNavigation: "Navigazione mobile",
+      restaurantPhotos: "Foto del ristorante {city}",
+      photoSlides: "Foto di {city}",
+      photoNavigation: "Navigazione foto di {city}",
+      photoLabel: "{city}, foto {number}",
+      carousel: "carosello",
+    },
     nav: {
       home: "Home",
-      culture: "Cos’è l’hotpot",
+      culture: "Scopri l’hotpot",
       locations: "Ristoranti",
       gallery: "Galleria",
       reservation: "Prenota",
@@ -21,93 +31,93 @@ export const itCopy = {
       menu: "Menù",
     },
     cta: {
-      reserve: "Prenota un tavolo",
-      culture: "Scopri l’hotpot",
+      reserve: "Prenota il tuo tavolo",
+      culture: "Come funziona l’hotpot",
       call: "Chiama",
       map: "Apri mappa",
       whatsapp: "WhatsApp",
       backHome: "Torna alla home",
-      learnMore: "Scopri di più",
-      gallery: "Sfoglia la galleria",
+      learnMore: "Leggi di più",
+      gallery: "Guarda la galleria",
     },
     home: {
-      eyebrow: "Hotpot cinese in Toscana",
+      eyebrow: "Hotpot cinese da condividere in Toscana",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "Brodi aromatici, ingredienti freschi e cottura al tavolo: prenota a Prato o Firenze e scopri l’hotpot senza complicazioni.",
+        "Una pentola che profuma il tavolo, ingredienti da cuocere al momento e un ritmo conviviale: scegli Prato o Firenze e vivi l’hotpot con naturalezza.",
       proof: [
-        "Prato e Firenze",
-        "Facile anche al primo assaggio",
-        "Prenotazione rapida online",
+        "Due ristoranti in Toscana",
+        "Perfetto anche alla prima visita",
+        "Prenotazione online o WhatsApp",
       ],
       sections: {
-        ritualTitle: "Come funziona",
+        ritualTitle: "Un rito semplice, da condividere",
         ritualIntro:
-          "Scegli, cuoci e condividi: bastano pochi passaggi per iniziare.",
-        locationsTitle: "Prato o Firenze",
+          "Scegli il brodo, aggiungi pochi ingredienti per volta e crea il tuo assaggio con le salse.",
+        locationsTitle: "Prenota a Prato o Firenze",
         locationsIntro:
-          "Scegli la sede più comoda e prenota in pochi clic.",
-        premiumTitle: "Perché scegliere Sina",
+          "Scegli la sede più comoda: Prato per la sera fino a tardi, Firenze per pranzo e cena vicino al centro.",
+        premiumTitle: "Il gusto Sina in tavola",
       },
       steps: [
         [
           "Scegli il brodo",
-          "Piccante, delicato o doppio: è la base del tuo tavolo.",
+          "Delicato, piccante o doppio: la base giusta mette tutti a proprio agio.",
         ],
         [
-          "Ordina gli ingredienti",
-          "Carne, verdure, funghi e tofu arrivano pronti da cuocere.",
+          "Aggiungi gli ingredienti",
+          "Carni sottili, verdure, funghi e tofu arrivano pronti per la cottura al tavolo.",
         ],
         [
-          "Cuoci al tavolo",
-          "Immergi, aspetta pochi secondi e assaggia al tuo ritmo.",
+          "Cuoci al momento",
+          "Immergi poco per volta, aspetta il tempo giusto e assaggia quando il profumo sale.",
         ],
         [
-          "Condividi",
-          "La pentola al centro rende la cena naturale e conviviale.",
+          "Condividi il ritmo",
+          "La pentola al centro fa parlare, scegliere e scoprire sapori insieme.",
         ],
       ],
     },
     culture: {
-      eyebrow: "Guida per il primo assaggio",
-      title: "Che cos’è l’hotpot?",
+      eyebrow: "Guida all’hotpot cinese",
+      title: "Scopri l’hotpot, una cena che si cucina insieme",
       intro:
-        "L’hotpot è una tradizione cinese in cui il brodo resta caldo al centro del tavolo. Gli ospiti cuociono ingredienti freschi, combinano salse e costruiscono il proprio percorso di gusto.",
+        "L’hotpot è una tradizione cinese pensata per stare bene a tavola: il brodo resta caldo al centro, gli ingredienti si cuociono al momento e ogni ospite compone il proprio percorso di sapori.",
       blocks: [
         [
           "ritual",
-          "Una cena partecipata",
-          "Non arriva tutto già pronto: si cucina insieme, si assaggia e si conversa.",
+          "Il tavolo diventa vivo",
+          "Non arriva un piatto già chiuso: si sceglie, si cuoce e si assaggia insieme.",
         ],
         [
           "ingredients",
-          "Sapori personalizzabili",
-          "Brodo, livello di piccantezza, ingredienti e salsa cambiano da persona a persona.",
+          "Ogni assaggio è personale",
+          "Brodo, ingredienti, piccantezza e salsa permettono a ciascuno di trovare il proprio equilibrio.",
         ],
         [
           "basics",
-          "Perfetto per scoprire",
-          "È un modo accessibile per entrare nella cultura gastronomica cinese senza formalità.",
+          "Facile da provare",
+          "Anche chi non conosce la cucina cinese può iniziare con ingredienti familiari e lasciarsi guidare.",
         ],
       ],
       whyTitle: "Perché vale la pena provarlo",
       whyItems: [
-        "È conviviale: il tavolo resta vivo per tutta la cena.",
-        "È flessibile: ogni ospite sceglie intensità, tempi e ingredienti.",
-        "È scenografico: profumi, vapore e colori creano un’esperienza da ricordare.",
+        "È conviviale: la cena ha un ritmo naturale, fatto di piccoli assaggi e conversazione.",
+        "È flessibile: ogni ospite sceglie intensità, tempi di cottura e salsa.",
+        "È memorabile: vapore, profumi e colori trasformano il pasto in un momento da condividere.",
       ],
       etiquetteTitle: "Piccoli consigli",
       etiquette: [
-        "Inizia dagli ingredienti più delicati, poi passa ai sapori più intensi.",
-        "Usa le salse per creare il tuo equilibrio tra piccante, fresco e sapido.",
-        "Se hai allergie o esigenze particolari, indicarlo nella prenotazione.",
+        "Inizia con ingredienti delicati, poi passa a sapori più decisi.",
+        "Regola la salsa poco per volta: piccante, fresco, sapido e aromatico possono cambiare ogni boccone.",
+        "Se hai allergie o esigenze particolari, indicarle nella prenotazione ci aiuta a preparare il servizio.",
       ],
     },
     locations: {
       eyebrow: "Prato e Firenze",
-      title: "Due indirizzi per la tua prossima cena",
+      title: "Due indirizzi per una serata calda e conviviale",
       intro:
-        "Scegli Prato per una serata fino a tardi o Firenze per un’esperienza nel centro storico. Ogni sede mantiene lo stile Sina Hotpot: caldo, curato, contemporaneo.",
+        "A Prato ti accogliamo per la cena fino a tardi. A Firenze siamo vicini al centro storico, con servizio a pranzo e a cena. Scegli la sede più comoda e porta tutti intorno alla stessa pentola.",
       daily: "Aperto tutti i giorni",
       phone: "Telefono",
       address: "Indirizzo",
@@ -115,9 +125,9 @@ export const itCopy = {
     },
     gallery: {
       eyebrow: "Galleria",
-      title: "Dentro Sina Hotpot",
+      title: "Guarda cosa arriva in tavola",
       intro:
-        "Scorri piatti pronti, materie prime, dolci e bevande fotografati nei ristoranti.",
+        "Esplora piatti pronti, ingredienti, dolci e bevande: un assaggio visivo dell’atmosfera Sina Hotpot prima di prenotare.",
       categories: {
         dishes: "Piatti pronti",
         ingredients: "Materie prime",
@@ -125,10 +135,10 @@ export const itCopy = {
       },
     },
     reservation: {
-      eyebrow: "Richiesta di prenotazione",
-      title: "Prenota il tuo tavolo",
+      eyebrow: "Prenotazione",
+      title: "Riserva la tua esperienza hotpot",
       intro:
-        "Compila i dati principali: il responsabile della sede riceverà una notifica via email con la tua richiesta.",
+        "Mandaci data, orario, numero di persone e sede preferita. Riceveremo la richiesta via email e potremo ricontattarti per confermare i dettagli.",
       labels: {
         name: "Nome",
         phone: "Telefono",
@@ -141,7 +151,7 @@ export const itCopy = {
       placeholders: {
         name: "Il tuo nome",
         phone: "+39 ...",
-        message: "Allergie, occasioni speciali o altre richieste",
+        message: "Allergie, occasione speciale o preferenze per il tavolo",
       },
       consentPrefix: "Ho letto l'",
       privacyLink: "informativa privacy",
@@ -160,7 +170,7 @@ export const itCopy = {
     success: {
       title: "Richiesta ricevuta",
       intro:
-        "Grazie. La tua richiesta è stata inviata a Sina Hotpot. Per modifiche urgenti puoi contattarci direttamente su WhatsApp.",
+        "Grazie. La tua richiesta è arrivata a Sina Hotpot. Per modifiche urgenti o conferme rapide puoi scriverci direttamente su WhatsApp.",
       next: "Nel frattempo puoi controllare indirizzo, orari e percorso della sede scelta.",
     },
     privacy: {

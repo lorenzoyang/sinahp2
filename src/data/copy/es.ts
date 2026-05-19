@@ -2,18 +2,28 @@ import type { LocaleCopy } from "./types";
 
 export const esCopy = {
     meta: {
-      homeTitle: "Sina Hotpot | Hotpot premium en Prato y Florencia",
+      homeTitle: "鲜入围煮 Sina Hotpot | Hotpot chino en Prato y Firenze",
       description:
-        "Sina Hotpot ofrece hotpot chino premium en Toscana con ingredientes seleccionados, caldos aromáticos y restaurantes en Prato y Florencia.",
+        "En Prato y Firenze, Sina Hotpot lleva a la mesa caldos aromáticos, ingredientes frescos y el placer compartido del hotpot chino.",
     },
     layout: {
       skipToContent: "Saltar al contenido",
       contact: "Contacto",
       social: "Social",
     },
+    a11y: {
+      primaryNavigation: "Navegación principal",
+      languageMenu: "Elegir idioma",
+      mobileNavigation: "Navegación móvil",
+      restaurantPhotos: "Fotos del restaurante de {city}",
+      photoSlides: "Fotos de {city}",
+      photoNavigation: "Navegación de fotos de {city}",
+      photoLabel: "{city}, foto {number}",
+      carousel: "carrusel",
+    },
     nav: {
       home: "Inicio",
-      culture: "Qué es hotpot",
+      culture: "Descubrir hotpot",
       locations: "Locales",
       gallery: "Galería",
       reservation: "Reservar",
@@ -22,86 +32,92 @@ export const esCopy = {
     },
     cta: {
       reserve: "Reservar mesa",
-      culture: "Descubrir hotpot",
+      culture: "Cómo funciona el hotpot",
       call: "Llamar",
       map: "Abrir mapa",
       whatsapp: "WhatsApp",
       backHome: "Volver al inicio",
-      learnMore: "Ver detalles",
+      learnMore: "Leer más",
       gallery: "Ver galería",
     },
     home: {
-      eyebrow: "Hotpot chino en Toscana",
+      eyebrow: "Hotpot chino para compartir en Toscana",
       title: "鲜入围煮 Sina Hotpot",
       intro:
-        "Caldos aromáticos, ingredientes frescos y cocción en la mesa: reserva en Prato o Florencia y descubre el hotpot sin complicaciones.",
+        "Una olla humeante en el centro de la mesa, ingredientes frescos que se cocinan al momento y un ritmo relajado para amigos, familia y primeras visitas.",
       proof: [
-        "Prato y Florencia",
-        "Fácil para la primera vez",
-        "Reserva online rápida",
+        "Restaurantes en Prato y Firenze",
+        "Fácil para la primera experiencia",
+        "Reserva online o por WhatsApp",
       ],
       sections: {
-        ritualTitle: "Cómo funciona",
+        ritualTitle: "Un ritual simple para compartir",
         ritualIntro:
-          "Elige, cocina y comparte: bastan pocos pasos para empezar.",
-        locationsTitle: "Prato o Florencia",
+          "Elige el caldo, cocina pocos ingredientes cada vez y termina cada bocado con tu salsa.",
+        locationsTitle: "Reserva en Prato o Firenze",
         locationsIntro:
-          "Elige el local más cómodo y reserva en pocos clics.",
-        premiumTitle: "Por qué elegir Sina",
+          "Prato es ideal para cenar hasta tarde; Firenze para almorzar o cenar cerca del centro histórico.",
+        premiumTitle: "La mesa Sina",
       },
       steps: [
-        ["Elige el caldo", "Picante, suave o doble: es la base de tu mesa."],
         [
-          "Pide ingredientes",
-          "Carne, verduras, setas y tofu llegan listos para cocinar.",
+          "Elige el caldo",
+          "Suave, picante o doble: una buena base hace que todos se sientan cómodos.",
         ],
-        ["Cocina en la mesa", "Sumerge, espera unos segundos y prueba a tu ritmo."],
         [
-          "Comparte",
-          "La olla al centro hace que la cena sea natural y social.",
+          "Añade ingredientes",
+          "Carnes finas, verduras, setas y tofu llegan listos para cocinar en la mesa.",
+        ],
+        [
+          "Cocina al momento",
+          "Añade poco a poco, espera la textura justa y prueba cuando sube el aroma.",
+        ],
+        [
+          "Comparte el ritmo",
+          "La olla al centro mantiene viva la conversación, las elecciones y el sabor.",
         ],
       ],
     },
     culture: {
-      eyebrow: "Guía para la primera vez",
-      title: "¿Qué es el hotpot?",
+      eyebrow: "Guía del hotpot chino",
+      title: "Descubre el hotpot, una cena que se cocina juntos",
       intro:
-        "El hotpot es una tradición china en la que el caldo se mantiene caliente en el centro de la mesa. Los invitados cocinan ingredientes frescos, mezclan salsas y crean su propio recorrido de sabores.",
+        "El hotpot es una tradición china pensada para compartir: el caldo se mantiene caliente en el centro, los ingredientes se cocinan en la mesa y cada persona crea su propio recorrido de sabores.",
       blocks: [
         [
           "ritual",
-          "Una cena participativa",
-          "La comida se termina juntos en la mesa y la conversación fluye naturalmente.",
+          "La mesa cobra vida",
+          "En lugar de recibir un plato terminado, la mesa elige, cocina, prueba y conversa.",
         ],
         [
           "ingredients",
-          "Sabores personales",
-          "Caldo, picante, ingredientes y salsa se adaptan a cada persona.",
+          "Cada bocado puede ser personal",
+          "Caldo, picante, ingredientes y salsa ayudan a cada invitado a encontrar su equilibrio.",
         ],
         [
           "basics",
-          "Cultura para compartir",
-          "Es una manera accesible de descubrir la cocina china más allá de los platos conocidos.",
+          "Fácil de empezar",
+          "Puedes comenzar con ingredientes familiares y descubrir sabores chinos a tu ritmo.",
         ],
       ],
       whyTitle: "Por qué probarlo",
       whyItems: [
-        "Es social: la mesa está activa durante toda la cena.",
-        "Es flexible: cada persona elige ritmo y sabor.",
-        "Es memorable: vapor, aromas, colores y compartir crean una ocasión especial.",
+        "Es social: la cena avanza con pequeños bocados, decisiones y conversación.",
+        "Es flexible: cada persona ajusta picante, salsa, ingredientes y tiempos.",
+        "Es memorable: vapor, aroma, color y compartir convierten la cena en una ocasión.",
       ],
       etiquetteTitle: "Consejos simples",
       etiquette: [
-        "Empieza por ingredientes delicados antes de sabores más intensos.",
-        "Usa las salsas para equilibrar picante, frescor y sabor.",
-        "Indica alergias o necesidades especiales en la nota de reserva.",
+        "Empieza con ingredientes delicados antes de pasar a sabores más intensos.",
+        "Ajusta la salsa poco a poco para equilibrar picante, frescor, salado y aroma.",
+        "Indica alergias o necesidades especiales en la nota de reserva para que podamos prepararnos.",
       ],
     },
     locations: {
-      eyebrow: "Prato y Florencia",
-      title: "Dos locales para tu próxima noche de hotpot",
+      eyebrow: "Prato y Firenze",
+      title: "Dos locales para una mesa cálida y compartida",
       intro:
-        "Elige Prato para cenar hasta tarde o Florencia para almuerzo y cena cerca del centro histórico.",
+        "Elige Prato para cenar hasta tarde, o Firenze para almorzar y cenar cerca del centro histórico. Escoge el local que encaje con tus planes y reúne a todos alrededor de la olla.",
       daily: "Abierto todos los días",
       phone: "Teléfono",
       address: "Dirección",
@@ -109,20 +125,20 @@ export const esCopy = {
     },
     gallery: {
       eyebrow: "Galería",
-      title: "Sina Hotpot de cerca",
+      title: "Mira lo que llega a la mesa",
       intro:
-        "Explora platos listos para comer, materias primas, postres y bebidas de los restaurantes.",
+        "Explora platos, ingredientes, postres y bebidas: una muestra visual de la mesa Sina Hotpot antes de reservar.",
       categories: {
-        dishes: "Platos listos",
-        ingredients: "Materias primas",
+        dishes: "Platos preparados",
+        ingredients: "Ingredientes",
         refreshments: "Postres y bebidas",
       },
     },
     reservation: {
-      eyebrow: "Solicitud de reserva",
-      title: "Reserva tu mesa",
+      eyebrow: "Reserva",
+      title: "Reserva tu mesa de hotpot",
       intro:
-        "Envía los datos principales y el responsable del restaurante recibirá tu solicitud por email.",
+        "Envíanos fecha, hora, número de personas y local preferido. Recibiremos la solicitud por email y podremos contactarte para confirmar los detalles.",
       labels: {
         name: "Nombre",
         phone: "Teléfono",
@@ -135,7 +151,7 @@ export const esCopy = {
       placeholders: {
         name: "Tu nombre",
         phone: "+39 ...",
-        message: "Alergias, ocasiones especiales u otras peticiones",
+        message: "Alergias, ocasión especial o preferencias de mesa",
       },
       consentPrefix: "He leído la ",
       privacyLink: "política de privacidad",
@@ -154,7 +170,7 @@ export const esCopy = {
     success: {
       title: "Solicitud recibida",
       intro:
-        "Gracias. Tu solicitud ha sido enviada a Sina Hotpot. Para cambios urgentes, contacta directamente por WhatsApp.",
+        "Gracias. Tu solicitud ha sido enviada a Sina Hotpot. Para cambios urgentes o confirmación rápida, contacta directamente por WhatsApp.",
       next: "También puedes revisar dirección, horarios y ruta del local elegido.",
     },
     privacy: {

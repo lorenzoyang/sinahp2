@@ -84,7 +84,7 @@ const headerClasses = {
       />
     </a>
 
-    <nav class={headerClasses.desktopNav} aria-label="Primary">
+    <nav class={headerClasses.desktopNav} aria-label={t.a11y.primaryNavigation}>
       {
         navItems.map((item) => (
           <a
@@ -102,7 +102,7 @@ const headerClasses = {
       <details class={headerClasses.localeMenu} data-header-details>
         <summary
           class={headerClasses.localeTrigger}
-          aria-label="Language"
+          aria-label={t.a11y.languageMenu}
           title={currentLocaleOption.label}
         >
           <span class={headerClasses.localeFlag} aria-hidden="true">
@@ -111,7 +111,7 @@ const headerClasses = {
           <span>{currentLocaleOption.code}</span>
         </summary>
         <div class={headerClasses.localePanel}>
-          <nav class={headerClasses.localeNav} aria-label="Language">
+          <nav class={headerClasses.localeNav} aria-label={t.a11y.languageMenu}>
             {
               localeOptions.map((option) => (
                 <a
@@ -139,7 +139,7 @@ const headerClasses = {
           {t.nav.menu}
         </summary>
         <div class={headerClasses.mobilePanel}>
-          <nav class={headerClasses.localeNav} aria-label="Mobile primary">
+          <nav class={headerClasses.localeNav} aria-label={t.a11y.mobileNavigation}>
             {
               navItems.map((item) => (
                 <a

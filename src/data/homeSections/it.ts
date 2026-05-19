@@ -3,26 +3,26 @@ import type { HomeSectionContent } from "./types";
 export const itHomeSections = {
     signatures: {
       intro:
-        "Qualità leggibile: buon brodo, ingredienti freschi e salse personali.",
+        "La qualità si sente nel ritmo della tavola: brodo profumato, ingredienti pronti da cuocere e salse che rendono ogni assaggio tuo.",
       items: [
         [
-          "Brodi aromatici",
-          "Scegli una base delicata, piccante o doppia.",
+          "Brodi che aprono la cena",
+          "Delicato, piccante o doppio: il brodo dà carattere al tavolo senza complicarlo.",
         ],
         [
-          "Ingredienti freschi",
-          "Tagli sottili e verdure pronti per una cottura veloce.",
+          "Ingredienti da cuocere al momento",
+          "Tagli sottili, verdure, funghi e tofu arrivano pronti per piccoli assaggi sempre caldi.",
         ],
         [
-          "Salse personalizzate",
-          "Completa ogni boccone con il tuo equilibrio di sapori.",
+          "Salse per il tuo equilibrio",
+          "Ogni ospite può cercare il proprio punto tra sapido, fresco, piccante e aromatico.",
         ],
       ],
     },
     reservation: {
       eyebrow: "Prenotazione",
-      title: "Riserva il tuo tavolo",
+      title: "Porta tutti intorno alla pentola",
       intro:
-        "Invia la richiesta online o scrivici su WhatsApp per conferme rapide.",
+        "Invia la richiesta online oppure scrivici su WhatsApp per conferme rapide e modifiche dell’ultimo minuto.",
     },
   } as const satisfies HomeSectionContent;
