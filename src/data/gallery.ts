@@ -1,8 +1,6 @@
 import type { ImageMetadata } from "astro";
-import {
-  imagesFromGlob,
-  type ImageModule,
-} from "./imageAssets";
+import galleryHeroImage from "../assets/images/gallery/ingredients/gallery-ingredient-12.jpg";
+import { imagesFromGlob, type ImageModule } from "./imageAssets";
 import type { Locale } from "./routing";
 
 export const galleryCategoryIds = [
@@ -22,6 +20,8 @@ export type VisibleGalleryGroup = GalleryGroup & {
   readonly coverPhoto: ImageMetadata;
   readonly sectionId: string;
 };
+
+export const galleryHeroPhoto = galleryHeroImage;
 
 const photoCountLabels = {
   it: ["foto", "foto"],

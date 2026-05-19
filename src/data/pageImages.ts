@@ -1,6 +1,6 @@
 import type { ImageMetadata } from "astro";
 import homeHeroImage from "../assets/images/homepage/homepage-hero-hotpotpremium.png";
-import homePremiumSpreadImage from "../assets/images/homepage/homepage-sharedtable.jpg";
+import homePremiumSpreadImage from "../assets/images/homepage/homepage-sharedtable-1.jpg";
 import cultureHeroImage from "../assets/images/hotpot-culture/hotpot-culture-hero0.png";
 import cultureBasicsImage from "../assets/images/hotpot-culture/hotpot-culture-basics.png";
 import cultureBrothsImage from "../assets/images/hotpot-culture/hotpot-culture-broths.png";

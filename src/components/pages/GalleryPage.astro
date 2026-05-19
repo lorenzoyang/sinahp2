@@ -10,6 +10,7 @@ import {
 } from "../../data/site";
 import { copy } from "../../data/copy";
 import {
+  galleryHeroPhoto,
   getGalleryPhotoCountLabel,
   getGalleryPhotoTotal,
   getVisibleGalleryGroups,
@@ -34,7 +35,7 @@ const visibleGroups = getVisibleGalleryGroups().map((group) => ({
   photoCountLabel: getGalleryPhotoCountLabel(group.photos.length, locale),
 }));
 
-const heroPhoto = visibleGroups[0]?.coverPhoto;
+const heroPhoto = galleryHeroPhoto;
 const galleryTotal = getGalleryPhotoTotal(visibleGroups);
 const galleryTotalLabel = getGalleryPhotoCountLabel(galleryTotal, locale);
 const sectionClasses = {
