@@ -11,6 +11,10 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const layoutLabels = t.layout;
+const studioCredit = {
+  href: "https://sinahp2.yrw.workers.dev/",
+  label: "Qiao Digital Studio · 桥络数字",
+};
 const footerClasses = {
   footer: "page-band bg-ink-footer",
   footerInner:
@@ -24,6 +28,10 @@ const footerClasses = {
   footerLinkTight: "focus-ring mt-1 block rounded-sm hover:text-white",
   footerSocialText: "mt-1 text-paper-soft/80",
   footerSocialId: "font-medium text-paper-soft",
+  footerCredit:
+    "mx-auto max-w-7xl border-t border-white/10 px-4 py-5 text-xs leading-5 text-paper-soft/56 sm:px-6 lg:px-8",
+  footerCreditLink:
+    "focus-ring rounded-sm font-medium text-paper-soft/80 underline decoration-gold/40 underline-offset-4 transition hover:text-white hover:decoration-gold",
 };
 ---
 
@@ -86,5 +94,16 @@ const footerClasses = {
         >
       </div>
     </div>
+  </div>
+  <div class={footerClasses.footerCredit}>
+    <p>
+      Powered by{" "}
+      <a
+        class={footerClasses.footerCreditLink}
+        href={studioCredit.href}
+        target="_blank"
+        rel="noreferrer">{studioCredit.label}</a
+      >
+    </p>
   </div>
 </footer>
