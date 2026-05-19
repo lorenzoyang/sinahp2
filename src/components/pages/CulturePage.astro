@@ -30,21 +30,17 @@ const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
   dark: sharedSectionClasses.dark,
   inkBand: sharedSectionClasses.inkBand,
-  paper: sharedSectionClasses.paper,
 };
 const cardClasses = {
   dark: sharedCardClasses.dark,
   topic:
     `flex min-h-100 flex-col overflow-hidden ${sharedCardClasses.dark}`,
-  lightListItem:
-    "rounded-md border border-warm-line bg-white/60 px-4 py-3 leading-7",
   etiquette:
     `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
 };
 const mediaClasses = {
   heroFrame: "relative aspect-5/4 overflow-hidden rounded-lg",
   topicFrame: "relative aspect-4/3 w-full overflow-hidden",
-  tableFrame: sharedMediaClasses.landscapeFrame,
   image: sharedMediaClasses.absoluteImage,
 };
 ---
@@ -90,7 +86,7 @@ const mediaClasses = {
   <section class={sectionClasses.inkBand}>
     <div class="mx-auto max-w-7xl">
       <SectionHeader
-        eyebrow={t.culture.whyTitle}
+        eyebrow={t.culture.eyebrow}
         title={t.culture.title}
         intro={t.culture.intro}
         headingTag="h2"
@@ -156,41 +152,6 @@ const mediaClasses = {
           </article>
         ))
       }
-    </div>
-  </section>
-
-  <section
-    class={sectionClasses.paper}
-  >
-    <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-center"
-    >
-      <SectionHeader
-        title={t.culture.whyTitle}
-        headingTag="h2"
-        titleClass={headingClasses.lightTitle}
-      >
-        <ul class="mt-6 grid gap-3">
-          {
-            t.culture.whyItems.map((item) => (
-              <li class={cardClasses.lightListItem}>
-                {item}
-              </li>
-            ))
-          }
-        </ul>
-      </SectionHeader>
-      <div class={mediaClasses.tableFrame}>
-        <Image
-          src={cultureImages.table}
-          alt=""
-          class={mediaClasses.image}
-          width={imageSizes.splitPanel.width}
-          widths={imageSizes.splitPanel.widths}
-          sizes={imageSizes.splitPanel.sizes}
-          loading="lazy"
-        />
-      </div>
     </div>
   </section>
 
