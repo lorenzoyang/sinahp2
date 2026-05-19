@@ -28,7 +28,8 @@ export type LocaleCopy = {
     | "map"
     | "whatsapp"
     | "backHome"
-    | "learnMore",
+    | "learnMore"
+    | "gallery",
     string
   >;
   home: {

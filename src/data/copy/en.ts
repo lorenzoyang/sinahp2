@@ -28,6 +28,7 @@ export const enCopy = {
       whatsapp: "WhatsApp",
       backHome: "Back to home",
       learnMore: "Learn more",
+      gallery: "View gallery",
     },
     home: {
       eyebrow: "Chinese hotpot in Tuscany",

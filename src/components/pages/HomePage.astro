@@ -12,6 +12,11 @@ import {
 } from "../../data/site";
 import { homeImages } from "../../data/pageImages";
 import { copy } from "../../data/copy";
+import {
+  getGalleryPhotoCountLabel,
+  getGalleryPhotoTotal,
+  getVisibleGalleryGroups,
+} from "../../data/gallery";
 import { getHomeSections } from "../../data/homeSections";
 import {
   formatSequenceNumber,
@@ -35,6 +40,17 @@ const t = copy[locale];
 const homeSections = getHomeSections(locale);
 const reservationPath = getPath(locale, "reservation");
 const culturePath = getPath(locale, "culture");
+const galleryPath = getPath(locale, "gallery");
+const visibleGalleryGroups = getVisibleGalleryGroups().map((group) => ({
+  ...group,
+  label: t.gallery.categories[group.id],
+  photoCountLabel: getGalleryPhotoCountLabel(group.photos.length, locale),
+}));
+const galleryPreviewGroups = visibleGalleryGroups.slice(0, 3);
+const galleryTotalLabel = getGalleryPhotoCountLabel(
+  getGalleryPhotoTotal(visibleGalleryGroups),
+  locale,
+);
 const sectionClasses = {
   heroInner:
     "relative mx-auto flex min-h-[78svh] max-w-7xl items-end px-4 pb-10 pt-20 sm:min-h-[82svh] sm:px-6 lg:px-8",
@@ -45,12 +61,15 @@ const cardClasses = {
   location: `homepage-card ${sharedCardClasses.paperPanel} p-5`,
   reservationPanel:
     "overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10",
+  galleryTile:
+    "homepage-card relative min-h-44 overflow-hidden rounded-lg border border-white/12 bg-ink-panel",
 };
 const mediaClasses = {
   portraitFrame: sharedMediaClasses.portraitFrame,
   ritualFrame:
     "relative aspect-4/3 overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-[0_24px_70px_rgba(0,0,0,0.24)]",
   photo: `homepage-photo ${sharedMediaClasses.absoluteImage}`,
+  galleryPhoto: sharedMediaClasses.hoverImage,
 };
 const pillClasses = {
   heroProof:
@@ -222,6 +241,80 @@ const pillClasses = {
       </div>
     </div>
   </section>
+
+  {
+    galleryPreviewGroups.length > 0 && (
+      <section class={sharedSectionClasses.inkBand}>
+        <div
+          class={`${layoutClasses.container} grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center`}
+        >
+          <div data-reveal>
+            <SectionHeader
+              eyebrow={t.gallery.eyebrow}
+              title={t.gallery.title}
+              intro={t.gallery.intro}
+              headingTag="h2"
+              containerClass="max-w-3xl"
+              eyebrowClass={headingClasses.darkEyebrow}
+              titleClass={headingClasses.darkTitle}
+              introClass={headingClasses.darkIntro}
+            >
+              <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <CtaLink
+                  href={galleryPath}
+                  variant="goldHero"
+                  class="w-full sm:w-auto"
+                >
+                  {t.cta.gallery}
+                </CtaLink>
+                <p class="rounded-md border border-white/12 px-4 py-3 text-center text-sm font-semibold text-paper-soft/72 sm:text-left">
+                  {galleryTotalLabel}
+                </p>
+              </div>
+            </SectionHeader>
+          </div>
+
+          <a
+            href={galleryPath}
+            class="group focus-ring grid min-w-0 gap-3 rounded-lg sm:grid-cols-3 lg:grid-cols-[1.1fr_0.9fr]"
+            aria-label={`${t.cta.gallery}: ${t.gallery.title}`}
+            data-reveal
+            style="--reveal-delay:100ms"
+          >
+            {galleryPreviewGroups.map((group, index) => (
+              <figure
+                class:list={[
+                  cardClasses.galleryTile,
+                  index === 0
+                    ? "aspect-4/3 sm:col-span-3 lg:col-span-1 lg:row-span-2 lg:aspect-auto"
+                    : "aspect-4/3",
+                ]}
+              >
+                <Image
+                  src={group.coverPhoto}
+                  alt={`${brand.publicName} ${group.label}`}
+                  class={mediaClasses.galleryPhoto}
+                  width={imageSizes.card.width}
+                  widths={imageSizes.card.widths}
+                  sizes={imageSizes.card.sizes}
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-linear-to-t from-ink/84 via-ink/16 to-transparent" />
+                <figcaption class="absolute inset-x-0 bottom-0 p-4">
+                  <p class="text-lg font-semibold leading-tight text-white">
+                    {group.label}
+                  </p>
+                  <p class="mt-1 text-sm font-medium text-paper-soft/74">
+                    {group.photoCountLabel}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </a>
+        </div>
+      </section>
+    )
+  }
 
   <section class={sharedSectionClasses.footerDark}>
     <div class={layoutClasses.container}>

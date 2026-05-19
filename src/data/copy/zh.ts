@@ -28,6 +28,7 @@ export const zhCopy = {
       whatsapp: "WhatsApp",
       backHome: "返回首页",
       learnMore: "了解详细",
+      gallery: "查看图片",
     },
     home: {
       eyebrow: "托斯卡纳高端中式火锅",

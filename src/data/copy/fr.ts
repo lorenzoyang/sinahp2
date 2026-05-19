@@ -28,6 +28,7 @@ export const frCopy = {
       whatsapp: "WhatsApp",
       backHome: "Retour accueil",
       learnMore: "En savoir plus",
+      gallery: "Voir la galerie",
     },
     home: {
       eyebrow: "Hotpot chinois en Toscane",

@@ -28,6 +28,7 @@ export const esCopy = {
       whatsapp: "WhatsApp",
       backHome: "Volver al inicio",
       learnMore: "Ver detalles",
+      gallery: "Ver galería",
     },
     home: {
       eyebrow: "Hotpot chino en Toscana",
