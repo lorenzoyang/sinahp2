@@ -1,5 +1,5 @@
 import type { ImageMetadata } from "astro";
-import galleryHeroImage from "../assets/images/gallery/ingredients/gallery-ingredient-12.jpg";
+import galleryHeroImage from "../assets/images/gallery/gallery-hero.jpg";
 import { imagesFromGlob, type ImageModule } from "./imageAssets";
 import type { Locale } from "./routing";
 
