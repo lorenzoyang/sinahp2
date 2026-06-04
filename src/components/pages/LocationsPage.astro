@@ -36,6 +36,14 @@ const cardClasses = {
   label: "text-xs font-semibold uppercase tracking-[0.22em] text-lacquer",
 };
 
+const restaurantInteriorLabels = {
+  it: "interno del ristorante",
+  zh: "门店室内环境",
+  en: "restaurant interior",
+  es: "interior del restaurante",
+  fr: "intérieur du restaurant",
+} as const satisfies Record<Locale, string>;
+
 function formatA11yLabel(
   template: string,
   values: Record<string, string | number>,
@@ -58,7 +66,7 @@ const locationCards = locations.map((location) => ({
     return {
       id: `location-${location.id}-photo-${number}`,
       photo,
-      alt: `${brand.publicName} ${photoLabel}`,
+      alt: `${brand.publicName} ${location.city} ${restaurantInteriorLabels[locale]} ${number}`,
       label: photoLabel,
     };
   }),
