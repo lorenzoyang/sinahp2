@@ -21,7 +21,7 @@ export const zhHomeSections = {
     },
     reservation: {
       eyebrow: "预约",
-      title: "把同桌的人围到一口锅旁",
+      title: "约好时间，一起围炉吃火锅",
       intro:
         "线上提交预约请求，或通过 WhatsApp 快速确认与临时修改。",
     },

@@ -87,6 +87,29 @@ textarea {
   font: inherit;
 }
 
+[data-reservation-date] {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+[data-reservation-date]::-webkit-date-and-time-value,
+[data-reservation-date]::-webkit-datetime-edit {
+  min-inline-size: 0;
+  min-width: 0;
+}
+
+[data-reservation-date]::-webkit-date-and-time-value {
+  text-align: start;
+}
+
 ::selection {
   background: rgba(199, 160, 98, 0.35);
 }
