@@ -178,12 +178,12 @@ export const enCopy = {
       title: "Privacy Policy",
       intro:
         "This notice explains how the Sina Hotpot website processes personal data collected through the website and reservation form.",
-      updated: "Last updated: May 13, 2026",
+      updated: "Last updated: June 5, 2026",
       sections: [
         {
           title: "Data controller",
           paragraphs: [
-            "The data controller is Sina Hotpot, contactable at sinahotpot@gmail.com. This website concerns the operating locations in Prato, Via Cava 109, 59100 Prato, and Florence, Via Ghibellina 80R, 50122 Firenze.",
+            "The data controller is RISTORANTE SINA HOTPOT S.R.L., with registered office at Via Cava 109, 59100 Prato (PO), VAT no. / tax code / Pistoia-Prato Companies Register no.: 02455830972, contactable at sinahotpot@gmail.com. This website concerns the operating locations in Prato, Via Cava 109, 59100 Prato, and Florence, Via Ghibellina 80R, 50122 Firenze.",
           ],
         },
         {

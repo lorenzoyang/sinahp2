@@ -179,12 +179,12 @@ export const itCopy = {
       title: "Informativa privacy",
       intro:
         "Questa informativa spiega come il sito Sina Hotpot tratta i dati personali raccolti tramite il sito e il modulo di prenotazione.",
-      updated: "Ultimo aggiornamento: 13 maggio 2026",
+      updated: "Ultimo aggiornamento: 5 giugno 2026",
       sections: [
         {
           title: "Titolare del trattamento",
           paragraphs: [
-            "Il titolare del trattamento è Sina Hotpot, contattabile all'indirizzo email sinahotpot@gmail.com. Il sito riguarda le sedi operative di Prato, Via Cava 109, 59100 Prato, e Firenze, Via Ghibellina 80R, 50122 Firenze.",
+            "Il titolare del trattamento è RISTORANTE SINA HOTPOT S.R.L., con sede legale in Via Cava 109, 59100 Prato (PO), P.IVA / C.F. / Registro Imprese Pistoia-Prato: 02455830972, contattabile all'indirizzo email sinahotpot@gmail.com. Il sito riguarda le sedi operative di Prato, Via Cava 109, 59100 Prato, e Firenze, Via Ghibellina 80R, 50122 Firenze.",
           ],
         },
         {

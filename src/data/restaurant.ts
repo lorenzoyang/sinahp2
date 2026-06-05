@@ -52,6 +52,18 @@ type RestaurantLocationData = {
 export const brand = {
   chineseName: "鲜入围煮",
   publicName: "Sina Hotpot",
+  legal: {
+    legalName: "RISTORANTE SINA HOTPOT S.R.L.",
+    registeredOffice: "Via Cava 109, 59100 Prato (PO)",
+    registrationAuthority: "Registro Imprese Pistoia-Prato",
+    vatId: "02455830972",
+    taxId: "02455830972",
+    footerLines: [
+      "© 2026 RISTORANTE SINA HOTPOT S.R.L.",
+      "Sede legale: Via Cava 109, 59100 Prato (PO)",
+      "P.IVA / C.F. / Registro Imprese Pistoia-Prato: 02455830972",
+    ],
+  },
   email: "sinahotpot@gmail.com",
   whatsapp: "+39 348 032 8697",
   whatsappHref: "https://wa.me/393480328697",

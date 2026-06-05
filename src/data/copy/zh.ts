@@ -156,12 +156,12 @@ export const zhCopy = {
       title: "隐私政策",
       intro:
         "本说明解释 Sina Hotpot 网站如何处理通过网站和预约表单收集的个人数据。",
-      updated: "最后更新：2026 年 5 月 13 日",
+      updated: "最后更新：2026 年 6 月 5 日",
       sections: [
         {
           title: "数据控制者",
           paragraphs: [
-            "数据控制者为 Sina Hotpot，可通过 sinahotpot@gmail.com 联系。本网站涉及 Prato 门店 Via Cava 109, 59100 Prato，以及 Firenze 门店 Via Ghibellina 80R, 50122 Firenze。",
+            "数据控制者为 RISTORANTE SINA HOTPOT S.R.L.，注册地址为 Via Cava 109, 59100 Prato (PO)，P.IVA / C.F. / Registro Imprese Pistoia-Prato: 02455830972，可通过 sinahotpot@gmail.com 联系。本网站涉及 Prato 门店 Via Cava 109, 59100 Prato，以及 Firenze 门店 Via Ghibellina 80R, 50122 Firenze。",
           ],
         },
         {

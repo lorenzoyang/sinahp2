@@ -30,6 +30,7 @@ const footerClasses = {
   footerSocialId: "font-medium text-paper-soft",
   footerCredit:
     "mx-auto max-w-7xl border-t border-white/10 px-4 py-5 text-xs leading-5 text-paper-soft/56 sm:px-6 lg:px-8",
+  footerLegal: "mb-3 grid gap-1 text-paper-soft/64",
   footerCreditLink:
     "focus-ring rounded-sm font-medium text-paper-soft/80 underline decoration-gold/40 underline-offset-4 transition hover:text-white hover:decoration-gold",
 };
@@ -96,6 +97,9 @@ const footerClasses = {
     </div>
   </div>
   <div class={footerClasses.footerCredit}>
+    <div class={footerClasses.footerLegal} aria-label="Informazioni legali">
+      {brand.legal.footerLines.map((line) => <p>{line}</p>)}
+    </div>
     <p>
       Powered by{" "}
       <a

@@ -117,8 +117,16 @@ export function getWebsiteStructuredData(): Record<string, unknown> {
         "@type": "Organization",
         "@id": `${siteOrigin}/#organization`,
         name: siteName,
+        legalName: brand.legal.legalName,
         url: siteOrigin,
         email: brand.email,
+        taxID: brand.legal.taxId,
+        vatID: brand.legal.vatId,
+        identifier: {
+          "@type": "PropertyValue",
+          propertyID: `${brand.legal.registrationAuthority} / P.IVA / C.F.`,
+          value: brand.legal.taxId,
+        },
         sameAs: [brand.instagram, brand.facebook],
       },
       ...locations.map((location) => ({
