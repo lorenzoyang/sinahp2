@@ -18,15 +18,16 @@ export const layoutClasses = {
 };
 
 export const headingClasses = {
-  darkEyebrow: "text-xs font-semibold uppercase tracking-[0.24em] text-gold",
+  darkEyebrow:
+    "max-w-full break-words text-xs font-semibold uppercase leading-5 tracking-normal text-gold",
   darkTitle: "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
   darkIntro: "mt-4 text-base leading-7 text-paper-soft/76",
   lightEyebrow:
-    "text-xs font-semibold uppercase tracking-[0.24em] text-lacquer",
-  lightTitle: "mt-3 text-3xl font-semibold leading-tight sm:text-4xl",
+    "max-w-full break-words text-xs font-semibold uppercase leading-5 tracking-normal text-lacquer",
+  lightTitle: "mt-3 max-w-full text-3xl font-semibold leading-tight sm:text-4xl",
   lightIntro: "mt-4 text-base leading-7 text-brown-text",
   heroTitle:
-    "mt-4 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl",
+    "mt-4 max-w-4xl break-words text-3xl font-semibold leading-tight text-white min-[360px]:text-4xl sm:text-5xl",
   heroIntro: "mt-5 max-w-3xl text-lg leading-8 text-paper-soft/82",
 };
 

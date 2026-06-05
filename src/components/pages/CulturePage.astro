@@ -3,11 +3,7 @@ import { Image } from "astro:assets";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
-import {
-  getCultureTopicPath,
-  getPath,
-  type Locale,
-} from "../../data/site";
+import { getCultureTopicPath, getPath, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import { getCultureTopicCards } from "../../data/cultureTopics";
 import { cultureImages } from "../../data/pageImages";
@@ -33,10 +29,8 @@ const sectionClasses = {
 };
 const cardClasses = {
   dark: sharedCardClasses.dark,
-  topic:
-    `flex min-h-100 flex-col overflow-hidden ${sharedCardClasses.dark}`,
-  etiquette:
-    `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
+  topic: `flex min-h-100 flex-col overflow-hidden ${sharedCardClasses.dark}`,
+  etiquette: `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
 };
 const mediaClasses = {
   heroFrame: "relative aspect-5/4 overflow-hidden rounded-lg",
@@ -111,7 +105,7 @@ const mediaClasses = {
                 />
               </div>
               <div class="flex flex-1 flex-col p-5">
-                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                <p class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold">
                   {topic.kicker}
                 </p>
                 <h3 class="mt-3 text-xl font-semibold leading-tight text-white">

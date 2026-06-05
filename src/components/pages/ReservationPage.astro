@@ -38,11 +38,16 @@ const pageClasses = {
     <div
       class="mx-auto grid max-w-7xl min-w-0 gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
     >
-      <div class="min-w-0 lg:sticky lg:top-24">
+      <div class="min-w-0 lg:col-start-1 lg:row-start-1">
         <SectionHeader
           eyebrow={t.reservation.eyebrow}
           title={t.reservation.title}
         />
+      </div>
+      <div class="min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        <ReservationForm locale={locale} />
+      </div>
+      <div class="min-w-0 lg:col-start-1 lg:row-start-2">
         <div class={pageClasses.heroImageFrame}>
           <Image
             src={reservationImages.hero}
@@ -69,7 +74,6 @@ const pageClasses = {
           </a>
         </div>
       </div>
-      <ReservationForm locale={locale} />
     </div>
   </section>
 </SiteLayout>

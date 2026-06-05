@@ -43,7 +43,7 @@ const sectionClasses = {
 };
 const topicHeadingClasses = {
   heroEyebrow:
-    "mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-gold",
+    "mt-8 max-w-full break-words text-xs font-semibold uppercase leading-5 tracking-normal text-gold",
   heroIntro: "mt-5 max-w-3xl text-lg leading-8 text-paper-soft/86",
 };
 const cardClasses = {
@@ -51,8 +51,7 @@ const cardClasses = {
     "rounded-md border border-white/12 bg-black/18 px-4 py-3 text-sm font-semibold text-paper-soft backdrop-blur",
   content: `${sharedCardClasses.lightSoft} p-5 sm:p-6`,
   tip: `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
-  related:
-    `focus-ring ${sharedCardClasses.darkInteractive} p-5`,
+  related: `focus-ring ${sharedCardClasses.darkInteractive} p-5`,
 };
 ---
 
@@ -160,7 +159,7 @@ const cardClasses = {
               class={cardClasses.related}
               href={getCultureTopicPath(locale, related.id)}
             >
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <p class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold">
                 {related.kicker}
               </p>
               <h3 class="mt-3 text-xl font-semibold leading-tight text-white">
