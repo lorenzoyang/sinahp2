@@ -127,11 +127,12 @@ export const frCopy = {
       eyebrow: "Galerie",
       title: "Regardez ce qui arrive à table",
       intro:
-        "Parcourez plats, ingrédients, desserts et boissons: un avant-goût visuel de la table Sina Hotpot avant de réserver.",
+        "Parcourez plats, ingrédients, chefs avec ingrédients frais, desserts et boissons: un avant-goût visuel de la table Sina Hotpot avant de réserver.",
       categories: {
         dishes: "Plats préparés",
         ingredients: "Ingrédients",
         refreshments: "Desserts et boissons",
+        chefs: "Chefs et ingrédients",
       },
     },
     reservation: {

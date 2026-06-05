@@ -1,1 +1,2 @@
 - GDPR, privacy policy, cookie policy等相关内容的添加与检查
+- 删除预约表单中的餐厅地址fireze默认值。

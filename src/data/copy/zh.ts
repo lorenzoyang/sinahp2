@@ -105,11 +105,13 @@ export const zhCopy = {
     gallery: {
       eyebrow: "图片展示",
       title: "先看看即将上桌的味道",
-      intro: "浏览菜品、原材料、甜品与饮品照片，提前感受 Sina Hotpot 的餐桌氛围。",
+      intro:
+        "浏览菜品、原材料、厨师与新鲜食材、甜品与饮品照片，提前感受 Sina Hotpot 的餐桌氛围。",
       categories: {
         dishes: "即食菜品",
         ingredients: "原材料",
         refreshments: "甜品与饮品",
+        chefs: "厨师与食材",
       },
     },
     reservation: {

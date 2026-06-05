@@ -127,11 +127,12 @@ export const esCopy = {
       eyebrow: "Galería",
       title: "Mira lo que llega a la mesa",
       intro:
-        "Explora platos, ingredientes, postres y bebidas: una muestra visual de la mesa Sina Hotpot antes de reservar.",
+        "Explora platos, ingredientes, chefs con ingredientes frescos, postres y bebidas: una muestra visual de la mesa Sina Hotpot antes de reservar.",
       categories: {
         dishes: "Platos preparados",
         ingredients: "Ingredientes",
         refreshments: "Postres y bebidas",
+        chefs: "Chefs e ingredientes",
       },
     },
     reservation: {

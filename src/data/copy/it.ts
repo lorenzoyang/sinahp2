@@ -127,11 +127,12 @@ export const itCopy = {
       eyebrow: "Galleria",
       title: "Guarda cosa arriva in tavola",
       intro:
-        "Esplora piatti pronti, ingredienti, dolci e bevande: un assaggio visivo dell’atmosfera Sina Hotpot prima di prenotare.",
+        "Esplora piatti pronti, ingredienti, chef con materie prime fresche, dolci e bevande: un assaggio visivo dell’atmosfera Sina Hotpot prima di prenotare.",
       categories: {
         dishes: "Piatti pronti",
         ingredients: "Materie prime",
         refreshments: "Dolci e bevande",
+        chefs: "Chef e ingredienti",
       },
     },
     reservation: {

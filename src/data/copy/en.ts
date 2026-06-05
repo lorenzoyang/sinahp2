@@ -127,11 +127,12 @@ export const enCopy = {
       eyebrow: "Gallery",
       title: "See what comes to the table",
       intro:
-        "Browse dishes, ingredients, desserts, and drinks for a visual taste of the Sina Hotpot table before you reserve.",
+        "Browse dishes, ingredients, chefs with fresh ingredients, desserts, and drinks for a visual taste of the Sina Hotpot table before you reserve.",
       categories: {
         dishes: "Prepared dishes",
         ingredients: "Ingredients",
         refreshments: "Refreshments",
+        chefs: "Chefs and ingredients",
       },
     },
     reservation: {

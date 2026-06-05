@@ -7,6 +7,7 @@ export const galleryCategoryIds = [
   "dishes",
   "ingredients",
   "refreshments",
+  "chefs",
 ] as const;
 
 export type GalleryCategoryId = (typeof galleryCategoryIds)[number];
@@ -60,6 +61,13 @@ export const galleryGroups = [
     "refreshments",
     import.meta.glob<ImageModule>(
       "../assets/images/gallery/refreshments/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+      { eager: true },
+    ),
+  ),
+  createGalleryGroup(
+    "chefs",
+    import.meta.glob<ImageModule>(
+      "../assets/images/gallery/chefs/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
       { eager: true },
     ),
   ),
