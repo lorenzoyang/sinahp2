@@ -3,7 +3,6 @@
 export * from "./routing";
 export {
   brand,
-  defaultReservationLocationId,
   getLocationLabel,
   getPhoneHref,
   locations,

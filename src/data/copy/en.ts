@@ -152,6 +152,7 @@ export const enCopy = {
       placeholders: {
         name: "Your name",
         phone: "+39 ...",
+        location: "Select an address",
         message: "Allergies, special occasion, or table preferences",
       },
       consentPrefix: "I have read the ",

@@ -152,6 +152,7 @@ export const itCopy = {
       placeholders: {
         name: "Il tuo nome",
         phone: "+39 ...",
+        location: "Seleziona un indirizzo",
         message: "Allergie, occasione speciale o preferenze per il tavolo",
       },
       consentPrefix: "Ho letto l'",

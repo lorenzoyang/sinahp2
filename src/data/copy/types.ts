@@ -89,7 +89,7 @@ export type LocaleCopy = {
       "name" | "phone" | "guests" | "date" | "time" | "location" | "message",
       string
     >;
-    placeholders: Record<"name" | "phone" | "message", string>;
+    placeholders: Record<"name" | "phone" | "location" | "message", string>;
     consentPrefix: string;
     privacyLink: string;
     consentSuffix: string;

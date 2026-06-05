@@ -131,6 +131,7 @@ export const zhCopy = {
       placeholders: {
         name: "你的姓名",
         phone: "+39 ...",
+        location: "请选择门店地址",
         message: "过敏、特殊场合或座位偏好",
       },
       consentPrefix: "我已阅读",

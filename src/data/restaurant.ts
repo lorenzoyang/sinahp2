@@ -106,9 +106,6 @@ export const locations = [
 export type RestaurantLocation = (typeof locations)[number];
 export type RestaurantLocationId = RestaurantLocation["id"];
 
-export const defaultReservationLocationId =
-  "firenze" satisfies RestaurantLocationId;
-
 export function getPhoneHref(phone: string): string {
   return `tel:${phone.replaceAll(" ", "")}`;
 }

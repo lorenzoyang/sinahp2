@@ -5,7 +5,6 @@ import {
 } from "astro:env/client";
 import {
   brand,
-  defaultReservationLocationId,
   getLocationLabel,
   getPath,
   locations,
@@ -138,13 +137,6 @@ const formClasses = {
         <option value="" disabled selected>
           {t.reservation.labels.time}
         </option>
-        {
-          locationOptions
-            .find((location) => location.id === defaultReservationLocationId)
-            ?.timeSlots.map((timeSlot) => (
-              <option value={timeSlot}>{timeSlot}</option>
-            ))
-        }
       </select>
     </label>
   </div>
@@ -157,11 +149,13 @@ const formClasses = {
       required
       data-reservation-location
     >
+      <option value="" disabled selected>
+        {t.reservation.placeholders.location}
+      </option>
       {
         locationOptions.map((location) => (
           <option
             value={location.label}
-            selected={location.id === defaultReservationLocationId}
             data-time-slots={JSON.stringify(location.timeSlots)}
           >
             {location.label}

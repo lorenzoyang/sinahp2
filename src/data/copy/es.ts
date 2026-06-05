@@ -152,6 +152,7 @@ export const esCopy = {
       placeholders: {
         name: "Tu nombre",
         phone: "+39 ...",
+        location: "Selecciona una dirección",
         message: "Alergias, ocasión especial o preferencias de mesa",
       },
       consentPrefix: "He leído la ",
