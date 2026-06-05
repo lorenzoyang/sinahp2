@@ -90,6 +90,7 @@ export type LocaleCopy = {
       string
     >;
     placeholders: Record<"name" | "phone" | "location" | "message", string>;
+    hints: Record<"time", string>;
     consentPrefix: string;
     privacyLink: string;
     consentSuffix: string;

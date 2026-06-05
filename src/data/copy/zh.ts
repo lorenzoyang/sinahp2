@@ -134,6 +134,9 @@ export const zhCopy = {
         location: "请选择门店地址",
         message: "过敏、特殊场合或座位偏好",
       },
+      hints: {
+        time: "请先选择门店地址。",
+      },
       consentPrefix: "我已阅读",
       privacyLink: "隐私政策",
       consentSuffix:

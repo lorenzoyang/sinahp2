@@ -151,6 +151,9 @@ const formClasses = {
 
     <label class={formClasses.label}>
       {t.reservation.labels.time}
+      <span class="text-xs font-normal leading-5 text-brown-muted">
+        {t.reservation.hints.time}
+      </span>
       <select
         class={formClasses.input}
         name="time"

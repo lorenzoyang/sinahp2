@@ -155,6 +155,9 @@ export const esCopy = {
         location: "Selecciona una dirección",
         message: "Alergias, ocasión especial o preferencias de mesa",
       },
+      hints: {
+        time: "Selecciona primero una dirección.",
+      },
       consentPrefix: "He leído la ",
       privacyLink: "política de privacidad",
       consentSuffix:

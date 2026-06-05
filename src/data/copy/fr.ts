@@ -155,6 +155,9 @@ export const frCopy = {
         location: "Sélectionnez une adresse",
         message: "Allergies, occasion spéciale ou préférences de table",
       },
+      hints: {
+        time: "Sélectionnez d'abord une adresse.",
+      },
       consentPrefix: "J'ai lu la ",
       privacyLink: "politique de confidentialité",
       consentSuffix:

@@ -155,6 +155,9 @@ export const enCopy = {
         location: "Select an address",
         message: "Allergies, special occasion, or table preferences",
       },
+      hints: {
+        time: "Please select an address first.",
+      },
       consentPrefix: "I have read the ",
       privacyLink: "privacy policy",
       consentSuffix:
