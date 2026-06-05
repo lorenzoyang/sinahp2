@@ -9,6 +9,13 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   site: "https://sinahp.com",
 
+  redirects: {
+    "/it": {
+      status: 301,
+      destination: "/",
+    },
+  },
+
   env: {
     schema: {
       PUBLIC_WEB3FORMS_ACCESS_KEY: envField.string({

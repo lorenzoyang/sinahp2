@@ -117,6 +117,7 @@ export function getWebsiteStructuredData(): Record<string, unknown> {
         "@type": "Organization",
         "@id": `${siteOrigin}/#organization`,
         name: siteName,
+        alternateName: ["SinaHP", "Sinahp", brand.chineseName],
         legalName: brand.legal.legalName,
         url: siteOrigin,
         email: brand.email,
