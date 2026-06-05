@@ -100,6 +100,30 @@ const formClasses = {
     </label>
   </div>
 
+  <label class={formClasses.label}>
+    {t.reservation.labels.location}
+    <select
+      class={formClasses.input}
+      name="location"
+      required
+      data-reservation-location
+    >
+      <option value="" disabled selected>
+        {t.reservation.placeholders.location}
+      </option>
+      {
+        locationOptions.map((location) => (
+          <option
+            value={location.label}
+            data-time-slots={JSON.stringify(location.timeSlots)}
+          >
+            {location.label}
+          </option>
+        ))
+      }
+    </select>
+  </label>
+
   <div class={formClasses.rowThree}>
     <label class={formClasses.label}>
       {t.reservation.labels.guests}
@@ -140,30 +164,6 @@ const formClasses = {
       </select>
     </label>
   </div>
-
-  <label class={formClasses.label}>
-    {t.reservation.labels.location}
-    <select
-      class={formClasses.input}
-      name="location"
-      required
-      data-reservation-location
-    >
-      <option value="" disabled selected>
-        {t.reservation.placeholders.location}
-      </option>
-      {
-        locationOptions.map((location) => (
-          <option
-            value={location.label}
-            data-time-slots={JSON.stringify(location.timeSlots)}
-          >
-            {location.label}
-          </option>
-        ))
-      }
-    </select>
-  </label>
 
   <label class={formClasses.label}>
     {t.reservation.labels.message}
