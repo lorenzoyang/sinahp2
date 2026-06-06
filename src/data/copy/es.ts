@@ -181,7 +181,7 @@ export const esCopy = {
     cookieConsent: {
       title: "Cookies y anuncios",
       body:
-        "Con tu consentimiento, Google Ads mide los clics en WhatsApp y teléfono desde anuncios. ",
+        "Con tu consentimiento, Google Ads usa almacenamiento publicitario y de medición para medir los clics en WhatsApp y teléfono desde anuncios. ",
       privacyLink: "Leer la política de privacidad",
       decline: "Rechazar",
       accept: "Aceptar",
@@ -233,7 +233,7 @@ export const esCopy = {
             "Cloudflare: proporciona alojamiento, distribución del sitio, seguridad y registros técnicos.",
             "Proveedor de email: recibe y conserva los emails de reserva en el buzón de Sina Hotpot.",
             "hCaptcha o herramientas anti-spam equivalentes: pueden activarse en el formulario para verificar que el envío procede de una persona y no de un bot.",
-            "Google Ads: si das tu consentimiento, mide los clics en enlaces de WhatsApp y teléfono procedentes de campañas publicitarias.",
+            "Google Ads: si das tu consentimiento, usa almacenamiento publicitario y de medición para medir los clics en enlaces de WhatsApp y teléfono procedentes de campañas publicitarias.",
             "Google Maps, Instagram, Facebook y WhatsApp son enlaces externos. Sus servicios tratan datos solo si decides abrir esos enlaces o usar esas plataformas.",
           ],
         },
@@ -253,7 +253,7 @@ export const esCopy = {
         {
           title: "Cookies y herramientas de seguimiento",
           paragraphs: [
-            "El sitio usa herramientas técnicas necesarias para la navegación, la seguridad, el reenvío del formulario y la prevención de spam. Con tu consentimiento, Google Ads puede usar cookies o identificadores publicitarios para medir los clics en enlaces de WhatsApp y teléfono procedentes de anuncios.",
+            "El sitio usa herramientas técnicas necesarias para la navegación, la seguridad, el reenvío del formulario y la prevención de spam. Con tu consentimiento, Google Ads puede usar cookies o identificadores publicitarios y de medición para medir los clics en enlaces de WhatsApp y teléfono procedentes de anuncios.",
             "Puedes aceptar o rechazar el seguimiento publicitario desde el banner de cookies. Rechazarlo no bloquea la navegación, las reservas ni los enlaces de contacto.",
           ],
         },

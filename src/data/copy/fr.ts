@@ -181,7 +181,7 @@ export const frCopy = {
     cookieConsent: {
       title: "Cookies et annonces",
       body:
-        "Avec votre consentement, Google Ads mesure les clics WhatsApp et téléphone depuis les annonces. ",
+        "Avec votre consentement, Google Ads utilise le stockage publicitaire et de mesure pour mesurer les clics WhatsApp et téléphone depuis les annonces. ",
       privacyLink: "Lire la politique de confidentialité",
       decline: "Refuser",
       accept: "Accepter",
@@ -233,7 +233,7 @@ export const frCopy = {
             "Cloudflare: fournit l'hébergement, la distribution du site, la sécurité et les journaux techniques.",
             "Fournisseur email: reçoit et conserve les emails de réservation dans la boîte de Sina Hotpot.",
             "hCaptcha ou outils anti-spam équivalents: peuvent être activés sur le formulaire pour vérifier que l'envoi provient d'une personne et non d'un bot.",
-            "Google Ads: si vous donnez votre consentement, mesure les clics sur les liens WhatsApp et téléphone issus des campagnes publicitaires.",
+            "Google Ads: si vous donnez votre consentement, utilise le stockage publicitaire et de mesure pour mesurer les clics sur les liens WhatsApp et téléphone issus des campagnes publicitaires.",
             "Google Maps, Instagram, Facebook et WhatsApp sont des liens externes. Leurs services traitent des données seulement si vous choisissez d'ouvrir ces liens ou d'utiliser ces plateformes.",
           ],
         },
@@ -253,7 +253,7 @@ export const frCopy = {
         {
           title: "Cookies et outils de suivi",
           paragraphs: [
-            "Le site utilise les outils techniques nécessaires à la navigation, à la sécurité, à la transmission du formulaire et à la prévention du spam. Avec votre consentement, Google Ads peut utiliser des cookies ou identifiants publicitaires pour mesurer les clics sur les liens WhatsApp et téléphone issus des annonces.",
+            "Le site utilise les outils techniques nécessaires à la navigation, à la sécurité, à la transmission du formulaire et à la prévention du spam. Avec votre consentement, Google Ads peut utiliser des cookies ou identifiants publicitaires et de mesure pour mesurer les clics sur les liens WhatsApp et téléphone issus des annonces.",
             "Vous pouvez accepter ou refuser le suivi publicitaire depuis le bandeau cookie. Le refus ne bloque pas la navigation, les réservations ni les liens de contact.",
           ],
         },

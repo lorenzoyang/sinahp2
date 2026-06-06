@@ -1,13 +1,15 @@
+import {
+  GOOGLE_ADS_CONVERSION_CALLBACK_TIMEOUT_MS,
+  GOOGLE_ADS_CONVERSIONS,
+  getGtag,
+  hasGrantedGoogleAdsConsent,
+} from "./googleAdsConsent";
+
 declare global {
   interface Window {
-    gtag?: (...args: unknown[]) => void;
     sinaTrackReservationSuccessConversion?: () => Promise<void>;
   }
 }
-
-type AdsConsentDetail = {
-  granted?: boolean;
-};
 
 type ConversionEventParameters = {
   send_to: string;
@@ -15,42 +17,8 @@ type ConversionEventParameters = {
   event_timeout?: number;
 };
 
-const CONSENT_STORAGE_KEY = "sinaGoogleAdsConsent";
-const CONSENT_ACCEPTED_VALUE = "accepted";
-const PHONE_CONVERSION_SEND_TO = "AW-16840687263/NJEsCL7dqJMbEJ_9od4-";
-const WHATSAPP_CONVERSION_SEND_TO = "AW-16840687263/KqYzCLuI5LkcEJ_9od4-";
-const EMAIL_CONVERSION_SEND_TO = "AW-16840687263/QOC7CNur-LkcEJ_9od4-";
-const RESERVATION_SUCCESS_CONVERSION_SEND_TO =
-  "AW-16840687263/0JulCOP7rIEcEJ_9od4-";
-const CONVERSION_CALLBACK_TIMEOUT_MS = 1000;
-
-function getStoredConsent(): string | null {
-  try {
-    return window.localStorage.getItem(CONSENT_STORAGE_KEY);
-  } catch {
-    return null;
-  }
-}
-
-function hasAdsConsent(): boolean {
-  return getStoredConsent() === CONSENT_ACCEPTED_VALUE;
-}
-
-function getGtag(): Window["gtag"] {
-  return typeof window.gtag === "function" ? window.gtag : undefined;
-}
-
-function updateGoogleAdsConsent(granted: boolean): void {
-  getGtag()?.("consent", "update", {
-    ad_storage: granted ? "granted" : "denied",
-    ad_user_data: granted ? "granted" : "denied",
-    ad_personalization: granted ? "granted" : "denied",
-    analytics_storage: "denied",
-  });
-}
-
 function sendConversion(parameters: ConversionEventParameters): boolean {
-  if (!hasAdsConsent()) {
+  if (!hasGrantedGoogleAdsConsent()) {
     return false;
   }
 
@@ -66,22 +34,22 @@ function sendConversion(parameters: ConversionEventParameters): boolean {
 
 function getConversionSendTo(href: string): string | undefined {
   if (href.startsWith("tel:")) {
-    return PHONE_CONVERSION_SEND_TO;
+    return GOOGLE_ADS_CONVERSIONS.phone;
   }
 
   if (href.startsWith("mailto:")) {
-    return EMAIL_CONVERSION_SEND_TO;
+    return GOOGLE_ADS_CONVERSIONS.email;
   }
 
   if (href.includes("wa.me/") || href.includes("whatsapp.com/")) {
-    return WHATSAPP_CONVERSION_SEND_TO;
+    return GOOGLE_ADS_CONVERSIONS.whatsapp;
   }
 
   return undefined;
 }
 
 function trackReservationSuccessConversion(): Promise<void> {
-  if (!hasAdsConsent()) {
+  if (!hasGrantedGoogleAdsConsent()) {
     return Promise.resolve();
   }
 
@@ -98,9 +66,9 @@ function trackReservationSuccessConversion(): Promise<void> {
     };
 
     const wasSent = sendConversion({
-      send_to: RESERVATION_SUCCESS_CONVERSION_SEND_TO,
+      send_to: GOOGLE_ADS_CONVERSIONS.reservationSuccess,
       event_callback: settle,
-      event_timeout: CONVERSION_CALLBACK_TIMEOUT_MS,
+      event_timeout: GOOGLE_ADS_CONVERSION_CALLBACK_TIMEOUT_MS,
     });
 
     if (!wasSent) {
@@ -108,22 +76,12 @@ function trackReservationSuccessConversion(): Promise<void> {
       return;
     }
 
-    window.setTimeout(settle, CONVERSION_CALLBACK_TIMEOUT_MS);
+    window.setTimeout(settle, GOOGLE_ADS_CONVERSION_CALLBACK_TIMEOUT_MS);
   });
 }
 
-if (hasAdsConsent()) {
-  updateGoogleAdsConsent(true);
-}
-
-window.addEventListener("sina:ads-consent", (event) => {
-  const detail = (event as CustomEvent<AdsConsentDetail>).detail;
-
-  updateGoogleAdsConsent(detail?.granted === true);
-});
-
 document.addEventListener("click", (event) => {
-  if (!hasAdsConsent() || !(event.target instanceof Element)) {
+  if (!hasGrantedGoogleAdsConsent() || !(event.target instanceof Element)) {
     return;
   }
 

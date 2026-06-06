@@ -1,0 +1,46 @@
+---
+import {
+  GOOGLE_ADS_CONSENT_ACCEPTED_VALUE,
+  GOOGLE_ADS_CONSENT_FIELDS,
+  GOOGLE_ADS_CONSENT_STORAGE_KEY,
+  GOOGLE_ADS_ID,
+  GOOGLE_ADS_SCRIPT_SRC,
+} from "../scripts/googleAdsConsent";
+
+const googleAdsBootstrapScript = `
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function gtag() {
+      window.dataLayer.push(arguments);
+    };
+
+  const googleAdsConsentStorageKey = ${JSON.stringify(GOOGLE_ADS_CONSENT_STORAGE_KEY)};
+  const googleAdsConsentAcceptedValue = ${JSON.stringify(GOOGLE_ADS_CONSENT_ACCEPTED_VALUE)};
+  const googleAdsConsentFields = ${JSON.stringify(GOOGLE_ADS_CONSENT_FIELDS)};
+  const googleAdsId = ${JSON.stringify(GOOGLE_ADS_ID)};
+  const hasStoredGoogleAdsConsent = (() => {
+    try {
+      return (
+        window.localStorage.getItem(googleAdsConsentStorageKey) ===
+        googleAdsConsentAcceptedValue
+      );
+    } catch {
+      return false;
+    }
+  })();
+  const googleAdsConsentState = hasStoredGoogleAdsConsent
+    ? "granted"
+    : "denied";
+  const googleAdsConsentSettings = Object.fromEntries(
+    googleAdsConsentFields.map((field) => [field, googleAdsConsentState]),
+  );
+
+  window.gtag("consent", "default", googleAdsConsentSettings);
+  window.gtag("js", new Date());
+  window.gtag("config", googleAdsId);
+`;
+---
+
+<script is:inline set:html={googleAdsBootstrapScript}></script>
+<script is:inline async src={GOOGLE_ADS_SCRIPT_SRC}></script>

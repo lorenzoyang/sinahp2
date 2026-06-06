@@ -158,7 +158,7 @@ export const zhCopy = {
     cookieConsent: {
       title: "Cookie 与广告",
       body:
-        "经你同意后，Google Ads 会衡量广告带来的 WhatsApp 和电话点击。 ",
+        "经你同意后，Google Ads 会使用广告和衡量存储来衡量广告带来的 WhatsApp 和电话点击。 ",
       privacyLink: "阅读隐私政策",
       decline: "拒绝",
       accept: "同意",
@@ -210,7 +210,7 @@ export const zhCopy = {
             "Cloudflare：提供托管、网站分发、安全和技术日志服务。",
             "电子邮件服务商：在 Sina Hotpot 邮箱中接收和保存预约邮件。",
             "hCaptcha 或同类防垃圾工具：可能在表单中启用，用于确认提交来自真人而不是机器人。",
-            "Google Ads：如果你同意，用于衡量广告活动带来的 WhatsApp 和电话链接点击。",
+            "Google Ads：如果你同意，会使用广告和衡量存储来衡量广告活动带来的 WhatsApp 和电话链接点击。",
             "Google Maps、Instagram、Facebook 和 WhatsApp 是外部链接。只有当你选择打开这些链接或使用这些平台时，相应服务才会处理数据。",
           ],
         },
@@ -230,7 +230,7 @@ export const zhCopy = {
         {
           title: "Cookie 和跟踪工具",
           paragraphs: [
-            "本网站使用浏览、安全、表单转发和防垃圾提交所必需的技术工具。经你同意后，Google Ads 可能使用广告 cookie 或标识符衡量广告带来的 WhatsApp 和电话链接点击。",
+            "本网站使用浏览、安全、表单转发和防垃圾提交所必需的技术工具。经你同意后，Google Ads 可能使用广告和衡量 cookie 或标识符衡量广告带来的 WhatsApp 和电话链接点击。",
             "你可以在 cookie 横幅中同意或拒绝广告跟踪。拒绝不会影响浏览、预约或使用联系链接。",
           ],
         },

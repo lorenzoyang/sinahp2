@@ -180,7 +180,7 @@ export const enCopy = {
     cookieConsent: {
       title: "Cookies and ads",
       body:
-        "With your consent, Google Ads measures WhatsApp and phone clicks from ads. ",
+        "With your consent, Google Ads uses advertising and measurement storage to measure WhatsApp and phone clicks from ads. ",
       privacyLink: "Read the privacy policy",
       decline: "Decline",
       accept: "Accept",
@@ -232,7 +232,7 @@ export const enCopy = {
             "Cloudflare: provides hosting, website delivery, security, and technical logs.",
             "Email provider: receives and stores reservation emails in the Sina Hotpot mailbox.",
             "hCaptcha or equivalent anti-spam tools: may be enabled on the form to verify that a submission comes from a person and not from a bot.",
-            "Google Ads: if you give consent, measures clicks on WhatsApp and phone links from advertising campaigns.",
+            "Google Ads: if you give consent, uses advertising and measurement storage to measure clicks on WhatsApp and phone links from advertising campaigns.",
             "Google Maps, Instagram, Facebook, and WhatsApp are external links. Their services process data only if you choose to open those links or use those platforms.",
           ],
         },
@@ -252,7 +252,7 @@ export const enCopy = {
         {
           title: "Cookies and tracking tools",
           paragraphs: [
-            "The website uses technical tools needed for browsing, security, form forwarding, and spam prevention. With your consent, Google Ads may use advertising cookies or identifiers to measure clicks on WhatsApp and phone links from ads.",
+            "The website uses technical tools needed for browsing, security, form forwarding, and spam prevention. With your consent, Google Ads may use advertising and measurement cookies or identifiers to measure clicks on WhatsApp and phone links from ads.",
             "You can accept or decline advertising tracking from the cookie banner. Declining does not block browsing, reservations, or contact links.",
           ],
         },

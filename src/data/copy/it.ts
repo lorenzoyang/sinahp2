@@ -181,7 +181,7 @@ export const itCopy = {
     cookieConsent: {
       title: "Cookie e annunci",
       body:
-        "Con il tuo consenso, Google Ads misura i clic su WhatsApp e telefono dagli annunci. ",
+        "Con il tuo consenso, Google Ads usa cookie pubblicitari e di misurazione per misurare i clic su WhatsApp e telefono dagli annunci. ",
       privacyLink: "Leggi l'informativa privacy",
       decline: "Rifiuta",
       accept: "Accetta",
@@ -233,7 +233,7 @@ export const itCopy = {
             "Cloudflare: fornisce hosting, distribuzione del sito, sicurezza e log tecnici.",
             "Provider email: riceve e conserva le email di prenotazione nella casella di Sina Hotpot.",
             "hCaptcha o strumenti anti-spam equivalenti: possono essere attivati sul modulo per verificare che l'invio provenga da una persona e non da un bot.",
-            "Google Ads: se presti consenso, misura i clic sui link WhatsApp e telefono provenienti dalle campagne pubblicitarie.",
+            "Google Ads: se presti consenso, usa cookie pubblicitari e di misurazione per misurare i clic sui link WhatsApp e telefono provenienti dalle campagne pubblicitarie.",
             "Google Maps, Instagram, Facebook e WhatsApp sono collegamenti esterni. I relativi servizi trattano dati solo se decidi di aprire quei link o usare quelle piattaforme.",
           ],
         },
@@ -253,7 +253,7 @@ export const itCopy = {
         {
           title: "Cookie e strumenti di tracciamento",
           paragraphs: [
-            "Il sito usa strumenti tecnici necessari alla navigazione, alla sicurezza, all'inoltro del modulo e alla prevenzione dello spam. Con il tuo consenso, Google Ads può usare cookie o identificatori pubblicitari per misurare i clic sui link WhatsApp e telefono provenienti dagli annunci.",
+            "Il sito usa strumenti tecnici necessari alla navigazione, alla sicurezza, all'inoltro del modulo e alla prevenzione dello spam. Con il tuo consenso, Google Ads può usare cookie o identificatori pubblicitari e di misurazione per misurare i clic sui link WhatsApp e telefono provenienti dagli annunci.",
             "Puoi accettare o rifiutare il tracciamento pubblicitario dal banner cookie. Il rifiuto non impedisce la navigazione, la prenotazione o l'uso dei link di contatto.",
           ],
         },

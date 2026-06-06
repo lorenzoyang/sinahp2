@@ -60,15 +60,15 @@ const bannerClasses = {
 </section>
 
 <script>
-  declare global {
-    interface Window {
-      gtag?: (...args: unknown[]) => void;
-    }
-  }
+  import {
+    GOOGLE_ADS_CONSENT_ACCEPTED_VALUE,
+    GOOGLE_ADS_CONSENT_DECLINED_VALUE,
+    getStoredGoogleAdsConsentChoice,
+    storeGoogleAdsConsentChoice,
+    updateGoogleAdsConsent,
+    type GoogleAdsConsentChoice,
+  } from "../scripts/googleAdsConsent";
 
-  const CONSENT_STORAGE_KEY = "sinaGoogleAdsConsent";
-  const ACCEPTED_VALUE = "accepted";
-  const DECLINED_VALUE = "declined";
   const banner = document.querySelector<HTMLElement>("[data-cookie-consent]");
   const acceptButton = banner?.querySelector<HTMLButtonElement>(
     "[data-cookie-consent-accept]",
@@ -77,61 +77,31 @@ const bannerClasses = {
     "[data-cookie-consent-decline]",
   );
 
-  function getConsentChoice(): string | null {
-    try {
-      return window.localStorage.getItem(CONSENT_STORAGE_KEY);
-    } catch {
-      return null;
-    }
-  }
+  function chooseConsent(choice: GoogleAdsConsentChoice): void {
+    const granted = choice === GOOGLE_ADS_CONSENT_ACCEPTED_VALUE;
 
-  function storeConsentChoice(choice: string): void {
-    try {
-      window.localStorage.setItem(CONSENT_STORAGE_KEY, choice);
-    } catch {
-      return;
-    }
-  }
-
-  function updateGoogleConsent(granted: boolean): void {
-    window.gtag?.("consent", "update", {
-      ad_storage: granted ? "granted" : "denied",
-      ad_user_data: granted ? "granted" : "denied",
-      ad_personalization: granted ? "granted" : "denied",
-      analytics_storage: "denied",
-    });
-
-    window.dispatchEvent(
-      new CustomEvent("sina:ads-consent", { detail: { granted } }),
-    );
-  }
-
-  function chooseConsent(choice: string): void {
-    const granted = choice === ACCEPTED_VALUE;
-
-    storeConsentChoice(choice);
-    updateGoogleConsent(granted);
+    storeGoogleAdsConsentChoice(choice);
+    updateGoogleAdsConsent(granted);
 
     if (banner) {
       banner.hidden = true;
     }
   }
 
-  const currentChoice = getConsentChoice();
+  const currentChoice = getStoredGoogleAdsConsentChoice();
+  const hasStoredChoice =
+    currentChoice === GOOGLE_ADS_CONSENT_ACCEPTED_VALUE ||
+    currentChoice === GOOGLE_ADS_CONSENT_DECLINED_VALUE;
 
-  if (currentChoice === ACCEPTED_VALUE) {
-    updateGoogleConsent(true);
-  } else if (currentChoice === DECLINED_VALUE) {
-    updateGoogleConsent(false);
-  } else if (banner) {
+  if (!hasStoredChoice && banner) {
     banner.hidden = false;
   }
 
   acceptButton?.addEventListener("click", () => {
-    chooseConsent(ACCEPTED_VALUE);
+    chooseConsent(GOOGLE_ADS_CONSENT_ACCEPTED_VALUE);
   });
 
   declineButton?.addEventListener("click", () => {
-    chooseConsent(DECLINED_VALUE);
+    chooseConsent(GOOGLE_ADS_CONSENT_DECLINED_VALUE);
   });
 </script>
