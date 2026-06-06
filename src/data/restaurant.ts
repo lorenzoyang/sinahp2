@@ -32,6 +32,7 @@ type StructuredAddress = {
   readonly streetAddress: string;
   readonly addressLocality: string;
   readonly postalCode: string;
+  readonly addressRegion: string;
 };
 
 type RestaurantLocationData = {
@@ -76,11 +77,12 @@ export const locations = [
     id: "prato",
     city: "Prato",
     phone: "+39 348 032 8697",
-    address: "Via cava 109, Prato",
+    address: "Via Cava, 109, 59100 Prato PO",
     structuredAddress: {
-      streetAddress: "Via Cava 109",
+      streetAddress: "Via Cava, 109",
       addressLocality: "Prato",
       postalCode: "59100",
+      addressRegion: "PO",
     },
     hours: "18:30-02:00",
     schemaOpeningHours: ["Mo-Su 18:30-02:00"],
@@ -89,17 +91,18 @@ export const locations = [
     image: pratoPrimaryImage,
     gallery: imagesWithFallback(pratoGallery, pratoPrimaryImage),
     mapHref:
-      "https://www.google.com/maps/search/?api=1&query=Via%20cava%20109%2C%20Prato",
+      "https://www.google.com/maps/place/Sina+Hotpot+%E9%B2%9C%E5%85%A5%E5%9B%B4%E7%85%AE/@43.8639425,11.0647209,17z/data=!3m1!4b1!4m6!3m5!1s0x132af5cdcfddd0fd:0x6f8cb950074fa810!8m2!3d43.8639425!4d11.0672958!16s%2Fg%2F11fszgmgbn",
   },
   {
     id: "firenze",
     city: "Firenze",
     phone: "+39 344 681 3199",
-    address: "Via Ghibellina 80R, Firenze",
+    address: "Via Ghibellina, 80r, 50122 Firenze FI",
     structuredAddress: {
-      streetAddress: "Via Ghibellina 80R",
+      streetAddress: "Via Ghibellina, 80r",
       addressLocality: "Firenze",
       postalCode: "50122",
+      addressRegion: "FI",
     },
     hours: "12:00-15:00, 16:00-23:00",
     schemaOpeningHours: ["Mo-Su 12:00-15:00", "Mo-Su 16:00-23:00"],
@@ -111,7 +114,7 @@ export const locations = [
     image: firenzePrimaryImage,
     gallery: imagesWithFallback(firenzeGallery, firenzePrimaryImage),
     mapHref:
-      "https://www.google.com/maps/search/?api=1&query=Via%20Ghibellina%2080R%2C%20Firenze",
+      "https://www.google.com/maps/place/Sina+Hotpot+Firenze+%E9%B2%9C%E5%85%A5%E5%9B%B4%E7%85%AE/@43.7700506,11.2601432,17z/data=!3m1!4b1!4m6!3m5!1s0x132a55ed4d444ceb:0x4d607f8845eb89c3!8m2!3d43.7700506!4d11.2627181!16s%2Fg%2F11lymjwzst",
   },
 ] as const satisfies readonly RestaurantLocationData[];
 

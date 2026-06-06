@@ -277,7 +277,7 @@ export function getWebsiteStructuredData(): Record<string, unknown> {
           streetAddress: location.structuredAddress.streetAddress,
           addressLocality: location.structuredAddress.addressLocality,
           postalCode: location.structuredAddress.postalCode,
-          addressRegion: "Tuscany",
+          addressRegion: location.structuredAddress.addressRegion,
           addressCountry: "IT",
         },
         openingHours: location.schemaOpeningHours,

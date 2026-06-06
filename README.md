@@ -50,6 +50,8 @@ The reservation form submits through Web3Forms.
   hCaptcha. Leave unset or set to `false` to disable captcha without removing
   the related code.
 
+For a planned Resend migration, see `docs/resend-migration.md`.
+
 Reservation time slots are generated from `reservationTimeRanges` with the
 shared helper in `src/utils/reservation.ts`.
 
