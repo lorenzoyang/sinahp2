@@ -15,6 +15,7 @@ import {
   getGalleryPhotoTotal,
   getVisibleGalleryGroups,
 } from "../../data/gallery";
+import { getPageSeoMeta } from "../../data/seo";
 import {
   headingClasses,
   imageSizes,
@@ -28,6 +29,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const seoMeta = getPageSeoMeta(locale, "gallery");
 
 const visibleGroups = getVisibleGalleryGroups().map((group) => ({
   ...group,
@@ -56,8 +58,9 @@ const mediaClasses = {
 <SiteLayout
   locale={locale}
   page="gallery"
-  title={`${t.gallery.title} | Sina Hotpot`}
-  description={t.gallery.intro}
+  title={seoMeta?.title}
+  description={seoMeta?.description}
+  socialImage={heroPhoto.src}
 >
   <section class={sectionClasses.hero}>
     <div class="mx-auto max-w-7xl">

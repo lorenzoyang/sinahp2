@@ -5,6 +5,7 @@ import LocationActions from "../LocationActions.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import { getPageSeoMeta } from "../../data/seo";
 import {
   cardClasses as sharedCardClasses,
   headingClasses,
@@ -19,6 +20,8 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const seoMeta = getPageSeoMeta(locale, "locations");
+const socialImage = locations[0]?.image.src;
 const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
   listing: sharedSectionClasses.inkBandTight,
@@ -77,8 +80,9 @@ const locationCards = locations.map((location) => ({
 <SiteLayout
   locale={locale}
   page="locations"
-  title={`${t.locations.title} | Sina Hotpot`}
-  description={t.locations.intro}
+  title={seoMeta?.title}
+  description={seoMeta?.description}
+  socialImage={socialImage}
 >
   <section class={sectionClasses.hero}>
     <SectionHeader

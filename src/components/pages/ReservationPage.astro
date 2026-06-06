@@ -6,6 +6,7 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import { reservationImages } from "../../data/pageImages";
+import { getPageSeoMeta } from "../../data/seo";
 import {
   imageSizes,
   mediaClasses,
@@ -18,6 +19,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const seoMeta = getPageSeoMeta(locale, "reservation");
 const pageClasses = {
   section: sharedSectionClasses.heroDark,
   heroImageFrame: `${mediaClasses.landscapeFrame} mt-7`,
@@ -31,8 +33,9 @@ const pageClasses = {
 <SiteLayout
   locale={locale}
   page="reservation"
-  title={`${t.reservation.title} | Sina Hotpot`}
-  description={t.reservation.intro}
+  title={seoMeta?.title}
+  description={seoMeta?.description}
+  socialImage={reservationImages.hero.src}
 >
   <section class={pageClasses.section}>
     <div

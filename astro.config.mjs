@@ -4,6 +4,25 @@ import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
 import cloudflare from "@astrojs/cloudflare";
+import sitemap from "@astrojs/sitemap";
+
+const hiddenSitemapPaths = new Set(["/reservation-success/"]);
+
+/**
+ * @param {string} url
+ */
+function isSitemapVisible(url) {
+  const { pathname } = new URL(url);
+  const normalizedPath = pathname.endsWith("/") ? pathname : `${pathname}/`;
+
+  if (hiddenSitemapPaths.has(normalizedPath)) {
+    return false;
+  }
+
+  return !/^\/(?:zh|en|es|fr)\/reservation-success\/$/.test(
+    normalizedPath,
+  );
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +32,10 @@ export default defineConfig({
     "/it": {
       status: 301,
       destination: "/",
+    },
+    "/sitemap.xml": {
+      status: 301,
+      destination: "/sitemap-index.xml",
     },
   },
 
@@ -45,6 +68,40 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "it",
+        locales: {
+          it: "it",
+          zh: "zh-CN",
+          en: "en",
+          es: "es",
+          fr: "fr",
+        },
+      },
+      serialize(item) {
+        if (!isSitemapVisible(item.url)) {
+          return undefined;
+        }
+
+        const defaultLink = item.links?.find((link) => link.lang === "it");
+
+        if (
+          defaultLink &&
+          !item.links?.some((link) => link.lang === "x-default")
+        ) {
+          item.links = [
+            ...(item.links ?? []),
+            { lang: "x-default", url: defaultLink.url },
+          ];
+        }
+
+        return item;
+      },
+    }),
+  ],
 
   adapter: cloudflare({
     imageService: "compile",

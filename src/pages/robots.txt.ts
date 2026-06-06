@@ -7,7 +7,7 @@ export function GET() {
     [
       "User-agent: *",
       "Allow: /",
-      `Sitemap: ${toAbsoluteUrl("/sitemap.xml")}`,
+      `Sitemap: ${toAbsoluteUrl("/sitemap-index.xml")}`,
       "",
     ].join("\n"),
     {

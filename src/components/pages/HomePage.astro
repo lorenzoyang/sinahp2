@@ -6,6 +6,7 @@ import HomeRitualSection from "../home/HomeRitualSection.astro";
 import HomeSignaturesSection from "../home/HomeSignaturesSection.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import type { Locale } from "../../data/site";
+import { homeImages } from "../../data/pageImages";
 
 interface Props {
   locale: Locale;
@@ -14,7 +15,11 @@ interface Props {
 const { locale } = Astro.props;
 ---
 
-<SiteLayout locale={locale} page="home">
+<SiteLayout
+  locale={locale}
+  page="home"
+  socialImage={homeImages.hero.src}
+>
   <HomeHeroSection locale={locale} />
   <HomeRitualSection locale={locale} />
   <HomeSignaturesSection locale={locale} />

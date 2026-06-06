@@ -7,6 +7,7 @@ import { getCultureTopicPath, getPath, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import { getCultureTopicCards } from "../../data/cultureTopics";
 import { cultureImages } from "../../data/pageImages";
+import { getPageSeoMeta } from "../../data/seo";
 import {
   cardClasses as sharedCardClasses,
   headingClasses,
@@ -21,6 +22,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const seoMeta = getPageSeoMeta(locale, "culture");
 const topicCards = getCultureTopicCards(locale);
 const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
@@ -42,8 +44,9 @@ const mediaClasses = {
 <SiteLayout
   locale={locale}
   page="culture"
-  title={`${t.culture.title} | Sina Hotpot`}
-  description={t.culture.intro}
+  title={seoMeta?.title}
+  description={seoMeta?.description}
+  socialImage={cultureImages.hero.src}
 >
   <section class={sectionClasses.hero}>
     <div
