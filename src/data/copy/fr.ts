@@ -178,11 +178,19 @@ export const frCopy = {
         "Merci. Votre demande a été envoyée à Sina Hotpot. Pour une modification urgente ou une confirmation rapide, contactez-nous directement sur WhatsApp.",
       next: "Vous pouvez aussi vérifier l’adresse, les horaires et l’itinéraire du restaurant choisi.",
     },
+    cookieConsent: {
+      title: "Cookies et annonces",
+      body:
+        "Nous utilisons Google Ads uniquement avec votre consentement pour mesurer les clics WhatsApp et téléphone issus des campagnes publicitaires. ",
+      privacyLink: "Lire la politique de confidentialité",
+      decline: "Refuser",
+      accept: "Accepter",
+    },
     privacy: {
       title: "Politique de confidentialité",
       intro:
         "Cette notice explique comment le site Sina Hotpot traite les données personnelles collectées via le site et le formulaire de réservation.",
-      updated: "Dernière mise à jour: 5 juin 2026",
+      updated: "Dernière mise à jour: 6 juin 2026",
       sections: [
         {
           title: "Responsable du traitement",
@@ -225,6 +233,7 @@ export const frCopy = {
             "Cloudflare: fournit l'hébergement, la distribution du site, la sécurité et les journaux techniques.",
             "Fournisseur email: reçoit et conserve les emails de réservation dans la boîte de Sina Hotpot.",
             "hCaptcha ou outils anti-spam équivalents: peuvent être activés sur le formulaire pour vérifier que l'envoi provient d'une personne et non d'un bot.",
+            "Google Ads: si vous donnez votre consentement, mesure les clics sur les liens WhatsApp et téléphone issus des campagnes publicitaires.",
             "Google Maps, Instagram, Facebook et WhatsApp sont des liens externes. Leurs services traitent des données seulement si vous choisissez d'ouvrir ces liens ou d'utiliser ces plateformes.",
           ],
         },
@@ -244,8 +253,8 @@ export const frCopy = {
         {
           title: "Cookies et outils de suivi",
           paragraphs: [
-            "Le site n'utilise pas de cookies de profilage, de cookies publicitaires ni de cookies analytiques via son propre code. Pour cette raison, aucun bandeau de consentement aux cookies n'est affiché.",
-            "Des outils techniques strictement nécessaires peuvent être utilisés pour la navigation, la sécurité, la transmission du formulaire et la prévention du spam. Si des outils d'analyse, pixels publicitaires, cartes intégrées, widgets sociaux ou autres outils non techniques sont ajoutés à l'avenir, cette notice et le mécanisme de consentement devront être mis à jour avant activation.",
+            "Le site utilise les outils techniques nécessaires à la navigation, à la sécurité, à la transmission du formulaire et à la prévention du spam. Avec votre consentement, Google Ads peut utiliser des cookies ou identifiants publicitaires pour mesurer les clics sur les liens WhatsApp et téléphone issus des annonces.",
+            "Vous pouvez accepter ou refuser le suivi publicitaire depuis le bandeau cookie. Le refus ne bloque pas la navigation, les réservations ni les liens de contact.",
           ],
         },
         {

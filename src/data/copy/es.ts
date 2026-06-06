@@ -178,11 +178,19 @@ export const esCopy = {
         "Gracias. Tu solicitud ha sido enviada a Sina Hotpot. Para cambios urgentes o confirmación rápida, contacta directamente por WhatsApp.",
       next: "También puedes revisar dirección, horarios y ruta del local elegido.",
     },
+    cookieConsent: {
+      title: "Cookies y anuncios",
+      body:
+        "Usamos Google Ads solo con tu consentimiento para medir los clics en WhatsApp y teléfono procedentes de campañas publicitarias. ",
+      privacyLink: "Leer la política de privacidad",
+      decline: "Rechazar",
+      accept: "Aceptar",
+    },
     privacy: {
       title: "Política de privacidad",
       intro:
         "Este aviso explica cómo el sitio web de Sina Hotpot trata los datos personales recogidos a través del sitio y del formulario de reserva.",
-      updated: "Última actualización: 5 de junio de 2026",
+      updated: "Última actualización: 6 de junio de 2026",
       sections: [
         {
           title: "Responsable del tratamiento",
@@ -225,6 +233,7 @@ export const esCopy = {
             "Cloudflare: proporciona alojamiento, distribución del sitio, seguridad y registros técnicos.",
             "Proveedor de email: recibe y conserva los emails de reserva en el buzón de Sina Hotpot.",
             "hCaptcha o herramientas anti-spam equivalentes: pueden activarse en el formulario para verificar que el envío procede de una persona y no de un bot.",
+            "Google Ads: si das tu consentimiento, mide los clics en enlaces de WhatsApp y teléfono procedentes de campañas publicitarias.",
             "Google Maps, Instagram, Facebook y WhatsApp son enlaces externos. Sus servicios tratan datos solo si decides abrir esos enlaces o usar esas plataformas.",
           ],
         },
@@ -244,8 +253,8 @@ export const esCopy = {
         {
           title: "Cookies y herramientas de seguimiento",
           paragraphs: [
-            "El sitio no usa cookies de perfilado, cookies publicitarias ni cookies de analítica mediante su propio código. Por este motivo no se muestra un banner de consentimiento de cookies.",
-            "Pueden utilizarse herramientas técnicas estrictamente necesarias para la navegación, seguridad, reenvío del formulario y prevención de spam. Si en el futuro se introducen analítica, píxeles publicitarios, mapas incrustados, widgets sociales u otras herramientas no técnicas, este aviso y el mecanismo de consentimiento deberán actualizarse antes de la activación.",
+            "El sitio usa herramientas técnicas necesarias para la navegación, la seguridad, el reenvío del formulario y la prevención de spam. Con tu consentimiento, Google Ads puede usar cookies o identificadores publicitarios para medir los clics en enlaces de WhatsApp y teléfono procedentes de anuncios.",
+            "Puedes aceptar o rechazar el seguimiento publicitario desde el banner de cookies. Rechazarlo no bloquea la navegación, las reservas ni los enlaces de contacto.",
           ],
         },
         {

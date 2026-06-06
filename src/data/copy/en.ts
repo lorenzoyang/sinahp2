@@ -177,11 +177,19 @@ export const enCopy = {
         "Thank you. Your request has been sent to Sina Hotpot. For urgent changes or quick confirmation, contact us directly on WhatsApp.",
       next: "You can also check the address, opening hours, and route for your selected location.",
     },
+    cookieConsent: {
+      title: "Cookies and ads",
+      body:
+        "We use Google Ads only with your consent to measure WhatsApp and phone clicks from advertising campaigns. ",
+      privacyLink: "Read the privacy policy",
+      decline: "Decline",
+      accept: "Accept",
+    },
     privacy: {
       title: "Privacy Policy",
       intro:
         "This notice explains how the Sina Hotpot website processes personal data collected through the website and reservation form.",
-      updated: "Last updated: June 5, 2026",
+      updated: "Last updated: June 6, 2026",
       sections: [
         {
           title: "Data controller",
@@ -224,6 +232,7 @@ export const enCopy = {
             "Cloudflare: provides hosting, website delivery, security, and technical logs.",
             "Email provider: receives and stores reservation emails in the Sina Hotpot mailbox.",
             "hCaptcha or equivalent anti-spam tools: may be enabled on the form to verify that a submission comes from a person and not from a bot.",
+            "Google Ads: if you give consent, measures clicks on WhatsApp and phone links from advertising campaigns.",
             "Google Maps, Instagram, Facebook, and WhatsApp are external links. Their services process data only if you choose to open those links or use those platforms.",
           ],
         },
@@ -243,8 +252,8 @@ export const enCopy = {
         {
           title: "Cookies and tracking tools",
           paragraphs: [
-            "The website does not use profiling cookies, advertising cookies, or analytics cookies through its own code. For this reason, no cookie consent banner is shown.",
-            "Strictly necessary technical tools may be used for browsing, security, form forwarding, and spam prevention. If analytics, advertising pixels, embedded maps, social widgets, or other non-technical tools are introduced in the future, this notice and the consent mechanism must be updated before activation.",
+            "The website uses technical tools needed for browsing, security, form forwarding, and spam prevention. With your consent, Google Ads may use advertising cookies or identifiers to measure clicks on WhatsApp and phone links from ads.",
+            "You can accept or decline advertising tracking from the cookie banner. Declining does not block browsing, reservations, or contact links.",
           ],
         },
         {

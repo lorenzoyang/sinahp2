@@ -178,11 +178,19 @@ export const itCopy = {
         "Grazie. La tua richiesta è arrivata a Sina Hotpot. Per modifiche urgenti o conferme rapide puoi scriverci direttamente su WhatsApp.",
       next: "Nel frattempo puoi controllare indirizzo, orari e percorso della sede scelta.",
     },
+    cookieConsent: {
+      title: "Cookie e annunci",
+      body:
+        "Usiamo Google Ads solo con il tuo consenso per misurare i clic su WhatsApp e telefono provenienti dalle campagne pubblicitarie. ",
+      privacyLink: "Leggi l'informativa privacy",
+      decline: "Rifiuta",
+      accept: "Accetta",
+    },
     privacy: {
       title: "Informativa privacy",
       intro:
         "Questa informativa spiega come il sito Sina Hotpot tratta i dati personali raccolti tramite il sito e il modulo di prenotazione.",
-      updated: "Ultimo aggiornamento: 5 giugno 2026",
+      updated: "Ultimo aggiornamento: 6 giugno 2026",
       sections: [
         {
           title: "Titolare del trattamento",
@@ -225,6 +233,7 @@ export const itCopy = {
             "Cloudflare: fornisce hosting, distribuzione del sito, sicurezza e log tecnici.",
             "Provider email: riceve e conserva le email di prenotazione nella casella di Sina Hotpot.",
             "hCaptcha o strumenti anti-spam equivalenti: possono essere attivati sul modulo per verificare che l'invio provenga da una persona e non da un bot.",
+            "Google Ads: se presti consenso, misura i clic sui link WhatsApp e telefono provenienti dalle campagne pubblicitarie.",
             "Google Maps, Instagram, Facebook e WhatsApp sono collegamenti esterni. I relativi servizi trattano dati solo se decidi di aprire quei link o usare quelle piattaforme.",
           ],
         },
@@ -244,8 +253,8 @@ export const itCopy = {
         {
           title: "Cookie e strumenti di tracciamento",
           paragraphs: [
-            "Il sito non usa cookie di profilazione, cookie pubblicitari o cookie analytics tramite il proprio codice. Non è quindi mostrato un banner di consenso cookie.",
-            "Possono essere usati strumenti tecnici strettamente necessari alla navigazione, alla sicurezza, all'inoltro del modulo e alla prevenzione dello spam. Se in futuro saranno introdotti analytics, pixel pubblicitari, mappe incorporate, social widget o altri strumenti non tecnici, questa informativa e il meccanismo di consenso dovranno essere aggiornati prima dell'attivazione.",
+            "Il sito usa strumenti tecnici necessari alla navigazione, alla sicurezza, all'inoltro del modulo e alla prevenzione dello spam. Con il tuo consenso, Google Ads può usare cookie o identificatori pubblicitari per misurare i clic sui link WhatsApp e telefono provenienti dagli annunci.",
+            "Puoi accettare o rifiutare il tracciamento pubblicitario dal banner cookie. Il rifiuto non impedisce la navigazione, la prenotazione o l'uso dei link di contatto.",
           ],
         },
         {

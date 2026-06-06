@@ -155,11 +155,19 @@ export const zhCopy = {
         "谢谢。你的预约请求已发送给 Sina Hotpot。如需紧急修改或快速确认，请直接通过 WhatsApp 联系我们。",
       next: "你也可以继续查看门店地址、营业时间与路线。",
     },
+    cookieConsent: {
+      title: "Cookie 与广告",
+      body:
+        "只有在你同意后，我们才会使用 Google Ads 衡量广告活动带来的 WhatsApp 和电话点击。 ",
+      privacyLink: "阅读隐私政策",
+      decline: "拒绝",
+      accept: "同意",
+    },
     privacy: {
       title: "隐私政策",
       intro:
         "本说明解释 Sina Hotpot 网站如何处理通过网站和预约表单收集的个人数据。",
-      updated: "最后更新：2026 年 6 月 5 日",
+      updated: "最后更新：2026 年 6 月 6 日",
       sections: [
         {
           title: "数据控制者",
@@ -202,6 +210,7 @@ export const zhCopy = {
             "Cloudflare：提供托管、网站分发、安全和技术日志服务。",
             "电子邮件服务商：在 Sina Hotpot 邮箱中接收和保存预约邮件。",
             "hCaptcha 或同类防垃圾工具：可能在表单中启用，用于确认提交来自真人而不是机器人。",
+            "Google Ads：如果你同意，用于衡量广告活动带来的 WhatsApp 和电话链接点击。",
             "Google Maps、Instagram、Facebook 和 WhatsApp 是外部链接。只有当你选择打开这些链接或使用这些平台时，相应服务才会处理数据。",
           ],
         },
@@ -221,8 +230,8 @@ export const zhCopy = {
         {
           title: "Cookie 和跟踪工具",
           paragraphs: [
-            "本网站自身代码不使用画像 cookie、广告 cookie 或分析 cookie。因此网站不显示 cookie 同意横幅。",
-            "网站可能使用严格必要的技术工具，用于浏览、安全、表单转发和防垃圾提交。如果未来加入分析工具、广告像素、嵌入地图、社交组件或其他非技术工具，本说明和同意机制应在启用前更新。",
+            "本网站使用浏览、安全、表单转发和防垃圾提交所必需的技术工具。经你同意后，Google Ads 可能使用广告 cookie 或标识符衡量广告带来的 WhatsApp 和电话链接点击。",
+            "你可以在 cookie 横幅中同意或拒绝广告跟踪。拒绝不会影响浏览、预约或使用联系链接。",
           ],
         },
         {

@@ -106,6 +106,13 @@ export type LocaleCopy = {
     intro: string;
     next: string;
   };
+  cookieConsent: {
+    title: string;
+    body: string;
+    privacyLink: string;
+    decline: string;
+    accept: string;
+  };
   privacy: {
     title: string;
     intro: string;

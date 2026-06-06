@@ -1,0 +1,136 @@
+---
+import type { LocaleCopy } from "../data/copy/types";
+
+interface Props {
+  labels: LocaleCopy["cookieConsent"];
+  privacyHref: string;
+}
+
+const { labels, privacyHref } = Astro.props;
+const bannerClasses = {
+  root: "fixed inset-x-0 bottom-0 z-50 border-t border-white/12 bg-ink-footer/96 px-4 py-4 text-paper shadow-2xl shadow-black/30 backdrop-blur sm:px-6",
+  inner:
+    "mx-auto grid max-w-7xl gap-4 md:grid-cols-[1fr_auto] md:items-center",
+  title: "text-base font-semibold text-white",
+  body: "mt-1 max-w-3xl text-sm leading-6 text-paper-soft/78",
+  privacyLink:
+    "font-semibold text-gold underline decoration-gold/50 underline-offset-4 transition hover:text-gold-soft",
+  actions: "flex flex-col gap-2 sm:flex-row md:justify-end",
+  decline:
+    "focus-ring min-h-11 rounded-md border border-white/18 px-4 py-2 text-sm font-semibold text-paper-soft transition hover:bg-white/10 hover:text-white",
+  accept:
+    "focus-ring min-h-11 rounded-md bg-gold px-4 py-2 text-sm font-semibold text-ink transition hover:bg-gold-soft",
+};
+---
+
+<section
+  class={bannerClasses.root}
+  data-cookie-consent
+  aria-label={labels.title}
+  hidden
+>
+  <div class={bannerClasses.inner}>
+    <div>
+      <h2 class={bannerClasses.title}>{labels.title}</h2>
+      <p class={bannerClasses.body}>
+        {labels.body}
+        <a class={bannerClasses.privacyLink} href={privacyHref}>
+          {labels.privacyLink}
+        </a>
+      </p>
+    </div>
+    <div class={bannerClasses.actions}>
+      <button
+        class={bannerClasses.decline}
+        type="button"
+        data-cookie-consent-decline
+      >
+        {labels.decline}
+      </button>
+      <button
+        class={bannerClasses.accept}
+        type="button"
+        data-cookie-consent-accept
+      >
+        {labels.accept}
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  declare global {
+    interface Window {
+      gtag?: (...args: unknown[]) => void;
+    }
+  }
+
+  const CONSENT_STORAGE_KEY = "sinaGoogleAdsConsent";
+  const ACCEPTED_VALUE = "accepted";
+  const DECLINED_VALUE = "declined";
+  const banner = document.querySelector<HTMLElement>("[data-cookie-consent]");
+  const acceptButton = banner?.querySelector<HTMLButtonElement>(
+    "[data-cookie-consent-accept]",
+  );
+  const declineButton = banner?.querySelector<HTMLButtonElement>(
+    "[data-cookie-consent-decline]",
+  );
+
+  function getConsentChoice(): string | null {
+    try {
+      return window.localStorage.getItem(CONSENT_STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  function storeConsentChoice(choice: string): void {
+    try {
+      window.localStorage.setItem(CONSENT_STORAGE_KEY, choice);
+    } catch {
+      return;
+    }
+  }
+
+  function updateGoogleConsent(granted: boolean): void {
+    window.gtag?.("consent", "update", {
+      ad_storage: granted ? "granted" : "denied",
+      ad_user_data: granted ? "granted" : "denied",
+      ad_personalization: granted ? "granted" : "denied",
+      analytics_storage: "denied",
+    });
+
+    window.dispatchEvent(
+      new CustomEvent("sina:ads-consent", { detail: { granted } }),
+    );
+  }
+
+  function chooseConsent(choice: string): void {
+    const granted = choice === ACCEPTED_VALUE;
+
+    storeConsentChoice(choice);
+    updateGoogleConsent(granted);
+
+    if (banner) {
+      banner.hidden = true;
+    }
+  }
+
+  const currentChoice = getConsentChoice();
+
+  if (currentChoice === ACCEPTED_VALUE) {
+    updateGoogleConsent(true);
+  } else if (currentChoice === DECLINED_VALUE) {
+    updateGoogleConsent(false);
+  } else if (banner) {
+    banner.hidden = false;
+  }
+
+  acceptButton?.addEventListener("click", () => {
+    chooseConsent(ACCEPTED_VALUE);
+  });
+
+  declineButton?.addEventListener("click", () => {
+    chooseConsent(DECLINED_VALUE);
+  });
+</script>
