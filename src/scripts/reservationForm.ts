@@ -12,6 +12,12 @@ type UpdateTimeOptionsOptions = {
   preserveCurrent?: boolean;
 };
 
+declare global {
+  interface Window {
+    sinaTrackReservationSuccessConversion?: () => Promise<void>;
+  }
+}
+
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 function getTodayDateValue(): string {
@@ -135,6 +141,14 @@ async function submitReservation(
   return { response, result };
 }
 
+async function trackReservationSuccessConversion(): Promise<void> {
+  try {
+    await window.sinaTrackReservationSuccessConversion?.();
+  } catch {
+    return;
+  }
+}
+
 function initReservationForm(form: HTMLFormElement): void {
   const status = form.querySelector("[data-reservation-status]");
   const submit = form.querySelector<HTMLButtonElement>(
@@ -187,7 +201,10 @@ function initReservationForm(form: HTMLFormElement): void {
       const { response, result } = await submitReservation(payload);
 
       if (response.ok && result.success) {
-        window.location.href = labels.successUrl ?? "/reservation-success/";
+        const successUrl = labels.successUrl ?? "/reservation-success/";
+
+        await trackReservationSuccessConversion();
+        window.location.href = successUrl;
         return;
       }
 
