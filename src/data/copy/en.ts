@@ -180,7 +180,7 @@ export const enCopy = {
     cookieConsent: {
       title: "Cookies and ads",
       body:
-        "We use Google Ads only with your consent to measure WhatsApp and phone clicks from advertising campaigns. ",
+        "With your consent, Google Ads measures WhatsApp and phone clicks from ads. ",
       privacyLink: "Read the privacy policy",
       decline: "Decline",
       accept: "Accept",

@@ -181,7 +181,7 @@ export const itCopy = {
     cookieConsent: {
       title: "Cookie e annunci",
       body:
-        "Usiamo Google Ads solo con il tuo consenso per misurare i clic su WhatsApp e telefono provenienti dalle campagne pubblicitarie. ",
+        "Con il tuo consenso, Google Ads misura i clic su WhatsApp e telefono dagli annunci. ",
       privacyLink: "Leggi l'informativa privacy",
       decline: "Rifiuta",
       accept: "Accetta",

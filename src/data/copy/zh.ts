@@ -158,7 +158,7 @@ export const zhCopy = {
     cookieConsent: {
       title: "Cookie 与广告",
       body:
-        "只有在你同意后，我们才会使用 Google Ads 衡量广告活动带来的 WhatsApp 和电话点击。 ",
+        "经你同意后，Google Ads 会衡量广告带来的 WhatsApp 和电话点击。 ",
       privacyLink: "阅读隐私政策",
       decline: "拒绝",
       accept: "同意",
