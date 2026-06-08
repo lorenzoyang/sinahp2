@@ -116,9 +116,9 @@ export const itCopy = {
     },
     locations: {
       eyebrow: "Prato e Firenze",
-      title: "Due indirizzi per una serata calda e conviviale",
+      title: "Scegli un ristorante",
       intro:
-        "A Prato ti accogliamo per la cena fino a tardi. A Firenze siamo vicini al centro storico, con servizio a pranzo e a cena. Scegli la sede più comoda e porta tutti intorno alla stessa pentola.",
+        "Seleziona una delle nostre sedi per prenotare, trovare l'indirizzo o contattarci direttamente.",
       daily: "Aperto tutti i giorni",
       phone: "Telefono",
       wechat: "WeChat",

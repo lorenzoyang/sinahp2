@@ -95,9 +95,9 @@ export const zhCopy = {
     },
     locations: {
       eyebrow: "Prato 与 Firenze",
-      title: "两家门店，围起下一次热气腾腾的聚餐",
+      title: "选择门店",
       intro:
-        "Prato 适合晚间与深夜聚餐；Firenze 靠近历史中心，午餐和晚餐都可安排。选择更方便的门店，把同桌的人聚到同一口锅旁。",
+        "选择下方门店进行预约、查看地址或直接与我们联系。",
       daily: "每天营业",
       phone: "电话",
       wechat: "微信",

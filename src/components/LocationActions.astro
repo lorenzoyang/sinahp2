@@ -47,13 +47,23 @@ const wechatButtonClass =
   <CtaLink href={whatsappHref} variant="redSmall" class={actionClass} external>
     {whatsappLabel}
   </CtaLink>
-  <CtaLink
-    href={getPhoneHref(location.phone)}
-    variant="lightOutlineSmall"
-    class={actionClass}
-  >
-    {phoneLabel}
-  </CtaLink>
+  <div class="grid grid-cols-2 gap-3 sm:contents">
+    <CtaLink
+      href={getPhoneHref(location.phone)}
+      variant="lightOutlineSmall"
+      class={actionClass}
+    >
+      {phoneLabel}
+    </CtaLink>
+    <CtaLink
+      href={location.mapHref}
+      variant="lightOutlineSmall"
+      class={actionClass}
+      external
+    >
+      {mapLabel}
+    </CtaLink>
+  </div>
   <button
     class={wechatButtonClass}
     type="button"
@@ -73,12 +83,4 @@ const wechatButtonClass =
       {copyWechatLabel}
     </span>
   </button>
-  <CtaLink
-    href={location.mapHref}
-    variant="lightOutlineSmall"
-    class={actionClass}
-    external
-  >
-    {mapLabel}
-  </CtaLink>
 </div>

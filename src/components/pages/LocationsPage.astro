@@ -164,32 +164,10 @@ const locationCards = locations.map((location) => ({
             <div class="p-5 sm:p-6">
               <p class={cardClasses.label}>{t.locations.daily}</p>
               <h2 class="mt-3 text-3xl font-semibold">{location.city}</h2>
-              <dl class="mt-5 grid gap-4 text-sm sm:grid-cols-2 xl:grid-cols-4">
-                <div>
-                  <dt class="font-semibold text-lacquer">
-                    {t.locations.address}
-                  </dt>
-                  <dd class="mt-1 leading-6">{location.address}</dd>
-                </div>
-                <div>
-                  <dt class="font-semibold text-lacquer">
-                    {t.locations.phone}
-                  </dt>
-                  <dd class="mt-1 leading-6">{location.phone}</dd>
-                </div>
-                <div>
-                  <dt class="font-semibold text-lacquer">
-                    {t.locations.wechat}
-                  </dt>
-                  <dd class="mt-1 leading-6">{location.wechatId}</dd>
-                </div>
-                <div>
-                  <dt class="font-semibold text-lacquer">
-                    {t.locations.hours}
-                  </dt>
-                  <dd class="mt-1 leading-6">{location.hours}</dd>
-                </div>
-              </dl>
+              <p class="mt-2 text-sm">
+                <span class="font-semibold text-lacquer">{t.locations.hours}:</span>
+                <span class="ml-1 text-ink/80">{location.hours}</span>
+              </p>
               <LocationActions
                 location={location}
                 reservationHref={reservationPath}

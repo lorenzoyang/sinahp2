@@ -116,9 +116,9 @@ export const enCopy = {
     },
     locations: {
       eyebrow: "Prato and Firenze",
-      title: "Two restaurants for a warm, shared table",
+      title: "Choose a restaurant",
       intro:
-        "Choose Prato for dinner late into the evening, or Firenze for lunch and dinner near the historic center. Pick the location that fits your plans and gather everyone around the pot.",
+        "Select a location below to make a reservation, find our address, or contact us directly.",
       daily: "Open every day",
       phone: "Phone",
       wechat: "WeChat",

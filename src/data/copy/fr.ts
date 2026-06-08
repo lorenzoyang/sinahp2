@@ -116,9 +116,9 @@ export const frCopy = {
     },
     locations: {
       eyebrow: "Prato et Firenze",
-      title: "Deux adresses pour une table chaude et partagée",
+      title: "Choisissez un restaurant",
       intro:
-        "Choisissez Prato pour dîner tard, ou Firenze pour déjeuner et dîner près du centre historique. Prenez l’adresse la plus pratique et rassemblez tout le monde autour de la marmite.",
+        "Sélectionnez l'un de nos restaurants pour réserver, trouver l'adresse ou nous contacter directement.",
       daily: "Ouvert tous les jours",
       phone: "Téléphone",
       wechat: "WeChat",
