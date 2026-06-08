@@ -34,8 +34,7 @@ const cardClasses = {
     "location-carousel-track scrollbar-hidden focus-ring flex snap-x snap-mandatory overflow-x-auto scroll-smooth",
   slide: "relative aspect-16/10 w-full shrink-0 snap-center overflow-hidden",
   image: sharedMediaClasses.absoluteImage,
-  dots:
-    "absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-ink/72 px-2.5 py-2 shadow-lg shadow-black/20 backdrop-blur",
+  dots: "absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-ink/72 px-2.5 py-2 shadow-lg shadow-black/20 backdrop-blur",
   dot: "focus-ring block h-2.5 w-2.5 cursor-pointer appearance-none rounded-full border-0 bg-paper/72 p-0 ring-1 ring-white/20 transition hover:bg-gold focus-visible:bg-gold",
   label:
     "max-w-full break-words text-xs font-semibold uppercase leading-5 tracking-normal text-lacquer",
@@ -103,7 +102,11 @@ const locationCards = locations.map((location) => ({
     <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-2">
       {
         locationCards.map((location) => (
-          <article class={cardClasses.location}>
+          <article
+            class={cardClasses.location}
+            id={location.id}
+            style="scroll-margin-top: 5rem;"
+          >
             <div
               class={cardClasses.carousel}
               role="region"
@@ -121,53 +124,45 @@ const locationCards = locations.map((location) => ({
                 })}
                 data-location-carousel-track
               >
-                {
-                  location.slides.map((slide) => (
-                    <div id={slide.id} class={cardClasses.slide}>
-                      <Image
-                        src={slide.photo}
-                        alt={slide.alt}
-                        class={cardClasses.image}
-                        width={imageSizes.splitPanel.width}
-                        widths={imageSizes.splitPanel.widths}
-                        sizes={imageSizes.splitPanel.sizes}
-                        loading="lazy"
-                      />
-                    </div>
-                  ))
-                }
+                {location.slides.map((slide) => (
+                  <div id={slide.id} class={cardClasses.slide}>
+                    <Image
+                      src={slide.photo}
+                      alt={slide.alt}
+                      class={cardClasses.image}
+                      width={imageSizes.splitPanel.width}
+                      widths={imageSizes.splitPanel.widths}
+                      sizes={imageSizes.splitPanel.sizes}
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
               </div>
-              {
-                location.slides.length > 1 && (
-                  <nav
-                    class={cardClasses.dots}
-                    aria-label={formatA11yLabel(t.a11y.photoNavigation, {
-                      city: location.city,
-                    })}
-                  >
-                    {
-                      location.slides.map((slide) => (
-                        <button
-                          type="button"
-                          class={cardClasses.dot}
-                          aria-label={slide.label}
-                          aria-controls={slide.id}
-                          aria-current={slide.id.endsWith("-1")
-                            ? "true"
-                            : undefined}
-                          data-location-carousel-dot
-                          data-slide-id={slide.id}
-                        />
-                      ))
-                    }
-                  </nav>
-                )
-              }
+              {location.slides.length > 1 && (
+                <nav
+                  class={cardClasses.dots}
+                  aria-label={formatA11yLabel(t.a11y.photoNavigation, {
+                    city: location.city,
+                  })}
+                >
+                  {location.slides.map((slide) => (
+                    <button
+                      type="button"
+                      class={cardClasses.dot}
+                      aria-label={slide.label}
+                      aria-controls={slide.id}
+                      aria-current={
+                        slide.id.endsWith("-1") ? "true" : undefined
+                      }
+                      data-location-carousel-dot
+                      data-slide-id={slide.id}
+                    />
+                  ))}
+                </nav>
+              )}
             </div>
             <div class="p-5 sm:p-6">
-              <p class={cardClasses.label}>
-                {t.locations.daily}
-              </p>
+              <p class={cardClasses.label}>{t.locations.daily}</p>
               <h2 class="mt-3 text-3xl font-semibold">{location.city}</h2>
               <dl class="mt-5 grid gap-4 text-sm sm:grid-cols-2 xl:grid-cols-4">
                 <div>

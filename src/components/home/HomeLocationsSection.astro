@@ -59,7 +59,10 @@ const cardClasses = {
                 {location.hours}
               </p>
               <div class="mt-5 flex flex-wrap gap-3">
-                <CtaLink href={locationsPath} variant="redSmall">
+                <CtaLink
+                  href={`${locationsPath}#${location.id}`}
+                  variant="redSmall"
+                >
                   {t.cta.viewDetails}
                 </CtaLink>
                 <CtaLink
@@ -80,23 +83,26 @@ const cardClasses = {
         data-reveal
         style="--reveal-delay:120ms"
       >
-        <p class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold-soft">
+        <p
+          class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold-soft"
+        >
           {homeSections.reservation.eyebrow}
         </p>
-        <h3 class="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl">
+        <h3
+          class="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
+        >
           {homeSections.reservation.title}
         </h3>
         <p class="mt-4 text-base leading-7 text-cream-soft/82">
           {homeSections.reservation.intro}
         </p>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+        <div
+          class="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row"
+        >
           <CtaLink href={reservationPath} variant="goldHero">
             {t.cta.reserve}
           </CtaLink>
-          <CtaLink
-            href={locationsPath}
-            variant="whiteOutlineHero"
-          >
+          <CtaLink href={locationsPath} variant="whiteOutlineHero">
             {t.cta.whatsappReservation}
           </CtaLink>
         </div>
