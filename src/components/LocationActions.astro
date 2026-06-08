@@ -2,25 +2,83 @@
 import CtaLink from "./ui/CtaLink.astro";
 import {
   getPhoneHref,
+  getWhatsappHref,
   type RestaurantLocation,
 } from "../data/site";
 
 interface Props {
   location: RestaurantLocation;
-  callLabel: string;
+  reservationHref: string;
+  reservationLabel: string;
+  whatsappLabel: string;
+  phoneLabel: string;
+  wechatLabel: string;
+  copyWechatLabel: string;
+  copiedLabel: string;
   mapLabel: string;
+  whatsappMessage: string;
   spacingClass?: "mt-5" | "mt-6";
 }
 
-const { location, callLabel, mapLabel, spacingClass = "mt-5" } = Astro.props;
-const actionGroupClass = "flex flex-wrap gap-3";
+const {
+  location,
+  reservationHref,
+  reservationLabel,
+  whatsappLabel,
+  phoneLabel,
+  wechatLabel,
+  copyWechatLabel,
+  copiedLabel,
+  mapLabel,
+  whatsappMessage,
+  spacingClass = "mt-5",
+} = Astro.props;
+const whatsappHref = getWhatsappHref(location.phone, whatsappMessage);
+const actionGroupClass = "flex flex-col gap-3 sm:flex-row sm:flex-wrap";
+const actionClass = "w-full min-w-0 justify-center text-center sm:w-auto";
+const wechatButtonClass =
+  "focus-ring inline-flex min-h-11 w-full max-w-full min-w-0 items-center justify-center rounded-md border border-gold px-4 py-2 text-center text-sm font-semibold text-ink transition hover:bg-gold/12 sm:w-auto";
 ---
 
 <div class:list={[spacingClass, actionGroupClass]}>
-  <CtaLink href={getPhoneHref(location.phone)} variant="redSmall">
-    {callLabel}
+  <CtaLink href={reservationHref} variant="goldSmall" class={actionClass}>
+    {reservationLabel}
   </CtaLink>
-  <CtaLink href={location.mapHref} variant="lightOutlineSmall" external>
+  <CtaLink href={whatsappHref} variant="redSmall" class={actionClass} external>
+    {whatsappLabel}
+  </CtaLink>
+  <CtaLink
+    href={getPhoneHref(location.phone)}
+    variant="lightOutlineSmall"
+    class={actionClass}
+  >
+    {phoneLabel}
+  </CtaLink>
+  <button
+    class={wechatButtonClass}
+    type="button"
+    data-wechat-copy={location.wechatId}
+    data-copy-label={copyWechatLabel}
+    data-copied-label={copiedLabel}
+    aria-label={`${copyWechatLabel} ${location.wechatId}`}
+  >
+    <span class="min-w-0 wrap-break-word"
+      >{wechatLabel}: {location.wechatId}</span
+    >
+    <span
+      class="ml-2 shrink-0 text-xs text-lacquer"
+      aria-live="polite"
+      data-wechat-copy-feedback
+    >
+      {copyWechatLabel}
+    </span>
+  </button>
+  <CtaLink
+    href={location.mapHref}
+    variant="lightOutlineSmall"
+    class={actionClass}
+    external
+  >
     {mapLabel}
   </CtaLink>
 </div>

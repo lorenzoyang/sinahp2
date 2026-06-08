@@ -37,6 +37,12 @@ export type LocaleCopy = {
     | "call"
     | "map"
     | "whatsapp"
+    | "whatsappReservation"
+    | "phoneReservation"
+    | "wechatReservation"
+    | "viewDetails"
+    | "copyWechat"
+    | "copied"
     | "backHome"
     | "learnMore"
     | "gallery",
@@ -46,7 +52,6 @@ export type LocaleCopy = {
     eyebrow: string;
     title: string;
     intro: string;
-    proof: readonly string[];
     sections: {
       ritualTitle: string;
       ritualIntro: string;
@@ -72,8 +77,10 @@ export type LocaleCopy = {
     intro: string;
     daily: string;
     phone: string;
+    wechat: string;
     address: string;
     hours: string;
+    whatsappMessage: string;
   };
   gallery: {
     eyebrow: string;

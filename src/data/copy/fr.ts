@@ -31,11 +31,17 @@ export const frCopy = {
       menu: "Menu",
     },
     cta: {
-      reserve: "Réserver une table",
+      reserve: "Réservation en ligne",
       culture: "Comment fonctionne le hotpot",
       call: "Appeler",
       map: "Ouvrir la carte",
       whatsapp: "WhatsApp",
+      whatsappReservation: "Réservation WhatsApp",
+      phoneReservation: "Réservation par téléphone",
+      wechatReservation: "Réservation WeChat",
+      viewDetails: "Voir détails",
+      copyWechat: "Copier l'ID",
+      copied: "Copié",
       backHome: "Retour accueil",
       learnMore: "En savoir plus",
       gallery: "Voir la galerie",
@@ -45,11 +51,6 @@ export const frCopy = {
       title: "鲜入围煮 Sina Hotpot",
       intro:
         "Une marmite fumante au centre de la table, des ingrédients frais cuits au moment et un rythme détendu pour les amis, la famille et les premières visites.",
-      proof: [
-        "Restaurants à Prato et Firenze",
-        "Facile pour une première expérience",
-        "Réservation en ligne ou WhatsApp",
-      ],
       sections: {
         ritualTitle: "Un rituel simple à partager",
         ritualIntro:
@@ -120,8 +121,11 @@ export const frCopy = {
         "Choisissez Prato pour dîner tard, ou Firenze pour déjeuner et dîner près du centre historique. Prenez l’adresse la plus pratique et rassemblez tout le monde autour de la marmite.",
       daily: "Ouvert tous les jours",
       phone: "Téléphone",
+      wechat: "WeChat",
       address: "Adresse",
       hours: "Horaires",
+      whatsappMessage:
+        "Bonjour Sina Hotpot {city}, je voudrais réserver une table.",
     },
     gallery: {
       eyebrow: "Galerie",

@@ -125,6 +125,13 @@ export function getPhoneHref(phone: string): string {
   return `tel:${phone.replaceAll(" ", "")}`;
 }
 
+export function getWhatsappHref(phone: string, message?: string): string {
+  const normalizedPhone = phone.replace(/\D/g, "");
+  const text = message ? `?text=${encodeURIComponent(message)}` : "";
+
+  return `https://wa.me/${normalizedPhone}${text}`;
+}
+
 export function getLocationLabel(location: RestaurantLocation): string {
   return `${location.city} - ${location.address}`;
 }

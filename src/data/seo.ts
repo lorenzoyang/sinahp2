@@ -112,7 +112,7 @@ const pageSeoMeta: Record<Locale, Partial<Record<PageId, SeoMeta>>> = {
     reservation: {
       title: "Reserve Chinese Hotpot in Prato or Firenze | Sina Hotpot",
       description:
-        "Reserve a table at Sina Hotpot in Prato or Firenze: choose location, date, time, guest count, and send your request online.",
+        "Online reservation at Sina Hotpot in Prato or Firenze: choose location, date, time, guest count, and send your request online.",
     },
   },
   es: {

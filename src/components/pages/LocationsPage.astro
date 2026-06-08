@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import LocationActions from "../LocationActions.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
-import { brand, locations, type Locale } from "../../data/site";
+import { brand, getPath, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import { getPageSeoMeta } from "../../data/seo";
 import {
@@ -22,6 +22,7 @@ const { locale } = Astro.props;
 const t = copy[locale];
 const seoMeta = getPageSeoMeta(locale, "locations");
 const socialImage = locations[0]?.image.src;
+const reservationPath = getPath(locale, "reservation");
 const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
   listing: sharedSectionClasses.inkBandTight,
@@ -60,6 +61,9 @@ function formatA11yLabel(
 
 const locationCards = locations.map((location) => ({
   ...location,
+  whatsappMessage: formatA11yLabel(t.locations.whatsappMessage, {
+    city: location.city,
+  }),
   slides: location.gallery.map((photo, index) => {
     const number = index + 1;
     const photoLabel = formatA11yLabel(t.a11y.photoLabel, {
@@ -165,7 +169,7 @@ const locationCards = locations.map((location) => ({
                 {t.locations.daily}
               </p>
               <h2 class="mt-3 text-3xl font-semibold">{location.city}</h2>
-              <dl class="mt-5 grid gap-4 text-sm sm:grid-cols-3">
+              <dl class="mt-5 grid gap-4 text-sm sm:grid-cols-2 xl:grid-cols-4">
                 <div>
                   <dt class="font-semibold text-lacquer">
                     {t.locations.address}
@@ -180,6 +184,12 @@ const locationCards = locations.map((location) => ({
                 </div>
                 <div>
                   <dt class="font-semibold text-lacquer">
+                    {t.locations.wechat}
+                  </dt>
+                  <dd class="mt-1 leading-6">{location.wechatId}</dd>
+                </div>
+                <div>
+                  <dt class="font-semibold text-lacquer">
                     {t.locations.hours}
                   </dt>
                   <dd class="mt-1 leading-6">{location.hours}</dd>
@@ -187,8 +197,15 @@ const locationCards = locations.map((location) => ({
               </dl>
               <LocationActions
                 location={location}
-                callLabel={t.cta.call}
+                reservationHref={reservationPath}
+                reservationLabel={t.cta.reserve}
+                whatsappLabel={t.cta.whatsappReservation}
+                phoneLabel={t.cta.phoneReservation}
+                wechatLabel={t.cta.wechatReservation}
+                copyWechatLabel={t.cta.copyWechat}
+                copiedLabel={t.cta.copied}
                 mapLabel={t.cta.map}
+                whatsappMessage={location.whatsappMessage}
                 spacingClass="mt-6"
               />
             </div>
@@ -201,4 +218,5 @@ const locationCards = locations.map((location) => ({
 
 <script>
   import "../../scripts/locationCarousel";
+  import "../../scripts/wechatCopy";
 </script>

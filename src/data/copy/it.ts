@@ -31,11 +31,17 @@ export const itCopy = {
       menu: "Menù",
     },
     cta: {
-      reserve: "Prenota il tuo tavolo",
+      reserve: "Prenotazione online",
       culture: "Come funziona l’hotpot",
       call: "Chiama",
       map: "Apri mappa",
       whatsapp: "WhatsApp",
+      whatsappReservation: "Prenotazione WhatsApp",
+      phoneReservation: "Prenotazione telefonica",
+      wechatReservation: "Prenotazione WeChat",
+      viewDetails: "Vedi dettagli",
+      copyWechat: "Copia ID",
+      copied: "Copiato",
       backHome: "Torna alla home",
       learnMore: "Leggi di più",
       gallery: "Guarda la galleria",
@@ -45,11 +51,6 @@ export const itCopy = {
       title: "鲜入围煮 Sina Hotpot",
       intro:
         "Una pentola che profuma il tavolo, ingredienti da cuocere al momento e un ritmo conviviale: scegli Prato o Firenze e vivi l’hotpot con naturalezza.",
-      proof: [
-        "Due ristoranti in Toscana",
-        "Perfetto anche alla prima visita",
-        "Prenotazione online o WhatsApp",
-      ],
       sections: {
         ritualTitle: "Un rito semplice, da condividere",
         ritualIntro:
@@ -120,8 +121,10 @@ export const itCopy = {
         "A Prato ti accogliamo per la cena fino a tardi. A Firenze siamo vicini al centro storico, con servizio a pranzo e a cena. Scegli la sede più comoda e porta tutti intorno alla stessa pentola.",
       daily: "Aperto tutti i giorni",
       phone: "Telefono",
+      wechat: "WeChat",
       address: "Indirizzo",
       hours: "Orari",
+      whatsappMessage: "Ciao Sina Hotpot {city}, vorrei prenotare un tavolo.",
     },
     gallery: {
       eyebrow: "Galleria",

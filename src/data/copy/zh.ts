@@ -31,11 +31,17 @@ export const zhCopy = {
       menu: "菜单",
     },
     cta: {
-      reserve: "预约餐位",
+      reserve: "线上预约",
       culture: "火锅怎么吃",
       call: "电话",
       map: "打开地图",
       whatsapp: "WhatsApp",
+      whatsappReservation: "WhatsApp 预约",
+      phoneReservation: "电话预约",
+      wechatReservation: "微信预约",
+      viewDetails: "查看详情",
+      copyWechat: "复制 ID",
+      copied: "已复制",
       backHome: "返回首页",
       learnMore: "继续了解",
       gallery: "浏览图片",
@@ -45,11 +51,6 @@ export const zhCopy = {
       title: "鲜入围煮 Sina Hotpot",
       intro:
         "一口锅在桌中央慢慢升温，香气锅底、新鲜食材和现涮现吃的节奏，让朋友、家人或第一次尝试火锅的人都能自然投入。",
-      proof: [
-        "Prato 与 Firenze 两家门店",
-        "第一次吃也容易上手",
-        "线上或 WhatsApp 预约",
-      ],
       sections: {
         ritualTitle: "简单、热闹、一起分享",
         ritualIntro: "先选锅底，再少量多次下食材，最后用蘸料调出属于自己的味道。",
@@ -99,8 +100,10 @@ export const zhCopy = {
         "Prato 适合晚间与深夜聚餐；Firenze 靠近历史中心，午餐和晚餐都可安排。选择更方便的门店，把同桌的人聚到同一口锅旁。",
       daily: "每天营业",
       phone: "电话",
+      wechat: "微信",
       address: "地址",
       hours: "营业时间",
+      whatsappMessage: "你好，Sina Hotpot {city}，我想预约餐位。",
     },
     gallery: {
       eyebrow: "图片展示",

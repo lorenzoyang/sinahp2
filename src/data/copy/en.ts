@@ -31,11 +31,17 @@ export const enCopy = {
       menu: "Menu",
     },
     cta: {
-      reserve: "Reserve a table",
+      reserve: "Online Reservation",
       culture: "How hotpot works",
       call: "Call",
       map: "Open map",
       whatsapp: "WhatsApp",
+      whatsappReservation: "WhatsApp Reservation",
+      phoneReservation: "Phone Reservation",
+      wechatReservation: "WeChat Reservation",
+      viewDetails: "View details",
+      copyWechat: "Copy ID",
+      copied: "Copied",
       backHome: "Back to home",
       learnMore: "Learn more",
       gallery: "View gallery",
@@ -45,11 +51,6 @@ export const enCopy = {
       title: "鲜入围煮 Sina Hotpot",
       intro:
         "A simmering pot at the center of the table, fresh ingredients cooked in the moment, and a relaxed rhythm for friends, family, and first-time guests.",
-      proof: [
-        "Restaurants in Prato and Firenze",
-        "Easy for a first hotpot",
-        "Reserve online or on WhatsApp",
-      ],
       sections: {
         ritualTitle: "A simple ritual to share",
         ritualIntro:
@@ -120,8 +121,11 @@ export const enCopy = {
         "Choose Prato for dinner late into the evening, or Firenze for lunch and dinner near the historic center. Pick the location that fits your plans and gather everyone around the pot.",
       daily: "Open every day",
       phone: "Phone",
+      wechat: "WeChat",
       address: "Address",
       hours: "Hours",
+      whatsappMessage:
+        "Hello Sina Hotpot {city}, I would like to book a table.",
     },
     gallery: {
       eyebrow: "Gallery",

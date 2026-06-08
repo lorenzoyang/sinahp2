@@ -5,6 +5,7 @@ export {
   brand,
   getLocationLabel,
   getPhoneHref,
+  getWhatsappHref,
   locations,
 } from "./restaurant";
 export type {
