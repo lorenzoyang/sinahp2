@@ -24,9 +24,6 @@ const pageClasses = {
   section: sharedSectionClasses.heroDark,
   heroImageFrame: `${mediaClasses.landscapeFrame} mt-7`,
   heroImage: mediaClasses.absoluteImage,
-  contactGrid: "mt-6 grid gap-3 text-sm text-paper-soft/78",
-  contactLink:
-    "focus-ring min-w-0 break-words rounded-md border border-white/12 px-4 py-3 hover:bg-white/10",
 };
 ---
 
@@ -62,20 +59,7 @@ const pageClasses = {
             loading="lazy"
           />
         </div>
-        <div class={pageClasses.contactGrid}>
-          <a
-            class={pageClasses.contactLink}
-            href={brand.whatsappHref}
-          >
-            {t.cta.whatsapp}: {brand.whatsapp}
-          </a>
-          <a
-            class={pageClasses.contactLink}
-            href={`mailto:${brand.email}`}
-          >
-            {brand.email}
-          </a>
-        </div>
+
       </div>
     </div>
   </section>
