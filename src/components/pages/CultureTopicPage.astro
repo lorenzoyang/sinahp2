@@ -21,6 +21,8 @@ import {
   cardClasses as sharedCardClasses,
   headingClasses,
   imageSizes,
+  layoutClasses as sharedLayoutClasses,
+  mediaClasses as sharedMediaClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
 
@@ -41,6 +43,23 @@ const sectionClasses = {
   inkBand: sharedSectionClasses.inkBand,
   paper: sharedSectionClasses.paper,
 };
+const layoutClasses = {
+  heroContent: `${sharedLayoutClasses.containerNarrow} relative px-4 py-14 sm:px-6 lg:px-8`,
+  highlights: "mt-8 grid gap-3 sm:grid-cols-3",
+  contentGrid: `${sharedLayoutClasses.containerNarrow} grid gap-5`,
+  tipsGrid: `${sharedLayoutClasses.containerNarrow} grid gap-8 lg:grid-cols-[0.8fr_1.2fr]`,
+  tipsList: "grid gap-3",
+  actions: "flex flex-col gap-3 sm:flex-row",
+  relatedGrid: "mt-10 grid gap-4 md:grid-cols-3",
+};
+const mediaClasses = {
+  heroBackdrop: "absolute inset-0",
+  heroImage: `${sharedMediaClasses.absoluteImage} opacity-40`,
+  heroVerticalOverlay:
+    "absolute inset-0 bg-linear-to-b from-ink/50 via-ink/82 to-ink",
+  heroHorizontalOverlay:
+    "absolute inset-0 bg-linear-to-r from-ink/92 via-ink/62 to-transparent",
+};
 const topicHeadingClasses = {
   heroEyebrow:
     "mt-8 max-w-full break-words text-xs font-semibold uppercase leading-5 tracking-normal text-gold",
@@ -53,6 +72,17 @@ const cardClasses = {
   tip: `${sharedCardClasses.dark} px-5 py-4 text-base leading-7 text-paper-soft/82`,
   related: `focus-ring ${sharedCardClasses.darkInteractive} p-5`,
 };
+const textClasses = {
+  backLink:
+    "focus-ring inline-flex rounded-md text-sm font-semibold text-gold hover:text-white",
+  contentSequence: "text-sm font-semibold text-lacquer",
+  contentTitle: "mt-3 text-2xl font-semibold leading-tight",
+  contentBody: "mt-4 text-base leading-8 text-brown-body",
+  relatedKicker:
+    "max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold",
+  relatedTitle: "mt-3 text-xl font-semibold leading-tight text-white",
+  relatedSummary: "mt-3 text-sm leading-6 text-paper-soft/72",
+};
 ---
 
 <SiteLayout
@@ -64,28 +94,22 @@ const cardClasses = {
   socialImage={topic.image.src}
 >
   <section class={sectionClasses.topicHero}>
-    <div class="absolute inset-0">
+    <div class={mediaClasses.heroBackdrop}>
       <Image
         src={topic.image}
         alt=""
-        class="absolute inset-0 h-full w-full object-cover opacity-40"
+        class={mediaClasses.heroImage}
         width={imageSizes.fullBleedHero.width}
         widths={imageSizes.fullBleedHero.widths}
         sizes={imageSizes.fullBleedHero.sizes}
         loading="eager"
       />
-      <div
-        class="absolute inset-0 bg-linear-to-b from-ink/50 via-ink/82 to-ink"
-      >
-      </div>
-      <div
-        class="absolute inset-0 bg-linear-to-r from-ink/92 via-ink/62 to-transparent"
-      >
-      </div>
+      <div class={mediaClasses.heroVerticalOverlay}></div>
+      <div class={mediaClasses.heroHorizontalOverlay}></div>
     </div>
-    <div class="relative mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class={layoutClasses.heroContent}>
       <a
-        class="focus-ring inline-flex rounded-md text-sm font-semibold text-gold hover:text-white"
+        class={textClasses.backLink}
         href={getPath(locale, "culture")}
       >
         {t.nav.culture}
@@ -97,7 +121,7 @@ const cardClasses = {
         eyebrowClass={topicHeadingClasses.heroEyebrow}
         introClass={topicHeadingClasses.heroIntro}
       />
-      <div class="mt-8 grid gap-3 sm:grid-cols-3">
+      <div class={layoutClasses.highlights}>
         {
           content.highlights.map((item) => (
             <p class={cardClasses.highlight}>{item}</p>
@@ -108,17 +132,17 @@ const cardClasses = {
   </section>
 
   <section class={sectionClasses.paper}>
-    <div class="mx-auto grid max-w-5xl gap-5">
+    <div class={layoutClasses.contentGrid}>
       {
         content.sections.map((section, index) => (
           <article class={cardClasses.content}>
-            <p class="text-sm font-semibold text-lacquer">
+            <p class={textClasses.contentSequence}>
               {formatSequenceNumber(index)}
             </p>
-            <h2 class="mt-3 text-2xl font-semibold leading-tight">
+            <h2 class={textClasses.contentTitle}>
               {section.title}
             </h2>
-            <p class="mt-4 text-base leading-8 text-brown-body">
+            <p class={textClasses.contentBody}>
               {section.body}
             </p>
           </article>
@@ -128,7 +152,7 @@ const cardClasses = {
   </section>
 
   <section class={sectionClasses.inkBand}>
-    <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+    <div class={layoutClasses.tipsGrid}>
       <SectionHeader
         eyebrow="Sina Hotpot"
         title={content.tipsTitle}
@@ -136,15 +160,15 @@ const cardClasses = {
         eyebrowClass={headingClasses.darkEyebrow}
         titleClass={headingClasses.darkTitle}
       />
-      <div class="grid gap-3">
+      <div class={layoutClasses.tipsList}>
         {content.tips.map((tip) => <p class={cardClasses.tip}>{tip}</p>)}
       </div>
     </div>
   </section>
 
   <section class={sectionClasses.dark}>
-    <div class="mx-auto max-w-5xl">
-      <div class="flex flex-col gap-3 sm:flex-row">
+    <div class={sharedLayoutClasses.containerNarrow}>
+      <div class={layoutClasses.actions}>
         <CtaLink href={getPath(locale, "reservation")} variant="gold">
           {t.cta.reserve}
         </CtaLink>
@@ -153,20 +177,20 @@ const cardClasses = {
         </CtaLink>
       </div>
 
-      <div class="mt-10 grid gap-4 md:grid-cols-3">
+      <div class={layoutClasses.relatedGrid}>
         {
           relatedTopics.map((related) => (
             <a
               class={cardClasses.related}
               href={getCultureTopicPath(locale, related.id)}
             >
-              <p class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold">
+              <p class={textClasses.relatedKicker}>
                 {related.kicker}
               </p>
-              <h3 class="mt-3 text-xl font-semibold leading-tight text-white">
+              <h3 class={textClasses.relatedTitle}>
                 {related.title}
               </h3>
-              <p class="mt-3 text-sm leading-6 text-paper-soft/72">
+              <p class={textClasses.relatedSummary}>
                 {related.summary}
               </p>
             </a>

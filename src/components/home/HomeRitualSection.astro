@@ -12,7 +12,7 @@ import {
   cardClasses as sharedCardClasses,
   headingClasses,
   imageSizes,
-  layoutClasses,
+  layoutClasses as sharedLayoutClasses,
   mediaClasses as sharedMediaClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
@@ -23,6 +23,15 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = copy[locale];
+const sectionClasses = {
+  root: sharedSectionClasses.dark,
+};
+const layoutClasses = {
+  content: `${sharedLayoutClasses.container} grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center`,
+  body: "contents lg:block",
+  heading: "order-1",
+  steps: "order-3 grid w-full min-w-0 gap-3 sm:grid-cols-2 lg:mt-8",
+};
 const cardClasses = {
   dark: `homepage-card ${sharedCardClasses.dark}`,
 };
@@ -31,14 +40,18 @@ const mediaClasses = {
     "relative aspect-4/3 overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-[0_24px_70px_rgba(0,0,0,0.24)]",
   photo: `homepage-photo ${sharedMediaClasses.absoluteImage}`,
 };
+const textClasses = {
+  intro: "mt-4 max-w-2xl text-base leading-7 text-paper-soft/78",
+  sequence: "text-sm font-semibold text-gold",
+  title: "mt-4 text-lg font-semibold text-white",
+  body: "mt-3 text-sm leading-6 text-paper-soft/74",
+};
 ---
 
-<section class={sharedSectionClasses.dark}>
-  <div
-    class={`${layoutClasses.container} grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center`}
-  >
-    <div class="contents lg:block">
-      <div class="order-1" data-reveal>
+<section class={sectionClasses.root}>
+  <div class={layoutClasses.content}>
+    <div class={layoutClasses.body}>
+      <div class={layoutClasses.heading} data-reveal>
         <SectionHeader
           eyebrow={brand.publicName}
           title={t.home.sections.ritualTitle}
@@ -47,10 +60,10 @@ const mediaClasses = {
           containerClass="max-w-3xl"
           eyebrowClass={headingClasses.darkEyebrow}
           titleClass={headingClasses.darkTitle}
-          introClass="mt-4 max-w-2xl text-base leading-7 text-paper-soft/78"
+          introClass={textClasses.intro}
         />
       </div>
-      <div class="order-3 grid w-full min-w-0 gap-3 sm:grid-cols-2 lg:mt-8">
+      <div class={layoutClasses.steps}>
         {
           t.home.steps.map(([title, text], index) => (
             <article
@@ -58,11 +71,11 @@ const mediaClasses = {
               data-reveal
               style={getStaggerStyle(index, 0, 90)}
             >
-              <span class="text-sm font-semibold text-gold">
+              <span class={textClasses.sequence}>
                 {formatSequenceNumber(index)}
               </span>
-              <h3 class="mt-4 text-lg font-semibold text-white">{title}</h3>
-              <p class="mt-3 text-sm leading-6 text-paper-soft/74">{text}</p>
+              <h3 class={textClasses.title}>{title}</h3>
+              <p class={textClasses.body}>{text}</p>
             </article>
           ))
         }

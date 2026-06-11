@@ -6,6 +6,7 @@ import { brand, getPath, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import {
   cardClasses as sharedCardClasses,
+  layoutClasses as sharedLayoutClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
 
@@ -18,6 +19,10 @@ const t = copy[locale];
 const sectionClasses = {
   hero: sharedSectionClasses.heroDarkSpacious,
   locations: sharedSectionClasses.paperTight,
+};
+const layoutClasses = {
+  locations: `${sharedLayoutClasses.container} grid gap-4 md:grid-cols-2`,
+  actions: "mt-8 flex flex-col gap-3 sm:flex-row",
 };
 const textClasses = {
   intro: "mt-5 text-lg leading-8 text-paper-soft/84",
@@ -44,7 +49,7 @@ const cardClasses = {
       introClass={textClasses.intro}
     >
       <p class={textClasses.next}>{t.success.next}</p>
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div class={layoutClasses.actions}>
         <CtaLink href={getPath(locale, "locations")} variant="gold">
           {t.nav.locations}
         </CtaLink>
@@ -55,10 +60,8 @@ const cardClasses = {
     </SectionHeader>
   </section>
 
-  <section
-    class={sectionClasses.locations}
-  >
-    <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-2">
+  <section class={sectionClasses.locations}>
+    <div class={layoutClasses.locations}>
       {
         locations.map((location) => (
           <article class={cardClasses.location}>

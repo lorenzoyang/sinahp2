@@ -3,13 +3,14 @@ import { Image } from "astro:assets";
 import ReservationForm from "../ReservationForm.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
-import { brand, type Locale } from "../../data/site";
+import { type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
 import { reservationImages } from "../../data/pageImages";
 import { getPageSeoMeta } from "../../data/seo";
 import {
   imageSizes,
-  mediaClasses,
+  layoutClasses as sharedLayoutClasses,
+  mediaClasses as sharedMediaClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
 
@@ -20,10 +21,18 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const seoMeta = getPageSeoMeta(locale, "reservation");
-const pageClasses = {
-  section: sharedSectionClasses.heroDark,
-  heroImageFrame: `${mediaClasses.landscapeFrame} mt-7`,
-  heroImage: mediaClasses.absoluteImage,
+const sectionClasses = {
+  hero: sharedSectionClasses.heroDark,
+};
+const layoutClasses = {
+  content: `${sharedLayoutClasses.container} grid min-w-0 gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start`,
+  intro: "min-w-0 lg:col-start-1 lg:row-start-1",
+  form: "min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1",
+  media: "min-w-0 lg:col-start-1 lg:row-start-2",
+};
+const mediaClasses = {
+  frame: `${sharedMediaClasses.landscapeFrame} mt-7`,
+  image: sharedMediaClasses.absoluteImage,
 };
 ---
 
@@ -34,25 +43,23 @@ const pageClasses = {
   description={seoMeta?.description}
   socialImage={reservationImages.hero.src}
 >
-  <section class={pageClasses.section}>
-    <div
-      class="mx-auto grid max-w-7xl min-w-0 gap-8 lg:grid-cols-[0.85fr_1fr] lg:items-start"
-    >
-      <div class="min-w-0 lg:col-start-1 lg:row-start-1">
+  <section class={sectionClasses.hero}>
+    <div class={layoutClasses.content}>
+      <div class={layoutClasses.intro}>
         <SectionHeader
           eyebrow={t.reservation.eyebrow}
           title={t.reservation.title}
         />
       </div>
-      <div class="min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+      <div class={layoutClasses.form}>
         <ReservationForm locale={locale} />
       </div>
-      <div class="min-w-0 lg:col-start-1 lg:row-start-2">
-        <div class={pageClasses.heroImageFrame}>
+      <div class={layoutClasses.media}>
+        <div class={mediaClasses.frame}>
           <Image
             src={reservationImages.hero}
             alt=""
-            class={pageClasses.heroImage}
+            class={mediaClasses.image}
             width={imageSizes.splitPanel.width}
             widths={imageSizes.splitPanel.widths}
             sizes={imageSizes.splitPanel.sizes}

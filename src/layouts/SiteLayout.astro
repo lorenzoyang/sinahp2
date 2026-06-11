@@ -61,7 +61,7 @@ const hreflangLinks = getHreflangLinks(pageAlternatePaths);
 const socialImageUrl = toAbsoluteUrl(socialImage ?? defaultSocialImageUrl);
 const socialImageAltText = socialImageAlt ?? defaultSocialImageAlt;
 const structuredData = JSON.stringify(getWebsiteStructuredData());
-const layoutClasses = {
+const a11yClasses = {
   skipLink:
     "focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink",
 };
@@ -114,7 +114,7 @@ const layoutClasses = {
     </script>
   </head>
   <body data-page={page}>
-    <a href="#main" class={layoutClasses.skipLink}>
+    <a href="#main" class={a11yClasses.skipLink}>
       {layoutLabels.skipToContent}
     </a>
 
