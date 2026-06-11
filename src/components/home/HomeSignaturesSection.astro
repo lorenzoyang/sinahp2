@@ -13,6 +13,7 @@ import {
   cardClasses as sharedCardClasses,
   headingClasses,
   imageSizes,
+  layoutClasses as sharedLayoutClasses,
   mediaClasses as sharedMediaClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
@@ -24,6 +25,13 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const homeSections = getHomeSections(locale);
+const sectionClasses = {
+  root: sharedSectionClasses.paper,
+};
+const layoutClasses = {
+  content: `${sharedLayoutClasses.container} grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center`,
+  body: "mt-6 grid gap-3",
+};
 const cardClasses = {
   light: `homepage-card ${sharedCardClasses.light}`,
 };
@@ -31,12 +39,15 @@ const mediaClasses = {
   portraitFrame: sharedMediaClasses.portraitFrame,
   photo: `homepage-photo ${sharedMediaClasses.absoluteImage}`,
 };
+const textClasses = {
+  sequence: "text-sm font-semibold text-lacquer",
+  title: "mt-3 text-lg font-semibold",
+  body: "mt-2 text-sm leading-6 text-brown-muted",
+};
 ---
 
-<section class={sharedSectionClasses.paper}>
-  <div
-    class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center"
-  >
+<section class={sectionClasses.root}>
+  <div class={layoutClasses.content}>
     <div class={mediaClasses.portraitFrame} data-reveal>
       <Image
         src={homeImages.premiumSpread}
@@ -58,7 +69,7 @@ const mediaClasses = {
         titleClass={headingClasses.lightTitle}
         introClass={headingClasses.lightIntro}
       />
-      <div class="mt-6 grid gap-3">
+      <div class={layoutClasses.body}>
         {
           homeSections.signatures.items.map(([title, text], index) => (
             <article
@@ -66,11 +77,11 @@ const mediaClasses = {
               data-reveal
               style={getStaggerStyle(index, 140, 80)}
             >
-              <span class="text-sm font-semibold text-lacquer">
+              <span class={textClasses.sequence}>
                 {formatSequenceNumber(index)}
               </span>
-              <h3 class="mt-3 text-lg font-semibold">{title}</h3>
-              <p class="mt-2 text-sm leading-6 text-brown-muted">{text}</p>
+              <h3 class={textClasses.title}>{title}</h3>
+              <p class={textClasses.body}>{text}</p>
             </article>
           ))
         }

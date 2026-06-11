@@ -7,16 +7,20 @@ interface Props {
 }
 
 const { labels, privacyHref } = Astro.props;
-const bannerClasses = {
+const layoutClasses = {
   root: "fixed inset-x-0 bottom-0 z-50 border-t border-white/12 bg-ink-footer/96 px-4 py-3 text-paper shadow-2xl shadow-black/30 backdrop-blur sm:px-6 sm:py-4",
   inner:
     "mx-auto grid max-w-7xl gap-3 md:grid-cols-[1fr_auto] md:items-center md:gap-4",
+  actions: "flex flex-col gap-2 sm:flex-row md:justify-end",
+};
+const textClasses = {
   title: "text-base font-semibold text-white",
   body:
     "mt-1 max-w-3xl text-xs leading-5 text-paper-soft/78 sm:text-sm sm:leading-6",
   privacyLink:
     "font-semibold text-gold underline decoration-gold/50 underline-offset-4 transition hover:text-gold-soft",
-  actions: "flex flex-col gap-2 sm:flex-row md:justify-end",
+};
+const buttonClasses = {
   decline:
     "focus-ring min-h-11 rounded-md border border-white/18 px-4 py-2 text-sm font-semibold text-paper-soft transition hover:bg-white/10 hover:text-white",
   accept:
@@ -25,31 +29,31 @@ const bannerClasses = {
 ---
 
 <section
-  class={bannerClasses.root}
+  class={layoutClasses.root}
   data-cookie-consent
   aria-label={labels.title}
   hidden
 >
-  <div class={bannerClasses.inner}>
+  <div class={layoutClasses.inner}>
     <div>
-      <h2 class={bannerClasses.title}>{labels.title}</h2>
-      <p class={bannerClasses.body}>
+      <h2 class={textClasses.title}>{labels.title}</h2>
+      <p class={textClasses.body}>
         {labels.body}
-        <a class={bannerClasses.privacyLink} href={privacyHref}>
+        <a class={textClasses.privacyLink} href={privacyHref}>
           {labels.privacyLink}
         </a>
       </p>
     </div>
-    <div class={bannerClasses.actions}>
+    <div class={layoutClasses.actions}>
       <button
-        class={bannerClasses.decline}
+        class={buttonClasses.decline}
         type="button"
         data-cookie-consent-decline
       >
         {labels.decline}
       </button>
       <button
-        class={bannerClasses.accept}
+        class={buttonClasses.accept}
         type="button"
         data-cookie-consent-accept
       >

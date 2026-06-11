@@ -12,6 +12,7 @@ import {
   cardClasses as sharedCardClasses,
   headingClasses,
   imageSizes,
+  layoutClasses as sharedLayoutClasses,
   mediaClasses as sharedMediaClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
@@ -29,6 +30,13 @@ const sectionClasses = {
   dark: sharedSectionClasses.dark,
   inkBand: sharedSectionClasses.inkBand,
 };
+const layoutClasses = {
+  heroContent: `${sharedLayoutClasses.container} grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end`,
+  topicGrid: "mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5",
+  blockGrid: `${sharedLayoutClasses.container} grid gap-4 md:grid-cols-3`,
+  etiquetteContent: sharedLayoutClasses.containerText,
+  etiquetteList: "mt-6 grid gap-3",
+};
 const cardClasses = {
   dark: sharedCardClasses.dark,
   topic: `flex min-h-100 flex-col overflow-hidden ${sharedCardClasses.dark}`,
@@ -38,6 +46,16 @@ const mediaClasses = {
   heroFrame: "relative aspect-5/4 overflow-hidden rounded-lg",
   topicFrame: "relative aspect-4/3 w-full overflow-hidden",
   image: sharedMediaClasses.absoluteImage,
+};
+const textClasses = {
+  topicKicker:
+    "max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold",
+  topicTitle: "mt-3 text-xl font-semibold leading-tight text-white",
+  topicSummary: "mt-3 flex-1 text-sm leading-6 text-paper-soft/76",
+  blockTitle: "text-xl font-semibold text-white",
+  blockBody: "mt-3 text-sm leading-6 text-paper-soft/76",
+  etiquetteTitle: "text-3xl font-semibold text-white",
+  etiquetteNumber: "mr-3 font-semibold text-gold",
 };
 ---
 
@@ -49,9 +67,7 @@ const mediaClasses = {
   socialImage={cultureImages.hero.src}
 >
   <section class={sectionClasses.hero}>
-    <div
-      class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"
-    >
+    <div class={layoutClasses.heroContent}>
       <SectionHeader
         eyebrow={t.culture.eyebrow}
         title={t.culture.title}
@@ -92,7 +108,7 @@ const mediaClasses = {
         titleClass={headingClasses.darkTitle}
         introClass={headingClasses.darkIntro}
       />
-      <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+      <div class={layoutClasses.topicGrid}>
         {
           topicCards.map((topic) => (
             <article class={cardClasses.topic}>
@@ -108,13 +124,13 @@ const mediaClasses = {
                 />
               </div>
               <div class="flex flex-1 flex-col p-5">
-                <p class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold">
+                <p class={textClasses.topicKicker}>
                   {topic.kicker}
                 </p>
-                <h3 class="mt-3 text-xl font-semibold leading-tight text-white">
+                <h3 class={textClasses.topicTitle}>
                   {topic.title}
                 </h3>
-                <p class="mt-3 flex-1 text-sm leading-6 text-paper-soft/76">
+                <p class={textClasses.topicSummary}>
                   {topic.summary}
                 </p>
                 <CtaLink
@@ -133,12 +149,12 @@ const mediaClasses = {
   </section>
 
   <section class={sectionClasses.dark}>
-    <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
+    <div class={layoutClasses.blockGrid}>
       {
         t.culture.blocks.map(([topicId, title, text]) => (
           <article class:list={[cardClasses.dark, "p-5"]}>
-            <h2 class="text-xl font-semibold text-white">{title}</h2>
-            <p class="mt-3 text-sm leading-6 text-paper-soft/76">{text}</p>
+            <h2 class={textClasses.blockTitle}>{title}</h2>
+            <p class={textClasses.blockBody}>{text}</p>
             <CtaLink
               href={getCultureTopicPath(locale, topicId)}
               variant="cultureOutline"
@@ -153,15 +169,15 @@ const mediaClasses = {
   </section>
 
   <section class={sectionClasses.dark}>
-    <div class="mx-auto max-w-4xl">
-      <h2 class="text-3xl font-semibold text-white">
+    <div class={layoutClasses.etiquetteContent}>
+      <h2 class={textClasses.etiquetteTitle}>
         {t.culture.etiquetteTitle}
       </h2>
-      <div class="mt-6 grid gap-3">
+      <div class={layoutClasses.etiquetteList}>
         {
           t.culture.etiquette.map((item, index) => (
             <p class={cardClasses.etiquette}>
-              <span class="mr-3 font-semibold text-gold">{index + 1}</span>
+              <span class={textClasses.etiquetteNumber}>{index + 1}</span>
               {item}
             </p>
           ))

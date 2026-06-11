@@ -6,6 +6,7 @@ import { copy } from "../../data/copy";
 import type { PrivacySection } from "../../data/copy/types";
 import {
   cardClasses,
+  layoutClasses as sharedLayoutClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
 
@@ -20,8 +21,11 @@ const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
   content: sharedSectionClasses.paperTight,
 };
-const articleClasses = {
-  privacy: cardClasses.lightPanel,
+const layoutClasses = {
+  content: `${sharedLayoutClasses.containerText} grid gap-4`,
+};
+const cardClass = cardClasses.lightPanel;
+const textClasses = {
   updated: "text-sm font-semibold text-brown-muted",
   body: "text-base leading-7 text-brown-body",
   list: "mt-3 grid list-disc gap-2 pl-5 text-base leading-7 text-brown-body",
@@ -43,25 +47,23 @@ const articleClasses = {
     />
   </section>
 
-  <section
-    class={sectionClasses.content}
-  >
-    <div class="mx-auto grid max-w-4xl gap-4">
-      <p class={articleClasses.updated}>{t.privacy.updated}</p>
+  <section class={sectionClasses.content}>
+    <div class={layoutClasses.content}>
+      <p class={textClasses.updated}>{t.privacy.updated}</p>
       {
         privacySections.map((section) => (
-          <article class={articleClasses.privacy}>
+          <article class={cardClass}>
             <h2 class="text-xl font-semibold">{section.title}</h2>
             <div class="mt-3 grid gap-3">
               {
                 section.paragraphs.map((paragraph) => (
-                  <p class={articleClasses.body}>{paragraph}</p>
+                  <p class={textClasses.body}>{paragraph}</p>
                 ))
               }
             </div>
             {
               section.items && (
-                <ul class={articleClasses.list}>
+                <ul class={textClasses.list}>
                   {
                     section.items.map((item) => (
                       <li>{item}</li>

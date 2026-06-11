@@ -1,0 +1,90 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import {
+  imageSizes,
+  mediaClasses as sharedMediaClasses,
+} from "../../utils/ui";
+
+interface LocationPhotoSlide {
+  id: string;
+  photo: ImageMetadata;
+  alt: string;
+  label: string;
+}
+
+interface Props {
+  slides: readonly LocationPhotoSlide[];
+  regionLabel: string;
+  roleDescription: string;
+  trackLabel: string;
+  navigationLabel: string;
+}
+
+const {
+  slides,
+  regionLabel,
+  roleDescription,
+  trackLabel,
+  navigationLabel,
+} = Astro.props;
+
+const carouselClasses = {
+  root: "relative overflow-hidden bg-ink",
+  track:
+    "location-carousel-track scrollbar-hidden focus-ring flex snap-x snap-mandatory overflow-x-auto scroll-smooth",
+  slide: "relative aspect-16/10 w-full shrink-0 snap-center overflow-hidden",
+  image: sharedMediaClasses.absoluteImage,
+  dots:
+    "absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2 rounded-full bg-ink/72 px-2.5 py-2 shadow-lg shadow-black/20 backdrop-blur",
+  dot: "focus-ring block h-2.5 w-2.5 cursor-pointer appearance-none rounded-full border-0 bg-paper/72 p-0 ring-1 ring-white/20 transition hover:bg-gold focus-visible:bg-gold",
+};
+---
+
+<div
+  class={carouselClasses.root}
+  role="region"
+  aria-label={regionLabel}
+  aria-roledescription={roleDescription}
+  data-location-carousel
+>
+  <div
+    class={carouselClasses.track}
+    tabindex="0"
+    aria-label={trackLabel}
+    data-location-carousel-track
+  >
+    {
+      slides.map((slide) => (
+        <div id={slide.id} class={carouselClasses.slide}>
+          <Image
+            src={slide.photo}
+            alt={slide.alt}
+            class={carouselClasses.image}
+            width={imageSizes.splitPanel.width}
+            widths={imageSizes.splitPanel.widths}
+            sizes={imageSizes.splitPanel.sizes}
+            loading="lazy"
+          />
+        </div>
+      ))
+    }
+  </div>
+  {
+    slides.length > 1 && (
+      <nav class={carouselClasses.dots} aria-label={navigationLabel}>
+        {slides.map((slide) => (
+          <button
+            type="button"
+            class={carouselClasses.dot}
+            aria-label={slide.label}
+            aria-controls={slide.id}
+            aria-current={slide.id.endsWith("-1") ? "true" : undefined}
+            data-location-carousel-dot
+            data-slide-id={slide.id}
+          />
+        ))}
+      </nav>
+    )
+  }
+</div>

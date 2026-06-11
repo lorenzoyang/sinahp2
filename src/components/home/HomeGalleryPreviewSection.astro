@@ -12,7 +12,7 @@ import {
 import {
   headingClasses,
   imageSizes,
-  layoutClasses,
+  layoutClasses as sharedLayoutClasses,
   mediaClasses as sharedMediaClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
@@ -34,21 +34,36 @@ const galleryTotalLabel = getGalleryPhotoCountLabel(
   getGalleryPhotoTotal(visibleGalleryGroups),
   locale,
 );
+const sectionClasses = {
+  root: sharedSectionClasses.inkBand,
+};
+const layoutClasses = {
+  content: `${sharedLayoutClasses.container} grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center`,
+  actions: "mt-6 flex flex-col gap-3 sm:flex-row sm:items-center",
+  galleryLink:
+    "group focus-ring grid min-w-0 gap-3 rounded-lg sm:grid-cols-3 lg:grid-cols-[1.1fr_0.9fr]",
+};
 const cardClasses = {
   galleryTile:
     "homepage-card relative min-h-44 overflow-hidden rounded-lg border border-white/12 bg-ink-panel",
 };
 const mediaClasses = {
   galleryPhoto: sharedMediaClasses.hoverImage,
+  tileOverlay: "absolute inset-0 bg-linear-to-t from-ink/84 via-ink/16 to-transparent",
+};
+const textClasses = {
+  total:
+    "rounded-md border border-white/12 px-4 py-3 text-center text-sm font-semibold text-paper-soft/72 sm:text-left",
+  caption: "absolute inset-x-0 bottom-0 p-4",
+  title: "text-lg font-semibold leading-tight text-white",
+  count: "mt-1 text-sm font-medium text-paper-soft/74",
 };
 ---
 
 {
   galleryPreviewGroups.length > 0 && (
-    <section class={sharedSectionClasses.inkBand}>
-      <div
-        class={`${layoutClasses.container} grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center`}
-      >
+    <section class={sectionClasses.root}>
+      <div class={layoutClasses.content}>
         <div data-reveal>
           <SectionHeader
             eyebrow={t.gallery.eyebrow}
@@ -60,7 +75,7 @@ const mediaClasses = {
             titleClass={headingClasses.darkTitle}
             introClass={headingClasses.darkIntro}
           >
-            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div class={layoutClasses.actions}>
               <CtaLink
                 href={galleryPath}
                 variant="goldHero"
@@ -68,7 +83,7 @@ const mediaClasses = {
               >
                 {t.cta.gallery}
               </CtaLink>
-              <p class="rounded-md border border-white/12 px-4 py-3 text-center text-sm font-semibold text-paper-soft/72 sm:text-left">
+              <p class={textClasses.total}>
                 {galleryTotalLabel}
               </p>
             </div>
@@ -77,7 +92,7 @@ const mediaClasses = {
 
         <a
           href={galleryPath}
-          class="group focus-ring grid min-w-0 gap-3 rounded-lg sm:grid-cols-3 lg:grid-cols-[1.1fr_0.9fr]"
+          class={layoutClasses.galleryLink}
           aria-label={`${t.cta.gallery}: ${t.gallery.title}`}
           data-reveal
           style="--reveal-delay:100ms"
@@ -100,12 +115,12 @@ const mediaClasses = {
                 sizes={imageSizes.card.sizes}
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-linear-to-t from-ink/84 via-ink/16 to-transparent" />
-              <figcaption class="absolute inset-x-0 bottom-0 p-4">
-                <p class="text-lg font-semibold leading-tight text-white">
+              <div class={mediaClasses.tileOverlay} />
+              <figcaption class={textClasses.caption}>
+                <p class={textClasses.title}>
                   {group.label}
                 </p>
-                <p class="mt-1 text-sm font-medium text-paper-soft/74">
+                <p class={textClasses.count}>
                   {group.photoCountLabel}
                 </p>
               </figcaption>

@@ -29,11 +29,13 @@ const locationOptions = locations.map((location) => ({
   label: getLocationLabel(location),
   timeSlots: getReservationTimeSlots(location.reservationTimeRanges),
 }));
-const formClasses = {
+const layoutClasses = {
   root: "grid min-w-0 gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6",
   rowTwo: "grid min-w-0 gap-4 sm:grid-cols-2",
   rowThree: "grid min-w-0 gap-4 sm:grid-cols-3",
   submitRow: "grid min-w-0 gap-3 sm:grid-cols-[1fr_auto] sm:items-center",
+};
+const fieldClasses = {
   label: "grid min-w-0 gap-2 text-sm font-semibold",
   consent: "flex items-start gap-3 text-xs leading-5 text-brown-muted",
   checkbox:
@@ -42,18 +44,23 @@ const formClasses = {
     "focus-ring min-h-12 w-full min-w-0 rounded-md border border-warm-line bg-white px-3 text-base text-ink",
   textarea:
     "focus-ring min-h-28 w-full min-w-0 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink",
+  captcha: "min-h-[78px] overflow-visible",
+};
+const textClasses = {
   finePrint: "text-xs leading-5 text-brown-muted",
   privacyLink:
     "font-semibold text-lacquer underline decoration-gold underline-offset-4",
-  captcha: "min-h-[78px] overflow-visible",
   status: "min-h-5 text-sm font-semibold text-lacquer",
+  hint: "text-xs font-normal leading-5 text-brown-muted",
+};
+const actionClasses = {
   submitButton:
     "focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover",
 };
 ---
 
 <form
-  class={formClasses.root}
+  class={layoutClasses.root}
   data-reservation-form
   data-success-url={successUrl}
   data-sending={t.reservation.sending}
@@ -74,11 +81,11 @@ const formClasses = {
     autocomplete="off"
   />
 
-  <div class={formClasses.rowTwo}>
-    <label class={formClasses.label}>
+  <div class={layoutClasses.rowTwo}>
+    <label class={fieldClasses.label}>
       {t.reservation.labels.name}
       <input
-        class={formClasses.input}
+        class={fieldClasses.input}
         name="name"
         autocomplete="name"
         placeholder={t.reservation.placeholders.name}
@@ -86,10 +93,10 @@ const formClasses = {
       />
     </label>
 
-    <label class={formClasses.label}>
+    <label class={fieldClasses.label}>
       {t.reservation.labels.phone}
       <input
-        class={formClasses.input}
+        class={fieldClasses.input}
         name="phone"
         type="tel"
         autocomplete="tel"
@@ -100,10 +107,10 @@ const formClasses = {
     </label>
   </div>
 
-  <label class={formClasses.label}>
+  <label class={fieldClasses.label}>
     {t.reservation.labels.location}
     <select
-      class={formClasses.input}
+      class={fieldClasses.input}
       name="location"
       required
       data-reservation-location
@@ -124,11 +131,11 @@ const formClasses = {
     </select>
   </label>
 
-  <div class={formClasses.rowThree}>
-    <label class={formClasses.label}>
+  <div class={layoutClasses.rowThree}>
+    <label class={fieldClasses.label}>
       {t.reservation.labels.guests}
       <input
-        class={formClasses.input}
+        class={fieldClasses.input}
         name="guests"
         type="number"
         min="1"
@@ -138,10 +145,10 @@ const formClasses = {
       />
     </label>
 
-    <label class={formClasses.label}>
+    <label class={fieldClasses.label}>
       {t.reservation.labels.date}
       <input
-        class={formClasses.input}
+        class={fieldClasses.input}
         name="date"
         type="date"
         data-reservation-date
@@ -149,13 +156,13 @@ const formClasses = {
       />
     </label>
 
-    <label class={formClasses.label}>
+    <label class={fieldClasses.label}>
       {t.reservation.labels.time}
-      <span class="text-xs font-normal leading-5 text-brown-muted">
+      <span class={textClasses.hint}>
         {t.reservation.hints.time}
       </span>
       <select
-        class={formClasses.input}
+        class={fieldClasses.input}
         name="time"
         required
         data-reservation-time
@@ -168,44 +175,44 @@ const formClasses = {
     </label>
   </div>
 
-  <label class={formClasses.label}>
+  <label class={fieldClasses.label}>
     {t.reservation.labels.message}
     <textarea
-      class={formClasses.textarea}
+      class={fieldClasses.textarea}
       name="message"
       placeholder={t.reservation.placeholders.message}></textarea>
   </label>
 
-  <label class={formClasses.consent}>
+  <label class={fieldClasses.consent}>
     <input
-      class={formClasses.checkbox}
+      class={fieldClasses.checkbox}
       type="checkbox"
       name="privacy_acknowledgement"
       value="accepted"
       required
     />
-    <span>{t.reservation.consentPrefix}<a class={formClasses.privacyLink} href={privacyPath}>{t.reservation.privacyLink}</a>{t.reservation.consentSuffix}</span>
+    <span>{t.reservation.consentPrefix}<a class={textClasses.privacyLink} href={privacyPath}>{t.reservation.privacyLink}</a>{t.reservation.consentSuffix}</span>
   </label>
 
   {
     captchaEnabled && (
       <div
-        class:list={[formClasses.captcha, "h-captcha"]}
+        class:list={[fieldClasses.captcha, "h-captcha"]}
         data-captcha="true"
       >
       </div>
     )
   }
 
-  <div class={formClasses.submitRow}>
+  <div class={layoutClasses.submitRow}>
     <p
-      class={formClasses.status}
+      class={textClasses.status}
       aria-live="polite"
       data-reservation-status
     >
     </p>
     <button
-      class={formClasses.submitButton}
+      class={actionClasses.submitButton}
       type="submit"
       data-reservation-submit
     >
@@ -213,7 +220,7 @@ const formClasses = {
     </button>
   </div>
 
-  <p class={formClasses.finePrint}>
+  <p class={textClasses.finePrint}>
     {brand.publicName} - {brand.email} - {brand.whatsapp}
   </p>
 </form>

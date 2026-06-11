@@ -34,19 +34,25 @@ const localeOptions = locales.map((targetLocale) => ({
 }));
 const currentLocaleOption =
   localeOptions.find((option) => option.locale === locale) ?? localeOptions[0];
-const headerClasses = {
+const layoutClasses = {
   header:
     "sticky top-0 z-40 border-b border-white/10 bg-ink/88 backdrop-blur-xl",
   headerInner:
     "mx-auto flex w-full max-w-7xl min-w-0 items-center justify-between gap-2 px-3 py-3 sm:gap-4 sm:px-6 lg:px-8",
+  headerActions: "flex shrink-0 items-center gap-1.5 sm:gap-2",
+};
+const brandClasses = {
   brandLink:
     "focus-ring flex min-w-0 shrink items-center rounded-md bg-paper px-2 py-1",
   brandLogo:
     "h-9 w-auto max-w-[7.25rem] object-contain min-[360px]:max-w-[8.5rem] sm:h-10 sm:max-w-[13rem]",
+};
+const navClasses = {
   desktopNav: "hidden items-center gap-1 lg:flex",
   navLink:
     "site-nav-link focus-ring rounded-full px-4 py-2 text-sm font-medium transition",
-  headerActions: "flex shrink-0 items-center gap-1.5 sm:gap-2",
+};
+const localeClasses = {
   localeMenu: "site-locale-menu group relative",
   localeTrigger:
     "site-locale-trigger focus-ring flex h-10 min-w-14 list-none items-center justify-center gap-1 rounded-full border px-2.5 text-sm font-semibold transition marker:hidden sm:min-w-19 sm:gap-1.5 sm:px-3",
@@ -58,6 +64,8 @@ const headerClasses = {
     "site-locale-option focus-ring flex min-h-10 items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition",
   localeLabel: "flex-1",
   localeCode: "site-locale-code text-xs uppercase",
+};
+const mobileMenuClasses = {
   mobileMenu: "group relative lg:hidden",
   mobileMenuTrigger:
     "focus-ring flex h-10 w-10 list-none items-center justify-center rounded-full border border-white/15 text-paper transition hover:border-gold marker:hidden",
@@ -70,30 +78,30 @@ const headerClasses = {
 };
 ---
 
-<header class={headerClasses.header}>
-  <div class={headerClasses.headerInner}>
+<header class={layoutClasses.header}>
+  <div class={layoutClasses.headerInner}>
     <a
       href={getPath(locale)}
-      class={headerClasses.brandLink}
+      class={brandClasses.brandLink}
       aria-label={brand.publicName}
     >
       <Image
         src={logoUrl}
         alt=""
-        class={headerClasses.brandLogo}
+        class={brandClasses.brandLogo}
         width="1378"
         height="372"
         loading="eager"
       />
     </a>
 
-    <nav class={headerClasses.desktopNav} aria-label={t.a11y.primaryNavigation}>
+    <nav class={navClasses.desktopNav} aria-label={t.a11y.primaryNavigation}>
       {
         navItems.map((item) => (
           <a
             href={getPath(locale, item.page)}
             aria-current={page === item.page ? "page" : undefined}
-            class={headerClasses.navLink}
+            class={navClasses.navLink}
           >
             {item.label}
           </a>
@@ -101,35 +109,35 @@ const headerClasses = {
       }
     </nav>
 
-    <div class={headerClasses.headerActions}>
-      <details class={headerClasses.localeMenu} data-header-details>
+    <div class={layoutClasses.headerActions}>
+      <details class={localeClasses.localeMenu} data-header-details>
         <summary
-          class={headerClasses.localeTrigger}
+          class={localeClasses.localeTrigger}
           aria-label={t.a11y.languageMenu}
           title={currentLocaleOption.label}
         >
-          <span class={headerClasses.localeFlag} aria-hidden="true">
+          <span class={localeClasses.localeFlag} aria-hidden="true">
             {currentLocaleOption.flag}
           </span>
           <span>{currentLocaleOption.code}</span>
         </summary>
-        <div class={headerClasses.localePanel}>
-          <nav class={headerClasses.localeNav} aria-label={t.a11y.languageMenu}>
+        <div class={localeClasses.localePanel}>
+          <nav class={localeClasses.localeNav} aria-label={t.a11y.languageMenu}>
             {
               localeOptions.map((option) => (
                 <a
                   href={option.path}
                   aria-current={option.locale === locale ? "true" : undefined}
                   aria-label={option.label}
-                  class={headerClasses.localeOption}
+                  class={localeClasses.localeOption}
                 >
-                  <span class={headerClasses.localeFlag} aria-hidden="true">
+                  <span class={localeClasses.localeFlag} aria-hidden="true">
                     {option.flag}
                   </span>
-                  <span class={headerClasses.localeLabel}>
+                  <span class={localeClasses.localeLabel}>
                     {option.label}
                   </span>
-                  <span class={headerClasses.localeCode}>{option.code}</span>
+                  <span class={localeClasses.localeCode}>{option.code}</span>
                 </a>
               ))
             }
@@ -137,27 +145,27 @@ const headerClasses = {
         </div>
       </details>
 
-      <details class={headerClasses.mobileMenu} data-header-details>
+      <details class={mobileMenuClasses.mobileMenu} data-header-details>
         <summary
-          class={headerClasses.mobileMenuTrigger}
+          class={mobileMenuClasses.mobileMenuTrigger}
           aria-label={t.nav.menu}
           title={t.nav.menu}
         >
-          <span class={headerClasses.mobileMenuIcon} aria-hidden="true">
-            <span class={headerClasses.mobileMenuLine}></span>
-            <span class={headerClasses.mobileMenuLine}></span>
-            <span class={headerClasses.mobileMenuLine}></span>
+          <span class={mobileMenuClasses.mobileMenuIcon} aria-hidden="true">
+            <span class={mobileMenuClasses.mobileMenuLine}></span>
+            <span class={mobileMenuClasses.mobileMenuLine}></span>
+            <span class={mobileMenuClasses.mobileMenuLine}></span>
           </span>
         </summary>
-        <div class={headerClasses.mobilePanel}>
-          <nav class={headerClasses.localeNav} aria-label={t.a11y.mobileNavigation}>
+        <div class={mobileMenuClasses.mobilePanel}>
+          <nav class={localeClasses.localeNav} aria-label={t.a11y.mobileNavigation}>
             {
               navItems.map((item) => (
                 <a
                   href={getPath(locale, item.page)}
                   aria-current={page === item.page ? "page" : undefined}
                   aria-label={item.label}
-                  class={headerClasses.mobileNavLink}
+                  class={mobileMenuClasses.mobileNavLink}
                 >
                   {item.label}
                 </a>

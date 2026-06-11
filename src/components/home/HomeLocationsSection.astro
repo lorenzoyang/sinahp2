@@ -8,7 +8,7 @@ import { getStaggerStyle } from "../../utils/presentation";
 import {
   cardClasses as sharedCardClasses,
   headingClasses,
-  layoutClasses,
+  layoutClasses as sharedLayoutClasses,
   sectionClasses as sharedSectionClasses,
 } from "../../utils/ui";
 
@@ -21,15 +21,36 @@ const t = copy[locale];
 const homeSections = getHomeSections(locale);
 const reservationPath = getPath(locale, "reservation");
 const locationsPath = getPath(locale, "locations");
+const sectionClasses = {
+  root: sharedSectionClasses.footerDark,
+};
+const layoutClasses = {
+  content: sharedLayoutClasses.container,
+  cardsAndPanel: "mt-8 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch",
+  locationGrid: "grid gap-4 md:grid-cols-2",
+  cardActions: "mt-auto pt-5 flex flex-wrap gap-3",
+  panelActions: "mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row",
+};
 const cardClasses = {
   location: `homepage-card ${sharedCardClasses.paperPanel} p-5 flex flex-col`,
   reservationPanel:
     "overflow-hidden rounded-lg border border-white/12 bg-linear-to-br from-lacquer via-lacquer-mid to-ink-gradient p-6 sm:p-8 lg:p-10",
 };
+const textClasses = {
+  locationEyebrow:
+    "max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-lacquer",
+  address: "mt-3 text-xl font-semibold sm:text-2xl",
+  hours: "mt-3 text-sm font-medium text-brown-muted",
+  reservationEyebrow:
+    "max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold-soft",
+  reservationTitle:
+    "mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl",
+  reservationIntro: "mt-4 text-base leading-7 text-cream-soft/82",
+};
 ---
 
-<section class={sharedSectionClasses.footerDark}>
-  <div class={layoutClasses.container}>
+<section class={sectionClasses.root}>
+  <div class={layoutClasses.content}>
     <div data-reveal>
       <SectionHeader
         title={t.home.sections.locationsTitle}
@@ -40,8 +61,8 @@ const cardClasses = {
         introClass={headingClasses.darkIntro}
       />
     </div>
-    <div class="mt-8 grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
-      <div class="grid gap-4 md:grid-cols-2">
+    <div class={layoutClasses.cardsAndPanel}>
+      <div class={layoutClasses.locationGrid}>
         {
           locations.map((location, index) => (
             <article
@@ -49,16 +70,16 @@ const cardClasses = {
               data-reveal
               style={getStaggerStyle(index, 0, 100)}
             >
-              <p class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-lacquer">
+              <p class={textClasses.locationEyebrow}>
                 {location.city}
               </p>
-              <h3 class="mt-3 text-xl font-semibold sm:text-2xl">
+              <h3 class={textClasses.address}>
                 {location.address}
               </h3>
-              <p class="mt-3 text-sm font-medium text-brown-muted">
+              <p class={textClasses.hours}>
                 {location.hours}
               </p>
-              <div class="mt-auto pt-5 flex flex-wrap gap-3">
+              <div class={layoutClasses.cardActions}>
                 <CtaLink
                   href={`${locationsPath}#${location.id}`}
                   variant="redSmall"
@@ -83,22 +104,16 @@ const cardClasses = {
         data-reveal
         style="--reveal-delay:120ms"
       >
-        <p
-          class="max-w-full wrap-break-word text-xs font-semibold uppercase leading-5 tracking-normal text-gold-soft"
-        >
+        <p class={textClasses.reservationEyebrow}>
           {homeSections.reservation.eyebrow}
         </p>
-        <h3
-          class="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-        >
+        <h3 class={textClasses.reservationTitle}>
           {homeSections.reservation.title}
         </h3>
-        <p class="mt-4 text-base leading-7 text-cream-soft/82">
+        <p class={textClasses.reservationIntro}>
           {homeSections.reservation.intro}
         </p>
-        <div
-          class="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row"
-        >
+        <div class={layoutClasses.panelActions}>
           <CtaLink href={reservationPath} variant="goldHero">
             {t.cta.reserve}
           </CtaLink>

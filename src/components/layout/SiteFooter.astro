@@ -19,24 +19,32 @@ const devGithub = {
   href: "https://github.com/lorenzoyang",
   label: "lorenzoyang",
 };
-const footerClasses = {
+const layoutClasses = {
   footer: "page-band bg-ink-footer",
   footerInner:
     "mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.2fr_1fr] lg:px-8",
+  linksGrid: "grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2",
+};
+const brandClasses = {
   footerLogoFrame: "inline-flex rounded-md bg-paper px-3 py-2",
   footerLogo: "h-12 w-auto max-w-[14rem] object-contain sm:max-w-[18rem]",
+};
+const textClasses = {
   footerDescription: "mt-4 max-w-xl text-sm leading-6 text-paper-soft/72",
-  footerLinksGrid: "grid gap-4 text-sm text-paper-soft/80 sm:grid-cols-2",
   footerHeading: "font-semibold text-white",
-  footerLink: "focus-ring mt-2 block rounded-sm hover:text-white",
-  footerLinkTight: "focus-ring mt-1 block rounded-sm hover:text-white",
   footerSocialText: "mt-1 text-paper-soft/80",
   footerSocialId: "font-medium text-paper-soft",
+};
+const linkClasses = {
+  footerLink: "focus-ring mt-2 block rounded-sm hover:text-white",
+  footerLinkTight: "focus-ring mt-1 block rounded-sm hover:text-white",
+  footerCreditLink:
+    "focus-ring rounded-sm font-medium text-paper-soft/80 underline decoration-gold/40 underline-offset-4 transition hover:text-white hover:decoration-gold",
+};
+const creditClasses = {
   footerCredit:
     "mx-auto max-w-7xl border-t border-white/10 px-4 py-5 text-xs leading-5 text-paper-soft/56 sm:px-6 lg:px-8",
   footerLegal: "mb-3 grid gap-1 text-paper-soft/64",
-  footerCreditLink:
-    "focus-ring rounded-sm font-medium text-paper-soft/80 underline decoration-gold/40 underline-offset-4 transition hover:text-white hover:decoration-gold",
   footerCreditRow:
     "flex flex-wrap items-center gap-x-3 gap-y-1",
   footerCreditSep:
@@ -44,43 +52,43 @@ const footerClasses = {
 };
 ---
 
-<footer class={footerClasses.footer}>
-  <div class={footerClasses.footerInner}>
+<footer class={layoutClasses.footer}>
+  <div class={layoutClasses.footerInner}>
     <div>
-      <div class={footerClasses.footerLogoFrame}>
+      <div class={brandClasses.footerLogoFrame}>
         <Image
           src={logoUrl}
           alt={brand.publicName}
-          class={footerClasses.footerLogo}
+          class={brandClasses.footerLogo}
           width="1378"
           height="372"
           loading="lazy"
         />
       </div>
-      <p class={footerClasses.footerDescription}>
+      <p class={textClasses.footerDescription}>
         {t.meta.description}
       </p>
     </div>
-    <div class={footerClasses.footerLinksGrid}>
+    <div class={layoutClasses.linksGrid}>
       <div>
-        <p class={footerClasses.footerHeading}>{layoutLabels.contact}</p>
-        <a class={footerClasses.footerLink} href={`mailto:${brand.email}`}>
+        <p class={textClasses.footerHeading}>{layoutLabels.contact}</p>
+        <a class={linkClasses.footerLink} href={`mailto:${brand.email}`}>
           {brand.email}
         </a>
-        <a class={footerClasses.footerLinkTight} href={brand.whatsappHref}>
+        <a class={linkClasses.footerLinkTight} href={brand.whatsappHref}>
           {brand.whatsapp}
         </a>
       </div>
       <div>
-        <p class={footerClasses.footerHeading}>{layoutLabels.social}</p>
+        <p class={textClasses.footerHeading}>{layoutLabels.social}</p>
         <a
-          class={footerClasses.footerLink}
+          class={linkClasses.footerLink}
           href={brand.instagram}
           target="_blank"
           rel="noreferrer">Instagram</a
         >
         <a
-          class={footerClasses.footerLinkTight}
+          class={linkClasses.footerLinkTight}
           href={brand.facebook}
           target="_blank"
           rel="noreferrer">Facebook</a
@@ -88,9 +96,9 @@ const footerClasses = {
         <div class="mt-2">
           {
             locations.map((location) => (
-              <p class={footerClasses.footerSocialText}>
+              <p class={textClasses.footerSocialText}>
                 WeChat {location.city}:{" "}
-                <span class={footerClasses.footerSocialId}>
+                <span class={textClasses.footerSocialId}>
                   {location.wechatId}
                 </span>
               </p>
@@ -98,30 +106,30 @@ const footerClasses = {
           }
         </div>
         <a
-          class={footerClasses.footerLinkTight}
+          class={linkClasses.footerLinkTight}
           href={getPath(locale, "privacy")}>{t.nav.privacy}</a
         >
       </div>
     </div>
   </div>
-  <div class={footerClasses.footerCredit}>
-    <div class={footerClasses.footerLegal} aria-label="Informazioni legali">
+  <div class={creditClasses.footerCredit}>
+    <div class={creditClasses.footerLegal} aria-label="Informazioni legali">
       {brand.legal.footerLines.map((line) => <p>{line}</p>)}
     </div>
-    <div class={footerClasses.footerCreditRow}>
+    <div class={creditClasses.footerCreditRow}>
       <p>
         Powered by{" "}
         <a
-          class={footerClasses.footerCreditLink}
+          class={linkClasses.footerCreditLink}
           href={studioCredit.href}
           target="_blank"
           rel="noreferrer">{studioCredit.label}</a
         >
       </p>
-      <span class={footerClasses.footerCreditSep} aria-hidden="true">·</span>
+      <span class={creditClasses.footerCreditSep} aria-hidden="true">·</span>
       <p>
         <a
-          class={footerClasses.footerCreditLink}
+          class={linkClasses.footerCreditLink}
           href={devGithub.href}
           target="_blank"
           rel="noreferrer"
