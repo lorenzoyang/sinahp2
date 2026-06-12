@@ -55,9 +55,10 @@ const pageAlternatePaths = {
   ...getPageAlternatePaths(page),
   ...alternatePaths,
 };
+const isIndexable = !noindex;
 const canonicalPath = pageAlternatePaths[locale] ?? getPath(locale, page);
 const canonicalUrl = getCanonicalUrl(canonicalPath);
-const hreflangLinks = getHreflangLinks(pageAlternatePaths);
+const hreflangLinks = isIndexable ? getHreflangLinks(pageAlternatePaths) : [];
 const socialImageUrl = toAbsoluteUrl(socialImage ?? defaultSocialImageUrl);
 const socialImageAltText = socialImageAlt ?? defaultSocialImageAlt;
 const structuredData = JSON.stringify(getWebsiteStructuredData());
@@ -78,7 +79,7 @@ const a11yClasses = {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={pageDescription} />
     {noindex && <meta name="robots" content="noindex, follow" />}
-    <link rel="canonical" href={canonicalUrl} />
+    {isIndexable && <link rel="canonical" href={canonicalUrl} />}
     {
       hreflangLinks.map((link) => (
         <link rel="alternate" hreflang={link.hreflang} href={link.href} />

@@ -1,0 +1,48 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import CtaLink from "../components/ui/CtaLink.astro";
+import { brand, getPath } from "../data/site";
+
+const locale = "it";
+const title = "Pagina non trovata | Sina Hotpot";
+const description =
+  "La pagina richiesta non esiste. Torna alla home, scopri i ristoranti Sina Hotpot o prenota un tavolo a Prato o Firenze.";
+const layoutClasses = {
+  section: "bg-ink px-4 py-16 text-paper sm:px-6 lg:px-8",
+  inner: "mx-auto max-w-3xl",
+  actions: "mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap",
+};
+const textClasses = {
+  eyebrow: "text-sm font-semibold uppercase leading-5 tracking-normal text-gold",
+  title: "mt-4 text-4xl font-semibold leading-tight text-white sm:text-5xl",
+  intro: "mt-5 text-lg leading-8 text-paper-soft/80",
+};
+---
+
+<SiteLayout
+  locale={locale}
+  page="home"
+  title={title}
+  description={description}
+  noindex
+>
+  <section class={layoutClasses.section}>
+    <div class={layoutClasses.inner}>
+      <p class={textClasses.eyebrow}>{brand.publicName}</p>
+      <h1 class={textClasses.title}>Pagina non trovata</h1>
+      <p class={textClasses.intro}>
+        La pagina che cerchi non è disponibile. Puoi tornare alla home, vedere
+        le sedi o prenotare direttamente il tuo tavolo.
+      </p>
+      <div class={layoutClasses.actions}>
+        <CtaLink href={getPath(locale)} variant="gold">Home</CtaLink>
+        <CtaLink href={getPath(locale, "locations")} variant="whiteOutlineStatic">
+          Ristoranti
+        </CtaLink>
+        <CtaLink href={getPath(locale, "reservation")} variant="whiteOutlineStatic">
+          Prenota
+        </CtaLink>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
