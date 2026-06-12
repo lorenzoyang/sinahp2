@@ -1,3 +1,5 @@
+import { queryAll, queryOne } from "./dom";
+
 const FEEDBACK_TIMEOUT_MS = 1800;
 
 function fallbackCopy(text: string): boolean {
@@ -11,6 +13,7 @@ function fallbackCopy(text: string): boolean {
   textarea.select();
 
   try {
+    // Keep this fallback for browsers or contexts without Clipboard API access.
     return document.execCommand("copy");
   } catch {
     return false;
@@ -36,7 +39,7 @@ function initWechatCopy(button: HTMLButtonElement): void {
   const value = button.dataset.wechatCopy?.trim();
   const copyLabel = button.dataset.copyLabel ?? "";
   const copiedLabel = button.dataset.copiedLabel ?? copyLabel;
-  const feedback = button.querySelector("[data-wechat-copy-feedback]");
+  const feedback = queryOne("[data-wechat-copy-feedback]", button);
   let resetTimer: number | undefined;
 
   button.addEventListener("click", async () => {
@@ -56,8 +59,6 @@ function initWechatCopy(button: HTMLButtonElement): void {
   });
 }
 
-document
-  .querySelectorAll<HTMLButtonElement>("[data-wechat-copy]")
-  .forEach(initWechatCopy);
+queryAll<HTMLButtonElement>("[data-wechat-copy]").forEach(initWechatCopy);
 
 export {};

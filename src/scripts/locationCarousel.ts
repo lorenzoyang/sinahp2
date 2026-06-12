@@ -1,3 +1,5 @@
+import { queryAll, queryOne } from "./dom";
+
 const dotSelector = "[data-location-carousel-dot]";
 const carouselSelector = "[data-location-carousel]";
 const trackSelector = "[data-location-carousel-track]";
@@ -22,8 +24,8 @@ function scrollToSlide(dot: HTMLButtonElement): void {
 }
 
 function updateActiveDot(carousel: HTMLElement): void {
-  const track = carousel.querySelector<HTMLElement>(trackSelector);
-  const dots = carousel.querySelectorAll<HTMLButtonElement>(dotSelector);
+  const track = queryOne<HTMLElement>(trackSelector, carousel);
+  const dots = queryAll<HTMLButtonElement>(dotSelector, carousel);
 
   if (!track || dots.length === 0) {
     return;
@@ -54,10 +56,10 @@ function updateActiveDot(carousel: HTMLElement): void {
 }
 
 function initCarousel(carousel: HTMLElement): void {
-  const track = carousel.querySelector<HTMLElement>(trackSelector);
+  const track = queryOne<HTMLElement>(trackSelector, carousel);
   let frame = 0;
 
-  carousel.querySelectorAll<HTMLButtonElement>(dotSelector).forEach((dot) => {
+  queryAll<HTMLButtonElement>(dotSelector, carousel).forEach((dot) => {
     dot.addEventListener("click", () => scrollToSlide(dot));
   });
 
@@ -73,8 +75,6 @@ function initCarousel(carousel: HTMLElement): void {
   updateActiveDot(carousel);
 }
 
-document
-  .querySelectorAll<HTMLElement>(carouselSelector)
-  .forEach(initCarousel);
+queryAll<HTMLElement>(carouselSelector).forEach(initCarousel);
 
 export {};

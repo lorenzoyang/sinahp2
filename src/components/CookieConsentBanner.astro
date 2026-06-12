@@ -64,48 +64,5 @@ const buttonClasses = {
 </section>
 
 <script>
-  import {
-    GOOGLE_ADS_CONSENT_ACCEPTED_VALUE,
-    GOOGLE_ADS_CONSENT_DECLINED_VALUE,
-    getStoredGoogleAdsConsentChoice,
-    storeGoogleAdsConsentChoice,
-    updateGoogleAdsConsent,
-    type GoogleAdsConsentChoice,
-  } from "../scripts/googleAdsConsent";
-
-  const banner = document.querySelector<HTMLElement>("[data-cookie-consent]");
-  const acceptButton = banner?.querySelector<HTMLButtonElement>(
-    "[data-cookie-consent-accept]",
-  );
-  const declineButton = banner?.querySelector<HTMLButtonElement>(
-    "[data-cookie-consent-decline]",
-  );
-
-  function chooseConsent(choice: GoogleAdsConsentChoice): void {
-    const granted = choice === GOOGLE_ADS_CONSENT_ACCEPTED_VALUE;
-
-    storeGoogleAdsConsentChoice(choice);
-    updateGoogleAdsConsent(granted);
-
-    if (banner) {
-      banner.hidden = true;
-    }
-  }
-
-  const currentChoice = getStoredGoogleAdsConsentChoice();
-  const hasStoredChoice =
-    currentChoice === GOOGLE_ADS_CONSENT_ACCEPTED_VALUE ||
-    currentChoice === GOOGLE_ADS_CONSENT_DECLINED_VALUE;
-
-  if (!hasStoredChoice && banner) {
-    banner.hidden = false;
-  }
-
-  acceptButton?.addEventListener("click", () => {
-    chooseConsent(GOOGLE_ADS_CONSENT_ACCEPTED_VALUE);
-  });
-
-  declineButton?.addEventListener("click", () => {
-    chooseConsent(GOOGLE_ADS_CONSENT_DECLINED_VALUE);
-  });
+  import "../scripts/cookieConsent";
 </script>

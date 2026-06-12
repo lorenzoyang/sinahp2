@@ -1,3 +1,6 @@
+import { queryAll, queryOne } from "./dom";
+import { parseStringArray } from "../utils/json";
+
 type Web3FormsResponse = {
   success?: boolean;
   message?: string;
@@ -8,7 +11,7 @@ type SubmitReservationResult = {
   response: Response;
   result: Web3FormsResponse;
 };
-type UpdateTimeOptionsOptions = {
+type UpdateTimeOptionsConfig = {
   preserveCurrent?: boolean;
 };
 
@@ -19,6 +22,15 @@ declare global {
 }
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const selectors = {
+  captchaResponse: 'textarea[name="h-captcha-response"]',
+  date: "[data-reservation-date]",
+  form: "[data-reservation-form]",
+  location: "[data-reservation-location]",
+  status: "[data-reservation-status]",
+  submit: "[data-reservation-submit]",
+  time: "[data-reservation-time]",
+} as const;
 
 function getTodayDateValue(): string {
   const today = new Date();
@@ -36,8 +48,9 @@ function getPayload(form: HTMLFormElement): ReservationPayload {
 }
 
 function getCaptchaResponse(form: HTMLFormElement): string {
-  const captchaResponse = form.querySelector<HTMLTextAreaElement>(
-    'textarea[name="h-captcha-response"]',
+  const captchaResponse = queryOne<HTMLTextAreaElement>(
+    selectors.captchaResponse,
+    form,
   );
 
   return captchaResponse?.value.trim() ?? "";
@@ -58,21 +71,7 @@ function getSelectedTimeSlots(
 ): string[] {
   const selectedOption = locationSelect?.selectedOptions[0];
 
-  if (!selectedOption?.dataset.timeSlots) {
-    return [];
-  }
-
-  try {
-    const parsedSlots = JSON.parse(selectedOption.dataset.timeSlots);
-
-    return Array.isArray(parsedSlots)
-      ? parsedSlots.filter((timeSlot): timeSlot is string =>
-          typeof timeSlot === "string",
-        )
-      : [];
-  } catch {
-    return [];
-  }
+  return parseStringArray(selectedOption?.dataset.timeSlots);
 }
 
 function createTimeOption(value: string, label = value): HTMLOptionElement {
@@ -86,7 +85,7 @@ function createTimeOption(value: string, label = value): HTMLOptionElement {
 function updateTimeOptions(
   timeSelect: HTMLSelectElement | null,
   locationSelect: HTMLSelectElement | null,
-  { preserveCurrent = false }: UpdateTimeOptionsOptions = {},
+  { preserveCurrent = false }: UpdateTimeOptionsConfig = {},
 ): void {
   if (!timeSelect) {
     return;
@@ -150,18 +149,13 @@ async function trackReservationSuccessConversion(): Promise<void> {
 }
 
 function initReservationForm(form: HTMLFormElement): void {
-  const status = form.querySelector("[data-reservation-status]");
-  const submit = form.querySelector<HTMLButtonElement>(
-    "[data-reservation-submit]",
-  );
-  const dateInput = form.querySelector<HTMLInputElement>(
-    "[data-reservation-date]",
-  );
-  const timeSelect = form.querySelector<HTMLSelectElement>(
-    "[data-reservation-time]",
-  );
-  const locationSelect = form.querySelector<HTMLSelectElement>(
-    "[data-reservation-location]",
+  const status = queryOne(selectors.status, form);
+  const submit = queryOne<HTMLButtonElement>(selectors.submit, form);
+  const dateInput = queryOne<HTMLInputElement>(selectors.date, form);
+  const timeSelect = queryOne<HTMLSelectElement>(selectors.time, form);
+  const locationSelect = queryOne<HTMLSelectElement>(
+    selectors.location,
+    form,
   );
 
   if (dateInput) {
@@ -217,8 +211,6 @@ function initReservationForm(form: HTMLFormElement): void {
   });
 }
 
-document
-  .querySelectorAll<HTMLFormElement>("[data-reservation-form]")
-  .forEach(initReservationForm);
+queryAll<HTMLFormElement>(selectors.form).forEach(initReservationForm);
 
 export {};

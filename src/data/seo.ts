@@ -3,6 +3,7 @@ import {
   getPath,
   htmlLang,
   locales,
+  mapLocales,
   type Locale,
   type PageId,
 } from "./routing";
@@ -216,9 +217,7 @@ export function getHreflangLinks(paths: AlternatePathMap): HreflangLink[] {
 }
 
 export function getPageAlternatePaths(page: PageId): Record<Locale, string> {
-  return Object.fromEntries(
-    locales.map((locale) => [locale, getPath(locale, page)]),
-  ) as Record<Locale, string>;
+  return mapLocales((locale) => getPath(locale, page));
 }
 
 export function getWebsiteStructuredData(): Record<string, unknown> {
