@@ -19,6 +19,10 @@ function isSitemapVisible(url) {
     return false;
   }
 
+  if (/^\/404(?:\.html)?\/$/.test(normalizedPath)) {
+    return false;
+  }
+
   return !/^\/(?:zh|en|es|fr)\/reservation-success\/$/.test(normalizedPath);
 }
 
