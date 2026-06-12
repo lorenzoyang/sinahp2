@@ -19,9 +19,7 @@ function isSitemapVisible(url) {
     return false;
   }
 
-  return !/^\/(?:zh|en|es|fr)\/reservation-success\/$/.test(
-    normalizedPath,
-  );
+  return !/^\/(?:zh|en|es|fr)\/reservation-success\/$/.test(normalizedPath);
 }
 
 // https://astro.build/config
@@ -102,6 +100,10 @@ export default defineConfig({
       },
     }),
   ],
+
+  // If runtime image optimization is required, the output should be set to "server",
+  // otherwise, image requests cannot be processed correctly.
+  output: "static",
 
   adapter: cloudflare({
     imageService: "compile",
