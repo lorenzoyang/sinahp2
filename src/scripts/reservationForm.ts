@@ -32,13 +32,67 @@ const selectors = {
   time: "[data-reservation-time]",
 } as const;
 
-function getTodayDateValue(): string {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
+function getDateValue(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
+}
+
+function addDays(date: Date, days: number): Date {
+  const nextDate = new Date(date);
+  nextDate.setDate(date.getDate() + days);
+
+  return nextDate;
+}
+
+function timeToMinutes(time: string): number | null {
+  const match = /^(\d{2}):(\d{2})$/.exec(time);
+
+  if (!match) {
+    return null;
+  }
+
+  const [, hours = "0", minutes = "0"] = match;
+  const parsedHours = Number(hours);
+  const parsedMinutes = Number(minutes);
+
+  return parsedHours * 60 + parsedMinutes;
+}
+
+function getCurrentTimeMinutes(now: Date): number {
+  return now.getHours() * 60 + now.getMinutes();
+}
+
+function getMinimumDateValueForTime(time: string, now = new Date()): string {
+  const selectedTimeMinutes = timeToMinutes(time);
+
+  if (selectedTimeMinutes === null) {
+    return getDateValue(now);
+  }
+
+  const selectedTimeHasPassedToday =
+    selectedTimeMinutes <= getCurrentTimeMinutes(now);
+
+  return getDateValue(selectedTimeHasPassedToday ? addDays(now, 1) : now);
+}
+
+function updateDateMinimum(
+  dateInput: HTMLInputElement | null,
+  timeSelect: HTMLSelectElement | null,
+): void {
+  if (!dateInput) {
+    return;
+  }
+
+  const minimumDateValue = getMinimumDateValueForTime(timeSelect?.value ?? "");
+
+  dateInput.min = minimumDateValue;
+
+  if (dateInput.value && dateInput.value < minimumDateValue) {
+    dateInput.value = minimumDateValue;
+  }
 }
 
 function getPayload(form: HTMLFormElement): ReservationPayload {
@@ -158,18 +212,21 @@ function initReservationForm(form: HTMLFormElement): void {
     form,
   );
 
-  if (dateInput) {
-    dateInput.min = getTodayDateValue();
-  }
-
   updateTimeOptions(timeSelect, locationSelect, { preserveCurrent: true });
+  updateDateMinimum(dateInput, timeSelect);
 
   locationSelect?.addEventListener("change", () => {
     updateTimeOptions(timeSelect, locationSelect);
+    updateDateMinimum(dateInput, timeSelect);
+  });
+
+  timeSelect?.addEventListener("change", () => {
+    updateDateMinimum(dateInput, timeSelect);
   });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    updateDateMinimum(dateInput, timeSelect);
 
     if (!form.reportValidity() || !submit || !status) {
       return;
