@@ -1,7 +1,7 @@
+import { queryAll } from "./dom";
+
 const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-const revealItems = Array.from(
-  document.querySelectorAll<HTMLElement>("[data-reveal]"),
-);
+const revealItems = queryAll<HTMLElement>("[data-reveal]");
 
 if (mediaQuery.matches) {
   revealItems.forEach((item) => item.classList.add("is-visible"));

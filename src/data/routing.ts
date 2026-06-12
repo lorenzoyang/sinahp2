@@ -158,7 +158,7 @@ function getStaticPageSlug(page: PageId): string | undefined {
   return page === "home" ? undefined : pageSlugs[page];
 }
 
-function mapLocales<TValue>(
+export function mapLocales<TValue>(
   mapper: (locale: Locale) => TValue,
 ): Record<Locale, TValue> {
   return Object.fromEntries(

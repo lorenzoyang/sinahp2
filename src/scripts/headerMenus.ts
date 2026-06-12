@@ -1,6 +1,6 @@
-const headerDetails = document.querySelectorAll<HTMLDetailsElement>(
-  "[data-header-details]",
-);
+import { queryAll, queryOne } from "./dom";
+
+const headerDetails = queryAll<HTMLDetailsElement>("[data-header-details]");
 
 function closeDetails(details: HTMLDetailsElement): void {
   details.open = false;
@@ -45,7 +45,7 @@ document.addEventListener("keydown", (event) => {
     }
 
     closeDetails(details);
-    details.querySelector("summary")?.focus();
+    queryOne<HTMLElement>("summary", details)?.focus();
   });
 });
 
