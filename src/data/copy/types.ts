@@ -87,6 +87,15 @@ export type LocaleCopy = {
     title: string;
     intro: string;
     categories: Record<GalleryCategoryId, string>;
+    video: {
+      eyebrow: string;
+      title: string;
+      intro: string;
+      play: string;
+      pause: string;
+      mute: string;
+      unmute: string;
+    };
   };
   reservation: {
     eyebrow: string;

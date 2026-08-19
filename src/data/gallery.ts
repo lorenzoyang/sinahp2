@@ -1,5 +1,6 @@
 import type { ImageMetadata } from "astro";
 import galleryHeroImage from "../assets/images/gallery/gallery-hero.jpg";
+import galleryVideoPosterImage from "../assets/images/gallery/gallery-video-poster.jpg";
 import { imagesFromGlob, type ImageModule } from "./imageAssets";
 import type { Locale } from "./routing";
 
@@ -23,6 +24,21 @@ export type VisibleGalleryGroup = GalleryGroup & {
 };
 
 export const galleryHeroPhoto = galleryHeroImage;
+
+/**
+ * The gallery reel is a vertical 9:16 clip served straight from `public/`:
+ * Astro's image pipeline does not process video, so it is not a `src/assets`
+ * import. `poster` is, so that the still frame is optimized at build time.
+ */
+export const galleryVideo = {
+  src: "/video/sinahp-video.mp4",
+  mimeType: "video/mp4",
+  poster: galleryVideoPosterImage,
+  width: 720,
+  height: 1280,
+  durationSeconds: 39,
+  uploadDate: "2026-08-19",
+} as const;
 
 const photoCountLabels = {
   it: ["foto", "foto"],

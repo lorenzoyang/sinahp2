@@ -150,6 +150,22 @@ textarea {
   background: var(--gold);
 }
 
+/* Gallery video: the control icons follow the state set by galleryVideo.ts */
+[data-gallery-video] [data-video-icon="pause"],
+[data-gallery-video] [data-video-icon="sound-on"] {
+  display: none;
+}
+
+[data-gallery-video][data-playing="true"] [data-video-icon="play"],
+[data-gallery-video][data-muted="false"] [data-video-icon="sound-off"] {
+  display: none;
+}
+
+[data-gallery-video][data-playing="true"] [data-video-icon="pause"],
+[data-gallery-video][data-muted="false"] [data-video-icon="sound-on"] {
+  display: block;
+}
+
 /* Header navigation */
 .site-nav-link {
   background: transparent;

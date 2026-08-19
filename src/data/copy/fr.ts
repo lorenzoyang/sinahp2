@@ -138,6 +138,16 @@ export const frCopy = {
         refreshments: "Desserts et boissons",
         chefs: "Chefs et ingrédients",
       },
+      video: {
+        eyebrow: "Vidéo",
+        title: "La table de hotpot en mouvement",
+        intro:
+          "Un tour rapide de la table : bouillons qui frémissent, bœuf persillé en fines tranches, légumes frais et plats qui arrivent les uns après les autres.",
+        play: "Lire la vidéo",
+        pause: "Mettre la vidéo en pause",
+        mute: "Couper le son",
+        unmute: "Activer le son",
+      },
     },
     reservation: {
       eyebrow: "Réservation",

@@ -34,6 +34,7 @@ interface Props {
   noindex?: boolean;
   socialImage?: string;
   socialImageAlt?: string;
+  extraStructuredData?: readonly Record<string, unknown>[];
 }
 
 const {
@@ -45,6 +46,7 @@ const {
   noindex = false,
   socialImage,
   socialImageAlt,
+  extraStructuredData = [],
 } = Astro.props;
 const t = copy[locale];
 const layoutLabels = t.layout;
@@ -62,6 +64,9 @@ const hreflangLinks = isIndexable ? getHreflangLinks(pageAlternatePaths) : [];
 const socialImageUrl = toAbsoluteUrl(socialImage ?? defaultSocialImageUrl);
 const socialImageAltText = socialImageAlt ?? defaultSocialImageAlt;
 const structuredData = JSON.stringify(getWebsiteStructuredData());
+const extraStructuredDataJson = extraStructuredData.map((entry) =>
+  JSON.stringify(entry),
+);
 const a11yClasses = {
   skipLink:
     "focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink",
@@ -110,6 +115,11 @@ const a11yClasses = {
     <title>{pageTitle}</title>
     <GoogleAdsTag />
     <script type="application/ld+json" is:inline set:html={structuredData} />
+    {
+      extraStructuredDataJson.map((entry) => (
+        <script type="application/ld+json" is:inline set:html={entry} />
+      ))
+    }
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>

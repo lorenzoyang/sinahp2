@@ -220,6 +220,41 @@ export function getPageAlternatePaths(page: PageId): Record<Locale, string> {
   return mapLocales((locale) => getPath(locale, page));
 }
 
+export type VideoStructuredDataOptions = {
+  locale: Locale;
+  name: string;
+  description: string;
+  contentUrl: string;
+  thumbnailUrl: string;
+  uploadDate: string;
+  durationSeconds: number;
+  pagePath: string;
+};
+
+export function getVideoStructuredData(
+  options: VideoStructuredDataOptions,
+): Record<string, unknown> {
+  const pageUrl = toAbsoluteUrl(options.pagePath);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${pageUrl}#video`,
+    name: options.name,
+    description: options.description,
+    contentUrl: toAbsoluteUrl(options.contentUrl),
+    thumbnailUrl: [toAbsoluteUrl(options.thumbnailUrl)],
+    uploadDate: options.uploadDate,
+    duration: `PT${Math.round(options.durationSeconds)}S`,
+    isFamilyFriendly: true,
+    inLanguage: htmlLang[options.locale],
+    mainEntityOfPage: pageUrl,
+    publisher: {
+      "@id": `${siteOrigin}/#organization`,
+    },
+  };
+}
+
 export function getWebsiteStructuredData(): Record<string, unknown> {
   const reservationUrl = `${siteOrigin}${getPath(defaultLocale, "reservation")}`;
 

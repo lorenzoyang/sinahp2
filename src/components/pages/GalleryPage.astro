@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { getImage, Image } from "astro:assets";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
@@ -11,11 +11,12 @@ import {
 import { copy } from "../../data/copy";
 import {
   galleryHeroPhoto,
+  galleryVideo,
   getGalleryPhotoCountLabel,
   getGalleryPhotoTotal,
   getVisibleGalleryGroups,
 } from "../../data/gallery";
-import { getPageSeoMeta } from "../../data/seo";
+import { getPageSeoMeta, getVideoStructuredData } from "../../data/seo";
 import {
   headingClasses,
   imageSizes,
@@ -41,6 +42,23 @@ const visibleGroups = getVisibleGalleryGroups().map((group) => ({
 const heroPhoto = galleryHeroPhoto;
 const galleryTotal = getGalleryPhotoTotal(visibleGroups);
 const galleryTotalLabel = getGalleryPhotoCountLabel(galleryTotal, locale);
+const videoCopy = t.gallery.video;
+const videoPoster = await getImage({
+  src: galleryVideo.poster,
+  width: galleryVideo.width,
+  height: galleryVideo.height,
+  format: "webp",
+});
+const videoStructuredData = getVideoStructuredData({
+  locale,
+  name: videoCopy.title,
+  description: videoCopy.intro,
+  contentUrl: galleryVideo.src,
+  thumbnailUrl: videoPoster.src,
+  uploadDate: galleryVideo.uploadDate,
+  durationSeconds: galleryVideo.durationSeconds,
+  pagePath: getPath(locale, "gallery"),
+});
 const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
   bandDark: sharedSectionClasses.darkTight,
@@ -54,6 +72,11 @@ const layoutClasses = {
   sectionHeader:
     "flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between",
   photoGrid: "mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+  videoContent:
+    `${sharedLayoutClasses.container} grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center`,
+  videoActions: "mt-7 flex flex-col gap-3 sm:flex-row",
+  videoControls:
+    "absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-4",
 };
 const mediaClasses = {
   heroFrame:
@@ -67,6 +90,15 @@ const mediaClasses = {
     "absolute inset-0 bg-linear-to-t from-ink/64 via-transparent to-transparent",
   cardOverlay:
     "absolute inset-0 bg-linear-to-t from-ink/82 via-ink/18 to-transparent",
+  videoFrame:
+    "relative mx-auto aspect-9/16 w-full min-w-0 max-w-[320px] overflow-hidden rounded-lg border border-white/12 bg-ink-panel shadow-2xl shadow-black/20",
+  video: "absolute inset-0 h-full w-full object-cover",
+  videoOverlay:
+    "pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-ink/78 to-transparent",
+};
+const buttonClasses = {
+  videoControl:
+    "focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/16 bg-black/45 text-paper-soft backdrop-blur transition hover:border-gold hover:text-gold",
 };
 const textClasses = {
   totalBadge:
@@ -84,6 +116,7 @@ const textClasses = {
   title={seoMeta?.title}
   description={seoMeta?.description}
   socialImage={heroPhoto.src}
+  extraStructuredData={[videoStructuredData]}
 >
   <section class={sectionClasses.hero}>
     <div class={sharedLayoutClasses.container}>
@@ -159,13 +192,134 @@ const textClasses = {
     </div>
   </section>
 
+  <section class={sectionClasses.bandInk}>
+    <div class={layoutClasses.videoContent}>
+      <SectionHeader
+        eyebrow={videoCopy.eyebrow}
+        title={videoCopy.title}
+        intro={videoCopy.intro}
+        headingTag="h2"
+        containerClass="max-w-3xl"
+        eyebrowClass={headingClasses.darkEyebrow}
+        titleClass={headingClasses.darkTitle}
+        introClass={headingClasses.darkIntro}
+      >
+        <div class={layoutClasses.videoActions}>
+          <CtaLink href={getPath(locale, "reservation")} variant="gold">
+            {t.cta.reserve}
+          </CtaLink>
+        </div>
+      </SectionHeader>
+
+      <figure
+        class={mediaClasses.videoFrame}
+        data-gallery-video
+        data-playing="false"
+        data-muted="true"
+        data-play-label={videoCopy.play}
+        data-pause-label={videoCopy.pause}
+        data-mute-label={videoCopy.mute}
+        data-unmute-label={videoCopy.unmute}
+      >
+        <video
+          class={mediaClasses.video}
+          data-gallery-video-player
+          src={galleryVideo.src}
+          poster={videoPoster.src}
+          width={galleryVideo.width}
+          height={galleryVideo.height}
+          aria-label={`${brand.publicName} ${videoCopy.title}`}
+          preload="metadata"
+          playsinline
+          muted
+          loop></video>
+        <div class={mediaClasses.videoOverlay}></div>
+
+        <div class={layoutClasses.videoControls}>
+          <button
+            type="button"
+            class={buttonClasses.videoControl}
+            data-gallery-video-toggle
+            aria-label={videoCopy.play}
+            title={videoCopy.play}
+          >
+            <svg
+              data-video-icon="play"
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M8.2 5.1 19 12 8.2 18.9z"></path>
+            </svg>
+            <svg
+              data-video-icon="pause"
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M6.6 5h3.5v14H6.6zM13.9 5h3.5v14h-3.5z"></path>
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class={buttonClasses.videoControl}
+            data-gallery-video-sound
+            aria-pressed="false"
+            aria-label={videoCopy.unmute}
+            title={videoCopy.unmute}
+          >
+            <svg
+              data-video-icon="sound-off"
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M11 4.6 6.7 8.3H3.4v7.4h3.3L11 19.4z"
+                fill="currentColor"></path>
+              <path
+                d="m15.4 9.4 4.4 5.2M19.8 9.4l-4.4 5.2"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"></path>
+            </svg>
+            <svg
+              data-video-icon="sound-on"
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M11 4.6 6.7 8.3H3.4v7.4h3.3L11 19.4z"
+                fill="currentColor"></path>
+              <path
+                d="M14.8 9.1c1.2 1.7 1.2 4.1 0 5.8M17.5 7.2c2.2 2.9 2.2 6.7 0 9.6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"></path>
+            </svg>
+          </button>
+        </div>
+      </figure>
+    </div>
+  </section>
+
   {
     visibleGroups.map((group, groupIndex) => (
       <section
         id={group.sectionId}
         class={groupIndex % 2 === 0
-          ? sectionClasses.bandInk
-          : sectionClasses.bandDark}
+          ? sectionClasses.bandDark
+          : sectionClasses.bandInk}
       >
         <div class={layoutClasses.sectionContent}>
           <div class={layoutClasses.sectionHeader}>
@@ -202,4 +356,8 @@ const textClasses = {
       </section>
     ))
   }
+
+  <script>
+    import "../../scripts/galleryVideo";
+  </script>
 </SiteLayout>

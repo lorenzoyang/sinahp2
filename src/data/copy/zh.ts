@@ -116,6 +116,16 @@ export const zhCopy = {
         refreshments: "甜品与饮品",
         chefs: "厨师与食材",
       },
+      video: {
+        eyebrow: "视频",
+        title: "火锅上桌的那一刻",
+        intro:
+          "翻滚的锅底、现切雪花肥牛、新鲜时蔑，以及一道道上桌的菜品：用一段短片提前感受餐桌的热气。",
+        play: "播放视频",
+        pause: "暂停视频",
+        mute: "关闭声音",
+        unmute: "打开声音",
+      },
     },
     reservation: {
       eyebrow: "预约",

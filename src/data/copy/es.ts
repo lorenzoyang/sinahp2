@@ -138,6 +138,16 @@ export const esCopy = {
         refreshments: "Postres y bebidas",
         chefs: "Chefs e ingredientes",
       },
+      video: {
+        eyebrow: "Vídeo",
+        title: "La mesa de hotpot en movimiento",
+        intro:
+          "Un recorrido rápido por la mesa: caldos hirviendo, ternera marmoleada en lonchas finas, verduras frescas y platos que llegan uno tras otro.",
+        play: "Reproducir el vídeo",
+        pause: "Pausar el vídeo",
+        mute: "Silenciar el vídeo",
+        unmute: "Activar el sonido",
+      },
     },
     reservation: {
       eyebrow: "Reserva",

@@ -137,6 +137,16 @@ export const itCopy = {
         refreshments: "Dolci e bevande",
         chefs: "Chef e ingredienti",
       },
+      video: {
+        eyebrow: "Video",
+        title: "Il tavolo hotpot in movimento",
+        intro:
+          "Un giro veloce tra brodi che sobbollono, carne marmorizzata tagliata sottile, verdure fresche e i piatti che arrivano uno dopo l’altro.",
+        play: "Riproduci il video",
+        pause: "Metti in pausa il video",
+        mute: "Disattiva l’audio",
+        unmute: "Attiva l’audio",
+      },
     },
     reservation: {
       eyebrow: "Prenotazione",

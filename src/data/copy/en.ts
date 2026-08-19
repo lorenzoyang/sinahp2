@@ -138,6 +138,16 @@ export const enCopy = {
         refreshments: "Refreshments",
         chefs: "Chefs and ingredients",
       },
+      video: {
+        eyebrow: "Video",
+        title: "The hotpot table in motion",
+        intro:
+          "A quick pass around the table: simmering broths, thin-sliced marbled beef, fresh vegetables, and dishes arriving one after another.",
+        play: "Play the video",
+        pause: "Pause the video",
+        mute: "Turn the sound off",
+        unmute: "Turn the sound on",
+      },
     },
     reservation: {
       eyebrow: "Reservation",
