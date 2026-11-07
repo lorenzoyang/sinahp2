@@ -107,5 +107,32 @@ server-side form handling instead of posting to Web3Forms from the browser.
 Built by [@lorenzoyang](https://github.com/lorenzoyang), with Codex and Claude Code as coding
 assistants.
 
-The Sina Hotpot brand, photos, and restaurant copy belong to Ristorante Sina Hotpot S.r.l. The
-code is public as a portfolio example.
+## License
+
+Copyright (C) 2026 lorenzoyang and contributors.
+
+The project's source code is licensed under the
+[GNU Affero General Public License, version 3 only (AGPL-3.0-only)](LICENSE).
+You may use, modify, and redistribute it, including commercially, under that license.
+It is provided without any warranty; see [LICENSE](LICENSE) for the full terms.
+
+- If you redistribute this code or a covered modified version, retain the copyright and
+  license notices, license the covered work under AGPL-3.0, and provide the corresponding
+  source as required by the license. You cannot distribute a covered derivative as
+  proprietary, closed-source software.
+- If you modify this project and let users interact with your version over a network
+  (for example, by deploying a website), you must prominently offer those users free access
+  to the complete corresponding source of that version, including your changes. A visible
+  source-code link to the deployed version's repository or source archive is a practical way
+  to provide this access; a link to the unchanged upstream project is insufficient if you
+  have made changes.
+- Merely visiting a website built with this project does not require visitors to open-source
+  their own projects. Private use and modification without distribution or remote user
+  interaction do not require publishing your changes.
+
+The Sina Hotpot brand, logos, photos, and restaurant copy belong to Ristorante Sina Hotpot
+S.r.l. and are not covered by the source-code license. No permission to reuse those assets
+or use the restaurant's trademarks is granted here; obtain permission or replace them when
+adapting this project. Third-party dependencies remain under their respective licenses.
+
+This summary explains the intent; the full license text governs the source code.
