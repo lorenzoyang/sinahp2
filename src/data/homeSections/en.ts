@@ -20,9 +20,8 @@ export const enHomeSections = {
       ],
     },
     reservation: {
-      eyebrow: "Reservation",
-      title: "Bring everyone around the pot",
-      intro:
-        "Send a request online or message us on WhatsApp for quick confirmation and last-minute changes.",
+      "eyebrow": "Reservation demo",
+      "title": "Try a simulated reservation",
+      "intro": "Explore the original form with fictional details. This simulation runs only in your browser and sends no request to the restaurant."
     },
   } as const satisfies HomeSectionContent;

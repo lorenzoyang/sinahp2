@@ -20,9 +20,8 @@ export const itHomeSections = {
       ],
     },
     reservation: {
-      eyebrow: "Prenotazione",
-      title: "Porta tutti intorno alla pentola",
-      intro:
-        "Invia la richiesta online oppure scrivici su WhatsApp per conferme rapide e modifiche dell’ultimo minuto.",
+      "eyebrow": "Simulazione di prenotazione",
+      "title": "Prova la prenotazione dimostrativa",
+      "intro": "Esplora il modulo originale con dati inventati. La simulazione avviene solo nel browser: non viene inviata alcuna richiesta al ristorante."
     },
   } as const satisfies HomeSectionContent;

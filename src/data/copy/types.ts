@@ -11,6 +11,16 @@ export type PrivacySection = {
 };
 
 export type LocaleCopy = {
+  archive: {
+    label: string;
+    notice: string;
+    currentWebsite: string;
+    sourceCode: string;
+    historicalContact: string;
+    formNotice: string;
+    javascriptRequired: string;
+    dataNotice: string;
+  };
   meta: {
     homeTitle: string;
     description: string;
@@ -34,15 +44,8 @@ export type LocaleCopy = {
   cta: Record<
     | "reserve"
     | "culture"
-    | "call"
     | "map"
-    | "whatsapp"
-    | "whatsappReservation"
-    | "phoneReservation"
-    | "wechatReservation"
     | "viewDetails"
-    | "copyWechat"
-    | "copied"
     | "backHome"
     | "learnMore"
     | "gallery",
@@ -80,7 +83,6 @@ export type LocaleCopy = {
     wechat: string;
     address: string;
     hours: string;
-    whatsappMessage: string;
   };
   gallery: {
     eyebrow: string;
@@ -111,23 +113,11 @@ export type LocaleCopy = {
     privacyLink: string;
     consentSuffix: string;
     submit: string;
-    sending: string;
-    success: string;
-    error: string;
-    missingKey: string;
-    captchaRequired: string;
   };
   success: {
     title: string;
     intro: string;
     next: string;
-  };
-  cookieConsent: {
-    title: string;
-    body: string;
-    privacyLink: string;
-    decline: string;
-    accept: string;
   };
   privacy: {
     title: string;

@@ -20,9 +20,8 @@ export const zhHomeSections = {
       ],
     },
     reservation: {
-      eyebrow: "预约",
-      title: "约好时间，一起围炉吃火锅",
-      intro:
-        "线上提交预约请求，或通过 WhatsApp 快速确认与临时修改。",
+      "eyebrow": "预约流程演示",
+      "title": "体验模拟预约",
+      "intro": "使用虚构资料体验原网站的预约表单。整个流程只在浏览器中模拟，不会向餐厅发送任何请求。"
     },
   } as const satisfies HomeSectionContent;

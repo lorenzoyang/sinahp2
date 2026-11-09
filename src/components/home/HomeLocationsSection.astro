@@ -3,6 +3,7 @@ import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import { getPath, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import { project } from "../../data/project";
 import { getHomeSections } from "../../data/homeSections";
 import { getStaggerStyle } from "../../utils/presentation";
 import {
@@ -117,8 +118,8 @@ const textClasses = {
           <CtaLink href={reservationPath} variant="goldHero">
             {t.cta.reserve}
           </CtaLink>
-          <CtaLink href={locationsPath} variant="whiteOutlineHero">
-            {t.cta.whatsappReservation}
+          <CtaLink href={project.officialWebsite} variant="whiteOutlineHero" external>
+            {t.archive.currentWebsite}
           </CtaLink>
         </div>
       </aside>

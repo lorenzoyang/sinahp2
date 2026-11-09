@@ -20,9 +20,8 @@ export const frHomeSections = {
       ],
     },
     reservation: {
-      eyebrow: "Réservation",
-      title: "Rassemblez tout le monde autour de la marmite",
-      intro:
-        "Envoyez la demande en ligne ou écrivez-nous sur WhatsApp pour une confirmation rapide et les changements de dernière minute.",
+      "eyebrow": "Démo de réservation",
+      "title": "Essayez une réservation simulée",
+      "intro": "Explorez le formulaire d’origine avec des données fictives. La simulation fonctionne uniquement dans votre navigateur et n’envoie aucune demande au restaurant."
     },
   } as const satisfies HomeSectionContent;

@@ -6,7 +6,7 @@ import { brand, getPath } from "../data/site";
 const locale = "it";
 const title = "Pagina non trovata | Sina Hotpot";
 const description =
-  "La pagina richiesta non esiste. Torna alla home, scopri i ristoranti Sina Hotpot o prenota un tavolo a Prato o Firenze.";
+  "La pagina richiesta non esiste. Esplora la demo storica del sito Sina Hotpot.";
 const layoutClasses = {
   section: "bg-ink px-4 py-16 text-paper sm:px-6 lg:px-8",
   inner: "mx-auto max-w-3xl",
@@ -24,7 +24,6 @@ const textClasses = {
   page="home"
   title={title}
   description={description}
-  noindex
 >
   <section class={layoutClasses.section}>
     <div class={layoutClasses.inner}>
@@ -32,7 +31,7 @@ const textClasses = {
       <h1 class={textClasses.title}>Pagina non trovata</h1>
       <p class={textClasses.intro}>
         La pagina che cerchi non è disponibile. Puoi tornare alla home, vedere
-        le sedi o prenotare direttamente il tuo tavolo.
+        le sedi o provare la simulazione di prenotazione senza inviare dati.
       </p>
       <div class={layoutClasses.actions}>
         <CtaLink href={getPath(locale)} variant="gold">Home</CtaLink>
@@ -40,7 +39,7 @@ const textClasses = {
           Ristoranti
         </CtaLink>
         <CtaLink href={getPath(locale, "reservation")} variant="whiteOutlineStatic">
-          Prenota
+          Simula una prenotazione
         </CtaLink>
       </div>
     </div>

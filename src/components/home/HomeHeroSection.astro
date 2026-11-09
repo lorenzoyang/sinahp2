@@ -4,6 +4,7 @@ import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import { getPath, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import { project } from "../../data/project";
 import { homeImages } from "../../data/pageImages";
 import {
   imageSizes,
@@ -17,7 +18,6 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const reservationPath = getPath(locale, "reservation");
-const locationsPath = getPath(locale, "locations");
 const culturePath = getPath(locale, "culture");
 const sectionClasses = {
   hero: "homepage-hero relative overflow-hidden",
@@ -90,26 +90,8 @@ const actionClasses = {
           </CtaLink>
         </div>
         <div class={layoutClasses.secondaryActions}>
-          <CtaLink
-            href={locationsPath}
-            variant="whiteOutlineHero"
-            class={actionClasses.heroLink}
-          >
-            {t.cta.whatsappReservation}
-          </CtaLink>
-          <CtaLink
-            href={locationsPath}
-            variant="whiteOutlineHero"
-            class={actionClasses.heroLink}
-          >
-            {t.cta.phoneReservation}
-          </CtaLink>
-          <CtaLink
-            href={locationsPath}
-            variant="whiteOutlineHero"
-            class={actionClasses.heroLink}
-          >
-            {t.cta.wechatReservation}
+          <CtaLink href={project.officialWebsite} variant="whiteOutlineHero" class={actionClasses.heroLink} external>
+            {t.archive.currentWebsite}
           </CtaLink>
         </div>
       </SectionHeader>

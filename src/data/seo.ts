@@ -1,16 +1,13 @@
 import {
-  defaultLocale,
   getPath,
-  htmlLang,
-  locales,
   mapLocales,
   type Locale,
   type PageId,
 } from "./routing";
-import { brand, locations } from "./restaurant";
+import { brand } from "./restaurant";
 import defaultSocialImageUrl from "../assets/images/homepage/homepage-hero-hotpotpremium.png?url";
 
-export const siteOrigin = "https://sinahp.com";
+export const siteOrigin = "https://sinahp2.yrw.workers.dev";
 export const siteName = brand.publicName;
 export { defaultSocialImageUrl };
 export const defaultSocialImageAlt =
@@ -24,11 +21,6 @@ export const openGraphLocales: Record<Locale, string> = {
   fr: "fr_FR",
 };
 
-export type AlternatePathMap = Partial<Record<Locale, string>>;
-export type HreflangLink = {
-  hreflang: string;
-  href: string;
-};
 export type SeoMeta = {
   title: string;
   description: string;
@@ -57,9 +49,9 @@ const pageSeoMeta: Record<Locale, Partial<Record<PageId, SeoMeta>>> = {
         "Guarda piatti, ingredienti freschi, dessert, bevande e interni dei ristoranti Sina Hotpot di Prato e Firenze.",
     },
     reservation: {
-      title: "Prenota hotpot a Prato o Firenze | Sina Hotpot",
+      title: "Prova la prenotazione dimostrativa | Sina Hotpot",
       description:
-        "Prenota un tavolo da Sina Hotpot a Prato o Firenze: scegli sede, data, orario, numero di persone e invia la richiesta online.",
+        "Esplora il modulo originale con dati inventati. La simulazione avviene solo nel browser: non viene inviata alcuna richiesta al ristorante.",
     },
   },
   zh: {
@@ -84,9 +76,9 @@ const pageSeoMeta: Record<Locale, Partial<Record<PageId, SeoMeta>>> = {
         "浏览 Sina Hotpot 的火锅菜品、新鲜食材、甜品饮品、厨师和门店氛围照片。",
     },
     reservation: {
-      title: "预约 Prato 或 Firenze 火锅餐位 | Sina Hotpot",
+      title: "体验模拟预约 | Sina Hotpot",
       description:
-        "线上预约 Sina Hotpot：选择 Prato 或 Firenze 门店、日期、时间和人数，提交后由门店确认。",
+        "使用虚构资料体验原网站的预约表单。整个流程只在浏览器中模拟，不会向餐厅发送任何请求。",
     },
   },
   en: {
@@ -111,9 +103,9 @@ const pageSeoMeta: Record<Locale, Partial<Record<PageId, SeoMeta>>> = {
         "Browse Sina Hotpot dishes, fresh ingredients, desserts, drinks, chefs, and restaurant photos from Prato and Firenze.",
     },
     reservation: {
-      title: "Reserve Chinese Hotpot in Prato or Firenze | Sina Hotpot",
+      title: "Try a simulated reservation | Sina Hotpot",
       description:
-        "Online reservation at Sina Hotpot in Prato or Firenze: choose location, date, time, guest count, and send your request online.",
+        "Explore the original form with fictional details. This simulation runs only in your browser and sends no request to the restaurant.",
     },
   },
   es: {
@@ -138,9 +130,9 @@ const pageSeoMeta: Record<Locale, Partial<Record<PageId, SeoMeta>>> = {
         "Mira platos, ingredientes frescos, postres, bebidas, chefs y fotos de los restaurantes Sina Hotpot de Prato y Firenze.",
     },
     reservation: {
-      title: "Reservar hotpot en Prato o Firenze | Sina Hotpot",
+      title: "Prueba una reserva simulada | Sina Hotpot",
       description:
-        "Reserva mesa en Sina Hotpot en Prato o Firenze: elige local, fecha, hora, número de personas y envía la solicitud online.",
+        "Explora el formulario original con datos ficticios. La simulación funciona solo en el navegador y no envía solicitudes al restaurante.",
     },
   },
   fr: {
@@ -165,9 +157,9 @@ const pageSeoMeta: Record<Locale, Partial<Record<PageId, SeoMeta>>> = {
         "Découvrez plats, ingrédients frais, desserts, boissons, chefs et photos des restaurants Sina Hotpot de Prato et Firenze.",
     },
     reservation: {
-      title: "Réserver un hotpot à Prato ou Firenze | Sina Hotpot",
+      title: "Essayez une réservation simulée | Sina Hotpot",
       description:
-        "Réservez une table chez Sina Hotpot à Prato ou Firenze: choisissez l'adresse, la date, l'heure, le nombre de personnes et envoyez la demande en ligne.",
+        "Explorez le formulaire d’origine avec des données fictives. La simulation fonctionne uniquement dans votre navigateur et n’envoie aucune demande au restaurant.",
     },
   },
 };
@@ -188,139 +180,6 @@ export function getPageSeoMeta(locale: Locale, page: PageId): SeoMeta | null {
   return pageSeoMeta[locale][page] ?? null;
 }
 
-export function getHreflangLinks(paths: AlternatePathMap): HreflangLink[] {
-  const localeLinks = locales.flatMap((locale) => {
-    const path = paths[locale];
-
-    if (!path) {
-      return [];
-    }
-
-    return {
-      hreflang: htmlLang[locale],
-      href: toAbsoluteUrl(path),
-    };
-  });
-  const defaultPath = paths[defaultLocale];
-
-  if (!defaultPath) {
-    return localeLinks;
-  }
-
-  return [
-    ...localeLinks,
-    {
-      hreflang: "x-default",
-      href: toAbsoluteUrl(defaultPath),
-    },
-  ];
-}
-
 export function getPageAlternatePaths(page: PageId): Record<Locale, string> {
   return mapLocales((locale) => getPath(locale, page));
-}
-
-export type VideoStructuredDataOptions = {
-  locale: Locale;
-  name: string;
-  description: string;
-  contentUrl: string;
-  thumbnailUrl: string;
-  uploadDate: string;
-  durationSeconds: number;
-  pagePath: string;
-};
-
-export function getVideoStructuredData(
-  options: VideoStructuredDataOptions,
-): Record<string, unknown> {
-  const pageUrl = toAbsoluteUrl(options.pagePath);
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "@id": `${pageUrl}#video`,
-    name: options.name,
-    description: options.description,
-    contentUrl: toAbsoluteUrl(options.contentUrl),
-    thumbnailUrl: [toAbsoluteUrl(options.thumbnailUrl)],
-    uploadDate: options.uploadDate,
-    duration: `PT${Math.round(options.durationSeconds)}S`,
-    isFamilyFriendly: true,
-    inLanguage: htmlLang[options.locale],
-    mainEntityOfPage: pageUrl,
-    publisher: {
-      "@id": `${siteOrigin}/#organization`,
-    },
-  };
-}
-
-export function getWebsiteStructuredData(): Record<string, unknown> {
-  const reservationUrl = `${siteOrigin}${getPath(defaultLocale, "reservation")}`;
-
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${siteOrigin}/#website`,
-        name: siteName,
-        url: siteOrigin,
-        inLanguage: locales.map((locale) => htmlLang[locale]),
-        publisher: {
-          "@id": `${siteOrigin}/#organization`,
-        },
-      },
-      {
-        "@type": "Organization",
-        "@id": `${siteOrigin}/#organization`,
-        name: siteName,
-        alternateName: ["SinaHP", "Sinahp", brand.chineseName],
-        legalName: brand.legal.legalName,
-        url: siteOrigin,
-        email: brand.email,
-        taxID: brand.legal.taxId,
-        vatID: brand.legal.vatId,
-        identifier: {
-          "@type": "PropertyValue",
-          propertyID: `${brand.legal.registrationAuthority} / P.IVA / C.F.`,
-          value: brand.legal.taxId,
-        },
-        sameAs: [brand.instagram, brand.facebook],
-      },
-      ...locations.map((location) => ({
-        "@type": "Restaurant",
-        "@id": `${siteOrigin}/locations/#${location.id}`,
-        name: `${siteName} ${location.city}`,
-        url: `${siteOrigin}${getPath(defaultLocale, "locations")}#${location.id}`,
-        parentOrganization: {
-          "@id": `${siteOrigin}/#organization`,
-        },
-        email: brand.email,
-        telephone: location.phone,
-        servesCuisine: ["Chinese", "Hot pot"],
-        priceRange: "EUR 30-50",
-        image: toAbsoluteUrl(location.image.src),
-        photo: location.gallery
-          .slice(0, 6)
-          .map((photo) => toAbsoluteUrl(photo.src)),
-        hasMap: location.mapHref,
-        acceptsReservations: reservationUrl,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: location.structuredAddress.streetAddress,
-          addressLocality: location.structuredAddress.addressLocality,
-          postalCode: location.structuredAddress.postalCode,
-          addressRegion: location.structuredAddress.addressRegion,
-          addressCountry: "IT",
-        },
-        openingHours: location.schemaOpeningHours,
-        potentialAction: {
-          "@type": "ReserveAction",
-          target: reservationUrl,
-        },
-        sameAs: [brand.instagram, brand.facebook],
-      })),
-    ],
-  };
 }

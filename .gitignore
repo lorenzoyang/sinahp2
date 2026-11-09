@@ -13,11 +13,14 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 dev-server.*.log
+test-results/
+playwright-report/
 .codex-devserver.*
 
 # environment variables
 .env
 .env.production
+.env.*
 
 # macOS-specific files
 .DS_Store

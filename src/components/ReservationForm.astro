@@ -1,10 +1,5 @@
 ---
 import {
-  PUBLIC_WEB3FORMS_ACCESS_KEY,
-  PUBLIC_WEB3FORMS_CAPTCHA_ENABLED,
-} from "astro:env/client";
-import {
-  brand,
   getLocationLabel,
   getPath,
   locations,
@@ -20,8 +15,6 @@ interface Props {
 const { locale } = Astro.props;
 const t = copy[locale];
 const successUrl = getPath(locale, "success");
-const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
-const captchaEnabled = PUBLIC_WEB3FORMS_CAPTCHA_ENABLED;
 const privacyPath = getPath(locale, "privacy");
 
 const locationOptions = locations.map((location) => ({
@@ -31,6 +24,7 @@ const locationOptions = locations.map((location) => ({
 }));
 const layoutClasses = {
   root: "grid min-w-0 gap-4 rounded-lg border border-white/12 bg-paper p-4 text-ink shadow-2xl shadow-black/20 sm:p-6",
+  fields: "m-0 grid min-w-0 gap-4 border-0 p-0",
   rowTwo: "grid min-w-0 gap-4 sm:grid-cols-2",
   rowThree: "grid min-w-0 gap-4 sm:grid-cols-3",
   submitRow: "grid min-w-0 gap-3 sm:grid-cols-[1fr_auto] sm:items-center",
@@ -44,198 +38,146 @@ const fieldClasses = {
     "focus-ring min-h-12 w-full min-w-0 rounded-md border border-warm-line bg-white px-3 text-base text-ink",
   textarea:
     "focus-ring min-h-28 w-full min-w-0 rounded-md border border-warm-line bg-white px-3 py-3 text-base text-ink",
-  captcha: "min-h-[78px] overflow-visible",
 };
 const textClasses = {
   finePrint: "text-xs leading-5 text-brown-muted",
   privacyLink:
     "font-semibold text-lacquer underline decoration-gold underline-offset-4",
-  status: "min-h-5 text-sm font-semibold text-lacquer",
+  notice: "rounded-md border border-lacquer/20 bg-lacquer/5 p-3 text-sm leading-6 text-lacquer",
   hint: "text-xs font-normal leading-5 text-brown-muted",
 };
 const actionClasses = {
   submitButton:
-    "focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover",
+    "focus-ring min-h-12 rounded-md bg-lacquer px-5 py-3 text-base font-semibold text-white transition hover:bg-lacquer-hover disabled:cursor-not-allowed disabled:opacity-60",
 };
 ---
 
 <form
   class={layoutClasses.root}
+  autocomplete="off"
   data-reservation-form
   data-success-url={successUrl}
-  data-sending={t.reservation.sending}
-  data-submit={t.reservation.submit}
-  data-error={t.reservation.error}
-  data-missing-key={t.reservation.missingKey}
-  data-captcha-required={t.reservation.captchaRequired}
-  data-captcha-enabled={captchaEnabled ? "true" : "false"}
 >
-  <input type="hidden" name="access_key" value={accessKey} />
-  <input type="hidden" name="subject" value="Sina Hotpot Reservation Request" />
-  <input type="hidden" name="from_name" value="Sina Hotpot Website" />
-  <input
-    type="checkbox"
-    name="botcheck"
-    class="hidden"
-    tabindex="-1"
-    autocomplete="off"
-  />
+  <p class={textClasses.notice}>{t.archive.formNotice}</p>
+  <noscript><p class={textClasses.notice}>{t.archive.javascriptRequired}</p></noscript>
+  <fieldset class={layoutClasses.fields} disabled data-reservation-fields>
+    <div class={layoutClasses.rowTwo}>
+      <label class={fieldClasses.label}>
+        {t.reservation.labels.name}
+        <input
+          class={fieldClasses.input}
+          placeholder={t.reservation.placeholders.name}
+          required
+        />
+      </label>
 
-  <div class={layoutClasses.rowTwo}>
-    <label class={fieldClasses.label}>
-      {t.reservation.labels.name}
-      <input
-        class={fieldClasses.input}
-        name="name"
-        autocomplete="name"
-        placeholder={t.reservation.placeholders.name}
-        required
-      />
-    </label>
-
-    <label class={fieldClasses.label}>
-      {t.reservation.labels.phone}
-      <input
-        class={fieldClasses.input}
-        name="phone"
-        type="tel"
-        autocomplete="tel"
-        inputmode="tel"
-        placeholder={t.reservation.placeholders.phone}
-        required
-      />
-    </label>
-  </div>
-
-  <label class={fieldClasses.label}>
-    {t.reservation.labels.location}
-    <select
-      class={fieldClasses.input}
-      name="location"
-      required
-      data-reservation-location
-    >
-      <option value="" disabled selected>
-        {t.reservation.placeholders.location}
-      </option>
-      {
-        locationOptions.map((location) => (
-          <option
-            value={location.label}
-            data-time-slots={JSON.stringify(location.timeSlots)}
-          >
-            {location.label}
-          </option>
-        ))
-      }
-    </select>
-  </label>
-
-  <div class={layoutClasses.rowThree}>
-    <label class={fieldClasses.label}>
-      {t.reservation.labels.guests}
-      <input
-        class={fieldClasses.input}
-        name="guests"
-        type="number"
-        min="1"
-        max="30"
-        inputmode="numeric"
-        required
-      />
-    </label>
+      <label class={fieldClasses.label}>
+        {t.reservation.labels.phone}
+        <input
+          class={fieldClasses.input}
+          type="tel"
+          inputmode="tel"
+          placeholder={t.reservation.placeholders.phone}
+          required
+        />
+      </label>
+    </div>
 
     <label class={fieldClasses.label}>
-      {t.reservation.labels.date}
-      <input
-        class={fieldClasses.input}
-        name="date"
-        type="date"
-        data-reservation-date
-        required
-      />
-    </label>
-
-    <label class={fieldClasses.label}>
-      {t.reservation.labels.time}
-      <span class={textClasses.hint}>
-        {t.reservation.hints.time}
-      </span>
+      {t.reservation.labels.location}
       <select
         class={fieldClasses.input}
-        name="time"
         required
-        data-reservation-time
-        data-placeholder={t.reservation.labels.time}
+        data-reservation-location
       >
         <option value="" disabled selected>
-          {t.reservation.labels.time}
+          {t.reservation.placeholders.location}
         </option>
+        {
+          locationOptions.map((location) => (
+            <option
+              value={location.label}
+              data-time-slots={JSON.stringify(location.timeSlots)}
+            >
+              {location.label}
+            </option>
+          ))
+        }
       </select>
     </label>
-  </div>
 
-  <label class={fieldClasses.label}>
-    {t.reservation.labels.message}
-    <textarea
-      class={fieldClasses.textarea}
-      name="message"
-      placeholder={t.reservation.placeholders.message}></textarea>
-  </label>
+    <div class={layoutClasses.rowThree}>
+      <label class={fieldClasses.label}>
+        {t.reservation.labels.guests}
+        <input
+          class={fieldClasses.input}
+          type="number"
+          min="1"
+          max="30"
+          inputmode="numeric"
+          required
+        />
+      </label>
 
-  <label class={fieldClasses.consent}>
-    <input
-      class={fieldClasses.checkbox}
-      type="checkbox"
-      name="privacy_acknowledgement"
-      value="accepted"
-      required
-    />
-    <span>{t.reservation.consentPrefix}<a class={textClasses.privacyLink} href={privacyPath}>{t.reservation.privacyLink}</a>{t.reservation.consentSuffix}</span>
-  </label>
+      <label class={fieldClasses.label}>
+        {t.reservation.labels.date}
+        <input
+          class={fieldClasses.input}
+          type="date"
+          data-reservation-date
+          required
+        />
+      </label>
 
-  {
-    captchaEnabled && (
-      <div
-        class:list={[fieldClasses.captcha, "h-captcha"]}
-        data-captcha="true"
+      <label class={fieldClasses.label}>
+        {t.reservation.labels.time}
+        <span class={textClasses.hint}>
+          {t.reservation.hints.time}
+        </span>
+        <select
+          class={fieldClasses.input}
+          required
+          data-reservation-time
+          data-placeholder={t.reservation.labels.time}
+        >
+          <option value="" disabled selected>
+            {t.reservation.labels.time}
+          </option>
+        </select>
+      </label>
+    </div>
+
+    <label class={fieldClasses.label}>
+      {t.reservation.labels.message}
+      <textarea
+        class={fieldClasses.textarea}
+        placeholder={t.reservation.placeholders.message}></textarea>
+    </label>
+
+    <label class={fieldClasses.consent}>
+      <input
+        class={fieldClasses.checkbox}
+        type="checkbox"
+        required
+      />
+      <span>{t.reservation.consentPrefix}<a class={textClasses.privacyLink} href={privacyPath}>{t.reservation.privacyLink}</a>{t.reservation.consentSuffix}</span>
+    </label>
+
+    <div class={layoutClasses.submitRow}>
+      <p class={textClasses.finePrint}>{t.archive.dataNotice}</p>
+      <button
+        class={actionClasses.submitButton}
+        type="button"
+        disabled
+        data-reservation-submit
       >
-      </div>
-    )
-  }
+        {t.reservation.submit}
+      </button>
+    </div>
 
-  <div class={layoutClasses.submitRow}>
-    <p
-      class={textClasses.status}
-      aria-live="polite"
-      data-reservation-status
-    >
-    </p>
-    <button
-      class={actionClasses.submitButton}
-      type="submit"
-      data-reservation-submit
-    >
-      {t.reservation.submit}
-    </button>
-  </div>
-
-  <p class={textClasses.finePrint}>
-    {brand.publicName} - {brand.email} - {brand.whatsapp}
-  </p>
+  </fieldset>
 </form>
 
 <script>
   import "../scripts/reservationForm";
 </script>
-
-{
-  captchaEnabled && (
-    <script
-      is:inline
-      src="https://web3forms.com/client/script.js"
-      async
-      defer
-    ></script>
-  )
-}

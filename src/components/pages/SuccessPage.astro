@@ -4,6 +4,7 @@ import CtaLink from "../ui/CtaLink.astro";
 import SectionHeader from "../ui/SectionHeader.astro";
 import { brand, getPath, locations, type Locale } from "../../data/site";
 import { copy } from "../../data/copy";
+import { project } from "../../data/project";
 import {
   cardClasses as sharedCardClasses,
   layoutClasses as sharedLayoutClasses,
@@ -38,7 +39,6 @@ const cardClasses = {
   page="success"
   title={`${t.success.title} | Sina Hotpot`}
   description={t.success.intro}
-  noindex
 >
   <section class={sectionClasses.hero}>
     <SectionHeader
@@ -53,8 +53,8 @@ const cardClasses = {
         <CtaLink href={getPath(locale, "locations")} variant="gold">
           {t.nav.locations}
         </CtaLink>
-        <CtaLink href={brand.whatsappHref} variant="whiteOutlineStatic">
-          {t.cta.whatsapp}
+        <CtaLink href={project.officialWebsite} variant="whiteOutlineStatic" external>
+          {t.archive.currentWebsite}
         </CtaLink>
       </div>
     </SectionHeader>

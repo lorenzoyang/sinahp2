@@ -61,9 +61,6 @@ function formatA11yLabel(
 
 const locationCards = locations.map((location) => ({
   ...location,
-  whatsappMessage: formatA11yLabel(t.locations.whatsappMessage, {
-    city: location.city,
-  }),
   slides: location.gallery.map((photo, index) => {
     const number = index + 1;
     const photoLabel = formatA11yLabel(t.a11y.photoLabel, {
@@ -134,13 +131,8 @@ const locationCards = locations.map((location) => ({
                 location={location}
                 reservationHref={reservationPath}
                 reservationLabel={t.cta.reserve}
-                whatsappLabel={t.cta.whatsappReservation}
-                phoneLabel={t.cta.phoneReservation}
-                wechatLabel={t.cta.wechatReservation}
-                copyWechatLabel={t.cta.copyWechat}
-                copiedLabel={t.cta.copied}
+                officialWebsiteLabel={t.archive.currentWebsite}
                 mapLabel={t.cta.map}
-                whatsappMessage={location.whatsappMessage}
                 spacingClass="mt-6"
               />
             </div>
@@ -153,5 +145,4 @@ const locationCards = locations.map((location) => ({
 
 <script>
   import "../../scripts/locationCarousel";
-  import "../../scripts/wechatCopy";
 </script>

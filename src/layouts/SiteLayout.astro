@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
-import CookieConsentBanner from "../components/CookieConsentBanner.astro";
-import GoogleAdsTag from "../components/GoogleAdsTag.astro";
+import ArchiveNotice from "../components/ArchiveNotice.astro";
 import SiteFooter from "../components/layout/SiteFooter.astro";
 import SiteHeader from "../components/layout/SiteHeader.astro";
 import {
@@ -17,10 +16,8 @@ import {
   defaultSocialImageAlt,
   defaultSocialImageUrl,
   getCanonicalUrl,
-  getHreflangLinks,
   getPageSeoMeta,
   getPageAlternatePaths,
-  getWebsiteStructuredData,
   openGraphLocales,
   toAbsoluteUrl,
 } from "../data/seo";
@@ -31,10 +28,8 @@ interface Props {
   title?: string;
   description?: string;
   alternatePaths?: Partial<Record<Locale, string>>;
-  noindex?: boolean;
   socialImage?: string;
   socialImageAlt?: string;
-  extraStructuredData?: readonly Record<string, unknown>[];
 }
 
 const {
@@ -43,30 +38,22 @@ const {
   title,
   description,
   alternatePaths,
-  noindex = false,
   socialImage,
   socialImageAlt,
-  extraStructuredData = [],
 } = Astro.props;
 const t = copy[locale];
 const layoutLabels = t.layout;
 const seoMeta = getPageSeoMeta(locale, page);
-const pageTitle = title ?? seoMeta?.title ?? t.meta.homeTitle;
-const pageDescription = description ?? seoMeta?.description ?? t.meta.description;
+const pageTitle = `${title ?? seoMeta?.title ?? t.meta.homeTitle} | ${t.archive.label}`;
+const pageDescription = `${t.archive.label}. ${description ?? seoMeta?.description ?? t.meta.description}`;
 const pageAlternatePaths = {
   ...getPageAlternatePaths(page),
   ...alternatePaths,
 };
-const isIndexable = !noindex;
 const canonicalPath = pageAlternatePaths[locale] ?? getPath(locale, page);
 const canonicalUrl = getCanonicalUrl(canonicalPath);
-const hreflangLinks = isIndexable ? getHreflangLinks(pageAlternatePaths) : [];
 const socialImageUrl = toAbsoluteUrl(socialImage ?? defaultSocialImageUrl);
 const socialImageAltText = socialImageAlt ?? defaultSocialImageAlt;
-const structuredData = JSON.stringify(getWebsiteStructuredData());
-const extraStructuredDataJson = extraStructuredData.map((entry) =>
-  JSON.stringify(entry),
-);
 const a11yClasses = {
   skipLink:
     "focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-paper focus:px-4 focus:py-2 focus:text-ink",
@@ -80,21 +67,15 @@ const a11yClasses = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={pageDescription} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
-    {isIndexable && <link rel="canonical" href={canonicalUrl} />}
-    {
-      hreflangLinks.map((link) => (
-        <link rel="alternate" hreflang={link.hreflang} href={link.href} />
-      ))
-    }
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:site_name" content={brand.publicName} />
+    <meta property="og:site_name" content={`${brand.publicName} | ${t.archive.label}`} />
     <meta property="og:locale" content={openGraphLocales[locale]} />
     {
       locales
@@ -113,13 +94,6 @@ const a11yClasses = {
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={socialImageUrl} />
     <title>{pageTitle}</title>
-    <GoogleAdsTag />
-    <script type="application/ld+json" is:inline set:html={structuredData} />
-    {
-      extraStructuredDataJson.map((entry) => (
-        <script type="application/ld+json" is:inline set:html={entry} />
-      ))
-    }
     <script is:inline>
       document.documentElement.classList.add("js");
     </script>
@@ -129,6 +103,7 @@ const a11yClasses = {
       {layoutLabels.skipToContent}
     </a>
 
+    <ArchiveNotice locale={locale} />
     <SiteHeader locale={locale} page={page} alternatePaths={alternatePaths} />
 
     <main id="main">
@@ -136,12 +111,7 @@ const a11yClasses = {
     </main>
 
     <SiteFooter locale={locale} />
-    <CookieConsentBanner
-      labels={t.cookieConsent}
-      privacyHref={getPath(locale, "privacy")}
-    />
     <script>
-      import "../scripts/googleAdsConversions";
       import "../scripts/headerMenus";
     </script>
   </body>

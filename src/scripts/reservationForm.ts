@@ -1,35 +1,17 @@
 import { queryAll, queryOne } from "./dom";
 import { parseStringArray } from "../utils/json";
 
-type Web3FormsResponse = {
-  success?: boolean;
-  message?: string;
-};
-
-type ReservationPayload = Record<string, FormDataEntryValue>;
-type SubmitReservationResult = {
-  response: Response;
-  result: Web3FormsResponse;
-};
 type UpdateTimeOptionsConfig = {
   preserveCurrent?: boolean;
 };
 
-declare global {
-  interface Window {
-    sinaTrackReservationSuccessConversion?: () => Promise<void>;
-  }
-}
-
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const selectors = {
-  captchaResponse: 'textarea[name="h-captcha-response"]',
   date: "[data-reservation-date]",
+  fields: "[data-reservation-fields]",
   form: "[data-reservation-form]",
-  location: "[data-reservation-location]",
-  status: "[data-reservation-status]",
   submit: "[data-reservation-submit]",
   time: "[data-reservation-time]",
+  location: "[data-reservation-location]",
 } as const;
 
 function getDateValue(date: Date): string {
@@ -95,31 +77,6 @@ function updateDateMinimum(
   }
 }
 
-function getPayload(form: HTMLFormElement): ReservationPayload {
-  return Object.fromEntries(
-    new FormData(form).entries(),
-  ) as ReservationPayload;
-}
-
-function getCaptchaResponse(form: HTMLFormElement): string {
-  const captchaResponse = queryOne<HTMLTextAreaElement>(
-    selectors.captchaResponse,
-    form,
-  );
-
-  return captchaResponse?.value.trim() ?? "";
-}
-
-function isCaptchaEnabled(form: HTMLFormElement): boolean {
-  return form.dataset.captchaEnabled === "true";
-}
-
-function showStatus(status: Element | null, message: string): void {
-  if (status) {
-    status.textContent = message;
-  }
-}
-
 function getSelectedTimeSlots(
   locationSelect: HTMLSelectElement | null,
 ): string[] {
@@ -163,111 +120,46 @@ function updateTimeOptions(
     preserveCurrent && timeSlots.includes(currentValue) ? currentValue : "";
 }
 
-function setSubmitState(
-  form: HTMLFormElement,
-  submit: HTMLButtonElement | null,
-  isSending: boolean,
-): void {
-  if (!submit) {
-    return;
-  }
-
-  submit.disabled = isSending;
-  submit.textContent = isSending
-    ? (form.dataset.sending ?? submit.textContent)
-    : (form.dataset.submit ?? submit.textContent);
-}
-
-async function submitReservation(
-  payload: ReservationPayload,
-): Promise<SubmitReservationResult> {
-  const response = await fetch(WEB3FORMS_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-  const result = (await response.json()) as Web3FormsResponse;
-
-  return { response, result };
-}
-
-async function trackReservationSuccessConversion(): Promise<void> {
-  try {
-    await window.sinaTrackReservationSuccessConversion?.();
-  } catch {
-    return;
-  }
-}
-
 function initReservationForm(form: HTMLFormElement): void {
-  const status = queryOne(selectors.status, form);
   const submit = queryOne<HTMLButtonElement>(selectors.submit, form);
+  const fields = queryOne<HTMLFieldSetElement>(selectors.fields, form);
   const dateInput = queryOne<HTMLInputElement>(selectors.date, form);
   const timeSelect = queryOne<HTMLSelectElement>(selectors.time, form);
-  const locationSelect = queryOne<HTMLSelectElement>(
-    selectors.location,
-    form,
-  );
+  const locationSelect = queryOne<HTMLSelectElement>(selectors.location, form);
+  const successUrl = form.dataset.successUrl;
 
-  updateTimeOptions(timeSelect, locationSelect, { preserveCurrent: true });
-  updateDateMinimum(dateInput, timeSelect);
+  // Fail closed: controls stay disabled if the script cannot initialize.
+  if (!submit || !fields || !dateInput || !timeSelect || !locationSelect || !successUrl) {
+    return;
+  }
 
-  locationSelect?.addEventListener("change", () => {
+  function resetDemo(): void {
+    form.reset();
+    updateTimeOptions(timeSelect, locationSelect);
+    updateDateMinimum(dateInput, timeSelect);
+  }
+
+  resetDemo();
+  locationSelect.addEventListener("change", () => {
     updateTimeOptions(timeSelect, locationSelect);
     updateDateMinimum(dateInput, timeSelect);
   });
+  timeSelect.addEventListener("change", () => updateDateMinimum(dateInput, timeSelect));
 
-  timeSelect?.addEventListener("change", () => {
+  // Never serialize the fields. Even a native submission has no named inputs.
+  form.addEventListener("submit", (event) => event.preventDefault());
+  submit.addEventListener("click", () => {
     updateDateMinimum(dateInput, timeSelect);
+    if (!form.reportValidity()) return;
+    form.reset();
+    window.location.assign(successUrl);
   });
+  window.addEventListener("pagehide", resetDemo);
+  window.addEventListener("pageshow", resetDemo);
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    updateDateMinimum(dateInput, timeSelect);
-
-    if (!form.reportValidity() || !submit || !status) {
-      return;
-    }
-
-    const payload = getPayload(form);
-    const labels = form.dataset;
-
-    if (!payload.access_key) {
-      showStatus(status, labels.missingKey ?? "");
-      return;
-    }
-
-    if (isCaptchaEnabled(form) && !getCaptchaResponse(form)) {
-      showStatus(status, labels.captchaRequired ?? "");
-      return;
-    }
-
-    setSubmitState(form, submit, true);
-    showStatus(status, "");
-
-    try {
-      const { response, result } = await submitReservation(payload);
-
-      if (response.ok && result.success) {
-        const successUrl = labels.successUrl ?? "/reservation-success/";
-
-        await trackReservationSuccessConversion();
-        window.location.href = successUrl;
-        return;
-      }
-
-      showStatus(status, result.message || labels.error || "");
-    } catch {
-      showStatus(status, labels.error ?? "");
-    } finally {
-      setSubmitState(form, submit, false);
-    }
-  });
+  // Enable controls only after every event handler is attached.
+  fields.disabled = false;
+  submit.disabled = false;
 }
 
 queryAll<HTMLFormElement>(selectors.form).forEach(initReservationForm);
-
-export {};

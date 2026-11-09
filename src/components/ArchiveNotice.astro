@@ -1,0 +1,31 @@
+---
+import { copy } from "../data/copy";
+import { project } from "../data/project";
+import type { Locale } from "../data/site";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = copy[locale].archive;
+const layoutClasses = {
+  root: "border-b border-gold/30 bg-paper text-ink",
+  inner: "mx-auto flex max-w-7xl flex-col gap-2 px-4 py-3 text-sm leading-6 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-8",
+  links: "flex shrink-0 flex-wrap gap-x-5 gap-y-1",
+};
+const textClasses = {
+  label: "font-semibold text-lacquer",
+  link: "focus-ring rounded-sm font-semibold text-lacquer underline underline-offset-4",
+};
+---
+
+<aside class={layoutClasses.root} aria-label={t.label} data-archive-notice>
+  <div class={layoutClasses.inner}>
+    <p><strong class={textClasses.label}>{t.label}</strong> · {t.notice}</p>
+    <div class={layoutClasses.links}>
+      <a class={textClasses.link} href={project.officialWebsite} target="_blank" rel="noreferrer">{t.currentWebsite} ↗</a>
+      <a class={textClasses.link} href={project.sourceCode} target="_blank" rel="noreferrer">{t.sourceCode} ↗</a>
+    </div>
+  </div>
+</aside>

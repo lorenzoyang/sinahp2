@@ -16,7 +16,7 @@ import {
   getGalleryPhotoTotal,
   getVisibleGalleryGroups,
 } from "../../data/gallery";
-import { getPageSeoMeta, getVideoStructuredData } from "../../data/seo";
+import { getPageSeoMeta } from "../../data/seo";
 import {
   headingClasses,
   imageSizes,
@@ -49,16 +49,7 @@ const videoPoster = await getImage({
   height: galleryVideo.height,
   format: "webp",
 });
-const videoStructuredData = getVideoStructuredData({
-  locale,
-  name: videoCopy.title,
-  description: videoCopy.intro,
-  contentUrl: galleryVideo.src,
-  thumbnailUrl: videoPoster.src,
-  uploadDate: galleryVideo.uploadDate,
-  durationSeconds: galleryVideo.durationSeconds,
-  pagePath: getPath(locale, "gallery"),
-});
+
 const sectionClasses = {
   hero: sharedSectionClasses.heroDark,
   bandDark: sharedSectionClasses.darkTight,
@@ -116,7 +107,6 @@ const textClasses = {
   title={seoMeta?.title}
   description={seoMeta?.description}
   socialImage={heroPhoto.src}
-  extraStructuredData={[videoStructuredData]}
 >
   <section class={sectionClasses.hero}>
     <div class={sharedLayoutClasses.container}>

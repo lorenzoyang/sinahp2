@@ -1,6 +1,16 @@
 import type { LocaleCopy } from "./types";
 
 export const esCopy = {
+    archive: {
+      "label": "Demo histórica",
+      "notice": "Esta es una demo del sitio anterior. No acepta reservas reales y la información del restaurante puede estar desactualizada.",
+      "currentWebsite": "Sitio oficial actual",
+      "sourceCode": "Código fuente",
+      "historicalContact": "Contactos históricos",
+      "formNotice": "Solo demostración: usa datos ficticios. Este formulario no envía datos ni crea reservas reales.",
+      "javascriptRequired": "La simulación necesita JavaScript. El formulario permanece desactivado hasta que el script esté listo.",
+      "dataNotice": "Los datos permanecen en esta página y se borran al salir. No se envían ni se guardan."
+    },
     meta: {
       homeTitle: "鲜入围煮 Sina Hotpot | Hotpot chino en Prato y Firenze",
       description:
@@ -26,22 +36,15 @@ export const esCopy = {
       culture: "Descubrir hotpot",
       locations: "Locales",
       gallery: "Galería",
-      reservation: "Reservar",
+      reservation: "Demo de reserva",
       privacy: "Política de privacidad",
       menu: "Menú",
     },
     cta: {
-      reserve: "Reserva online",
+      reserve: "Simular una reserva",
       culture: "Cómo funciona el hotpot",
-      call: "Llamar",
       map: "Abrir mapa",
-      whatsapp: "WhatsApp",
-      whatsappReservation: "Reserva WhatsApp",
-      phoneReservation: "Reserva telefónica",
-      wechatReservation: "Reserva WeChat",
       viewDetails: "Ver detalles",
-      copyWechat: "Copiar ID",
-      copied: "Copiado",
       backHome: "Volver al inicio",
       learnMore: "Leer más",
       gallery: "Ver galería",
@@ -124,8 +127,6 @@ export const esCopy = {
       wechat: "WeChat",
       address: "Dirección",
       hours: "Horario",
-      whatsappMessage:
-        "Hola Sina Hotpot {city}, me gustaría reservar una mesa.",
     },
     gallery: {
       eyebrow: "Galería",
@@ -150,10 +151,10 @@ export const esCopy = {
       },
     },
     reservation: {
-      eyebrow: "Reserva",
-      title: "Reserva tu mesa de hotpot",
+      eyebrow: "Demo de reserva",
+      title: "Prueba una reserva simulada",
       intro:
-        "Envíanos fecha, hora, número de personas y local preferido. Recibiremos la solicitud por email y podremos contactarte para confirmar los detalles.",
+        "Explora el formulario original con datos ficticios. La simulación funciona solo en el navegador y no envía solicitudes al restaurante.",
       labels: {
         name: "Nombre",
         phone: "Teléfono",
@@ -164,10 +165,10 @@ export const esCopy = {
         message: "Nota opcional",
       },
       placeholders: {
-        name: "Tu nombre",
-        phone: "+39 ...",
+        name: "Visitante de ejemplo",
+        phone: "+39 000 000 0000",
         location: "Selecciona una dirección",
-        message: "Alergias, ocasión especial o preferencias de mesa",
+        message: "Nota de ejemplo: no introduzcas datos personales ni de salud",
       },
       hints: {
         time: "Selecciona primero una dirección.",
@@ -175,115 +176,43 @@ export const esCopy = {
       consentPrefix: "He leído la ",
       privacyLink: "política de privacidad",
       consentSuffix:
-        " y consiento el uso de los datos introducidos para gestionar mi reserva, incluidas posibles notas sobre alergias o salud.",
-      submit: "Enviar solicitud",
-      sending: "Enviando...",
-      success: "Solicitud enviada.",
-      error:
-        "No hemos podido enviar la solicitud. Inténtalo de nuevo o contacta por WhatsApp.",
-      missingKey:
-        "Web3forms aún no está configurado. Define PUBLIC_WEB3FORMS_ACCESS_KEY antes del lanzamiento.",
-      captchaRequired:
-        "Completa la verificación anti-spam antes de enviar la solicitud.",
+        " y entiendo que es solo una simulación, sin reserva real.",
+      submit: "Simular una reserva",
     },
     success: {
-      title: "Solicitud recibida",
-      intro:
-        "Gracias. Tu solicitud ha sido enviada a Sina Hotpot. Para cambios urgentes o confirmación rápida, contacta directamente por WhatsApp.",
-      next: "También puedes revisar dirección, horarios y ruta del local elegido.",
-    },
-    cookieConsent: {
-      title: "Cookies y anuncios",
-      body:
-        "Con tu consentimiento, Google Ads usa almacenamiento publicitario y de medición para medir los clics en WhatsApp y teléfono desde anuncios. ",
-      privacyLink: "Leer la política de privacidad",
-      decline: "Rechazar",
-      accept: "Aceptar",
+      "title": "Demo completada",
+      "intro": "No se ha enviado ninguna reserva. Los datos del formulario no se han transmitido ni guardado.",
+      "next": "Para una reserva real, visita el sitio oficial actual del restaurante."
     },
     privacy: {
-      title: "Política de privacidad",
-      intro:
-        "Este aviso explica cómo el sitio web de Sina Hotpot trata los datos personales recogidos a través del sitio y del formulario de reserva.",
-      updated: "Última actualización: 6 de junio de 2026",
-      sections: [
+      "title": "Privacidad de la demo",
+      "intro": "Este aviso corresponde a la demo histórica, no al sitio actual del restaurante.",
+      "updated": "Actualización: 9 de noviembre de 2026",
+      "sections": [
         {
-          title: "Responsable del tratamiento",
-          paragraphs: [
-            "El responsable del tratamiento es RISTORANTE SINA HOTPOT S.R.L., con domicilio social en Via Cava 109, 59100 Prato (PO), P.IVA / C.F. / Registro Imprese Pistoia-Prato: 02455830972, a quien se puede contactar en sinahotpot@gmail.com. Este sitio se refiere a los locales operativos de Prato, Via Cava 109, 59100 Prato, y Florencia, Via Ghibellina 80R, 50122 Firenze.",
-          ],
+          "title": "Proyecto histórico",
+          "paragraphs": [
+            "Este sitio conserva el proyecto anterior como ejemplo de portfolio. No es el sitio actual del restaurante ni gestiona reservas. Direcciones, horarios y contactos son información histórica que puede estar desactualizada."
+          ]
         },
         {
-          title: "Datos recogidos",
-          paragraphs: [
-            "El formulario de reserva recoge nombre, teléfono, número de personas, fecha, hora, local elegido y notas opcionales. Los datos técnicos necesarios para la navegación, como dirección IP, información del navegador, fecha y hora de las solicitudes, pueden ser tratados por los servicios de alojamiento y seguridad.",
-            "Las notas opcionales no son obligatorias. Si decides incluir alergias, necesidades alimentarias u otra información relacionada con la salud, esos datos se usarán solo para gestionar la reserva y organizar el servicio solicitado.",
-          ],
+          "title": "Formulario simulado",
+          "paragraphs": [
+            "Usa solo datos ficticios. Los campos y la validación funcionan en el navegador. No enviamos los valores a servidores, correo ni servicios de reservas, ni los incluimos en URL, registros o almacenamiento del navegador. El formulario se vacía al salir de la página."
+          ]
         },
         {
-          title: "Finalidades y bases jurídicas",
-          paragraphs: [
-            "Los datos se tratan para recibir y gestionar solicitudes de reserva, contactarte si es necesario, organizar el servicio en sala, mantener el sitio seguro y funcional y cumplir obligaciones administrativas o legales cuando corresponda.",
-          ],
-          items: [
-            "Solicitudes de reserva: ejecución de medidas precontractuales o contractuales solicitadas por el usuario, art. 6(1)(b) RGPD.",
-            "Datos técnicos, seguridad y prevención de spam: interés legítimo en operar y proteger el sitio, art. 6(1)(f) RGPD.",
-            "Obligaciones administrativas o legales cuando correspondan: obligación legal, art. 6(1)(c) RGPD.",
-            "Alergias o información relacionada con la salud introducida voluntariamente en las notas: consentimiento explícito para la finalidad específica de gestionar la reserva y el servicio, art. 9(2)(a) RGPD.",
-          ],
+          "title": "Cookies y seguimiento",
+          "paragraphs": [
+            "La demo no carga Google Ads, rastreadores publicitarios ni servicios CAPTCHA externos. El código del proyecto no establece cookies publicitarias ni guarda preferencias de seguimiento."
+          ]
         },
         {
-          title: "Entrega de datos",
-          paragraphs: [
-            "Nombre, teléfono, número de personas, fecha, hora y local son necesarios para enviar una solicitud de reserva. Sin estos datos, Sina Hotpot puede no poder gestionar la solicitud. Las notas opcionales pueden dejarse vacías.",
-          ],
-        },
-        {
-          title: "Destinatarios y servicios de terceros",
-          paragraphs: [
-            "Los datos pueden ser tratados por personal autorizado de Sina Hotpot y por proveedores técnicos utilizados para publicar el sitio, proteger el servicio y reenviar las solicitudes de reserva.",
-          ],
-          items: [
-            "Web3Forms: recibe los datos del formulario y los reenvía por email a Sina Hotpot.",
-            "Cloudflare: proporciona alojamiento, distribución del sitio, seguridad y registros técnicos.",
-            "Proveedor de email: recibe y conserva los emails de reserva en el buzón de Sina Hotpot.",
-            "hCaptcha o herramientas anti-spam equivalentes: pueden activarse en el formulario para verificar que el envío procede de una persona y no de un bot.",
-            "Google Ads: si das tu consentimiento, usa almacenamiento publicitario y de medición para medir los clics en enlaces de WhatsApp y teléfono procedentes de campañas publicitarias.",
-            "Google Maps, Instagram, Facebook y WhatsApp son enlaces externos. Sus servicios tratan datos solo si decides abrir esos enlaces o usar esas plataformas.",
-          ],
-        },
-        {
-          title: "Transferencias fuera del Espacio Económico Europeo",
-          paragraphs: [
-            "Algunos proveedores técnicos, incluidos servicios de alojamiento, seguridad, formularios, email o anti-spam, pueden tratar datos fuera del Espacio Económico Europeo. En esos casos, el tratamiento debe basarse en las garantías disponibles de los proveedores, como decisiones de adecuación, Data Privacy Framework, cláusulas contractuales tipo o medidas equivalentes cuando sean aplicables.",
-          ],
-        },
-        {
-          title: "Conservación",
-          paragraphs: [
-            "Las solicitudes de reserva se conservan durante el tiempo necesario para gestionar la reserva y normalmente no más de 12 meses desde la fecha de la solicitud, salvo que sea necesaria una conservación más larga por obligaciones legales, seguridad, prevención de abusos o reclamaciones.",
-            "Los registros técnicos y anti-spam se conservan según la configuración y los plazos de los proveedores correspondientes. Web3Forms declara que no almacena las solicitudes del formulario y que elimina periódicamente los posibles registros técnicos.",
-          ],
-        },
-        {
-          title: "Cookies y herramientas de seguimiento",
-          paragraphs: [
-            "El sitio usa herramientas técnicas necesarias para la navegación, la seguridad, el reenvío del formulario y la prevención de spam. Con tu consentimiento, Google Ads puede usar cookies o identificadores publicitarios y de medición para medir los clics en enlaces de WhatsApp y teléfono procedentes de anuncios.",
-            "Puedes aceptar o rechazar el seguimiento publicitario desde el banner de cookies. Rechazarlo no bloquea la navegación, las reservas ni los enlaces de contacto.",
-          ],
-        },
-        {
-          title: "Tus derechos",
-          paragraphs: [
-            "Puedes solicitar acceso, rectificación, supresión, limitación, portabilidad de los datos, oposición al tratamiento cuando corresponda y retirada del consentimiento para los datos tratados sobre la base del consentimiento. La retirada no afecta a la licitud del tratamiento realizado antes de la retirada.",
-            "Puedes ejercer tus derechos escribiendo a sinahotpot@gmail.com. También tienes derecho a presentar una reclamación ante la Autoridad italiana de protección de datos, www.garanteprivacy.it.",
-          ],
-        },
-        {
-          title: "Decisiones automatizadas",
-          paragraphs: [
-            "El sitio no realiza perfilado ni decisiones automatizadas que produzcan efectos jurídicos o efectos igualmente significativos para los usuarios.",
-          ],
-        },
-      ],
+          "title": "Alojamiento y enlaces externos",
+          "paragraphs": [
+            "Cloudflare proporciona alojamiento, distribución y seguridad y puede tratar información técnica de las solicitudes, como direcciones IP y registros de acceso, según sus ajustes y políticas. Los enlaces al sitio actual, GitHub, mapas y redes sociales abren servicios externos sujetos a sus propias políticas de privacidad. Esta demo no controla sus tratamientos ni plazos de conservación."
+          ]
+        }
+      ]
     },
   } as const satisfies LocaleCopy;

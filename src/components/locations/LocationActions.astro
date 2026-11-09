@@ -1,99 +1,30 @@
 ---
 import CtaLink from "../ui/CtaLink.astro";
-import {
-  getPhoneHref,
-  getWhatsappHref,
-  type RestaurantLocation,
-} from "../../data/site";
+import { project } from "../../data/project";
+import type { RestaurantLocation } from "../../data/site";
 
 interface Props {
   location: RestaurantLocation;
   reservationHref: string;
   reservationLabel: string;
-  whatsappLabel: string;
-  phoneLabel: string;
-  wechatLabel: string;
-  copyWechatLabel: string;
-  copiedLabel: string;
+  officialWebsiteLabel: string;
   mapLabel: string;
-  whatsappMessage: string;
   spacingClass?: "mt-5" | "mt-6";
 }
 
-const {
-  location,
-  reservationHref,
-  reservationLabel,
-  whatsappLabel,
-  phoneLabel,
-  wechatLabel,
-  copyWechatLabel,
-  copiedLabel,
-  mapLabel,
-  whatsappMessage,
-  spacingClass = "mt-5",
-} = Astro.props;
-
-const whatsappHref = getWhatsappHref(location.phone, whatsappMessage);
-const layoutClasses = {
-  root: "flex flex-col gap-3 sm:flex-row sm:flex-wrap",
-  secondaryActions: "grid grid-cols-2 gap-3 sm:contents",
-};
-const actionClasses = {
-  link: "w-full min-w-0 justify-center text-center sm:w-auto",
-  wechat:
-    "focus-ring inline-flex min-h-11 w-full max-w-full min-w-0 items-center justify-center rounded-md border border-gold px-4 py-2 text-center text-sm font-semibold text-ink transition hover:bg-gold/12 sm:w-auto",
-  wechatLabel: "min-w-0 wrap-break-word",
-  wechatFeedback: "ml-2 shrink-0 text-xs text-lacquer",
-};
+const { location, reservationHref, reservationLabel, officialWebsiteLabel, mapLabel, spacingClass = "mt-5" } = Astro.props;
+const layoutClasses = { root: "flex flex-col gap-3 sm:flex-row sm:flex-wrap" };
+const actionClasses = { link: "w-full min-w-0 justify-center text-center sm:w-auto" };
 ---
 
 <div class:list={[spacingClass, layoutClasses.root]}>
   <CtaLink href={reservationHref} variant="goldSmall" class={actionClasses.link}>
     {reservationLabel}
   </CtaLink>
-  <CtaLink
-    href={whatsappHref}
-    variant="redSmall"
-    class={actionClasses.link}
-    external
-  >
-    {whatsappLabel}
+  <CtaLink href={project.officialWebsite} variant="redSmall" class={actionClasses.link} external>
+    {officialWebsiteLabel}
   </CtaLink>
-  <div class={layoutClasses.secondaryActions}>
-    <CtaLink
-      href={getPhoneHref(location.phone)}
-      variant="lightOutlineSmall"
-      class={actionClasses.link}
-    >
-      {phoneLabel}
-    </CtaLink>
-    <CtaLink
-      href={location.mapHref}
-      variant="lightOutlineSmall"
-      class={actionClasses.link}
-      external
-    >
-      {mapLabel}
-    </CtaLink>
-  </div>
-  <button
-    class={actionClasses.wechat}
-    type="button"
-    data-wechat-copy={location.wechatId}
-    data-copy-label={copyWechatLabel}
-    data-copied-label={copiedLabel}
-    aria-label={`${copyWechatLabel} ${location.wechatId}`}
-  >
-    <span class={actionClasses.wechatLabel}>
-      {wechatLabel}: {location.wechatId}
-    </span>
-    <span
-      class={actionClasses.wechatFeedback}
-      aria-live="polite"
-      data-wechat-copy-feedback
-    >
-      {copyWechatLabel}
-    </span>
-  </button>
+  <CtaLink href={location.mapHref} variant="lightOutlineSmall" class={actionClasses.link} external>
+    {mapLabel}
+  </CtaLink>
 </div>
